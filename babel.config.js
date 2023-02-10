@@ -5,11 +5,13 @@ module.exports = {
       'module-resolver',
       {
         alias: {
+          assets: './src/assets',
           components: './src/components',
           constants: './src/constants',
           models: './src/models',
         },
       },
     ],
+    'react-native-reanimated/plugin',
   ],
 };

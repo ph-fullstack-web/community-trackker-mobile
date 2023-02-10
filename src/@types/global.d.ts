@@ -15,3 +15,9 @@ declare global {
     isDataLoading?: boolean;
   }
 }
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootDrawerParamList {}
+  }
+}

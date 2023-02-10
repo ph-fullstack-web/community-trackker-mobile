@@ -1,7 +1,7 @@
 {
   "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-native",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -16,9 +16,10 @@
     "noEmit": true,
     "paths": {
       "@types/*": ["@types/*"],
+      "assets/*": ["assets/*"],
       "components/*": ["components/*"],
       "constants/*": ["constants/*"],
-      "models/*": ["models/*"]
+      "models/*": ["models/*"],
     }
-  }
+  },
 }

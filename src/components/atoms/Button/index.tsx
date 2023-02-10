@@ -1,4 +1,3 @@
-import React from 'react';
 import {Button as DefaultButton} from 'react-native';
 
 type ThemeProps = {
