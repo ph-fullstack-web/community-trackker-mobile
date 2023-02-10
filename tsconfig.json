@@ -1,3 +1,24 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "./node_modules/gts/tsconfig-google.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "rootDir": ".",
+    "baseUrl": "src",
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "paths": {
+      "@types/*": ["@types/*"],
+      "components/*": ["components/*"],
+      "constants/*": ["constants/*"],
+      "models/*": ["models/*"]
+    }
+  }
 }
