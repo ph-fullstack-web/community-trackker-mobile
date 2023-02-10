@@ -2,12 +2,12 @@ import {StyleSheet, Text, View} from 'react-native';
 import {useState} from 'react';
 import {Icon, Tooltip} from '@rneui/base';
 
-const Communities = () => {
+export const CECDashboardScreen = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Communities</Text>
+      <Text style={styles.text}>CEC Requests</Text>
       <Tooltip
         skipAndroidStatusBar
         withOverlay={false}
@@ -36,5 +36,3 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
-export default Communities;

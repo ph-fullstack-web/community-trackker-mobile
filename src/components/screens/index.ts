@@ -1,5 +1,3 @@
-import Communities from './Communities';
-import Members from './Members';
-
-export * from './CommunityTrackerDashboardScreen';
-export {Communities, Members};
+export * from './CEC';
+export * from './CommunitiesDashboardScreen';
+export * from './MembersScreen';
