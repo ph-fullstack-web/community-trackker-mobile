@@ -3,9 +3,17 @@ import {useState} from 'react';
 import {Icon, Tooltip} from '@rneui/base';
 
 import {CommunityCard} from 'components/organisms';
+import {useCommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 
 export const CommunitiesDashboardScreen = () => {
   const [open, setOpen] = useState(false);
+
+  const {communityList} = useCommunitiesDataProvider();
+
+  console.log(
+    '🚀 ~ file: index.tsx:12 ~ CommunitiesDashboardScreen ~ communityList',
+    communityList
+  );
 
   return (
     <View>
