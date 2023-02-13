@@ -27,25 +27,6 @@ interface FooterProps {
   totalMembers: number;
 }
 
-export const CommunityCard = (props: CommunityCardProps) => {
-  return (
-    <View style={styles.card_template}>
-      <CommunityCardHeader
-        icon={props.icon}
-        name={props.name}
-        managerName={props.managerName}
-      />
-
-      <ProgressChart title="-Chart goes here-" />
-
-      <CommunityCardFooter
-        description={props.description}
-        totalMembers={props.totalMembers}
-      />
-    </View>
-  );
-};
-
 const CommunityCardHeader = (props: HeaderProps) => {
   return (
     <View style={styles.header}>
@@ -79,6 +60,25 @@ const CommunityCardFooter = (props: FooterProps) => {
   );
 };
 
+export const CommunityCard = (props: CommunityCardProps) => {
+  return (
+    <View style={styles.card_template}>
+      <CommunityCardHeader
+        icon={props.icon}
+        name={props.name}
+        managerName={props.managerName}
+      />
+
+      <ProgressChart title="-Chart goes here-" />
+
+      <CommunityCardFooter
+        description={props.description}
+        totalMembers={props.totalMembers}
+      />
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   bold_text: {
     fontWeight: 'bold',
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     borderColor: '#c5c5c5',
     borderStyle: 'solid',
     borderWidth: 1,
-
+    flex: 1,
     backgroundColor: '#ddd',
     margin: 10,
     shadowColor: '#000',

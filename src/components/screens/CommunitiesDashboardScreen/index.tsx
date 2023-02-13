@@ -1,11 +1,4 @@
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-} from 'react-native';
+import {StyleSheet, Text, View, FlatList} from 'react-native';
 import {useState} from 'react';
 import {Icon, Tooltip} from '@rneui/base';
 
@@ -23,7 +16,7 @@ export const CommunitiesDashboardScreen = () => {
   );
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.text}>
           Communities
@@ -39,24 +32,25 @@ export const CommunitiesDashboardScreen = () => {
           </Tooltip>
         </Text>
       </View>
-      <SafeAreaView>
-        <ScrollView>
-          <FlatList
-            data={communityList}
-            keyExtractor={item => item.communityId.toString()}
-            renderItem={({item}) => {
-              return <CommunityCard {...item} />;
-            }}
-          ></FlatList>
-        </ScrollView>
-      </SafeAreaView>
+      <FlatList
+        nestedScrollEnabled
+        data={communityList}
+        keyExtractor={item => item.communityId.toString()}
+        renderItem={({item}) => {
+          return <CommunityCard {...item} />;
+        }}
+      ></FlatList>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+  },
   header: {
-    paddingVertical: 20,
+    paddingVertical: 15,
     paddingHorizontal: 10,
   },
   text: {

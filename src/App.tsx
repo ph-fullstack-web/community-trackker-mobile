@@ -1,7 +1,18 @@
+import { SafeAreaView, StyleSheet } from 'react-native';
 import {MainNavigation} from './navigation/MainNavigation';
 
 const App = () => {
-  return <MainNavigation />;
+  return (
+    <SafeAreaView style={styles.container}>
+      <MainNavigation />
+    </SafeAreaView>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+})
 
 export default App;
