@@ -10,7 +10,7 @@ module.exports = {
           constants: './src/constants',
           models: './src/models',
           navigation: './src/navigation',
-          data: './src/data',
+          providers: './src/providers',
         },
       },
     ],

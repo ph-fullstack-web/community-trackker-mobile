@@ -3,6 +3,11 @@ export type Employee = {
 };
 
 export type Community = {
-  communityId: string;
+  icon?: string;
+  communityId: number;
   name: string;
+  description: string;
+  managerName: string;
+  totalMembers: number;
+  percentage: number;
 };

@@ -21,7 +21,7 @@
       "constants/*": ["constants/*"],
       "models/*": ["models/*"],
       "navigation/*": ["navigation/*"],
-      "data/*": ["data/*"]
+      "providers/*": ["providers/*"]
     }
   }
 }

@@ -1,18 +1,13 @@
-import * as React from 'react'
-import {
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View
-} from 'react-native';
-import { Icon } from '@rneui/themed';
+import * as React from 'react';
+import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
+import {Icon} from '@rneui/themed';
 
-export type ViewMembersButtonProps = {
-  placeholderNumber: number;
-};
+interface ViewMembersButtonProps {
+  totalMembers: number;
+}
 
 export const ViewMembersButton = (props: ViewMembersButtonProps) => {
-  var [ isPress, setIsPress ] = React.useState(false);
+  var [isPress, setIsPress] = React.useState(false);
 
   const touchProps = {
     activeOpacity: 1,
@@ -25,35 +20,28 @@ export const ViewMembersButton = (props: ViewMembersButtonProps) => {
 
   return (
     <View style={styles.container}>
-      <TouchableHighlight
-        {...touchProps}
-      >
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center'
-          }}
-        >
-            <Icon
-              name='eye'
-              type='font-awesome'
-              style={{
-                marginRight:8
-              }}
-            />
-            <Text style={styles.uppercase_text}>View ({props.placeholderNumber}) Members</Text>
+      <TouchableHighlight {...touchProps}>
+        <View style={styles.layout}>
+          <Icon name="eye" type="font-awesome" style={{marginRight: 8}} />
+          <Text style={styles.uppercase_text}>
+            View ({props.totalMembers}) Members
+          </Text>
         </View>
-      </TouchableHighlight>    
+      </TouchableHighlight>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   uppercase_text: {
-    textTransform:'uppercase'
+    textTransform: 'uppercase',
   },
   container: {
-    width: 200
+    width: 200,
+  },
+  layout: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   not_pressed: {
     paddingVertical: 3,
@@ -71,6 +59,6 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     borderStyle: 'solid',
     borderWidth: 2,
-    color: '#fff'
-  }
-})
+    color: '#fff',
+  },
+});

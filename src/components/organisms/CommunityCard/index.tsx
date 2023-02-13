@@ -1,52 +1,52 @@
 import * as React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {ViewMembersButton} from 'components/molecules';
 
-export type CommunityCardProps = {
-  communityImage?: string;
-  communityName: string;
-  communityDescription: string;
-  communityManager: string;
+import {
+  CommunityDetailsModal,
+  ProgressChart,
+  ViewMembersButton,
+} from 'components/molecules';
+
+interface CommunityCardProps {
+  icon?: string;
+  name: string;
+  description: string;
+  managerName: string;
+  totalMembers: number;
   percentage: number;
-  membersCount: number;
-};
+}
 
-export type CommunityHeaderProps = {
-  communityImage?: string;
-  communityName: string;
-  communityManager: string;
-};
+interface HeaderProps {
+  icon?: string;
+  name: string;
+  managerName: string;
+}
 
-export type CommunityCardFooterProps = {
-  membersCount: number;
-};
+interface FooterProps {
+  description: string;
+  totalMembers: number;
+}
 
 export const CommunityCard = (props: CommunityCardProps) => {
-  const {
-    communityImage,
-    communityName,
-    communityDescription,
-    communityManager,
-    percentage,
-    membersCount,
-  } = props;
-
   return (
     <View style={styles.card_template}>
       <CommunityCardHeader
-        communityImage={communityImage}
-        communityName={communityName}
-        communityManager={communityManager}
+        icon={props.icon}
+        name={props.name}
+        managerName={props.managerName}
       />
-      <CommunityCardChart />
-      <CommunityCardFooter membersCount={membersCount} />
+
+      <ProgressChart title="-Chart goes here-" />
+
+      <CommunityCardFooter
+        description={props.description}
+        totalMembers={props.totalMembers}
+      />
     </View>
   );
 };
 
-const CommunityCardHeader = (props: CommunityHeaderProps) => {
-  const {communityImage, communityName, communityManager} = props;
-
+const CommunityCardHeader = (props: HeaderProps) => {
   return (
     <View style={styles.header}>
       <View style={styles.thumbnail}>
@@ -56,39 +56,25 @@ const CommunityCardHeader = (props: CommunityHeaderProps) => {
             height: 30,
           }}
           source={{
-            uri: communityImage ?? 'https://via.placeholder.com/30.png',
+            uri: props.icon ?? 'https://via.placeholder.com/30.png',
           }}
         />
       </View>
       <View>
-        <Text style={styles.bold_text}>{communityName}</Text>
-        <Text>Manager: {communityManager}</Text>
+        <Text style={styles.bold_text}>{props.name}</Text>
+        <Text>Manager: {props.managerName}</Text>
       </View>
     </View>
   );
 };
 
-const CommunityCardChart = () => {
-  return (
-    <View>
-      <Image
-        style={{
-          width: '100%',
-          height: undefined,
-          aspectRatio: '16 / 9',
-        }}
-        source={{
-          uri: 'https://via.placeholder.com/400x160.png',
-        }}
-      />
-    </View>
-  );
-};
-
-const CommunityCardFooter = (props: CommunityCardFooterProps) => {
+const CommunityCardFooter = (props: FooterProps) => {
   return (
     <View style={styles.footer}>
-      <ViewMembersButton placeholderNumber={props.membersCount} />
+      <View style={styles.horizontal_layout}>
+        <ViewMembersButton totalMembers={props.totalMembers} />
+        <CommunityDetailsModal communityDescription={props.description} />
+      </View>
     </View>
   );
 };
@@ -128,5 +114,11 @@ const styles = StyleSheet.create({
 
   footer: {
     padding: 10,
+  },
+
+  horizontal_layout: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
