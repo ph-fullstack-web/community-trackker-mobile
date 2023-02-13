@@ -3,7 +3,7 @@ import {useState} from 'react';
 import {Icon, Tooltip} from '@rneui/base';
 import { CommunityCard } from '../organisms/index';
 
-const Communities = () => {
+export const CommunitiesDashboardScreen = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -43,5 +43,3 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
-export default Communities;
