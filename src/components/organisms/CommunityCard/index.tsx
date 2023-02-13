@@ -45,23 +45,6 @@ const CommunityCardHeader = () => {
   )
 }
 
-const CommunityCardChart = () => {
-  return(
-    <View>
-      <Image
-        style={{
-          width: '100%',
-          height: undefined,
-          aspectRatio: '16 / 9'
-        }}
-        source={{
-          uri: 'https://via.placeholder.com/400x160.png',
-        }}
-      />
-    </View>
-  )
-}
-
 const CommunityCardFooter = () => {
   return(
     <View style={styles.footer}>
