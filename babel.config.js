@@ -8,6 +8,7 @@ module.exports = {
           assets: './src/assets',
           components: './src/components',
           constants: './src/constants',
+          mocks: './src/mocks',
           models: './src/models',
           navigation: './src/navigation',
           providers: './src/providers',
