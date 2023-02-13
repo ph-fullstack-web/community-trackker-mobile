@@ -17,7 +17,7 @@ export const CommunityDetailsModal = () => {
 
   const touchProps = {
     activeOpacity: 1,
-    underlayColor: 'rgb(19, 221,227)',
+    underlayColor: '#ddd',
     style: isPress ? styles.is_pressed : styles.not_pressed,
     onHideUnderlay: () => setIsPress(false),
     onShowUnderlay: () => setIsPress(true),
@@ -45,16 +45,18 @@ export const CommunityDetailsModal = () => {
               <Text style={styles.modalText}>
                 { placeholderText }
               </Text>
+
               <Pressable
                 style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}>
+                onPress={() => setModalVisible(!modalVisible)}
+              >
                 <Text style={styles.textStyle}>Close Modal</Text>
               </Pressable>
+
             </View>
           </View>
         </Modal>
       </View>
-
     </View>
   )
 }
