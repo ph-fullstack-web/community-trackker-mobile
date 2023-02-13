@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-} from 'react-native'
+} from 'react-native';
+import { ViewMembersButton } from 'components/molecules';
 
 export const CommunityCard = () => {
   return(
@@ -58,6 +59,7 @@ const CommunityCardChart = () => {
 const CommunityCardFooter = () => {
   return(
     <View style={styles.footer}>
+      <ViewMembersButton />
     </View>
   )
 }
