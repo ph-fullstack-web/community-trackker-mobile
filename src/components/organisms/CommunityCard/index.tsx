@@ -1,9 +1,4 @@
-import {
-  Image,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 
 import {
   CommunityDetailsModal,
@@ -13,11 +8,13 @@ import {
 
 interface CommunityCardProps {
   icon?: string;
+  communityId: number;
   name: string;
   description: string;
   managerName: string;
   totalMembers: number;
   percentage: number;
+  onViewMembers: (communityId: number) => void;
 }
 
 interface HeaderProps {
@@ -29,9 +26,11 @@ interface HeaderProps {
 interface FooterProps {
   description: string;
   totalMembers: number;
+  onViewMembers: () => void;
 }
 
 const CommunityCardHeader = (props: HeaderProps) => {
+  const defaultCommunityIcon = 'https://via.placeholder.com/30.png';
   return (
     <View style={styles.header}>
       <View style={styles.thumbnail}>
@@ -41,7 +40,7 @@ const CommunityCardHeader = (props: HeaderProps) => {
             height: 30,
           }}
           source={{
-            uri: props.icon ?? 'https://via.placeholder.com/30.png',
+            uri: props.icon ?? defaultCommunityIcon,
           }}
         />
       </View>
@@ -57,7 +56,10 @@ const CommunityCardFooter = (props: FooterProps) => {
   return (
     <View style={styles.footer}>
       <View style={styles.horizontal_layout}>
-        <ViewMembersButton totalMembers={props.totalMembers} />
+        <ViewMembersButton
+          totalMembers={props.totalMembers}
+          onPress={props.onViewMembers}
+        />
         <CommunityDetailsModal communityDescription={props.description} />
       </View>
     </View>
@@ -78,6 +80,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
       <CommunityCardFooter
         description={props.description}
         totalMembers={props.totalMembers}
+        onViewMembers={() => props.onViewMembers(props.communityId)}
       />
     </View>
   );

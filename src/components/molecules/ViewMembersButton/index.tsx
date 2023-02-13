@@ -1,18 +1,14 @@
-import { useState } from 'react'
-import {
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View
-} from 'react-native';
-import { Icon } from '@rneui/themed';
+import {useState} from 'react';
+import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
+import {Icon} from '@rneui/themed';
 
 interface ViewMembersButtonProps {
   totalMembers: number;
+  onPress: () => void;
 }
 
 export const ViewMembersButton = (props: ViewMembersButtonProps) => {
-  var [ isPress, setIsPress ] = useState(false);
+  var [isPress, setIsPress] = useState(false);
 
   const touchProps = {
     activeOpacity: 1,
@@ -20,7 +16,7 @@ export const ViewMembersButton = (props: ViewMembersButtonProps) => {
     style: isPress ? styles.is_pressed : styles.not_pressed,
     onHideUnderlay: () => setIsPress(false),
     onShowUnderlay: () => setIsPress(true),
-    onPress: () => console.log('HELLO'),
+    onPress: props.onPress,
   };
 
   return (
