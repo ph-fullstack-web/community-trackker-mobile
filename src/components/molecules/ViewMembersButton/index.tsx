@@ -8,7 +8,7 @@ import {
 import { Icon } from '@rneui/themed';
 
 interface ViewMembersButtonProps {
-  members: number;
+  totalMembers: number;
 }
 
 export const ViewMembersButton = (props: ViewMembersButtonProps) => {
@@ -25,28 +25,28 @@ export const ViewMembersButton = (props: ViewMembersButtonProps) => {
 
   return (
     <View style={styles.container}>
-      <TouchableHighlight
-        {...touchProps}
-      >
+      <TouchableHighlight {...touchProps}>
         <View style={styles.layout}>
-            <Icon name='eye' type='font-awesome' style={{ marginRight:8 }} />
-            <Text style={styles.uppercase_text}>View ({props.members}) Members</Text>
+          <Icon name="eye" type="font-awesome" style={{marginRight: 8}} />
+          <Text style={styles.uppercase_text}>
+            View ({props.totalMembers}) Members
+          </Text>
         </View>
       </TouchableHighlight>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   uppercase_text: {
-    textTransform:'uppercase'
+    textTransform: 'uppercase',
   },
   container: {
-    width: 200
+    width: 200,
   },
   layout: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   not_pressed: {
     paddingVertical: 3,
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     borderStyle: 'solid',
     borderWidth: 2,
-    color: '#fff'
-  }
-})
+    color: '#fff',
+  },
+});
