@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  Image,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 
 import {
   CommunityDetailsModal,
@@ -13,37 +8,27 @@ import {
 } from 'components/molecules';
 
 interface CommunityCardProps {
+  icon?: string;
   name: string;
+  description: string;
   managerName: string;
-  members: number;
+  totalMembers: number;
+  percentage: number;
 }
 
 interface HeaderProps {
+  icon?: string;
   name: string;
   managerName: string;
 }
 
 interface FooterProps {
-  members: number;
-}
-
-export const CommunityCard = ( props: CommunityCardProps ) => {
-  return(
-    <View style={styles.card_template}>
-      <CommunityCardHeader
-        name={props.name}
-        managerName={props.managerName}
-      />
-
-      <ProgressChart title='-Chart goes here-' />
-      
-      <CommunityCardFooter members={props.members} />
-    </View>
-  )
+  description: string;
+  totalMembers: number;
 }
 
 const CommunityCardHeader = (props: HeaderProps) => {
-  return(
+  return (
     <View style={styles.header}>
       <View style={styles.thumbnail}>
         <Image
@@ -52,50 +37,67 @@ const CommunityCardHeader = (props: HeaderProps) => {
             height: 30,
           }}
           source={{
-            uri: 'https://via.placeholder.com/30.png',
+            uri: props.icon ?? 'https://via.placeholder.com/30.png',
           }}
         />
       </View>
       <View>
-          <Text style={styles.bold_text}>
-            {props.name}
-          </Text>
-          <Text>Manager: {props.managerName}</Text>
+        <Text style={styles.bold_text}>{props.name}</Text>
+        <Text>Manager: {props.managerName}</Text>
       </View>
     </View>
-  )
-}
+  );
+};
 
 const CommunityCardFooter = (props: FooterProps) => {
-  return(
+  return (
     <View style={styles.footer}>
-      <View style={styles.horizontal_layout} >
-        <ViewMembersButton members={props.members} />
-        <CommunityDetailsModal />
+      <View style={styles.horizontal_layout}>
+        <ViewMembersButton totalMembers={props.totalMembers} />
+        <CommunityDetailsModal communityDescription={props.description} />
       </View>
     </View>
-  )
-}
+  );
+};
+
+export const CommunityCard = (props: CommunityCardProps) => {
+  return (
+    <View style={styles.card_template}>
+      <CommunityCardHeader
+        icon={props.icon}
+        name={props.name}
+        managerName={props.managerName}
+      />
+
+      <ProgressChart title="-Chart goes here-" />
+
+      <CommunityCardFooter
+        description={props.description}
+        totalMembers={props.totalMembers}
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   bold_text: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   card_template: {
     borderColor: '#c5c5c5',
     borderStyle: 'solid',
     borderWidth: 1,
-
+    flex: 1,
     backgroundColor: '#ddd',
     margin: 10,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    
+
     elevation: 5,
   },
 
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 10,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   thumbnail: {
@@ -117,6 +119,6 @@ const styles = StyleSheet.create({
   horizontal_layout: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
 });
