@@ -5,13 +5,19 @@ import {
   Text,
   View,
 } from 'react-native';
-import { ViewMembersButton } from 'components/molecules';
+import {
+  CommunityDetailsModal,
+  ProgressChart,
+  ViewMembersButton,
+} from 'components/molecules';
 
 export const CommunityCard = () => {
   return(
     <View style={styles.card_template}>
       <CommunityCardHeader />
-      <CommunityCardChart />
+
+      <ProgressChart title='-Chart goes here-' />
+      
       <CommunityCardFooter />
     </View>
   )
@@ -59,7 +65,10 @@ const CommunityCardChart = () => {
 const CommunityCardFooter = () => {
   return(
     <View style={styles.footer}>
-      <ViewMembersButton />
+      <View style={styles.horizontal_layout} >
+        <ViewMembersButton />
+        <CommunityDetailsModal />
+      </View>
     </View>
   )
 }
@@ -99,5 +108,11 @@ const styles = StyleSheet.create({
 
   footer: {
     padding: 10,
+  },
+
+  horizontal_layout: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
 });

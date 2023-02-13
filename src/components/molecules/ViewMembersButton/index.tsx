@@ -26,22 +26,11 @@ export const ViewMembersButton = () => {
       <TouchableHighlight
         {...touchProps}
       >
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center'
-          }}
-        >
-            <Icon
-              name='eye'
-              type='font-awesome'
-              style={{
-                marginRight:8
-              }}
-            />
+        <View style={styles.layout}>
+            <Icon name='eye' type='font-awesome' style={{ marginRight:8 }} />
             <Text style={styles.uppercase_text}>View ({placeholderNumber}) Members</Text>
         </View>
-      </TouchableHighlight>    
+      </TouchableHighlight>
     </View>
   )
 }
@@ -52,6 +41,10 @@ const styles = StyleSheet.create({
   },
   container: {
     width: 200
+  },
+  layout: {
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   not_pressed: {
     paddingVertical: 3,
