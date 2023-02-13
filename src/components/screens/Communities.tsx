@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {useState} from 'react';
 import {Icon, Tooltip} from '@rneui/base';
-import { CommunityCard } from 'components/organisms';
+import { CommunityCard } from '../organisms';
 
-export const CommunitiesDashboardScreen = () => {
+const Communities = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -43,3 +43,5 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
+
+export default Communities;

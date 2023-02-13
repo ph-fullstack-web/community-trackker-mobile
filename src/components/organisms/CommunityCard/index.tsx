@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native'
 
-export function CommunityCard() {
+export const CommunityCard = () => {
   return(
     <View style={styles.card_template}>
       <CommunityCardHeader />
@@ -16,7 +16,7 @@ export function CommunityCard() {
   )
 }
 
-function CommunityCardHeader() {
+const CommunityCardHeader = () => {
   return(
     <View style={styles.header}>
       <View style={styles.thumbnail}>
@@ -38,7 +38,7 @@ function CommunityCardHeader() {
   )
 }
 
-function CommunityCardChart() {
+const CommunityCardChart = () => {
   return(
     <View>
       <Image
@@ -55,7 +55,7 @@ function CommunityCardChart() {
   )
 }
 
-function CommunityCardFooter() {
+const CommunityCardFooter = () => {
   return(
     <View style={styles.footer}>
     </View>
