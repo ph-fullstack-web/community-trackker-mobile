@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState } from 'react'
 import {
   StyleSheet,
   Text,
@@ -7,14 +7,12 @@ import {
 } from 'react-native';
 import { Icon } from '@rneui/themed';
 
-const placeholderNumber = '969';
-
 interface ViewMembersButtonProps {
   members: number;
 }
 
 export const ViewMembersButton = (props: ViewMembersButtonProps) => {
-  var [ isPress, setIsPress ] = React.useState(false);
+  var [ isPress, setIsPress ] = useState(false);
 
   const touchProps = {
     activeOpacity: 1,
