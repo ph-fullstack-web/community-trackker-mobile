@@ -10,11 +10,6 @@ export const CommunitiesDashboardScreen = () => {
 
   const {communityList} = useCommunitiesDataProvider();
 
-  console.log(
-    '🚀 ~ file: index.tsx:12 ~ CommunitiesDashboardScreen ~ communityList',
-    communityList
-  );
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -39,7 +34,7 @@ export const CommunitiesDashboardScreen = () => {
         renderItem={({item}) => {
           return <CommunityCard {...item} />;
         }}
-      ></FlatList>
+      />
     </View>
   );
 };

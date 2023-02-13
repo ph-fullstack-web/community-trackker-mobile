@@ -1,5 +1,12 @@
 export type Employee = {
-  name: string;
+  employeeId: number;
+  cognizantId: number;
+  lastName: string;
+  firstName: string;
+  fullName: string;
+  csvEmail: string;
+  isActive: boolean;
+  dateHired: string;
 };
 
 export type Community = {
@@ -10,4 +17,5 @@ export type Community = {
   managerName: string;
   totalMembers: number;
   percentage: number;
+  members: Employee[];
 };
