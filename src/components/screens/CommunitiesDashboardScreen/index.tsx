@@ -1,7 +1,8 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {useState} from 'react';
 import {Icon, Tooltip} from '@rneui/base';
-import { CommunityCard } from 'components/organisms';
+
+import {CommunityCard} from 'components/organisms';
 
 export const CommunitiesDashboardScreen = () => {
   const [open, setOpen] = useState(false);
@@ -9,7 +10,6 @@ export const CommunitiesDashboardScreen = () => {
   return (
     <View>
       <View style={styles.header}>
-
         <Text style={styles.text}>
           Communities
           <Tooltip
@@ -32,7 +32,7 @@ export const CommunitiesDashboardScreen = () => {
 
 const styles = StyleSheet.create({
   header: {
-    paddingVertical:20,
+    paddingVertical: 20,
     paddingHorizontal: 10,
   },
   text: {
