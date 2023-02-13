@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useState} from 'react';
 import {Icon, Tooltip} from '@rneui/base';
 
@@ -32,8 +32,25 @@ export const CommunitiesDashboardScreen = () => {
           </Tooltip>
         </Text>
       </View>
+      <SafeAreaView>
+        <ScrollView>
+          {
+            communityList && communityList.map((community) => {
+              return(
+                <View key={community.communityId}>
+                  <CommunityCard
+                    name={community.name}
+                    managerName={community.managerName}
+                    members={community.totalMembers}
+                  />
+                </View>
+              )
+            })
+          }
+        </ScrollView>
+      </SafeAreaView>
 
-      <CommunityCard />
+      
     </View>
   );
 };

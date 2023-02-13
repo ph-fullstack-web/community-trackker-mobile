@@ -12,19 +12,37 @@ import {
   ViewMembersButton,
 } from 'components/molecules';
 
-export const CommunityCard = () => {
+interface CommunityCardProps {
+  name: string;
+  managerName: string;
+  members: number;
+}
+
+interface HeaderProps {
+  name: string;
+  managerName: string;
+}
+
+interface FooterProps {
+  members: number;
+}
+
+export const CommunityCard = ( props: CommunityCardProps ) => {
   return(
     <View style={styles.card_template}>
-      <CommunityCardHeader />
+      <CommunityCardHeader
+        name={props.name}
+        managerName={props.managerName}
+      />
 
       <ProgressChart title='-Chart goes here-' />
       
-      <CommunityCardFooter />
+      <CommunityCardFooter members={props.members} />
     </View>
   )
 }
 
-const CommunityCardHeader = () => {
+const CommunityCardHeader = (props: HeaderProps) => {
   return(
     <View style={styles.header}>
       <View style={styles.thumbnail}>
@@ -39,18 +57,20 @@ const CommunityCardHeader = () => {
         />
       </View>
       <View>
-          <Text style={styles.bold_text}>Community Name</Text>
-          <Text>Manager: FirstName LastName</Text>
+          <Text style={styles.bold_text}>
+            {props.name}
+          </Text>
+          <Text>Manager: {props.managerName}</Text>
       </View>
     </View>
   )
 }
 
-const CommunityCardFooter = () => {
+const CommunityCardFooter = (props: FooterProps) => {
   return(
     <View style={styles.footer}>
       <View style={styles.horizontal_layout} >
-        <ViewMembersButton />
+        <ViewMembersButton members={props.members} />
         <CommunityDetailsModal />
       </View>
     </View>

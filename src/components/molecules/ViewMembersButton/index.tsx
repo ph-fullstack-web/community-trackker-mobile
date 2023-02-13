@@ -9,7 +9,11 @@ import { Icon } from '@rneui/themed';
 
 const placeholderNumber = '969';
 
-export const ViewMembersButton = () => {
+interface ViewMembersButtonProps {
+  members: number;
+}
+
+export const ViewMembersButton = (props: ViewMembersButtonProps) => {
   var [ isPress, setIsPress ] = React.useState(false);
 
   const touchProps = {
@@ -28,7 +32,7 @@ export const ViewMembersButton = () => {
       >
         <View style={styles.layout}>
             <Icon name='eye' type='font-awesome' style={{ marginRight:8 }} />
-            <Text style={styles.uppercase_text}>View ({placeholderNumber}) Members</Text>
+            <Text style={styles.uppercase_text}>View ({props.members}) Members</Text>
         </View>
       </TouchableHighlight>
     </View>
