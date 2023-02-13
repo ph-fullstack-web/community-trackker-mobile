@@ -1,15 +1,23 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, FlatList} from 'react-native';
 import {useState} from 'react';
 import {Icon, Tooltip} from '@rneui/base';
-import { CommunityCard } from 'components/organisms';
+
+import {CommunityCard} from 'components/organisms';
+import {useCommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 
 export const CommunitiesDashboardScreen = () => {
   const [open, setOpen] = useState(false);
 
-  return (
-    <View>
-      <View style={styles.header}>
+  const {communityList} = useCommunitiesDataProvider();
 
+  console.log(
+    '🚀 ~ file: index.tsx:12 ~ CommunitiesDashboardScreen ~ communityList',
+    communityList
+  );
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
         <Text style={styles.text}>
           Communities
           <Tooltip
@@ -24,15 +32,25 @@ export const CommunitiesDashboardScreen = () => {
           </Tooltip>
         </Text>
       </View>
-
-      <CommunityCard />
+      <FlatList
+        nestedScrollEnabled
+        data={communityList}
+        keyExtractor={item => item.communityId.toString()}
+        renderItem={({item}) => {
+          return <CommunityCard {...item} />;
+        }}
+      ></FlatList>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+  },
   header: {
-    paddingVertical:20,
+    paddingVertical: 15,
     paddingHorizontal: 10,
   },
   text: {
