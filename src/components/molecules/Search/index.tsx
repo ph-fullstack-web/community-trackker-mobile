@@ -1,7 +1,7 @@
 import {useState} from 'react';
-import {TextInput, View, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
-import {ButtonWithIcon} from 'components/atoms';
+import {ButtonWithIcon, TextInput} from 'components/atoms';
 
 type SearchProps = {
   onSearch: (searchText: string) => any;
