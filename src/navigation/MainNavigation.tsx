@@ -2,12 +2,16 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {HeaderBackground, HeaderLeft, HeaderRight} from 'components/organisms/Layout/';
+import {
+  HeaderBackground,
+  HeaderLeft,
+  HeaderRight,
+} from 'components/organisms/Layout/';
 import {
   CECDashboardScreen,
   CommunitiesDashboardScreen,
   Members,
-  MembersDetailsScreen
+  MembersDetailsScreen,
 } from 'components/screens';
 import {CommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 import {
@@ -59,7 +63,10 @@ export const MainNavigation = () => {
           name={ScreenName.MembersDetails}
           component={MembersDetailsScreen}
         />
-        <Drawer.Screen name={ScreenName.Communities} component={CommunitiesDashboardScreenWrapper} />
+        <Drawer.Screen
+          name={ScreenName.Communities}
+          component={CommunitiesDashboardScreenWrapper}
+        />
         <Drawer.Screen name={ScreenName.Members} component={Members} />
         <Drawer.Screen name={ScreenName.CEC} component={CECDashboardScreen} />
       </Drawer.Navigator>
