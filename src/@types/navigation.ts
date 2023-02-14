@@ -15,7 +15,7 @@ export type DrawerScreenProp<T extends keyof RootDrawerParamList> =
 
 export type RootNativeStackParamList = {
   CommunitiesStack: undefined;
-  CommunityMembers: undefined | Community;
+  CommunityMembers: Community;
 };
 
 export type NativeStackScreenProp<T extends keyof RootNativeStackParamList> =
