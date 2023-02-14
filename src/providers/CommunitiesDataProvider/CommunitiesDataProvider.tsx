@@ -2,7 +2,7 @@ import {useEffect, useReducer} from 'react';
 
 import {CommunitiesDataContext} from './CommunitiesDataContext';
 import {
-  communityiesReducer,
+  communitiesReducer,
   initialCommunityListState,
   CommunitiesContextActionTypes,
 } from './CommunitiesReducer';
@@ -16,7 +16,7 @@ export const CommunitiesDataProvider = ({
 }: CommunitiesDataProviderProps) => {
   const isLoggedIn = true;
   const [store, dispatch] = useReducer(
-    communityiesReducer,
+    communitiesReducer,
     initialCommunityListState
   );
 

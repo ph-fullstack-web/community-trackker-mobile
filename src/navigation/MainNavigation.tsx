@@ -3,6 +3,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
+  Drawer as DrawerContent,
   HeaderBackground,
   HeaderLeft,
   HeaderRight,
@@ -58,6 +59,7 @@ export const MainNavigation = () => {
           drawerType: 'slide',
           swipeEdgeWidth: 200,
         }}
+        drawerContent={DrawerContent}
       >
         <Drawer.Screen
           name={ScreenName.MembersDetails}

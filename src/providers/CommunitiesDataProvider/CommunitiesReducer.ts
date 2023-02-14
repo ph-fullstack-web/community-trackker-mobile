@@ -24,7 +24,7 @@ export const initialCommunityListState: CommunitiesContextState = {
   isDataLoading: true,
 };
 
-export const communityiesReducer = (
+export const communitiesReducer = (
   state: CommunitiesContextState,
   action: CommunitiesContextAction
 ): CommunitiesContextState => {
