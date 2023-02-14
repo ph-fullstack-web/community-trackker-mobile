@@ -1,19 +1,27 @@
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Button } from "components/atoms";
 import { LabeledInput } from "components/molecules";
 
 export const MemberDetailForm = () => {
   return (
     <>
-      <View style={styles.container}>
-        <View style={styles.form_header}>
-          <Text>Employee Name</Text>
-        </View>
-        <View>
-          <DetailForm />
-        </View>
-      </View>
+      <SafeAreaView style={{height: '100%', paddingBottom: 60}}>
+        <ScrollView>
+          <View style={styles.container}>
+            <View style={styles.form_header}>
+              <Text>Employee Name</Text>
+            </View>
+            <View style={{ paddingVertical: 10 }}>
+              <DetailForm />
+              <View>
+                <DetailForm />
+              </View>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+
     </>
   )
 }

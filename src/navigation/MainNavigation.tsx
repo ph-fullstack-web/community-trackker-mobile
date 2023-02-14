@@ -59,6 +59,7 @@ export const MainNavigation = () => {
           name={ScreenName.MembersDetails}
           component={MembersDetailsScreen}
         />
+        <Drawer.Screen name={ScreenName.Communities} component={CommunitiesDashboardScreenWrapper} />
         <Drawer.Screen name={ScreenName.Members} component={Members} />
         <Drawer.Screen name={ScreenName.CEC} component={CECDashboardScreen} />
       </Drawer.Navigator>
