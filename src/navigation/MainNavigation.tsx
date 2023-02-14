@@ -2,7 +2,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {HeaderBackground, HeaderRight} from 'components/organisms/Layout/';
+import {HeaderBackground, HeaderLeft, HeaderRight} from 'components/organisms/Layout/';
 import {
   CECDashboardScreen,
   CommunitiesDashboardScreen,
@@ -47,6 +47,7 @@ export const MainNavigation = () => {
         screenOptions={{
           headerBackground: HeaderBackground,
           headerRight: HeaderRight,
+          headerLeft: HeaderLeft,
           headerBackgroundContainerStyle: styles.header,
           headerTitle: '',
           drawerType: 'slide',
