@@ -19,6 +19,7 @@
       "assets/*": ["assets/*"],
       "components/*": ["components/*"],
       "constants/*": ["constants/*"],
+      "mocks/*": ["mocks/*"],
       "models/*": ["models/*"],
       "navigation/*": ["navigation/*"],
       "providers/*": ["providers/*"]
