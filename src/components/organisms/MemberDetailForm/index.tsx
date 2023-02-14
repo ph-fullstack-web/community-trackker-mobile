@@ -1,10 +1,15 @@
-import { useState } from "react";
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {useState} from 'react';
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
-import { Button, ExpandableView } from "components/atoms";
-import { LabeledInput } from "components/molecules";
-
-import styles from "./MemberDetaileFormStyles";
+import {Button, ExpandableView} from 'components/atoms';
+import {LabeledInput} from 'components/molecules';
+import styles from './MemberDetaileFormStyles';
 
 export const MemberDetailForm = () => {
   return (
@@ -16,13 +21,13 @@ export const MemberDetailForm = () => {
               <Text>Employee Name</Text>
             </View>
             <DetailForm />
-            <ExpandableArea/>
+            <ExpandableArea />
           </View>
         </ScrollView>
       </SafeAreaView>
     </>
-  )
-}
+  );
+};
 
 const ExpandableArea = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -31,7 +36,7 @@ const ExpandableArea = () => {
 
   return (
     <>
-      <View style={{ marginTop: 10 }}>
+      <View style={{marginTop: 10}}>
         <TouchableOpacity
           onPress={() => {
             setIsExpanded(!isExpanded);
@@ -44,12 +49,12 @@ const ExpandableArea = () => {
           expanded={isExpanded}
           form={<DetailForm />}
           height={300}
-          bgcolor='#eee'
+          bgcolor="#eee"
         />
-      </View>   
+      </View>
     </>
-  )
-}
+  );
+};
 
 const DetailForm = () => {
   const [idNumber, setIdNumber] = useState('');
@@ -81,7 +86,7 @@ const DetailForm = () => {
         button={
           <View style={styles.community_button}>
             <Button
-              title='View Community Info'
+              title="View Community Info"
               onPress={() => console.log('HELLO')}
             />
           </View>
@@ -95,5 +100,5 @@ const DetailForm = () => {
         onValueChange={setManager}
       />
     </>
-  )
-}
+  );
+};

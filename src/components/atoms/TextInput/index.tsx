@@ -1,4 +1,4 @@
-import { TextInput as DefaultTextInput } from "react-native";
+import {TextInput as DefaultTextInput} from 'react-native';
 
 type ThemeProps = {
   lightColor?: string;
@@ -11,4 +11,4 @@ export const TextInput = (props: TextInputProps) => {
   const {...otherProps} = props;
 
   return <DefaultTextInput {...otherProps} />;
-}
+};
