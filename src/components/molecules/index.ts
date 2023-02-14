@@ -1,3 +1,6 @@
-export * from './ProgressChart';
-export * from './ViewMembersButton';
 export * from './CommunityDetailsModal';
+export * from './ProgressChart';
+export * from './LabeledInput';
+export * from './ViewMembersButton';
+
+

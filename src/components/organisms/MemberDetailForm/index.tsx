@@ -1,39 +1,57 @@
 import { useState } from "react";
-import {StyleSheet,Text,View} from "react-native";
-
-import { TextInput } from "components/atoms";
+import { StyleSheet, View } from "react-native";
+import { Button } from "components/atoms";
+import { LabeledInput } from "components/molecules";
 
 export const MemberDetailForm = () => {
-  const [sampleText, setSampleText] = useState('');
+  const [idNumber, setIdNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [community, setCommunity] = useState('');
+  const [manager, setManager] = useState('');
 
   return (
     <>
-      <View style={styles.fieldSet}>
-        <Text style={styles.bold_text}>Label</Text>
-        <TextInput
-          placeholder='Sample Text'
-          onChangeText={setSampleText}
-          value={sampleText}
-          style={styles.textfield}
-        />
-      </View>
+      <LabeledInput
+        label="Cognizant ID"
+        placeholder="00000000"
+        value={idNumber}
+        onValueChange={setIdNumber}
+      />
+
+      <LabeledInput
+        label="Email"
+        placeholder="yourname@cognizant.com"
+        value={email}
+        onValueChange={setEmail}
+      />
+
+      <LabeledInput
+        label="Community"
+        placeholder="Community name"
+        value={community}
+        onValueChange={setCommunity}
+        button={
+          <View style={styles.community_button}>
+            <Button
+              title='View Community Info'
+              onPress={() => console.log('HELLO')}
+            />
+          </View>
+        }
+      />
+
+      <LabeledInput
+        label="Manager"
+        placeholder="Juan Dela Cruz"
+        value={manager}
+        onValueChange={setManager}
+      />
     </>
   )
 }
 
 const styles = StyleSheet.create({
-  bold_text: {
-    fontWeight: '500'
-  },
-  fieldSet: {
-    padding: 10,
-  },
-  textfield: {
-    borderWidth: 1,
-    borderColor: "#bbb",
-    borderStyle: "solid",
-    paddingHorizontal: 9,
-    paddingVertical: 3,
-    marginTop: 10
+  community_button: {
+    marginTop: 3
   }
 })
