@@ -6,10 +6,13 @@ import {MemberCard, ScreenHeader} from 'components/atoms';
 import {Search} from 'components/molecules';
 
 import {Employee} from 'models/business';
-import { RootNativeStackParamList } from '../../../@types/navigation';
-import { ScreenName } from 'constants/enums';
+import {RootNativeStackParamList} from '../../../@types/navigation';
+import {ScreenName} from 'constants/enums';
 
-type CommunityMembersScreenRouteProp = RouteProp<RootNativeStackParamList, ScreenName.CommunityMembers>;
+type CommunityMembersScreenRouteProp = RouteProp<
+  RootNativeStackParamList,
+  ScreenName.CommunityMembers
+>;
 
 export const CommunityMembersScreen = () => {
   const route = useRoute<CommunityMembersScreenRouteProp>();
@@ -19,7 +22,7 @@ export const CommunityMembersScreen = () => {
 
   useEffect(() => {
     setFilteredMembers(() => members);
-  }, []);
+  }, [members]);
 
   const handleSearch = (text: string) => {
     const searchText = text.trim().toLowerCase();
@@ -48,13 +51,13 @@ export const CommunityMembersScreen = () => {
         renderItem={({item}) => {
           return <MemberCard memberDetails={item} />;
         }}
-      ></FlatList>
+      />
     </>
   );
 };
 
 const styles = StyleSheet.create({
   search: {
-    paddingBottom: 10
+    paddingBottom: 10,
   },
 });

@@ -11,7 +11,7 @@ export enum ScreenName {
   CEC = 'CEC',
   CommunitiesStack = 'CommunitiesStack',
   CommunityMembers = 'CommunityMembers',
-  MembersDetails = 'MembersDetails',
+  Dashboard = 'Dashboard',
   Report = 'Report',
 }
 

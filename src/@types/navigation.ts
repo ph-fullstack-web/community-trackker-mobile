@@ -7,7 +7,7 @@ export type RootDrawerParamList = {
   Communities: undefined;
   Members: undefined;
   CEC: undefined;
-  MembersDetails: undefined;
+  Dashboard: undefined;
 };
 
 export type DrawerScreenProp<T extends keyof RootDrawerParamList> =

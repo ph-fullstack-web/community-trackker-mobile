@@ -12,14 +12,14 @@ import {
   CECDashboardScreen,
   CommunitiesDashboardScreen,
   Members,
-  MembersDetailsScreen,
+  DashboardScreen,
 } from 'components/screens';
 import {CommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 import {
   RootDrawerParamList,
   RootNativeStackParamList,
 } from '../@types/navigation';
-import {styles} from './MainNavigationStyles';
+import styles from './MainNavigation.styles';
 import {ScreenName} from 'constants/enums';
 import {CommunityMembersScreen} from 'components/screens/CommunityMembersScreen';
 
@@ -49,7 +49,7 @@ export const MainNavigation = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName={ScreenName.MembersDetails}
+        initialRouteName={ScreenName.Dashboard}
         screenOptions={{
           headerBackground: HeaderBackground,
           headerRight: HeaderRight,
@@ -62,8 +62,8 @@ export const MainNavigation = () => {
         drawerContent={DrawerContent}
       >
         <Drawer.Screen
-          name={ScreenName.MembersDetails}
-          component={MembersDetailsScreen}
+          name={ScreenName.Dashboard}
+          component={DashboardScreen}
         />
         <Drawer.Screen
           name={ScreenName.Communities}

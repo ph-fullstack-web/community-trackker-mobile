@@ -18,7 +18,7 @@ const drawerItems: DrawerItems = [
   {
     icon: {name: 'account-circle', type: 'material'},
     label: 'Profile',
-    onPress: navigation => navigation.navigate(ScreenName.MembersDetails),
+    onPress: navigation => navigation.navigate(ScreenName.Dashboard),
   },
   {
     icon: {name: 'groups', type: 'material'},

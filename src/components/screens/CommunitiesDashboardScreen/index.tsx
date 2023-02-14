@@ -1,6 +1,6 @@
 import {FlatList} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {CommunityCard} from 'components/organisms';
 import {ScreenHeader} from 'components/atoms';
@@ -11,18 +11,14 @@ import {Community} from 'models/business';
 
 import {useCommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 
-import { RootNativeStackParamList } from '../../../@types/navigation';
+import {RootNativeStackParamList} from '../../../@types/navigation';
 
-type HeaderLeftStackNavigationProp = NativeStackNavigationProp<RootNativeStackParamList>;
+type HeaderLeftStackNavigationProp =
+  NativeStackNavigationProp<RootNativeStackParamList>;
 
 export const CommunitiesDashboardScreen = () => {
   const {navigate} = useNavigation<HeaderLeftStackNavigationProp>();
   const {communityList} = useCommunitiesDataProvider();
-
-  console.log(
-    '🚀 ~ file: index.tsx:12 ~ CommunitiesDashboardScreen ~ communityList',
-    communityList
-  );
 
   const handleViewMembers = (communityId: number) => {
     const communities: Community[] =
@@ -42,7 +38,7 @@ export const CommunitiesDashboardScreen = () => {
         renderItem={({item}) => {
           return <CommunityCard onViewMembers={handleViewMembers} {...item} />;
         }}
-      ></FlatList>
+      />
     </>
   );
 };
