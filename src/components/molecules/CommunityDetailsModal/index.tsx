@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState } from 'react'
 import {
   Modal,
   Pressable,
@@ -14,8 +14,8 @@ interface CommunityDetailsModalProps {
 }
 
 export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
-  const [isPress, setIsPress] = React.useState(false);
-  const [modalVisible, setModalVisible] = React.useState(false);
+  const [isPress, setIsPress] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const touchProps = {
     activeOpacity: 1,
