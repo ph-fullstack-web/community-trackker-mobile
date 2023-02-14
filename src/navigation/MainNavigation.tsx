@@ -7,6 +7,7 @@ import {
   CECDashboardScreen,
   CommunitiesDashboardScreen,
   Members,
+  MembersDetailsScreen
 } from 'components/screens';
 import {CommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 import {
@@ -43,7 +44,7 @@ export const MainNavigation = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName={ScreenName.Communities}
+        initialRouteName={ScreenName.MembersDetails}
         screenOptions={{
           headerBackground: HeaderBackground,
           headerRight: HeaderRight,
@@ -54,8 +55,8 @@ export const MainNavigation = () => {
         }}
       >
         <Drawer.Screen
-          name={ScreenName.Communities}
-          component={CommunitiesDashboardScreenWrapper}
+          name={ScreenName.MembersDetails}
+          component={MembersDetailsScreen}
         />
         <Drawer.Screen name={ScreenName.Members} component={Members} />
         <Drawer.Screen name={ScreenName.CEC} component={CECDashboardScreen} />

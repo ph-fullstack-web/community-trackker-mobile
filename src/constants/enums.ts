@@ -11,8 +11,10 @@ export enum ScreenName {
   CEC = 'CEC',
   CommunitiesStack = 'CommunitiesStack',
   CommunityMembers = 'CommunityMembers',
+  MembersDetails = 'MembersDetails'
 }
 
 export enum ScreenTitle {
   Communities = 'Communities',
+  Members = 'Members'
 }
