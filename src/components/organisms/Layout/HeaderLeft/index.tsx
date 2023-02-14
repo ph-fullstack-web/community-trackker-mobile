@@ -5,21 +5,24 @@ export const HeaderLeft = () => {
   const {navigate, toggleDrawer} = useNavigation<any>();
   const drawerRouteIndex = useNavigationState(state => state.index);
   const drawerRoutes = useNavigationState(state => state.routes);
+  const currentRoute = drawerRoutes[drawerRouteIndex];
 
   const handleGoBack = () => {
-    const currentRoute = drawerRoutes[drawerRouteIndex];
-    if (currentRoute?.state?.type === 'stack') {
-      navigate(`${currentRoute?.name}Stack`);
-      return;
+    if (currentRoute?.state) {
+      const {index, routeNames} = currentRoute?.state;
+      if (routeNames && index && index > 0) {
+        navigate(routeNames[index - 1]);
+        return;
+      }
+      navigate(currentRoute?.name);
     }
-    navigate(currentRoute?.name);
   };
 
   const handleToggleDrawer = () => {
     toggleDrawer();
   };
 
-  if (drawerRoutes[drawerRouteIndex]?.state?.index) {
+  if (currentRoute?.state?.index) {
     return (
       <Button
         type="clear"
