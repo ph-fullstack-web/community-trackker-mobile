@@ -8,7 +8,7 @@ import {Divider} from '@rneui/base';
 import {DrawerItem} from 'components/atoms';
 import {ScreenName} from 'constants/enums';
 import {DrawerAccordion, DrawerAccordionItem} from 'components/molecules';
-import styles from './DrawerStyles';
+import styles from './Drawer.styles';
 
 type DrawerItems = (Partial<DrawerAccordionItem> & {
   items?: DrawerAccordionItem[];
