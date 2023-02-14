@@ -6,6 +6,7 @@ import {
 import {Divider} from '@rneui/base';
 
 import {DrawerItem} from 'components/atoms';
+import {ScreenName} from 'constants/enums';
 import {DrawerAccordion, DrawerAccordionItem} from 'components/molecules';
 import styles from './DrawerStyles';
 
@@ -15,9 +16,14 @@ type DrawerItems = (Partial<DrawerAccordionItem> & {
 
 const drawerItems: DrawerItems = [
   {
+    icon: {name: 'account-circle', type: 'material'},
+    label: 'Profile',
+    onPress: navigation => navigation.navigate(ScreenName.MembersDetails),
+  },
+  {
     icon: {name: 'groups', type: 'material'},
     label: 'Communities',
-    onPress: navigation => navigation.navigate('Communities'),
+    onPress: navigation => navigation.navigate(ScreenName.Communities),
   },
   {
     icon: {name: 'group', type: 'material'},
@@ -73,7 +79,7 @@ const drawerItems: DrawerItems = [
   {
     icon: {name: 'description', type: 'material'},
     label: 'Report',
-    onPress: navigation => navigation.navigate('Report'),
+    onPress: navigation => navigation.navigate(ScreenName.Report),
   },
   {
     icon: {name: 'color-lens', type: 'material'},

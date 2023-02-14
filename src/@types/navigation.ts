@@ -1,6 +1,7 @@
 import {DrawerScreenProps} from '@react-navigation/drawer';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import { Community } from 'models/business';
+
+import {Community} from 'models/business';
 
 export type RootDrawerParamList = {
   Communities: undefined;
