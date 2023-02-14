@@ -16,5 +16,6 @@ export enum ScreenName {
 
 export enum ScreenTitle {
   Communities = 'Communities',
-  Members = 'Members'
+  Members = 'Members',
+  CEC = 'CEC Request',
 }

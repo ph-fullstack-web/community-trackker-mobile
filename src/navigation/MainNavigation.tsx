@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {HeaderBackground, HeaderRight} from 'components/organisms/Layout/';
 import {
+  CECCreateRequestScreen,
   CECDashboardScreen,
   CommunitiesDashboardScreen,
   Members,
@@ -15,7 +16,7 @@ import {
   RootNativeStackParamList,
 } from '../@types/navigation';
 import {styles} from './MainNavigationStyles';
-import {ScreenName} from 'constants/enums';
+import {ScreenName, ScreenTitle} from 'constants/enums';
 import {CommunityMembersScreen} from 'components/screens/CommunityMembersScreen';
 
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
@@ -40,6 +41,25 @@ const CommunitiesDashboardScreenWrapper = () => {
   );
 };
 
+const CECScreenWrapper = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="CECDashboard" component={CECDashboardScreen} />
+      <Stack.Screen
+        name="CECCreateRequest"
+        component={CECCreateRequestScreen}
+        options={{
+          presentation: 'modal',
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 export const MainNavigation = () => {
   return (
     <NavigationContainer>
@@ -59,7 +79,11 @@ export const MainNavigation = () => {
           component={MembersDetailsScreen}
         />
         <Drawer.Screen name={ScreenName.Members} component={Members} />
-        <Drawer.Screen name={ScreenName.CEC} component={CECDashboardScreen} />
+        <Drawer.Screen
+          name={ScreenName.CEC}
+          component={CECScreenWrapper}
+          options={{title: ScreenTitle.CEC}}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );
