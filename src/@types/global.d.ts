@@ -14,6 +14,11 @@ declare global {
   export interface ServiceModel {
     isDataLoading?: boolean;
   }
+
+  export interface Icon {
+    name: string;
+    type?: string;
+  }
 }
 
 declare global {

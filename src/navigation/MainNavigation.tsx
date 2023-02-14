@@ -1,7 +1,11 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import {HeaderBackground, HeaderRight} from 'components/organisms/Layout/';
+import {
+  Drawer as DrawerContent,
+  HeaderBackground,
+  HeaderRight,
+} from 'components/organisms/Layout/';
 import {
   CECDashboardScreen,
   CommunitiesDashboardScreen,
@@ -34,6 +38,7 @@ export const MainNavigation = () => {
           drawerType: 'slide',
           swipeEdgeWidth: 200,
         }}
+        drawerContent={DrawerContent}
       >
         <Drawer.Screen
           name="Communities"
