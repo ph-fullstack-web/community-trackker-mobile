@@ -1,9 +1,24 @@
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Button } from "components/atoms";
 import { LabeledInput } from "components/molecules";
 
 export const MemberDetailForm = () => {
+  return (
+    <>
+      <View style={styles.container}>
+        <View style={styles.form_header}>
+          <Text>Employee Name</Text>
+        </View>
+        <View>
+          <DetailForm />
+        </View>
+      </View>
+    </>
+  )
+}
+
+const DetailForm = () => {
   const [idNumber, setIdNumber] = useState('');
   const [email, setEmail] = useState('');
   const [community, setCommunity] = useState('');
@@ -51,6 +66,17 @@ export const MemberDetailForm = () => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    margin: 10
+  },
+  form_header: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    backgroundColor: '#ddd'
+  },
   community_button: {
     marginTop: 3
   }
