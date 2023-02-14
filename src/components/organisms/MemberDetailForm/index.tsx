@@ -1,13 +1,12 @@
-import { ReactNode, useEffect, useState } from "react";
-import { Animated, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Button } from "components/atoms";
+import { useState } from "react";
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
+import { Button, ExpandableView } from "components/atoms";
 import { LabeledInput } from "components/molecules";
 
+import styles from "./MemberDetaileFormStyles";
+
 export const MemberDetailForm = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const expandedText = isExpanded ? 'Less' : 'More' 
-
   return (
     <>
       <SafeAreaView style={{height: '100%', paddingBottom: 60}}>
@@ -16,27 +15,38 @@ export const MemberDetailForm = () => {
             <View style={styles.form_header}>
               <Text>Employee Name</Text>
             </View>
-            <View>
-              <DetailForm />
-              <View style={{ marginTop: 10 }}>
-
-                <TouchableOpacity
-                  onPress={() => {
-                    setIsExpanded(!isExpanded);
-                  }}
-                  style={styles.toggle}
-                >
-                  <Text style={styles.toggleText}>View {expandedText}</Text>
-                </TouchableOpacity>
-                <ExpandableView
-                  expanded={isExpanded}
-                  form={<DetailForm />}
-                />
-              </View>
-            </View>
+            <DetailForm />
+            <ExpandableArea/>
           </View>
         </ScrollView>
       </SafeAreaView>
+    </>
+  )
+}
+
+const ExpandableArea = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const expandedText = isExpanded ? 'Less' : 'More';
+
+  return (
+    <>
+      <View style={{ marginTop: 10 }}>
+        <TouchableOpacity
+          onPress={() => {
+            setIsExpanded(!isExpanded);
+          }}
+          style={styles.toggle}
+        >
+          <Text style={styles.toggleText}>View {expandedText}</Text>
+        </TouchableOpacity>
+        <ExpandableView
+          expanded={isExpanded}
+          form={<DetailForm />}
+          height={300}
+          bgcolor='#eee'
+        />
+      </View>   
     </>
   )
 }
@@ -87,54 +97,3 @@ const DetailForm = () => {
     </>
   )
 }
-
-interface ExpandableViewProps {
- expanded: boolean
- form: ReactNode
-}
-
-const ExpandableView = (props: ExpandableViewProps) => {
-  const [height] = useState(new Animated.Value(0));
-
-  useEffect(() => {
-    Animated.timing(height, {
-      toValue: props.expanded ? 300 : 0,
-      duration: 150,
-      useNativeDriver: false
-    }).start();
-  }, [props.expanded, height]);
-
-  return (
-    <Animated.View
-      style={{ height, backgroundColor: "#eee" }}
-    >
-      {props.form}
-    </Animated.View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    margin: 10
-  },
-  form_header: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    backgroundColor: '#ddd'
-  },
-  community_button: {
-    marginTop: 3
-  },
-  toggle: {
-    height: 30,
-    backgroundColor: "blue",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  toggleText: {
-    color: "#fff"
-  }
-})
