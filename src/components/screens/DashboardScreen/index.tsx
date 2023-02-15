@@ -5,7 +5,7 @@ import {ScreenTitle} from 'constants/enums';
 export const DashboardScreen = () => {
   return (
     <>
-      <ScreenHeader title={ScreenTitle.Members} />
+      <ScreenHeader title={ScreenTitle.Profile} />
       <MemberDetailForm />
     </>
   );

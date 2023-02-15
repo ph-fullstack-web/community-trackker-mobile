@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ListItem } from '@rneui/themed';
 
+import styles from "./Accordion.styles";
+
 interface AccordionProps extends ComponentWithChildren {
   expanded: boolean  
   headerLabel: string;
@@ -9,6 +11,8 @@ interface AccordionProps extends ComponentWithChildren {
 
 export const Accordion = (props: AccordionProps) => {
   const [expanded, setExpanded] = useState(props.expanded);
+
+  const bottomRadius = expanded == false ? styles.not_expanded_header : {};
 
   return(
     <ListItem.Accordion
@@ -21,7 +25,7 @@ export const Accordion = (props: AccordionProps) => {
       }
       isExpanded={expanded}
       onPress={() => setExpanded(!expanded)}
-      containerStyle={props.headerStyle}
+      containerStyle={[props.headerStyle, bottomRadius ]}
     >
       {props.children}
     </ListItem.Accordion>

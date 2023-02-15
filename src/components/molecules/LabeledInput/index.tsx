@@ -1,15 +1,14 @@
-import {ReactNode, Dispatch, SetStateAction} from 'react';
+import {Dispatch, SetStateAction} from 'react';
 import {Text, View} from 'react-native';
 
 import {TextInput} from 'components/atoms';
 import styles from './LabeledInput.styles';
 
-interface LabeledInputProps {
+interface LabeledInputProps extends ComponentWithChildren {
   label: string;
   placeholder: string;
   value?: string;
   onValueChange: Dispatch<SetStateAction<string>>;
-  button?: ReactNode;
 }
 
 export const LabeledInput = (props: LabeledInputProps) => {
@@ -26,7 +25,7 @@ export const LabeledInput = (props: LabeledInputProps) => {
             value={props.value}
             style={styles.textfield}
           />
-          {props.button}
+          {props.children}
         </View>
       </View>
     </>
