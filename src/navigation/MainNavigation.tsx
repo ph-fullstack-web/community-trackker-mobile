@@ -2,20 +2,25 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {HeaderBackground, HeaderRight} from 'components/organisms/Layout/';
+import {
+  Drawer as DrawerContent,
+  HeaderBackground,
+  HeaderLeft,
+  HeaderRight,
+} from 'components/organisms/Layout/';
 import {
   CECCreateRequestScreen,
   CECDashboardScreen,
   CommunitiesDashboardScreen,
   Members,
-  MembersDetailsScreen
+  DashboardScreen,
 } from 'components/screens';
 import {CommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 import {
   RootDrawerParamList,
   RootNativeStackParamList,
 } from '../@types/navigation';
-import {styles} from './MainNavigationStyles';
+import styles from './MainNavigation.styles';
 import {ScreenName, ScreenTitle} from 'constants/enums';
 import {CommunityMembersScreen} from 'components/screens/CommunityMembersScreen';
 
@@ -64,19 +69,25 @@ export const MainNavigation = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName={ScreenName.MembersDetails}
+        initialRouteName={ScreenName.Dashboard}
         screenOptions={{
           headerBackground: HeaderBackground,
           headerRight: HeaderRight,
+          headerLeft: HeaderLeft,
           headerBackgroundContainerStyle: styles.header,
           headerTitle: '',
           drawerType: 'slide',
           swipeEdgeWidth: 200,
         }}
+        drawerContent={DrawerContent}
       >
         <Drawer.Screen
-          name={ScreenName.MembersDetails}
-          component={MembersDetailsScreen}
+          name={ScreenName.Dashboard}
+          component={DashboardScreen}
+        />
+        <Drawer.Screen
+          name={ScreenName.Communities}
+          component={CommunitiesDashboardScreenWrapper}
         />
         <Drawer.Screen name={ScreenName.Members} component={Members} />
         <Drawer.Screen
