@@ -20,7 +20,7 @@ import {
   RootNativeStackParamList,
 } from '../@types/navigation';
 import styles from './MainNavigation.styles';
-import {ScreenName} from 'constants/enums';
+import {ScreenName, StackScreenName} from 'constants/enums';
 import {CommunityMembersScreen} from 'components/screens/CommunityMembersScreen';
 
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
@@ -29,14 +29,14 @@ const Stack = createNativeStackNavigator<RootNativeStackParamList>();
 const CommunitiesDashboardScreenWrapper = () => {
   return (
     <CommunitiesDataProvider>
-      <Stack.Navigator initialRouteName={ScreenName.CommunitiesStack}>
+      <Stack.Navigator initialRouteName={StackScreenName.CommunitiesStack}>
         <Stack.Screen
-          name={ScreenName.CommunitiesStack}
+          name={StackScreenName.CommunitiesStack}
           component={CommunitiesDashboardScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name={ScreenName.CommunityMembers}
+          name={StackScreenName.CommunityMembers}
           component={CommunityMembersScreen}
           options={{headerShown: false}}
         />
