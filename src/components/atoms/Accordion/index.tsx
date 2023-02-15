@@ -1,8 +1,7 @@
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { ListItem } from '@rneui/themed';
 
-interface AccordionProps {
-  children: ReactNode;
+interface AccordionProps extends ComponentWithChildren {
   expanded: boolean  
   headerLabel: string;
   headerStyle: object;
