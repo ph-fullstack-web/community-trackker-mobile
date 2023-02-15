@@ -55,6 +55,8 @@ export const MainNavigation = () => {
           headerRight: HeaderRight,
           headerLeft: HeaderLeft,
           headerBackgroundContainerStyle: styles.header,
+          headerRightContainerStyle: styles.headerRight,
+          headerLeftContainerStyle: styles.headerLeft,
           headerTitle: '',
           drawerType: 'slide',
           swipeEdgeWidth: 200,

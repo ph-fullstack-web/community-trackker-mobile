@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { ListItem } from '@rneui/themed';
+import {useState} from 'react';
+import {ListItem} from '@rneui/themed';
 
 interface AccordionProps extends ComponentWithChildren {
-  expanded: boolean  
+  expanded: boolean;
   headerLabel: string;
   headerStyle: object;
 }
@@ -10,7 +10,7 @@ interface AccordionProps extends ComponentWithChildren {
 export const Accordion = (props: AccordionProps) => {
   const [expanded, setExpanded] = useState(props.expanded);
 
-  return(
+  return (
     <ListItem.Accordion
       content={
         <>
@@ -25,5 +25,5 @@ export const Accordion = (props: AccordionProps) => {
     >
       {props.children}
     </ListItem.Accordion>
-  )
-}
+  );
+};

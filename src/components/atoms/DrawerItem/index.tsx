@@ -1,7 +1,7 @@
 import {Pressable, Text, View} from 'react-native';
-import {Icon} from '@rneui/base';
 
 import styles from './DrawerItem.styles';
+import {Icon} from '../Icon';
 
 export type DrawerItemProps = {
   icon: Icon;

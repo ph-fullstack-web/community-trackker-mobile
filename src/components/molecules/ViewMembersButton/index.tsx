@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {Text, TouchableHighlight, View} from 'react-native';
-import {Icon} from '@rneui/themed';
+
+import {Icon} from 'components/atoms';
 
 import styles from './ViewMembersButton.styles';
 
