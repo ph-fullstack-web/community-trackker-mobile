@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 
 import {MemberCard, ScreenHeader} from 'components/atoms';
@@ -7,6 +7,7 @@ import {Search} from 'components/molecules';
 import {Community, Employee} from 'models/business';
 import {RootNativeStackParamList} from '../../../@types/navigation';
 import {StackScreenName} from 'constants/enums';
+import styles from './CommunityMembersScreen.styles';
 
 type CommunityMembersScreenRouteProp = RouteProp<
   RootNativeStackParamList,
@@ -72,17 +73,3 @@ export const CommunityMembersScreen = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  search: {
-    paddingBottom: 10,
-  },
-  noResultContainer: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 50,
-  },
-  noResultText: {
-    fontSize: 20,
-  },
-});
