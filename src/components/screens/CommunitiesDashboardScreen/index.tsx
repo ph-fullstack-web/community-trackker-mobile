@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {CommunityCard} from 'components/organisms';
-import {ScreenHeader} from 'components/atoms';
+import {AppContainer, ScreenHeader} from 'components/atoms';
 
 import {ScreenTitle, StackScreenName} from 'constants/enums';
 
@@ -29,7 +29,7 @@ export const CommunitiesDashboardScreen = () => {
   };
 
   return (
-    <>
+    <AppContainer>
       <ScreenHeader title={ScreenTitle.Communities} />
       <FlatList
         nestedScrollEnabled
@@ -39,6 +39,6 @@ export const CommunitiesDashboardScreen = () => {
           return <CommunityCard onViewMembers={handleViewMembers} {...item} />;
         }}
       />
-    </>
+    </AppContainer>
   );
 };

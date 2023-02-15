@@ -3,9 +3,8 @@ import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
-import {Divider} from '@rneui/base';
 
-import {DrawerItem} from 'components/atoms';
+import {Divider, DrawerItem} from 'components/atoms';
 import {ScreenName} from 'constants/enums';
 import {DrawerAccordion, DrawerAccordionItem} from 'components/molecules';
 import styles from './Drawer.styles';

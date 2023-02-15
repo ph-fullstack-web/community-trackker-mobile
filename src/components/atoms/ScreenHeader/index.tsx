@@ -1,4 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
+
+import styles from './ScreenHeader.styles';
 
 type ScreenHeaderProps = {
   title: string;
@@ -13,19 +15,3 @@ export const ScreenHeader = (props: ScreenHeaderProps) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-  },
-  title: {
-    fontSize: 24,
-    marginRight: 4,
-    fontWeight: 'bold',
-  },
-  subtitle: {
-    fontSize: 14,
-    marginRight: 4,
-  },
-});

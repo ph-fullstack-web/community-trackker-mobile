@@ -1,5 +1,7 @@
-import {View, Text, StyleSheet, Image} from 'react-native';
-import {Icon} from '@rneui/themed';
+import {View, Text, Image} from 'react-native';
+
+import {Icon} from '../Icon';
+import styles from './MemberCard.styles';
 
 type MemberCardProps = {
   memberDetails: {
@@ -10,6 +12,7 @@ type MemberCardProps = {
     isActive: boolean;
   };
 };
+
 export const MemberCard = (prop: MemberCardProps) => {
   const {image, fullName, csvEmail, dateHired, isActive} = prop.memberDetails;
   const defaultAvatar = 'https://via.placeholder.com/30.png';
@@ -44,38 +47,3 @@ export const MemberCard = (prop: MemberCardProps) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  cardContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    borderRadius: 10,
-    borderColor: '#dadce0',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    margin: 5,
-    padding: 20,
-  },
-  avatarContainer: {
-    flex: 0.25,
-  },
-  detailsContainer: {
-    flex: 0.75,
-  },
-  nameContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  name: {
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
-  email: {
-    fontSize: 13,
-  },
-  dateHired: {
-    fontSize: 13,
-  },
-});
