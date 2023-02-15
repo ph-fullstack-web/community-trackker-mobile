@@ -1,8 +1,9 @@
-import {Text, View, StyleSheet, ViewStyle} from 'react-native';
+import {COLORS} from 'constants/colors';
+import {View} from 'react-native';
 import {ProgressChart as RNProgressChart} from 'react-native-chart-kit';
-import {ReactNode} from 'react';
+
 import styles from './ProgressChart.styles';
-import {ProgressChartLayout, ProgressChartProps} from './ProgressChart.types';
+import {ProgressChartProps} from './ProgressChart.types';
 
 export const ProgressChart = ({
   data,
@@ -46,5 +47,5 @@ ProgressChart.defaultProps = {
   height: 220,
   radius: 60,
   strokeWidth: 16,
-  backgroundColor: '#eaf1fa',
+  backgroundColor: COLORS.LIGHT_BLUE,
 };

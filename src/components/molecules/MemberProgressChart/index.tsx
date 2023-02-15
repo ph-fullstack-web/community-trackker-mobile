@@ -2,6 +2,7 @@ import {Text, View} from 'react-native';
 import {ProgressChart} from 'components/atoms';
 import {ProgressChartLayout} from 'components/atoms/ProgressChart/ProgressChart.types';
 import styles from './MemberProgressChart.styles';
+import {COLORS} from 'constants/colors';
 
 type ProgressChartProps = {
   percentage: number;
@@ -11,7 +12,7 @@ type ProgressChartProps = {
 
 export const MemberProgressChart = ({
   percentage,
-  color = '#2f78c4',
+  color = COLORS.BLUE,
   layout = 'horizontal',
 }: ProgressChartProps) => {
   const data = {
@@ -21,7 +22,7 @@ export const MemberProgressChart = ({
 
   const displayPercentage = parseFloat((percentage * 100).toFixed(2));
 
-  const veticalProps = {
+  const verticalProps = {
     height: 130,
     strokeWidth: 16,
     radius: 45,
@@ -34,15 +35,15 @@ export const MemberProgressChart = ({
     width: 80,
   };
 
-  const sizeProps = layout === 'horizontal' ? horizontalProps : veticalProps;
+  const sizeProps = layout === 'horizontal' ? horizontalProps : verticalProps;
 
   return (
     <View>
       <ProgressChart
         layout={layout}
         data={data}
-        strokeColor="#b6bbc2"
-        backgroundColor="#eaf1fa"
+        strokeColor={COLORS.DARK_GRAY}
+        backgroundColor={COLORS.LIGHT_BLUE}
         {...sizeProps}
       >
         <>
