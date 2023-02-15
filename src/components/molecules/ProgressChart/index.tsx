@@ -4,16 +4,13 @@ import {Dimensions} from 'react-native';
 
 type ProgressChartProps = {
   title: string;
+  percentage: number;
 };
 
-export const ProgressChart = ({title}: ProgressChartProps) => {
-  const chartConfig = {color: 'red'};
+export const ProgressChart = ({title, percentage}: ProgressChartProps) => {
   const {width} = Dimensions.get('window');
-  // const {width} =useWindowDimensions();
-  // each value represents a goal ring in Progress chart
   const data = {
-    // labels: ["Swim"], // optional
-    data: [0.4],
+    data: [percentage],
     colors: ['#2f78c4'],
   };
 
@@ -35,11 +32,14 @@ export const ProgressChart = ({title}: ProgressChartProps) => {
         withCustomBarColorFromData
       />
       <View style={styles.label}>
-        <Text>18%</Text>
+        <Text style={styles.percentage}>
+          {percentage * 100}
+          <Text style={styles.percent}>%</Text>
+        </Text>
+        <Text>Members</Text>
       </View>
     </View>
   );
-  // return <Text>{title}</Text>;
 };
 
 const styles = StyleSheet.create({
@@ -63,5 +63,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: 220,
+  },
+  percent: {
+    fontSize: 16,
+  },
+  percentage: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'black',
   },
 });
