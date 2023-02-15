@@ -8,3 +8,4 @@ export * from './TextInput';
 export * from './AppContainer';
 export * from './Icon';
 export * from './Divider';
+export * from './ProgressChart';

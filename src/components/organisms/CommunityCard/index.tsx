@@ -4,6 +4,7 @@ import {
   CommunityDetailsModal,
   ProgressChart,
   ViewMembersButton,
+  MemberProgressChart,
 } from 'components/molecules';
 import styles from './CommunityCard.styles';
 
@@ -74,7 +75,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
         managerName={props.managerName}
       />
 
-      <ProgressChart title="-Chart-" percentage={0.18} />
+      <MemberProgressChart title="-Chart-" percentage={0.18} />
 
       <CommunityCardFooter
         description={props.description}
