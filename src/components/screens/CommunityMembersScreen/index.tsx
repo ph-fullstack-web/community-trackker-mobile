@@ -1,21 +1,28 @@
 import {useEffect, useState} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import {RouteProp, useRoute} from '@react-navigation/native';
 
 import {MemberCard, ScreenHeader} from 'components/atoms';
 import {Search} from 'components/molecules';
 
 import {Employee} from 'models/business';
+import {RootNativeStackParamList} from '../../../@types/navigation';
+import {ScreenName} from 'constants/enums';
+
+type CommunityMembersScreenRouteProp = RouteProp<
+  RootNativeStackParamList,
+  ScreenName.CommunityMembers
+>;
 
 export const CommunityMembersScreen = () => {
-  const route = useRoute<any>();
+  const route = useRoute<CommunityMembersScreenRouteProp>();
   const {name, managerName, members} = route.params;
 
   const [filteredMembers, setFilteredMembers] = useState<Employee[]>(members);
 
   useEffect(() => {
     setFilteredMembers(() => members);
-  }, []);
+  }, [members]);
 
   const handleSearch = (text: string) => {
     const searchText = text.trim().toLowerCase();
@@ -44,13 +51,13 @@ export const CommunityMembersScreen = () => {
         renderItem={({item}) => {
           return <MemberCard memberDetails={item} />;
         }}
-      ></FlatList>
+      />
     </>
   );
 };
 
 const styles = StyleSheet.create({
   search: {
-    paddingBottom: 10
+    paddingBottom: 10,
   },
 });

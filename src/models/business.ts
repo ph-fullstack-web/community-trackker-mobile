@@ -19,3 +19,8 @@ export type Community = {
   percentage: number;
   members: Employee[];
 };
+
+export type User = {
+  userId: string;
+  username: string;
+};
