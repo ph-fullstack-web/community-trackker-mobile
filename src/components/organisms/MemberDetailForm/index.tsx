@@ -9,9 +9,9 @@ import styles from "./MemberDetaileFormStyles";
 export const MemberDetailForm = () => {
   return (
     <>
-      <SafeAreaView style={{height: '100%', paddingBottom: 60}}>
+      <SafeAreaView style={styles.container}>
         <ScrollView>
-          <View style={styles.container}>
+          <View style={styles.accordion_container}>
             <Accordion 
               headerLabel="Employee Name"
               headerStyle={styles.form_header}
