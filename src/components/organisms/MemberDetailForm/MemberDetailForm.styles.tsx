@@ -9,12 +9,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     margin: 10,
+    borderRadius: 15
   },
   form_header: {
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
     backgroundColor: '#ddd',
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15
   },
   community_button: {
     marginTop: 3,

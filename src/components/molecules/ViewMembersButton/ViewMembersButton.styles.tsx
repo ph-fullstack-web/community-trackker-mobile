@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   not_pressed: {
     paddingVertical: 3,
     paddingHorizontal: 9,
+    borderRadius: 7,
     borderColor: 'rgb(10, 117, 120)',
     borderStyle: 'solid',
     borderWidth: 2,
