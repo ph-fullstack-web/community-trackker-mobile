@@ -7,8 +7,6 @@ import {AppContainer, ScreenHeader} from 'components/atoms';
 
 import {ScreenTitle, StackScreenName} from 'constants/enums';
 
-import {Community} from 'models/business';
-
 import {useCommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 
 import {RootNativeStackParamList} from '../../../@types/navigation';
@@ -21,11 +19,7 @@ export const CommunitiesDashboardScreen = () => {
   const {communityList} = useCommunitiesDataProvider();
 
   const handleViewMembers = (communityId: number) => {
-    const communities: Community[] =
-      communityList?.filter(
-        community => community.communityId === communityId
-      ) ?? [];
-    navigate(StackScreenName.CommunityMembers, {...communities[0]});
+    navigate(StackScreenName.CommunityMembers, {communityId});
   };
 
   return (
