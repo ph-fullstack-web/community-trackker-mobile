@@ -1,15 +1,10 @@
-import {useState} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { useState } from "react";
+import { SafeAreaView, ScrollView, View } from "react-native";
 
-import {Button, ExpandableView} from 'components/atoms';
-import {LabeledInput} from 'components/molecules';
-import styles from './MemberDetaileFormStyles';
+import { Accordion, Button } from "components/atoms";
+import { LabeledInput } from "components/molecules";
+
+import styles from "./MemberDetaileFormStyles";
 
 export const MemberDetailForm = () => {
   return (
@@ -17,41 +12,21 @@ export const MemberDetailForm = () => {
       <SafeAreaView style={{height: '100%', paddingBottom: 60}}>
         <ScrollView>
           <View style={styles.container}>
-            <View style={styles.form_header}>
-              <Text>Employee Name</Text>
-            </View>
-            <DetailForm />
-            <ExpandableArea />
+            <Accordion 
+              headerLabel="Employee Name"
+              headerStyle={styles.form_header}
+              expanded={true}
+              childComponent={<DetailForm />}
+            />
+            <Accordion 
+              headerLabel="Skills"
+              headerStyle={styles.form_header}
+              expanded={false}
+              childComponent={<DetailForm />}
+            />
           </View>
         </ScrollView>
       </SafeAreaView>
-    </>
-  );
-};
-
-const ExpandableArea = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const expandedText = isExpanded ? 'Less' : 'More';
-
-  return (
-    <>
-      <View style={{marginTop: 10}}>
-        <TouchableOpacity
-          onPress={() => {
-            setIsExpanded(!isExpanded);
-          }}
-          style={styles.toggle}
-        >
-          <Text style={styles.toggleText}>View {expandedText}</Text>
-        </TouchableOpacity>
-        <ExpandableView
-          expanded={isExpanded}
-          form={<DetailForm />}
-          height={300}
-          bgcolor="#eee"
-        />
-      </View>
     </>
   );
 };
