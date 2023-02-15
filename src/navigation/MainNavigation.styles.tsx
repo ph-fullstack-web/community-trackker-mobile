@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   header: {
     flex: 1,
     height: 60,
@@ -11,3 +11,5 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 2,
   },
 });
+
+export default styles;

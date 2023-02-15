@@ -1,7 +1,15 @@
-import { useState } from "react";
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
-import { Button } from "components/atoms";
-import { LabeledInput } from "components/molecules";
+import {useState} from 'react';
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+
+import {Button, ExpandableView} from 'components/atoms';
+import {LabeledInput} from 'components/molecules';
+import styles from './MemberDetaileFormStyles';
 
 export const MemberDetailForm = () => {
   return (
@@ -12,19 +20,41 @@ export const MemberDetailForm = () => {
             <View style={styles.form_header}>
               <Text>Employee Name</Text>
             </View>
-            <View style={{ paddingVertical: 10 }}>
-              <DetailForm />
-              <View>
-                <DetailForm />
-              </View>
-            </View>
+            <DetailForm />
+            <ExpandableArea />
           </View>
         </ScrollView>
       </SafeAreaView>
-
     </>
-  )
-}
+  );
+};
+
+const ExpandableArea = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const expandedText = isExpanded ? 'Less' : 'More';
+
+  return (
+    <>
+      <View style={{marginTop: 10}}>
+        <TouchableOpacity
+          onPress={() => {
+            setIsExpanded(!isExpanded);
+          }}
+          style={styles.toggle}
+        >
+          <Text style={styles.toggleText}>View {expandedText}</Text>
+        </TouchableOpacity>
+        <ExpandableView
+          expanded={isExpanded}
+          form={<DetailForm />}
+          height={300}
+          bgcolor="#eee"
+        />
+      </View>
+    </>
+  );
+};
 
 const DetailForm = () => {
   const [idNumber, setIdNumber] = useState('');
@@ -56,7 +86,7 @@ const DetailForm = () => {
         button={
           <View style={styles.community_button}>
             <Button
-              title='View Community Info'
+              title="View Community Info"
               onPress={() => console.log('HELLO')}
             />
           </View>
@@ -70,22 +100,5 @@ const DetailForm = () => {
         onValueChange={setManager}
       />
     </>
-  )
-}
-
-const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    margin: 10
-  },
-  form_header: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    backgroundColor: '#ddd'
-  },
-  community_button: {
-    marginTop: 3
-  }
-})
+  );
+};

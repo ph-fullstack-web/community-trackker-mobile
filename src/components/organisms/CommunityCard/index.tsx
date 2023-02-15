@@ -1,10 +1,11 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 
 import {
   CommunityDetailsModal,
   ProgressChart,
   ViewMembersButton,
 } from 'components/molecules';
+import styles from './CommunityCardStyles';
 
 interface CommunityCardProps {
   icon?: string;
@@ -31,6 +32,7 @@ interface FooterProps {
 
 const CommunityCardHeader = (props: HeaderProps) => {
   const defaultCommunityIcon = 'https://via.placeholder.com/30.png';
+
   return (
     <View style={styles.header}>
       <View style={styles.thumbnail}>
@@ -85,47 +87,3 @@ export const CommunityCard = (props: CommunityCardProps) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  bold_text: {
-    fontWeight: 'bold',
-  },
-  card_template: {
-    borderColor: '#c5c5c5',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    flex: 1,
-    backgroundColor: '#ddd',
-    margin: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
-  },
-
-  header: {
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  thumbnail: {
-    paddingRight: 20,
-  },
-
-  footer: {
-    padding: 10,
-  },
-
-  horizontal_layout: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-});

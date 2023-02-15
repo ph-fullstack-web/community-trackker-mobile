@@ -1,4 +1,5 @@
-import { SafeAreaView, StyleSheet } from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
+
 import {MainNavigation} from './navigation/MainNavigation';
 
 const App = () => {
@@ -12,8 +13,8 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10
-  }
-})
+    padding: 10,
+  },
+});
 
 export default App;

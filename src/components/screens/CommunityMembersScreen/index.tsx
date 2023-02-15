@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
-import {Icon} from '@rneui/themed';
 
 import {MemberCard, ScreenHeader} from 'components/atoms';
 import {Search} from 'components/molecules';
@@ -22,7 +21,7 @@ export const CommunityMembersScreen = () => {
 
   useEffect(() => {
     setFilteredMembers(() => members);
-  }, []);
+  }, [members]);
 
   const handleSearch = (text: string) => {
     const searchText = text.trim().toLowerCase();

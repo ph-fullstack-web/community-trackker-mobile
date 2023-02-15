@@ -20,11 +20,6 @@ export const CommunitiesDashboardScreen = () => {
   const {navigate} = useNavigation<HeaderLeftStackNavigationProp>();
   const {communityList} = useCommunitiesDataProvider();
 
-  console.log(
-    '🚀 ~ file: index.tsx:12 ~ CommunitiesDashboardScreen ~ communityList',
-    communityList
-  );
-
   const handleViewMembers = (communityId: number) => {
     const communities: Community[] =
       communityList?.filter(
@@ -43,7 +38,7 @@ export const CommunitiesDashboardScreen = () => {
         renderItem={({item}) => {
           return <CommunityCard onViewMembers={handleViewMembers} {...item} />;
         }}
-      ></FlatList>
+      />
     </>
   );
 };

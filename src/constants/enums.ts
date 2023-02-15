@@ -10,6 +10,8 @@ export enum ScreenName {
   Members = 'Members',
   CEC = 'CEC',
   MembersDetails = 'MembersDetails',
+  Dashboard = 'Dashboard',
+  Report = 'Report',
 }
 
 export enum StackScreenName {
