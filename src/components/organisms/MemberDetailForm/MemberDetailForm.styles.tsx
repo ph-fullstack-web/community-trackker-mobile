@@ -21,6 +21,17 @@ const styles = StyleSheet.create({
   },
   community_button: {
     marginTop: 3,
+    backgroundColor: "#0d6fc3",
+    borderWidth: 1,
+    borderColor: '#ddd',
+    paddingVertical: 7,
+    paddingHorizontal: 9,
+    borderRadius: 7,
+  },
+  button_text: {
+    textAlign: 'center',
+    fontWeight: '500',
+    color: '#fff'
   },
   toggle: {
     height: 30,

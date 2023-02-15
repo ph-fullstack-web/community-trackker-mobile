@@ -1,18 +1,13 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  is_pressed: {
-    width: 35,
-    height: 35,
-  },
-  not_pressed: {
-    width: 35,
-    height: 35,
-  },
   centeredView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  info_button:{
+    marginTop:4,
   },
   modalView: {
     margin: 20,
@@ -38,9 +33,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 9,
     paddingVertical: 5,
     borderRadius: 7
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
   },
   buttonClose: {
     backgroundColor: '#2196F3',

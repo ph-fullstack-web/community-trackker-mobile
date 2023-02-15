@@ -61,12 +61,12 @@ const DetailForm = () => {
         value={community}
         onValueChange={setCommunity}
       >
-        <View style={styles.community_button}>
-          <Button
-            title="View Community Info"
-            onPress={() => console.log('HELLO')}
-          />
-        </View>
+        <Button
+          text="View Community Info"
+          onPress={() => console.log('HELLO')}
+          style={styles.community_button}
+          textStyle={styles.button_text}
+        />
       </LabeledInput>
 
       <LabeledInput
