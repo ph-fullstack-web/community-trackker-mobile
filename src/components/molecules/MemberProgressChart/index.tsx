@@ -1,6 +1,6 @@
 import {Text, View} from 'react-native';
 import {ProgressChart} from 'components/atoms';
-import {ProgressChartLayout} from 'components/atoms/ProgressChart/ProgressChart.type';
+import {ProgressChartLayout} from 'components/atoms/ProgressChart/ProgressChart.types';
 import styles from './MemberProgressChart.styles';
 
 type ProgressChartProps = {

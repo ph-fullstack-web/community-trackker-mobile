@@ -2,7 +2,7 @@ import {Text, View, StyleSheet, ViewStyle} from 'react-native';
 import {ProgressChart as RNProgressChart} from 'react-native-chart-kit';
 import {ReactNode} from 'react';
 import styles from './ProgressChart.styles';
-import {ProgressChartLayout, ProgressChartProps} from './ProgressChart.type';
+import {ProgressChartLayout, ProgressChartProps} from './ProgressChart.types';
 
 export const ProgressChart = ({
   data,
