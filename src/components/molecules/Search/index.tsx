@@ -1,11 +1,11 @@
 import {useState} from 'react';
-import {View, StyleSheet, StyleProp} from 'react-native';
+import {View, StyleSheet, StyleProp, ViewStyle} from 'react-native';
 
 import {ButtonWithIcon, TextInput} from 'components/atoms';
 
 type SearchProps = {
   onSearch: (searchText: string) => void;
-  viewStyle?: StyleProp<any>;
+  viewStyle?: StyleProp<ViewStyle>;
 };
 
 export const Search = (props: SearchProps) => {
