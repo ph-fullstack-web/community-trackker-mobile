@@ -3,11 +3,9 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {CommunityCard} from 'components/organisms';
-import {ScreenHeader} from 'components/atoms';
+import {AppContainer, ScreenHeader} from 'components/atoms';
 
-import {ScreenName, ScreenTitle} from 'constants/enums';
-
-import {Community} from 'models/business';
+import {ScreenTitle, StackScreenName} from 'constants/enums';
 
 import {useCommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 
@@ -21,15 +19,11 @@ export const CommunitiesDashboardScreen = () => {
   const {communityList} = useCommunitiesDataProvider();
 
   const handleViewMembers = (communityId: number) => {
-    const communities: Community[] =
-      communityList?.filter(
-        community => community.communityId === communityId
-      ) ?? [];
-    navigate(ScreenName.CommunityMembers, {...communities[0]});
+    navigate(StackScreenName.CommunityMembersStack, {communityId});
   };
 
   return (
-    <>
+    <AppContainer>
       <ScreenHeader title={ScreenTitle.Communities} />
       <FlatList
         nestedScrollEnabled
@@ -39,6 +33,6 @@ export const CommunitiesDashboardScreen = () => {
           return <CommunityCard onViewMembers={handleViewMembers} {...item} />;
         }}
       />
-    </>
+    </AppContainer>
   );
 };

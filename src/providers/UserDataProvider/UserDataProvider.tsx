@@ -12,19 +12,16 @@ import {mockUser} from 'mocks/user';
 type UserDataProviderProps = ComponentWithChildren;
 
 export const UserDataProvider = ({children}: UserDataProviderProps) => {
-  const isLoggedIn = true;
   const [store, dispatch] = useReducer(userReducer, initialUserState);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      dispatch({
-        type: UserContextActionTypes.Login,
-        payload: {
-          user: mockUser,
-        },
-      });
-    }
-  }, [isLoggedIn]);
+    dispatch({
+      type: UserContextActionTypes.Login,
+      payload: {
+        user: mockUser,
+      },
+    });
+  }, []);
 
   return (
     <UserDataContext.Provider

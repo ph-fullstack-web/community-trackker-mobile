@@ -1,6 +1,5 @@
 import {DrawerScreenProps} from '@react-navigation/drawer';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-
 import {Community} from 'models/business';
 
 export type RootDrawerParamList = {
@@ -8,6 +7,7 @@ export type RootDrawerParamList = {
   Members: undefined;
   CEC: undefined;
   Dashboard: undefined;
+  CommunityMembers: {communityId: number} | undefined;
 };
 
 export type DrawerScreenProp<T extends keyof RootDrawerParamList> =
@@ -15,7 +15,7 @@ export type DrawerScreenProp<T extends keyof RootDrawerParamList> =
 
 export type RootNativeStackParamList = {
   CommunitiesStack: undefined;
-  CommunityMembers: Community;
+  CommunityMembersStack: {communityId: number} | undefined;
 };
 
 export type NativeStackScreenProp<T extends keyof RootNativeStackParamList> =

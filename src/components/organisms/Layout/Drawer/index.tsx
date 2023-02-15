@@ -3,12 +3,11 @@ import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
-import {Divider} from '@rneui/base';
 
-import {DrawerItem} from 'components/atoms';
+import {Divider, DrawerItem} from 'components/atoms';
 import {ScreenName} from 'constants/enums';
 import {DrawerAccordion, DrawerAccordionItem} from 'components/molecules';
-import styles from './DrawerStyles';
+import styles from './Drawer.styles';
 
 type DrawerItems = (Partial<DrawerAccordionItem> & {
   items?: DrawerAccordionItem[];
@@ -31,47 +30,74 @@ const drawerItems: DrawerItems = [
       {
         icon: {name: 'group', type: 'material'},
         label: 'Quality Engineering',
-        onPress: navigation => navigation.navigate('Quality Engineering'),
+        onPress: navigation =>
+          navigation.navigate(ScreenName.CommunityMembers, {
+            communityId: 1,
+          }),
       },
       {
         icon: {name: 'group', type: 'material'},
         label: 'Cloud and DevOps',
-        onPress: () => console.log('Cloud and DevOps'),
+        onPress: navigation =>
+          navigation.navigate(ScreenName.CommunityMembers, {
+            communityId: 2,
+          }),
       },
       {
         icon: {name: 'group', type: 'material'},
         label: 'Mobile Cross Platform',
-        onPress: () => console.log('Mobile Cross Platform'),
+        onPress: navigation =>
+          navigation.navigate(ScreenName.CommunityMembers, {
+            communityId: 3,
+          }),
       },
       {
         icon: {name: 'group', type: 'material'},
         label: 'Enterprise Coffee',
-        onPress: () => console.log('Enterprise Coffee'),
+        onPress: navigation =>
+          navigation.navigate(ScreenName.CommunityMembers, {
+            communityId: 4,
+          }),
       },
       {
         icon: {name: 'group', type: 'material'},
         label: 'Enterprise .NET',
-        onPress: () => console.log('Enterprise .NET'),
+        onPress: navigation =>
+          navigation.navigate(ScreenName.CommunityMembers, {
+            communityId: 5,
+          }),
       },
       {
         icon: {name: 'group', type: 'material'},
         label: 'Program Management',
-        onPress: () => console.log('Program Management'),
+        onPress: navigation =>
+          navigation.navigate(ScreenName.CommunityMembers, {
+            communityId: 6,
+          }),
       },
       {
         icon: {name: 'group', type: 'material'},
         label: 'Product Strategy',
-        onPress: () => console.log('Product Strategy'),
+        onPress: navigation =>
+          navigation.navigate(ScreenName.CommunityMembers, {
+            communityId: 7,
+          }),
       },
       {
         icon: {name: 'group', type: 'material'},
         label: 'Full-Stack Web',
-        onPress: () => console.log('Full-Stack Web'),
+        onPress: navigation =>
+          navigation.navigate(ScreenName.CommunityMembers, {
+            communityId: 8,
+          }),
       },
       {
         icon: {name: 'group', type: 'material'},
         label: 'Big Data & Analytics',
-        onPress: () => console.log('Big Data & Analytics'),
+        onPress: navigation =>
+          navigation.navigate(ScreenName.CommunityMembers, {
+            communityId: 9,
+          }),
       },
     ],
     label: 'Members',

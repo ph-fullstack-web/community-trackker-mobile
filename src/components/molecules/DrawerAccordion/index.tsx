@@ -1,10 +1,10 @@
 import {Text, View} from 'react-native';
 import {useState} from 'react';
-import {Icon, ListItem} from '@rneui/base';
+import {ListItem} from '@rneui/base';
 import {DrawerNavigationHelpers} from '@react-navigation/drawer/lib/typescript/src/types';
 
-import {DrawerItem} from 'components/atoms';
-import styles from './DrawerAccordionStyles';
+import {DrawerItem, Icon} from 'components/atoms';
+import styles from './DrawerAccordion.styles';
 
 export type DrawerAccordionItem = {
   icon: Icon;

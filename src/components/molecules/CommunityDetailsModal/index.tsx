@@ -1,8 +1,9 @@
-import { useState } from 'react'
-import {Modal, Pressable, Text,TouchableHighlight, View } from 'react-native';
-import { Icon } from '@rneui/themed';
+import {useState} from 'react';
+import {Modal, Pressable, Text, TouchableHighlight, View} from 'react-native';
 
-import styles from './CommunityDetailsModalStyles';
+import {Icon} from 'components/atoms';
+
+import styles from './CommunityDetailsModal.styles';
 
 interface CommunityDetailsModalProps {
   communityDescription: string;
@@ -21,12 +22,10 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
     onPress: () => setModalVisible(!modalVisible),
   };
 
-  return(
+  return (
     <View>
-      <TouchableHighlight
-        {...touchProps}
-      >
-        <Icon name='information' type='material-community' size={35} />
+      <TouchableHighlight {...touchProps}>
+        <Icon name="information" type="material-community" size={35} />
       </TouchableHighlight>
 
       <View style={styles.centeredView}>
@@ -36,12 +35,11 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
           visible={modalVisible}
           onRequestClose={() => {
             setModalVisible(!modalVisible);
-          }}>
+          }}
+        >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>
-                {props.communityDescription}
-              </Text>
+              <Text style={styles.modalText}>{props.communityDescription}</Text>
 
               <Pressable
                 style={[styles.button, styles.buttonClose]}
@@ -49,11 +47,10 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
               >
                 <Text style={styles.textStyle}>Close Modal</Text>
               </Pressable>
-
             </View>
           </View>
         </Modal>
       </View>
     </View>
-  )
-}
+  );
+};
