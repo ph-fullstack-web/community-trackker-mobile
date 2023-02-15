@@ -5,7 +5,7 @@ import {
 } from '@react-navigation/drawer';
 
 import {Divider, DrawerItem} from 'components/atoms';
-import {ScreenName, StackScreenName} from 'constants/enums';
+import {ScreenName} from 'constants/enums';
 import {DrawerAccordion, DrawerAccordionItem} from 'components/molecules';
 import styles from './Drawer.styles';
 
@@ -31,7 +31,7 @@ const drawerItems: DrawerItems = [
         icon: {name: 'group', type: 'material'},
         label: 'Quality Engineering',
         onPress: navigation =>
-          navigation.navigate(StackScreenName.CommunityMembers, {
+          navigation.navigate(ScreenName.CommunityMembers, {
             communityId: 1,
           }),
       },
@@ -39,7 +39,7 @@ const drawerItems: DrawerItems = [
         icon: {name: 'group', type: 'material'},
         label: 'Cloud and DevOps',
         onPress: navigation =>
-          navigation.navigate(StackScreenName.CommunityMembers, {
+          navigation.navigate(ScreenName.CommunityMembers, {
             communityId: 2,
           }),
       },
@@ -47,7 +47,7 @@ const drawerItems: DrawerItems = [
         icon: {name: 'group', type: 'material'},
         label: 'Mobile Cross Platform',
         onPress: navigation =>
-          navigation.navigate(StackScreenName.CommunityMembers, {
+          navigation.navigate(ScreenName.CommunityMembers, {
             communityId: 3,
           }),
       },
@@ -55,7 +55,7 @@ const drawerItems: DrawerItems = [
         icon: {name: 'group', type: 'material'},
         label: 'Enterprise Coffee',
         onPress: navigation =>
-          navigation.navigate(StackScreenName.CommunityMembers, {
+          navigation.navigate(ScreenName.CommunityMembers, {
             communityId: 4,
           }),
       },
@@ -63,7 +63,7 @@ const drawerItems: DrawerItems = [
         icon: {name: 'group', type: 'material'},
         label: 'Enterprise .NET',
         onPress: navigation =>
-          navigation.navigate(StackScreenName.CommunityMembers, {
+          navigation.navigate(ScreenName.CommunityMembers, {
             communityId: 5,
           }),
       },
@@ -71,7 +71,7 @@ const drawerItems: DrawerItems = [
         icon: {name: 'group', type: 'material'},
         label: 'Program Management',
         onPress: navigation =>
-          navigation.navigate(StackScreenName.CommunityMembers, {
+          navigation.navigate(ScreenName.CommunityMembers, {
             communityId: 6,
           }),
       },
@@ -79,7 +79,7 @@ const drawerItems: DrawerItems = [
         icon: {name: 'group', type: 'material'},
         label: 'Product Strategy',
         onPress: navigation =>
-          navigation.navigate(StackScreenName.CommunityMembers, {
+          navigation.navigate(ScreenName.CommunityMembers, {
             communityId: 7,
           }),
       },
@@ -87,7 +87,7 @@ const drawerItems: DrawerItems = [
         icon: {name: 'group', type: 'material'},
         label: 'Full-Stack Web',
         onPress: navigation =>
-          navigation.navigate(StackScreenName.CommunityMembers, {
+          navigation.navigate(ScreenName.CommunityMembers, {
             communityId: 8,
           }),
       },
@@ -95,7 +95,7 @@ const drawerItems: DrawerItems = [
         icon: {name: 'group', type: 'material'},
         label: 'Big Data & Analytics',
         onPress: navigation =>
-          navigation.navigate(StackScreenName.CommunityMembers, {
+          navigation.navigate(ScreenName.CommunityMembers, {
             communityId: 9,
           }),
       },

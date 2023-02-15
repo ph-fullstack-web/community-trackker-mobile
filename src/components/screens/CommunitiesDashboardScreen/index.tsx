@@ -19,7 +19,7 @@ export const CommunitiesDashboardScreen = () => {
   const {communityList} = useCommunitiesDataProvider();
 
   const handleViewMembers = (communityId: number) => {
-    navigate(StackScreenName.CommunityMembers, {communityId});
+    navigate(StackScreenName.CommunityMembersStack, {communityId});
   };
 
   return (
