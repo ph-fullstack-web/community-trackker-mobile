@@ -1,5 +1,5 @@
-import { ReactNode, useEffect, useState } from "react";
-import { Animated } from "react-native";
+import {ReactNode, useEffect, useState} from 'react';
+import {Animated} from 'react-native';
 
 interface ExpandableViewProps {
   expanded: boolean;
@@ -15,12 +15,12 @@ export const ExpandableView = (props: ExpandableViewProps) => {
     Animated.timing(height, {
       toValue: props.expanded ? props.height : 0,
       duration: 150,
-      useNativeDriver: false
+      useNativeDriver: false,
     }).start();
-  }, [props.expanded, height]);
+  }, [height, props.expanded, props.height]);
 
   return (
-    <Animated.View style={{ height, backgroundColor: props.bgcolor }}>
+    <Animated.View style={{height, backgroundColor: props.bgcolor}}>
       {props.form}
     </Animated.View>
   );

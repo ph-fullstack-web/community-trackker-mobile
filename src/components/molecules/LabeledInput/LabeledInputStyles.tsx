@@ -1,8 +1,8 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   bold_text: {
-    fontWeight: '500'
+    fontWeight: '500',
   },
   fieldSet: {
     padding: 10,
@@ -13,19 +13,19 @@ const styles = StyleSheet.create({
   },
   textfield: {
     borderWidth: 1,
-    borderColor: "#bbb",
-    borderStyle: "solid",
+    borderColor: '#bbb',
+    borderStyle: 'solid',
     paddingHorizontal: 9,
     paddingVertical: 3,
-    marginTop: 10
+    marginTop: 10,
   },
   label_width: {
     width: '30%',
-    marginTop: 5
+    marginTop: 5,
   },
   textinput_width: {
-    width: '70%'
-  }
-})
+    width: '70%',
+  },
+});
 
 export default styles;

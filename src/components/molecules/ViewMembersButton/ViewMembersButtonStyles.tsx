@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   uppercase_text: {
@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
   not_pressed: {
     paddingVertical: 3,
     paddingHorizontal: 9,
-
     borderColor: 'rgb(10, 117, 120)',
     borderStyle: 'solid',
     borderWidth: 2,
@@ -23,7 +22,6 @@ const styles = StyleSheet.create({
   is_pressed: {
     paddingVertical: 3,
     paddingHorizontal: 9,
-
     borderColor: '#fff',
     borderStyle: 'solid',
     borderWidth: 2,
