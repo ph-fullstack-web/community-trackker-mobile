@@ -1,12 +1,15 @@
 import {SafeAreaView, StyleSheet} from 'react-native';
 
-import {MainNavigation} from './navigation/MainNavigation';
+import {MainNavigation} from 'navigation/MainNavigation';
+import {AppProvider} from 'providers/AppProvider';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <MainNavigation />
-    </SafeAreaView>
+    <AppProvider>
+      <SafeAreaView style={styles.container}>
+        <MainNavigation />
+      </SafeAreaView>
+    </AppProvider>
   );
 };
 
