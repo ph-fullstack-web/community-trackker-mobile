@@ -1,15 +1,14 @@
 import {Text, View, StyleSheet} from 'react-native';
 import {ProgressChart} from 'components/atoms';
+import {ProgressChartLayout} from 'components/atoms/ProgressChart/progressChart.types';
 
 type ProgressChartProps = {
-  title: string;
   percentage: number;
   color?: string;
-  layout?: 'horizontal' | 'vertical';
+  layout?: ProgressChartLayout;
 };
 
 export const MemberProgressChart = ({
-  title,
   percentage,
   color = '#2f78c4',
   layout = 'horizontal',
@@ -39,7 +38,6 @@ export const MemberProgressChart = ({
   return (
     <View>
       <ProgressChart
-        title={title}
         layout={layout}
         data={data}
         strokeColor="#b6bbc2"

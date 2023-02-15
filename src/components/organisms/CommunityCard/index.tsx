@@ -2,7 +2,6 @@ import {Image, Text, View} from 'react-native';
 
 import {
   CommunityDetailsModal,
-  ProgressChart,
   ViewMembersButton,
   MemberProgressChart,
 } from 'components/molecules';
