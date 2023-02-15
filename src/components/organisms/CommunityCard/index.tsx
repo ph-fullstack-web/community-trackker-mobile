@@ -5,7 +5,7 @@ import {
   ProgressChart,
   ViewMembersButton,
 } from 'components/molecules';
-import styles from './CommunityCardStyles';
+import styles from './CommunityCard.styles';
 
 interface CommunityCardProps {
   icon?: string;
@@ -37,10 +37,7 @@ const CommunityCardHeader = (props: HeaderProps) => {
     <View style={styles.header}>
       <View style={styles.thumbnail}>
         <Image
-          style={{
-            width: 30,
-            height: 30,
-          }}
+          style={styles.thumbanil_size}
           source={{
             uri: props.icon ?? defaultCommunityIcon,
           }}

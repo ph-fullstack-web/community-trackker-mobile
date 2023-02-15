@@ -2,7 +2,7 @@ import {ReactNode, Dispatch, SetStateAction} from 'react';
 import {Text, View} from 'react-native';
 
 import {TextInput} from 'components/atoms';
-import styles from './LabeledInputStyles';
+import styles from './LabeledInput.styles';
 
 interface LabeledInputProps {
   label: string;

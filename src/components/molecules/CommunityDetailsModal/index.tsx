@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {Modal, Pressable, Text, TouchableHighlight, View} from 'react-native';
 import {Icon} from '@rneui/themed';
 
-import styles from './CommunityDetailsModalStyles';
+import styles from './CommunityDetailsModal.styles';
 
 interface CommunityDetailsModalProps {
   communityDescription: string;
