@@ -1,6 +1,7 @@
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View} from 'react-native';
 import {ProgressChart} from 'components/atoms';
-import {ProgressChartLayout} from 'components/atoms/ProgressChart/progressChart.types';
+import {ProgressChartLayout} from 'components/atoms/ProgressChart/ProgressChart.type';
+import styles from './MemberProgressChart.styles';
 
 type ProgressChartProps = {
   percentage: number;
@@ -55,26 +56,3 @@ export const MemberProgressChart = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  chart: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-    backgroundColor: '#eaf1fa',
-  },
-  percent: {
-    fontSize: 14,
-  },
-  percentage: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'black',
-  },
-});

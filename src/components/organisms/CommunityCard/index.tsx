@@ -74,7 +74,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
         managerName={props.managerName}
       />
 
-      <MemberProgressChart title="-Chart-" percentage={0.18} />
+      <MemberProgressChart percentage={Math.random()} />
 
       <CommunityCardFooter
         description={props.description}
