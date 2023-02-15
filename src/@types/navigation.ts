@@ -7,6 +7,7 @@ export type RootDrawerParamList = {
   Members: undefined;
   CEC: undefined;
   Dashboard: undefined;
+  CommunityMembers: {communityId: number} | undefined;
 };
 
 export type DrawerScreenProp<T extends keyof RootDrawerParamList> =
@@ -14,7 +15,7 @@ export type DrawerScreenProp<T extends keyof RootDrawerParamList> =
 
 export type RootNativeStackParamList = {
   CommunitiesStack: undefined;
-  CommunityMembers: Community | undefined;
+  CommunityMembers: {communityId: number} | undefined;
 };
 
 export type NativeStackScreenProp<T extends keyof RootNativeStackParamList> =

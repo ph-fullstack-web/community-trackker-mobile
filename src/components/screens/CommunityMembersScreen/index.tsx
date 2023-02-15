@@ -8,6 +8,7 @@ import {Community, Employee} from 'models/business';
 import {RootNativeStackParamList} from '../../../@types/navigation';
 import {StackScreenName} from 'constants/enums';
 import styles from './CommunityMembersScreen.styles';
+import {useCommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 
 type CommunityMembersScreenRouteProp = RouteProp<
   RootNativeStackParamList,
@@ -16,19 +17,33 @@ type CommunityMembersScreenRouteProp = RouteProp<
 
 export const CommunityMembersScreen = () => {
   const route = useRoute<CommunityMembersScreenRouteProp>();
-  const {name, managerName, members} = route.params as Community;
+  const {communityList} = useCommunitiesDataProvider();
 
-  const [filteredMembers, setFilteredMembers] = useState<Employee[]>(members);
+  const {communityId} = route.params as Community;
+
+  const [community, setCommunity] = useState<Community>();
+  const [filteredMembers, setFilteredMembers] = useState<Employee[]>([]);
 
   useEffect(() => {
-    setFilteredMembers(() => members);
-  }, [members]);
+    if (communityId) {
+      const communities: Community[] =
+        communityList?.filter(
+          community => community.communityId === communityId
+        ) ?? [];
+
+      setCommunity(() => communities[0]);
+    }
+  }, [communityId]);
+
+  useEffect(() => {
+    setFilteredMembers(() => community?.members ?? []);
+  }, [community?.members]);
 
   const handleSearch = (text: string) => {
     const searchText = text.trim().toLowerCase();
     if (searchText !== '') {
       setFilteredMembers(() =>
-        members.filter(
+        (community?.members ?? [])?.filter(
           ({fullName, csvEmail, dateHired}: Employee) =>
             fullName.toLowerCase().indexOf(searchText) !== -1 ||
             csvEmail.toLowerCase().indexOf(searchText) !== -1 ||
@@ -36,7 +51,7 @@ export const CommunityMembersScreen = () => {
         )
       );
     } else {
-      return setFilteredMembers(() => members);
+      return setFilteredMembers(() => community?.members ?? []);
     }
   };
 
@@ -50,8 +65,11 @@ export const CommunityMembersScreen = () => {
 
   return (
     <AppContainer>
-      <ScreenHeader title={name} subtitle={`Managed By: ${managerName}`} />
-      {members?.length === 0 ? (
+      <ScreenHeader
+        title={community?.name ?? ''}
+        subtitle={`Managed By: ${community?.managerName ?? ''}`}
+      />
+      {(community?.members ?? [])?.length === 0 ? (
         <NoResult />
       ) : (
         <>
