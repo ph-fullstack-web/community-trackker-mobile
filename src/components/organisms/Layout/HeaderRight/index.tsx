@@ -1,5 +1,11 @@
-import {Button, Icon} from '@rneui/base';
+import {ButtonWithIcon} from 'components/atoms';
 
 export const HeaderRight = () => {
-  return <Button type="clear" icon={<Icon name="logout" type="material" />} />;
+  return (
+    <ButtonWithIcon
+      onPress={() => console.log('logging out')}
+      name="logout"
+      type="material"
+    />
+  );
 };

@@ -25,3 +25,9 @@ export type User = {
   username: string;
   csvEmail: string;
 };
+
+export type PeopleSkill = {
+  peopleskills_id: number;
+  peopleskills_desc: string;
+  is_active: boolean;
+};

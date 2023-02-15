@@ -6,7 +6,7 @@ import {employeeSet200} from './employeeSet200';
 export const mockCommunities: Community[] = [
   {
     communityId: 1,
-    name: 'Community AAA',
+    name: 'Quality Engineering',
     description: 'Community AAA Description',
     managerName: 'Manager AAA',
     totalMembers: 10,
@@ -15,7 +15,7 @@ export const mockCommunities: Community[] = [
   },
   {
     communityId: 2,
-    name: 'Community BBB',
+    name: 'Cloud and DevOps',
     description: 'Community BBB Description',
     managerName: 'Manager BBB',
     totalMembers: 20,
@@ -24,7 +24,7 @@ export const mockCommunities: Community[] = [
   },
   {
     communityId: 3,
-    name: 'Community CCC',
+    name: 'Mobile Cross Platform',
     description: 'Community CCC Description',
     managerName: 'Manager CCC',
     totalMembers: 30,
@@ -33,7 +33,7 @@ export const mockCommunities: Community[] = [
   },
   {
     communityId: 4,
-    name: 'Community DDD',
+    name: 'Enterprise Coffee',
     description: 'Community DDD Description',
     managerName: 'Manager DDD',
     totalMembers: 40,
@@ -42,7 +42,7 @@ export const mockCommunities: Community[] = [
   },
   {
     communityId: 5,
-    name: 'Community EEE',
+    name: 'Enterprise .NET',
     description: 'Community EEE Description',
     managerName: 'Manager EEE',
     totalMembers: 50,
@@ -51,7 +51,7 @@ export const mockCommunities: Community[] = [
   },
   {
     communityId: 6,
-    name: 'Community FFF',
+    name: 'Program Management',
     description: 'Community FFF Description',
     managerName: 'Manager FFF',
     totalMembers: 60,
@@ -60,11 +60,29 @@ export const mockCommunities: Community[] = [
   },
   {
     communityId: 7,
-    name: 'Community GGG',
+    name: 'Product Strategy',
     description: 'Community GGG Description',
     managerName: 'Manager GGG',
     totalMembers: 70,
     percentage: 77,
+    members: [],
+  },
+  {
+    communityId: 8,
+    name: 'Full-Stack Web',
+    description: 'Community HHH Description',
+    managerName: 'Manager HHH',
+    totalMembers: 80,
+    percentage: 88,
+    members: [],
+  },
+  {
+    communityId: 9,
+    name: 'Big Data & Analytics',
+    description: 'Community III Description',
+    managerName: 'Manager III',
+    totalMembers: 90,
+    percentage: 99,
     members: [],
   },
 ];

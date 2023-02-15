@@ -12,11 +12,12 @@ export enum ScreenName {
   MembersDetails = 'MembersDetails',
   Dashboard = 'Dashboard',
   Report = 'Report',
+  CommunityMembers = 'CommunityMembers',
 }
 
 export enum StackScreenName {
   CommunitiesStack = 'CommunitiesStack',
-  CommunityMembers = 'CommunityMembers',
+  CommunityMembersStack = 'CommunityMembersStack',
 }
 
 export enum ScreenTitle {

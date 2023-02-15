@@ -1,4 +1,5 @@
 import {MutableRefObject, ReactNode} from 'react';
+import {IconProps as DefaultIconProps} from '@rneui/base';
 
 declare global {
   export type ApprovedAny = any;
@@ -19,6 +20,24 @@ declare global {
     name: string;
     type?: string;
   }
+
+  export type IconProps = DefaultIconProps & {
+    type:
+      | 'antdesign'
+      | 'entypo'
+      | 'evilicon'
+      | 'feather'
+      | 'font-awesome'
+      | 'font-awesome-5'
+      | 'fontisto'
+      | 'foundation'
+      | 'ionicon'
+      | 'material'
+      | 'material-community'
+      | 'octicon'
+      | 'simple-line-icon'
+      | 'zocial';
+  };
 }
 
 declare global {

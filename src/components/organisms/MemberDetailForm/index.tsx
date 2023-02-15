@@ -1,33 +1,30 @@
-import { useState } from "react";
-import { SafeAreaView, ScrollView, View } from "react-native";
+import {useState} from 'react';
+import {View} from 'react-native';
 
-import { Accordion, Button } from "components/atoms";
-import { LabeledInput } from "components/molecules";
+import {Accordion, Button} from 'components/atoms';
+import {LabeledInput} from 'components/molecules';
+import SkillsForm from '../SkillsForm';
 
-import styles from "./MemberDetailForm.styles";
+import styles from './MemberDetailForm.styles';
 
 export const MemberDetailForm = () => {
   return (
-    <>
-      <ScrollView style={styles.container}>
-        <View style={styles.accordion_container}>
-          <Accordion 
-            headerLabel="Employee Name"
-            headerStyle={styles.form_header}
-            expanded={true}
-          >
-            <DetailForm />
-          </Accordion>
-          <Accordion 
-            headerLabel="Skills"
-            headerStyle={styles.form_header}
-            expanded={false}
-          >
-            <DetailForm />
-          </Accordion>
-        </View>
-      </ScrollView>
-    </>
+    <View style={styles.accordion_container}>
+      <Accordion
+        headerLabel="Employee Name"
+        headerStyle={styles.form_header}
+        expanded={true}
+      >
+        <DetailForm />
+      </Accordion>
+      <Accordion
+        headerLabel="Skills"
+        headerStyle={styles.form_header}
+        expanded={false}
+      >
+        <SkillsForm skills={['React', 'NodeJS', 'Angular']} />
+      </Accordion>
+    </View>
   );
 };
 
@@ -38,7 +35,7 @@ const DetailForm = () => {
   const [manager, setManager] = useState('');
 
   return (
-    <>
+    <View style={styles.formContainer}>
       <LabeledInput
         label="Cognizant ID"
         placeholder="00000000"
@@ -58,15 +55,14 @@ const DetailForm = () => {
         placeholder="Community name"
         value={community}
         onValueChange={setCommunity}
-        button={
-          <View style={styles.community_button}>
-            <Button
-              title="View Community Info"
-              onPress={() => console.log('HELLO')}
-            />
-          </View>
-        }
       />
+
+      <View style={styles.community_button}>
+        <Button
+          title="View Community Info"
+          onPress={() => console.log('HELLO')}
+        />
+      </View>
 
       <LabeledInput
         label="Manager"
@@ -74,6 +70,6 @@ const DetailForm = () => {
         value={manager}
         onValueChange={setManager}
       />
-    </>
+    </View>
   );
 };

@@ -1,11 +1,8 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    height: '100%',
-    paddingBottom: 60
-  },
   accordion_container: {
+    flex: 1,
     borderWidth: 1,
     borderColor: '#ccc',
     margin: 10,
@@ -16,8 +13,16 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
     backgroundColor: '#ddd',
   },
+  formContainer: {
+    marginVertical: 15,
+  },
   community_button: {
-    marginTop: 3,
+    marginTop: -10,
+    marginBottom: 15,
+    paddingRight: 10,
+    paddingLeft: 4,
+    width: '70%',
+    alignSelf: 'flex-end',
   },
   toggle: {
     height: 30,

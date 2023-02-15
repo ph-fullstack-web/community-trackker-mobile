@@ -2,16 +2,15 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 0,
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    minHeight: 210,
   },
-  headerContainer: {
-    flex: 1,
+  chipsContainer: {
     flexDirection: 'row',
-    padding: 16,
-  },
-  headerText: {
-    fontSize: 16,
-    fontWeight: '400',
+    flexWrap: 'wrap',
+    width: '100%',
+    marginBottom: 10,
   },
 });
 
