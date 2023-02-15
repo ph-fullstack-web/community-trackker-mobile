@@ -5,7 +5,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {CommunityCard} from 'components/organisms';
 import {ScreenHeader} from 'components/atoms';
 
-import {ScreenName, ScreenTitle} from 'constants/enums';
+import {ScreenTitle, StackScreenName} from 'constants/enums';
 
 import {Community} from 'models/business';
 
@@ -25,7 +25,7 @@ export const CommunitiesDashboardScreen = () => {
       communityList?.filter(
         community => community.communityId === communityId
       ) ?? [];
-    navigate(ScreenName.CommunityMembers, {...communities[0]});
+    navigate(StackScreenName.CommunityMembers, {...communities[0]});
   };
 
   return (

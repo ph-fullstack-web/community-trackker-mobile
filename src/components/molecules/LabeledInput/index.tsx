@@ -1,9 +1,8 @@
-import { ReactNode, Dispatch, SetStateAction } from "react";
-import { Text,View} from "react-native";
+import {ReactNode, Dispatch, SetStateAction} from 'react';
+import {Text, View} from 'react-native';
 
-import { TextInput } from "components/atoms";
-
-import styles from "./LabeledInputStyles";
+import {TextInput} from 'components/atoms';
+import styles from './LabeledInput.styles';
 
 interface LabeledInputProps {
   label: string;
@@ -31,5 +30,5 @@ export const LabeledInput = (props: LabeledInputProps) => {
         </View>
       </View>
     </>
-  )
-}
+  );
+};

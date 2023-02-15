@@ -1,22 +1,22 @@
 import {useEffect, useState} from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 
 import {MemberCard, ScreenHeader} from 'components/atoms';
 import {Search} from 'components/molecules';
-
-import {Employee} from 'models/business';
+import {Community, Employee} from 'models/business';
 import {RootNativeStackParamList} from '../../../@types/navigation';
-import {ScreenName} from 'constants/enums';
+import {StackScreenName} from 'constants/enums';
+import styles from './CommunityMembersScreen.styles';
 
 type CommunityMembersScreenRouteProp = RouteProp<
   RootNativeStackParamList,
-  ScreenName.CommunityMembers
+  StackScreenName.CommunityMembers
 >;
 
 export const CommunityMembersScreen = () => {
   const route = useRoute<CommunityMembersScreenRouteProp>();
-  const {name, managerName, members} = route.params;
+  const {name, managerName, members} = route.params as Community;
 
   const [filteredMembers, setFilteredMembers] = useState<Employee[]>(members);
 
@@ -40,24 +40,36 @@ export const CommunityMembersScreen = () => {
     }
   };
 
+  const NoResult = () => {
+    return (
+      <View style={styles.noResultContainer}>
+        <Text style={styles.noResultText}>No Members Found</Text>
+      </View>
+    );
+  };
+
   return (
     <>
       <ScreenHeader title={name} subtitle={`Managed By: ${managerName}`} />
-      <Search onSearch={handleSearch} viewStyle={styles.search} />
-      <FlatList
-        nestedScrollEnabled
-        data={filteredMembers}
-        keyExtractor={item => item.employeeId.toString()}
-        renderItem={({item}) => {
-          return <MemberCard memberDetails={item} />;
-        }}
-      />
+      {members?.length === 0 ? (
+        <NoResult />
+      ) : (
+        <>
+          <Search onSearch={handleSearch} viewStyle={styles.search} />
+          {filteredMembers?.length === 0 ? (
+            <NoResult />
+          ) : (
+            <FlatList
+              nestedScrollEnabled
+              data={filteredMembers}
+              keyExtractor={item => item.employeeId.toString()}
+              renderItem={({item}) => {
+                return <MemberCard memberDetails={item} />;
+              }}
+            ></FlatList>
+          )}
+        </>
+      )}
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  search: {
-    paddingBottom: 10,
-  },
-});

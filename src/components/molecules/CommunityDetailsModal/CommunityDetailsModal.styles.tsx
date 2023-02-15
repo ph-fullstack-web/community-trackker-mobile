@@ -1,13 +1,13 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   is_pressed: {
     width: 35,
-    height: 35
+    height: 35,
   },
   not_pressed: {
     width: 35,
-    height: 35
+    height: 35,
   },
   centeredView: {
     flex: 1,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   button: {
     elevation: 2,
     paddingHorizontal: 9,
-    paddingVertical: 3
+    paddingVertical: 3,
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
@@ -49,6 +49,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-})
+});
 
 export default styles;

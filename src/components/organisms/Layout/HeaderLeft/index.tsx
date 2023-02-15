@@ -2,14 +2,22 @@ import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {useNavigation, useNavigationState} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Button, Icon} from '@rneui/base';
-import {RootDrawerParamList} from '../../../../@types/navigation';
+
+import {ScreenName, StackScreenName} from 'constants/enums';
+import {
+  RootDrawerParamList,
+  RootNativeStackParamList,
+} from '../../../../@types/navigation';
 
 type HeaderLeftDrawerNavigationProp = DrawerNavigationProp<RootDrawerParamList>;
-type HeaderLeftStackNavigationProp = NativeStackNavigationProp<any>;
+type HeaderLeftStackNavigationProp =
+  NativeStackNavigationProp<RootNativeStackParamList>;
 
 export const HeaderLeft = () => {
-  const {toggleDrawer} = useNavigation<HeaderLeftDrawerNavigationProp>();
-  const {navigate} = useNavigation<HeaderLeftStackNavigationProp>();
+  const {toggleDrawer, navigate: navigateDrawer} =
+    useNavigation<HeaderLeftDrawerNavigationProp>();
+  const {navigate: navigateStack} =
+    useNavigation<HeaderLeftStackNavigationProp>();
   const drawerRouteIndex = useNavigationState(state => state.index);
   const drawerRoutes = useNavigationState(state => state.routes);
   const currentRoute = drawerRoutes[drawerRouteIndex];
@@ -18,10 +26,16 @@ export const HeaderLeft = () => {
     if (currentRoute?.state) {
       const {index, routeNames} = currentRoute?.state;
       if (routeNames && index && index > 0) {
-        navigate(routeNames[index - 1]);
+        const stackName: keyof typeof StackScreenName = routeNames[
+          index - 1
+        ] as keyof typeof StackScreenName;
+        navigateStack(stackName);
         return;
       }
-      navigate(currentRoute?.name);
+      const drawerName: keyof typeof ScreenName =
+        currentRoute?.name as keyof typeof ScreenName;
+      navigateDrawer(drawerName);
+      return;
     }
   };
 

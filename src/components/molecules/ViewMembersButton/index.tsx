@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {Text, TouchableHighlight, View} from 'react-native';
 import {Icon} from '@rneui/themed';
 
-import styles from './ViewMembersButtonStyles';
+import styles from './ViewMembersButton.styles';
 
 interface ViewMembersButtonProps {
   totalMembers: number;

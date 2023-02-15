@@ -9,10 +9,14 @@ export enum ScreenName {
   Communities = 'Communities',
   Members = 'Members',
   CEC = 'CEC',
-  CommunitiesStack = 'CommunitiesStack',
-  CommunityMembers = 'CommunityMembers',
+  MembersDetails = 'MembersDetails',
   Dashboard = 'Dashboard',
   Report = 'Report',
+}
+
+export enum StackScreenName {
+  CommunitiesStack = 'CommunitiesStack',
+  CommunityMembers = 'CommunityMembers',
 }
 
 export enum ScreenTitle {

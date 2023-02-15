@@ -23,4 +23,5 @@ export type Community = {
 export type User = {
   userId: string;
   username: string;
+  csvEmail: string;
 };

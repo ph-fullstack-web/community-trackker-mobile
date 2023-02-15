@@ -1,55 +1,35 @@
 import { useState } from "react";
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView, ScrollView, View } from "react-native";
 
-import { Button, ExpandableView } from "components/atoms";
+import { Accordion, Button } from "components/atoms";
 import { LabeledInput } from "components/molecules";
 
-import styles from "./MemberDetaileFormStyles";
+import styles from "./MemberDetailForm.styles";
 
 export const MemberDetailForm = () => {
   return (
     <>
-      <SafeAreaView style={{height: '100%', paddingBottom: 60}}>
-        <ScrollView>
-          <View style={styles.container}>
-            <View style={styles.form_header}>
-              <Text>Employee Name</Text>
-            </View>
+      <ScrollView style={styles.container}>
+        <View style={styles.accordion_container}>
+          <Accordion 
+            headerLabel="Employee Name"
+            headerStyle={styles.form_header}
+            expanded={true}
+          >
             <DetailForm />
-            <ExpandableArea/>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+          </Accordion>
+          <Accordion 
+            headerLabel="Skills"
+            headerStyle={styles.form_header}
+            expanded={false}
+          >
+            <DetailForm />
+          </Accordion>
+        </View>
+      </ScrollView>
     </>
-  )
-}
-
-const ExpandableArea = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const expandedText = isExpanded ? 'Less' : 'More';
-
-  return (
-    <>
-      <View style={{ marginTop: 10 }}>
-        <TouchableOpacity
-          onPress={() => {
-            setIsExpanded(!isExpanded);
-          }}
-          style={styles.toggle}
-        >
-          <Text style={styles.toggleText}>View {expandedText}</Text>
-        </TouchableOpacity>
-        <ExpandableView
-          expanded={isExpanded}
-          form={<DetailForm />}
-          height={300}
-          bgcolor='#eee'
-        />
-      </View>   
-    </>
-  )
-}
+  );
+};
 
 const DetailForm = () => {
   const [idNumber, setIdNumber] = useState('');
@@ -81,7 +61,7 @@ const DetailForm = () => {
         button={
           <View style={styles.community_button}>
             <Button
-              title='View Community Info'
+              title="View Community Info"
               onPress={() => console.log('HELLO')}
             />
           </View>
@@ -95,5 +75,5 @@ const DetailForm = () => {
         onValueChange={setManager}
       />
     </>
-  )
-}
+  );
+};
