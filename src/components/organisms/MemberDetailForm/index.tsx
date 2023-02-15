@@ -4,29 +4,29 @@ import { SafeAreaView, ScrollView, View } from "react-native";
 import { Accordion, Button } from "components/atoms";
 import { LabeledInput } from "components/molecules";
 
-import styles from "./MemberDetaileFormStyles";
+import styles from "./MemberDetailForm.styles";
 
 export const MemberDetailForm = () => {
   return (
     <>
-      <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <View style={styles.accordion_container}>
-            <Accordion 
-              headerLabel="Employee Name"
-              headerStyle={styles.form_header}
-              expanded={true}
-              childComponent={<DetailForm />}
-            />
-            <Accordion 
-              headerLabel="Skills"
-              headerStyle={styles.form_header}
-              expanded={false}
-              childComponent={<DetailForm />}
-            />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+      <ScrollView style={styles.container}>
+        <View style={styles.accordion_container}>
+          <Accordion 
+            headerLabel="Employee Name"
+            headerStyle={styles.form_header}
+            expanded={true}
+          >
+            <DetailForm />
+          </Accordion>
+          <Accordion 
+            headerLabel="Skills"
+            headerStyle={styles.form_header}
+            expanded={false}
+          >
+            <DetailForm />
+          </Accordion>
+        </View>
+      </ScrollView>
     </>
   );
 };

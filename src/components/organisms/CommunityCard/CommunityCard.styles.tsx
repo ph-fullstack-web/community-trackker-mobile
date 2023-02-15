@@ -29,6 +29,10 @@ const styles = StyleSheet.create({
   thumbnail: {
     paddingRight: 20,
   },
+  thumbanil_size:  {
+    width:30,
+    height:30
+  },
   footer: {
     padding: 10,
   },

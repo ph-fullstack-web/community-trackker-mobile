@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import { ListItem } from '@rneui/themed';
 
 interface AccordionProps {
-  childComponent: ReactNode;
+  children: ReactNode;
   expanded: boolean  
   headerLabel: string;
   headerStyle: object;
@@ -24,7 +24,7 @@ export const Accordion = (props: AccordionProps) => {
       onPress={() => setExpanded(!expanded)}
       containerStyle={props.headerStyle}
     >
-      {props.childComponent}
+      {props.children}
     </ListItem.Accordion>
   )
 }

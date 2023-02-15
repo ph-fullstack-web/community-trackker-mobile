@@ -2,6 +2,10 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
+    height: '100%',
+    paddingBottom: 60
+  },
+  accordion_container: {
     borderWidth: 1,
     borderColor: '#ccc',
     margin: 10,
