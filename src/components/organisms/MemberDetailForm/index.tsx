@@ -42,7 +42,7 @@ const DetailForm = () => {
   const [manager, setManager] = useState('');
 
   return (
-    <>
+    <View style={styles.formContainer}>
       <LabeledInput
         label="Cognizant ID"
         placeholder="00000000"
@@ -62,7 +62,9 @@ const DetailForm = () => {
         placeholder="Community name"
         value={community}
         onValueChange={setCommunity}
-      >
+      />
+
+      <View style={styles.community_button}>
         <Button
           title="View Community Info"
           titleStyle={styles.button_text}
@@ -76,7 +78,7 @@ const DetailForm = () => {
           }}
           onPress={() => console.log('HELLO')}
         />
-      </LabeledInput>
+      </View>
 
       <LabeledInput
         label="Manager"
@@ -84,6 +86,6 @@ const DetailForm = () => {
         value={manager}
         onValueChange={setManager}
       />
-    </>
+    </View>
   );
 };

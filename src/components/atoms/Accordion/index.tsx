@@ -11,8 +11,7 @@ interface AccordionProps extends ComponentWithChildren {
 
 export const Accordion = (props: AccordionProps) => {
   const [expanded, setExpanded] = useState(props.expanded);
-
-  const bottomRadius = expanded == false ? styles.not_expanded_header : {};
+  const bottomRadius = expanded === false ? styles.not_expanded_header : {};
 
   return (
     <ListItem.Accordion

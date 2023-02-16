@@ -7,8 +7,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 1,
     flexDirection: 'row',
-    paddingHorizontal: 16,
-    paddingVertical: 18,
+    padding: 16,
   },
   headerText: {
     fontSize: 16,

@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   fieldSet: {
-    padding: 10,
+    marginHorizontal: 10,
+    marginVertical: 15,
   },
   horizontal_layout: {
     flexDirection: 'row',
@@ -19,11 +20,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 9,
     paddingVertical: 3,
     borderRadius: 7,
-    marginTop: 10,
   },
   label_width: {
     width: '30%',
-    marginTop: 5,
   },
   textinput_width: {
     width: '70%',

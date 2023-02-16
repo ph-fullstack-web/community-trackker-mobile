@@ -2,7 +2,6 @@ import {
   Button as DefaultButton,
   ButtonProps as DefaultButtonProps,
 } from '@rneui/base';
-import {COLORS} from 'constants/colors';
 
 type ThemeProps = {
   lightColor?: string;

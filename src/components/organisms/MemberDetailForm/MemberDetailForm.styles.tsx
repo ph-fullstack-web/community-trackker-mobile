@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     paddingBottom: 60,
   },
   accordion_container: {
+    flex: 1,
     borderWidth: 1,
     borderColor: COLORS.LIGHT_GRAY,
     margin: 10,
