@@ -15,9 +15,14 @@ type DrawerItems = (Partial<DrawerAccordionItem> & {
 
 const drawerItems: DrawerItems = [
   {
+    icon: {name: 'dashboard', type: 'material'},
+    label: 'Dashboard',
+    onPress: navigation => navigation.navigate(ScreenName.Dashboard),
+  },
+  {
     icon: {name: 'account-circle', type: 'material'},
     label: 'Profile',
-    onPress: navigation => navigation.navigate(ScreenName.Dashboard),
+    onPress: navigation => navigation.navigate(ScreenName.Profile),
   },
   {
     icon: {name: 'groups', type: 'material'},

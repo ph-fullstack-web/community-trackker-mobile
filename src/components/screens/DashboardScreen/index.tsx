@@ -1,19 +1,44 @@
-import {ScrollView} from 'react-native-gesture-handler';
-
-import {AppContainer, ScreenHeader} from 'components/atoms';
-import {MemberDetailForm} from 'components/organisms';
+import {AppCardObject} from 'components/molecules';
+import {DashboardTemplate} from 'components/templates';
 import {useUserDataProvider} from 'providers/UserDataProvider';
 
 export const DashboardScreen = () => {
   const {user} = useUserDataProvider();
-  const dashboardTitle = `Hi, ${user?.username}`;
+
+  const applications: AppCardObject[] = [
+    {
+      title: 'My Community',
+      icon: {
+        name: 'people',
+        type: 'material',
+        size: 50,
+        color: 'white',
+      },
+      onPress: () => console.log('My Community'),
+    },
+    {
+      title: 'CEC Tracker',
+      icon: {
+        name: 'notebook',
+        type: 'simple-line-icon',
+        size: 50,
+        color: 'white',
+      },
+      onPress: () => console.log('CEC Tracker'),
+    },
+    {
+      title: 'Skill Tree',
+      icon: {
+        name: 'account-tree',
+        type: 'material',
+        size: 50,
+        color: 'white',
+      },
+      onPress: () => console.log('Skill Tree'),
+    },
+  ];
 
   return (
-    <AppContainer>
-      <ScrollView keyboardShouldPersistTaps="handled">
-        <ScreenHeader title={dashboardTitle} />
-        <MemberDetailForm />
-      </ScrollView>
-    </AppContainer>
+    <DashboardTemplate applications={applications} numColumns={3} user={user} />
   );
 };

@@ -6,13 +6,14 @@ export enum HTTPMethod {
 }
 
 export enum ScreenName {
-  Communities = 'Communities',
-  Members = 'Members',
   CEC = 'CEC',
-  MembersDetails = 'MembersDetails',
-  Dashboard = 'Dashboard',
-  Report = 'Report',
+  Communities = 'Communities',
   CommunityMembers = 'CommunityMembers',
+  Dashboard = 'Dashboard',
+  Members = 'Members',
+  MembersDetails = 'MembersDetails',
+  Profile = 'Profile',
+  Report = 'Report',
 }
 
 export enum StackScreenName {

@@ -13,6 +13,7 @@ import {
   CommunitiesDashboardScreen,
   Members,
   DashboardScreen,
+  ProfileScreen,
 } from 'components/screens';
 import {CommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 import {
@@ -66,6 +67,7 @@ export const MainNavigation = () => {
             name={ScreenName.Dashboard}
             component={DashboardScreen}
           />
+          <Drawer.Screen name={ScreenName.Profile} component={ProfileScreen} />
           <Drawer.Screen
             name={ScreenName.Communities}
             component={CommunitiesDashboardScreenWrapper}

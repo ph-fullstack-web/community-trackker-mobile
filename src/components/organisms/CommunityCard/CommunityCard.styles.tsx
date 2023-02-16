@@ -3,19 +3,7 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   card_container_template: {
-    flex: 1,
-    flexDirection: 'row',
     margin: 10,
-    backgroundColor: COLORS.WHITE,
-    shadowColor: COLORS.MEDIUM_GRAY,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    borderRadius: 20,
   },
 
   card_details_container: {

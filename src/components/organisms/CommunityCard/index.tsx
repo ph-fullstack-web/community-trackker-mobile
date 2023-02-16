@@ -2,7 +2,7 @@ import {Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {CommunityDetailsModal, MemberProgressChart} from 'components/molecules';
-import {Button} from 'components/atoms';
+import {Button, Card} from 'components/atoms';
 import {COLORS} from 'constants/colors';
 import styles from './CommunityCard.styles';
 
@@ -19,7 +19,7 @@ interface CommunityCardProps {
 
 export const CommunityCard = (props: CommunityCardProps) => {
   return (
-    <View style={styles.card_container_template}>
+    <Card style={styles.card_container_template}>
       <View style={styles.card_details_container}>
         <View style={styles.card_title_container}>
           <Text style={styles.card_title}>{props.name}</Text>
@@ -43,6 +43,6 @@ export const CommunityCard = (props: CommunityCardProps) => {
       <View style={styles.card_chart_container}>
         <MemberProgressChart percentage={props.percentage / 100} />
       </View>
-    </View>
+    </Card>
   );
 };

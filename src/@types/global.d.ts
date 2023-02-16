@@ -19,6 +19,8 @@ declare global {
   export interface Icon {
     name: string;
     type?: string;
+    size?: number;
+    color?: string;
   }
 
   export type IconProps = DefaultIconProps & {

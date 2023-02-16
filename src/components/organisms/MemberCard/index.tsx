@@ -1,6 +1,7 @@
 import {View, Text, Image} from 'react-native';
 
-import {Icon} from '../Icon';
+import {Card} from '../../atoms/Card';
+import {Icon} from '../../atoms/Icon';
 import styles from './MemberCard.styles';
 
 type MemberCardProps = {
@@ -18,7 +19,7 @@ export const MemberCard = (prop: MemberCardProps) => {
   const defaultAvatar = 'https://via.placeholder.com/30.png';
 
   return (
-    <View style={styles.cardContainer}>
+    <Card style={styles.cardContainer}>
       <View style={styles.avatarContainer}>
         <Image
           style={styles.image}
@@ -40,6 +41,6 @@ export const MemberCard = (prop: MemberCardProps) => {
         <Text style={styles.email}>{csvEmail}</Text>
         <Text style={styles.dateHired}>{dateHired}</Text>
       </View>
-    </View>
+    </Card>
   );
 };
