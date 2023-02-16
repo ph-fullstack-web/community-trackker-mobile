@@ -18,7 +18,6 @@ interface CommunityCardProps {
 }
 
 export const CommunityCard = (props: CommunityCardProps) => {
-  console.log(props.percentage);
   return (
     <View style={styles.card_container_template}>
       <View style={styles.card_details_container}>
@@ -42,7 +41,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
         />
       </View>
       <View style={styles.card_chart_container}>
-        <MemberProgressChart percentage={props.percentage} />
+        <MemberProgressChart percentage={props.percentage / 100} />
       </View>
     </View>
   );
