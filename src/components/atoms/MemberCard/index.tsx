@@ -21,11 +21,7 @@ export const MemberCard = (prop: MemberCardProps) => {
     <View style={styles.cardContainer}>
       <View style={styles.avatarContainer}>
         <Image
-          style={{
-            width: 60,
-            height: 60,
-            borderRadius: 50,
-          }}
+          style={styles.image}
           source={{
             uri: image ?? defaultAvatar,
           }}

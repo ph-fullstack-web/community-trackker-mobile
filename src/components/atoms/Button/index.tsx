@@ -1,35 +1,16 @@
 import {
-  PressableProps,
-  TextProps,
-  Pressable as DefaultPressable,
-  Text as DefaultText,
-  View as DefaultView,
-} from 'react-native';
+  Button as DefaultButton,
+  ButtonProps as DefaultButtonProps,
+} from '@rneui/base';
+import {COLORS} from 'constants/colors';
 
 type ThemeProps = {
   lightColor?: string;
   darkColor?: string;
 };
 
-type ButtonText = {
-  text: string
-  textStyle: object
-}
-
-export type ButtonProps = ThemeProps &
-  ButtonText &
-  DefaultView['props'] &
-  PressableProps &
-  TextProps;
+export type ButtonProps = ThemeProps & DefaultButtonProps;
 
 export const Button = (props: ButtonProps) => {
-  const {style, textStyle, onPress, text} = props;
-
-  return (
-    <DefaultView style={style}>
-      <DefaultPressable onPress={onPress}>
-        <DefaultText style={textStyle}>{text}</DefaultText>
-      </DefaultPressable>
-    </DefaultView>
-  );;
+  return <DefaultButton {...props} />;
 };

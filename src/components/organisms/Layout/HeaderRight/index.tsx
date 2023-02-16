@@ -1,11 +1,15 @@
-import {ButtonWithIcon} from 'components/atoms';
+import {Button} from 'components/atoms';
+import styles from './HeaderRight.styles';
 
 export const HeaderRight = () => {
   return (
-    <ButtonWithIcon
+    <Button
+      buttonStyle={styles.button}
       onPress={() => console.log('logging out')}
-      name="logout"
-      type="material"
+      icon={{
+        name: 'logout',
+        type: 'material',
+      }}
     />
   );
 };

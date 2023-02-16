@@ -2,12 +2,13 @@ import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {useNavigation, useNavigationState} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-import {ButtonWithIcon} from 'components/atoms';
+import {Button} from 'components/atoms';
 import {ScreenName, StackScreenName} from 'constants/enums';
 import {
   RootDrawerParamList,
   RootNativeStackParamList,
 } from '../../../../@types/navigation';
+import styles from './HeaderLeft.styles';
 
 type HeaderLeftDrawerNavigationProp = DrawerNavigationProp<RootDrawerParamList>;
 type HeaderLeftStackNavigationProp =
@@ -45,11 +46,25 @@ export const HeaderLeft = () => {
 
   if (currentRoute?.state?.index) {
     return (
-      <ButtonWithIcon onPress={handleGoBack} name="west" type="material" />
+      <Button
+        onPress={handleGoBack}
+        icon={{
+          name: 'west',
+          type: 'material',
+        }}
+        buttonStyle={styles.button}
+      />
     );
   }
 
   return (
-    <ButtonWithIcon onPress={handleToggleDrawer} name="menu" type="material" />
+    <Button
+      onPress={handleToggleDrawer}
+      icon={{
+        name: 'menu',
+        type: 'material',
+      }}
+      buttonStyle={styles.button}
+    />
   );
 };

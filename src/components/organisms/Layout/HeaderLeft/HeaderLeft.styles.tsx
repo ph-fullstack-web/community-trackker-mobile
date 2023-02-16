@@ -1,9 +1,9 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
-  not_expanded_header: {
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
+  button: {
+    backgroundColor: COLORS.TRANSPARENT,
   },
 });
 

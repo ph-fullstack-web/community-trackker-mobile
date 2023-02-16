@@ -1,3 +1,4 @@
+import {COLORS} from 'constants/colors';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -6,8 +7,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  info_button:{
-    marginTop:4,
+  info_button: {
+    backgroundColor: COLORS.TRANSPARENT,
   },
   modalView: {
     margin: 20,
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     elevation: 2,
     paddingHorizontal: 9,
     paddingVertical: 5,
-    borderRadius: 7
+    borderRadius: 7,
   },
   buttonClose: {
     backgroundColor: '#2196F3',

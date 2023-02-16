@@ -1,15 +1,16 @@
+import {COLORS} from 'constants/colors';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     height: '100%',
-    paddingBottom: 60
+    paddingBottom: 60,
   },
   accordion_container: {
     borderWidth: 1,
     borderColor: '#ccc',
     margin: 10,
-    borderRadius: 15
+    borderRadius: 15,
   },
   form_header: {
     padding: 10,
@@ -17,21 +18,20 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
     backgroundColor: '#ddd',
     borderTopLeftRadius: 15,
-    borderTopRightRadius: 15
+    borderTopRightRadius: 15,
+  },
+  community_button_container: {
+    marginTop: 3,
+    paddingVertical: 5,
+    paddingHorizontal: 9,
   },
   community_button: {
-    marginTop: 3,
-    backgroundColor: "#0d6fc3",
-    borderWidth: 1,
-    borderColor: '#ddd',
-    paddingVertical: 7,
-    paddingHorizontal: 9,
-    borderRadius: 7,
+    borderRadius: 20,
   },
   button_text: {
+    color: COLORS.VERY_LIGHT_GRAY,
     textAlign: 'center',
-    fontWeight: '500',
-    color: '#fff'
+    fontSize: 13,
   },
   toggle: {
     height: 30,

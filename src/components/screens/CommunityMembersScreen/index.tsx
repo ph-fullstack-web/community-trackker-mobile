@@ -12,14 +12,14 @@ import {useCommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 
 type CommunityMembersScreenRouteProp = RouteProp<
   RootNativeStackParamList,
-  StackScreenName.CommunityMembers
+  StackScreenName.CommunityMembersStack
 >;
 
 export const CommunityMembersScreen = () => {
   const route = useRoute<CommunityMembersScreenRouteProp>();
   const {communityList} = useCommunitiesDataProvider();
 
-  const {communityId} = route.params as Community;
+  const {communityId} = route.params as {communityId: number};
 
   const [community, setCommunity] = useState<Community>();
   const [filteredMembers, setFilteredMembers] = useState<Employee[]>([]);

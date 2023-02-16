@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   searchContainer: {
@@ -9,16 +10,26 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 0.8,
     borderRadius: 50,
-    borderColor: '#dadce0',
-    borderStyle: 'solid',
-    borderWidth: 1,
+    backgroundColor: COLORS.WHITE,
+    shadowColor: COLORS.MEDIUM_GRAY,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
     paddingHorizontal: 20,
   },
-  searchButton: {
+  searchButtonContainer: {
     flex: 0.15,
     justifyContent: 'center',
-    borderRadius: 50,
-    backgroundColor: '#6AA2DC',
+  },
+  searchButton: {
+    width: 45,
+    height: 45,
+    borderRadius: 30,
+    backgroundColor: COLORS.TRANSPARENT,
   },
 });
 

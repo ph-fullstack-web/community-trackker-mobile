@@ -21,13 +21,13 @@ export const ProgressChart = ({
     layout === 'vertical' ? styles.veticalLabel : styles.horizontalLabel;
 
   return (
-    <View style={{...styles.container, backgroundColor}}>
+    <View style={{...styles.container}}>
       <RNProgressChart
         data={data}
         width={width}
         height={height}
         strokeWidth={strokeWidth}
-        style={{...styles.chart, ...customStyles, backgroundColor}}
+        style={{...styles.chart, ...customStyles}}
         radius={radius}
         chartConfig={{
           color: () => strokeColor,
@@ -47,5 +47,5 @@ ProgressChart.defaultProps = {
   height: 220,
   radius: 60,
   strokeWidth: 16,
-  backgroundColor: COLORS.LIGHT_BLUE,
+  backgroundColor: COLORS.WHITE,
 };

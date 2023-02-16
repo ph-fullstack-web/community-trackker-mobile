@@ -1,8 +1,7 @@
 import {useState} from 'react';
 import {Modal, Pressable, Text, View} from 'react-native';
 
-import {ButtonWithIcon} from 'components/atoms';
-
+import {Button} from 'components/atoms';
 import styles from './CommunityDetailsModal.styles';
 
 interface CommunityDetailsModalProps {
@@ -13,13 +12,15 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <View>
-      <ButtonWithIcon
+    <>
+      <Button
+        icon={{
+          name: 'information',
+          type: 'material-community',
+          size: 15,
+        }}
+        buttonStyle={styles.info_button}
         onPress={() => setModalVisible(!modalVisible)}
-        name="information"
-        type="material-community"
-        size={35}
-        style={styles.info_button}
       />
 
       <View style={styles.centeredView}>
@@ -45,6 +46,6 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
           </View>
         </Modal>
       </View>
-    </View>
+    </>
   );
 };
