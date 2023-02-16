@@ -1,7 +1,7 @@
 import {useState} from 'react';
-import {Modal, Pressable, Text, TouchableHighlight, View} from 'react-native';
+import {Modal, Pressable, Text, View} from 'react-native';
 
-import {Icon} from 'components/atoms';
+import {ButtonWithIcon} from 'components/atoms';
 
 import styles from './CommunityDetailsModal.styles';
 
@@ -10,23 +10,17 @@ interface CommunityDetailsModalProps {
 }
 
 export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
-  const [isPress, setIsPress] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-
-  const touchProps = {
-    activeOpacity: 1,
-    underlayColor: '#ddd',
-    style: isPress ? styles.is_pressed : styles.not_pressed,
-    onHideUnderlay: () => setIsPress(false),
-    onShowUnderlay: () => setIsPress(true),
-    onPress: () => setModalVisible(!modalVisible),
-  };
 
   return (
     <View>
-      <TouchableHighlight {...touchProps}>
-        <Icon name="information" type="material-community" size={35} />
-      </TouchableHighlight>
+      <ButtonWithIcon
+        onPress={() => setModalVisible(!modalVisible)}
+        name="information"
+        type="material-community"
+        size={35}
+        style={styles.info_button}
+      />
 
       <View style={styles.centeredView}>
         <Modal

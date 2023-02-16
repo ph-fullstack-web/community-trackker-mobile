@@ -59,7 +59,8 @@ const DetailForm = () => {
 
       <View style={styles.community_button}>
         <Button
-          title="View Community Info"
+          text="View Community Info"
+          textStyle={styles.button_text}
           onPress={() => console.log('HELLO')}
         />
       </View>

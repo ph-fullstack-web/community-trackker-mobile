@@ -7,6 +7,7 @@ export * from './Divider';
 export * from './DrawerItem';
 export * from './Icon';
 export * from './MemberCard';
+export * from './ProgressChart';
 export * from './ScreenHeader';
 export * from './TextInput';
 export * from './Typeahead';

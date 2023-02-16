@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     borderColor: '#c5c5c5',
     borderStyle: 'solid',
     borderWidth: 1,
+    borderRadius: 15,
     flex: 1,
     backgroundColor: '#ddd',
     margin: 10,
@@ -21,8 +22,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   header: {
-    paddingVertical: 15,
-    paddingHorizontal: 10,
+    padding: 15,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     height: 30,
   },
   footer: {
-    padding: 10,
+    padding: 15,
   },
   horizontal_layout: {
     flexDirection: 'row',

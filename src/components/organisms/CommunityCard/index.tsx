@@ -2,8 +2,8 @@ import {Image, Text, View} from 'react-native';
 
 import {
   CommunityDetailsModal,
-  ProgressChart,
   ViewMembersButton,
+  MemberProgressChart,
 } from 'components/molecules';
 import styles from './CommunityCard.styles';
 
@@ -74,7 +74,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
         managerName={props.managerName}
       />
 
-      <ProgressChart title="-Chart goes here-" />
+      <MemberProgressChart percentage={Math.random()} />
 
       <CommunityCardFooter
         description={props.description}

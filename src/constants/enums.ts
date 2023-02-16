@@ -23,4 +23,5 @@ export enum StackScreenName {
 export enum ScreenTitle {
   Communities = 'Communities',
   Members = 'Members',
+  Profile = 'Profile'
 }
