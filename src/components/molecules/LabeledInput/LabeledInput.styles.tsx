@@ -1,3 +1,4 @@
+import {COLORS} from 'constants/colors';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
   },
   textfield: {
     borderWidth: 1,
-    borderColor: '#bbb',
+    borderColor: COLORS.LIGHT_GRAY,
     borderStyle: 'solid',
     paddingHorizontal: 9,
     paddingVertical: 3,

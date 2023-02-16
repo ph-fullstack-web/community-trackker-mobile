@@ -8,15 +8,15 @@ const styles = StyleSheet.create({
   },
   accordion_container: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: COLORS.LIGHT_GRAY,
     margin: 10,
     borderRadius: 15,
   },
   form_header: {
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    backgroundColor: '#ddd',
+    borderBottomColor: COLORS.LIGHT_GRAY,
+    backgroundColor: COLORS.LIGHT_GRAY,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   toggleText: {
-    color: '#fff',
+    color: COLORS.WHITE,
   },
 });
 

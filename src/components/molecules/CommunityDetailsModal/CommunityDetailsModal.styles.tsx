@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 35,
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: COLORS.BLACK,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
   },
   buttonClose: {
-    backgroundColor: '#2196F3',
+    backgroundColor: COLORS.DARK_BLUE,
   },
   textStyle: {
     color: 'white',
