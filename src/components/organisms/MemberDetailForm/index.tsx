@@ -63,21 +63,23 @@ const DetailForm = () => {
         value={community}
         onValueChange={setCommunity}
       />
-
       <View style={styles.community_button}>
-        <Button
-          title="View Community Info"
-          titleStyle={styles.button_text}
-          containerStyle={styles.community_button_container}
-          buttonStyle={styles.community_button}
-          ViewComponent={LinearGradient}
-          linearGradientProps={{
-            colors: [COLORS.DARK_PLUM, COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE],
-            start: {x: 0, y: 0.5},
-            end: {x: 1, y: 0.5},
-          }}
-          onPress={() => console.log('HELLO')}
-        />
+        <View style={styles.community_button_empty_container}></View>
+        <View style={styles.community_button_view_container}>
+          <Button
+            title="View Community Info"
+            titleStyle={styles.button_text}
+            containerStyle={styles.community_button_container}
+            buttonStyle={styles.community_button_style}
+            ViewComponent={LinearGradient}
+            linearGradientProps={{
+              colors: [COLORS.DARK_PLUM, COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE],
+              start: {x: 0, y: 0.5},
+              end: {x: 1, y: 0.5},
+            }}
+            onPress={() => console.log('HELLO')}
+          />
+        </View>
       </View>
 
       <LabeledInput

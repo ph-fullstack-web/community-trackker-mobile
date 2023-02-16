@@ -21,12 +21,24 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
+  formContainer: {
+    marginVertical: 15,
+  },
+  community_button: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  community_button_empty_container: {
+    flex: 0.3,
+  },
+  community_button_view_container: {
+    flex: 0.7,
+  },
   community_button_container: {
-    marginTop: 3,
     paddingVertical: 5,
     paddingHorizontal: 9,
   },
-  community_button: {
+  community_button_style: {
     borderRadius: 20,
   },
   button_text: {
