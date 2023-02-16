@@ -4,6 +4,8 @@ import {
   Pressable as DefaultPressable,
   Text as DefaultText,
   View as DefaultView,
+  TextStyle,
+  StyleProp,
 } from 'react-native';
 
 type ThemeProps = {
@@ -12,9 +14,9 @@ type ThemeProps = {
 };
 
 type ButtonText = {
-  text: string
-  textStyle: object
-}
+  text: string;
+  textStyle?: StyleProp<TextStyle>;
+};
 
 export type ButtonProps = ThemeProps &
   ButtonText &
@@ -31,5 +33,5 @@ export const Button = (props: ButtonProps) => {
         <DefaultText style={textStyle}>{text}</DefaultText>
       </DefaultPressable>
     </DefaultView>
-  );;
+  );
 };

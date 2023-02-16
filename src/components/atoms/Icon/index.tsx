@@ -1,4 +1,4 @@
-import {Icon as DefaultIcon, IconProps} from '@rneui/themed';
+import {Icon as DefaultIcon} from '@rneui/themed';
 
 export const Icon = (props: IconProps) => {
   return <DefaultIcon {...props} />;

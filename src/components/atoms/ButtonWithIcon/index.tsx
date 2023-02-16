@@ -3,7 +3,6 @@ import {
   View as DefaultView,
   Pressable as DefaultPressable,
 } from 'react-native';
-import {IconProps} from '@rneui/themed';
 import {Icon} from '../Icon';
 
 type ThemeProps = {

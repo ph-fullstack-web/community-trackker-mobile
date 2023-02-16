@@ -15,6 +15,14 @@ type CommunityMembersScreenRouteProp = RouteProp<
   StackScreenName.CommunityMembers
 >;
 
+const NoResult = () => {
+  return (
+    <View style={styles.noResultContainer}>
+      <Text style={styles.noResultText}>No Members Found</Text>
+    </View>
+  );
+};
+
 export const CommunityMembersScreen = () => {
   const route = useRoute<CommunityMembersScreenRouteProp>();
   const {communityList} = useCommunitiesDataProvider();
@@ -27,13 +35,11 @@ export const CommunityMembersScreen = () => {
   useEffect(() => {
     if (communityId) {
       const communities: Community[] =
-        communityList?.filter(
-          community => community.communityId === communityId
-        ) ?? [];
+        communityList?.filter(item => item.communityId === communityId) ?? [];
 
       setCommunity(() => communities[0]);
     }
-  }, [communityId]);
+  }, [communityId, communityList]);
 
   useEffect(() => {
     setFilteredMembers(() => community?.members ?? []);
@@ -55,14 +61,6 @@ export const CommunityMembersScreen = () => {
     }
   };
 
-  const NoResult = () => {
-    return (
-      <View style={styles.noResultContainer}>
-        <Text style={styles.noResultText}>No Members Found</Text>
-      </View>
-    );
-  };
-
   return (
     <AppContainer>
       <ScreenHeader
@@ -81,10 +79,8 @@ export const CommunityMembersScreen = () => {
               nestedScrollEnabled
               data={filteredMembers}
               keyExtractor={item => item.employeeId.toString()}
-              renderItem={({item}) => {
-                return <MemberCard memberDetails={item} />;
-              }}
-            ></FlatList>
+              renderItem={({item}) => <MemberCard memberDetails={item} />}
+            />
           )}
         </>
       )}
