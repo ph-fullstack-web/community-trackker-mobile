@@ -18,6 +18,8 @@ export const MemberDetailForm = () => {
           >
             <DetailForm />
           </Accordion>
+        </View>
+        <View style={styles.accordion_container}>
           <Accordion 
             headerLabel="Skills"
             headerStyle={styles.form_header}
@@ -58,15 +60,14 @@ const DetailForm = () => {
         placeholder="Community name"
         value={community}
         onValueChange={setCommunity}
-        button={
-          <View style={styles.community_button}>
-            <Button
-              title="View Community Info"
-              onPress={() => console.log('HELLO')}
-            />
-          </View>
-        }
-      />
+      >
+        <Button
+          text="View Community Info"
+          onPress={() => console.log('HELLO')}
+          style={styles.community_button}
+          textStyle={styles.button_text}
+        />
+      </LabeledInput>
 
       <LabeledInput
         label="Manager"

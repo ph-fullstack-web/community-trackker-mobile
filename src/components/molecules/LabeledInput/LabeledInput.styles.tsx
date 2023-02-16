@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     paddingHorizontal: 9,
     paddingVertical: 3,
+    borderRadius: 7,
     marginTop: 10,
   },
   label_width: {
