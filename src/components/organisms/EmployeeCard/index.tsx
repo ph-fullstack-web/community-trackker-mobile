@@ -1,9 +1,31 @@
-import {Text} from 'react-native';
+import {Image,Text, View} from 'react-native';
 
-type EmployeeCardProps = {
-  title: string;
-};
+import styles from './EmployeeCard.styles';
 
-export const EmployeeCard = ({title}: EmployeeCardProps) => {
-  return <Text>{title}</Text>;
+const id= '0000000';
+const name='Employee Name';
+const jobtitle ='Title';
+const community= 'Community';
+const defaultAvatar = 'https://via.placeholder.com/100.png';
+
+export const EmployeeCard = () => {
+  return (
+    <>
+      <View style={styles.card}>
+        <View style={styles.horizontal_layout}>
+          <Image
+            style={styles.profile_picture}
+            source={{
+              uri: defaultAvatar,
+            }}
+          />
+          <View>
+            <Text>{name}</Text>
+            <Text>#{id} - {jobtitle}</Text>
+            <Text>{community}</Text>
+          </View>
+        </View>
+      </View>
+    </>
+  );
 };
