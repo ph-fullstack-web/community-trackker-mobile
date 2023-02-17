@@ -4,7 +4,6 @@ import {MainNavigation} from 'navigation/MainNavigation';
 import {AppProvider} from 'providers/AppProvider';
 
 const App = () => {
-  console.log('hi there');
   return (
     <AppProvider>
       <SafeAreaView style={styles.container}>
