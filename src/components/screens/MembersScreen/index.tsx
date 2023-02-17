@@ -1,12 +1,5 @@
-import {Text} from 'react-native';
+import {MembersTemplate} from 'components/templates';
 
-import {AppContainer} from 'components/atoms';
-import styles from './MembersScreen.styles';
-
-export const Members = () => {
-  return (
-    <AppContainer>
-      <Text style={styles.text}>Members</Text>
-    </AppContainer>
-  );
+export const MembersScreen = () => {
+  return <MembersTemplate />;
 };

@@ -11,7 +11,7 @@ import {
 import {
   CECDashboardScreen,
   CommunitiesDashboardScreen,
-  Members,
+  MembersScreen,
   DashboardScreen,
   ProfileScreen,
 } from 'components/screens';
@@ -76,7 +76,7 @@ export const MainNavigation = () => {
             name={ScreenName.CommunityMembers}
             component={CommunityMembersScreen}
           />
-          <Drawer.Screen name={ScreenName.Members} component={Members} />
+          <Drawer.Screen name={ScreenName.Members} component={MembersScreen} />
           <Drawer.Screen name={ScreenName.CEC} component={CECDashboardScreen} />
         </Drawer.Navigator>
       </CommunitiesDataProvider>
