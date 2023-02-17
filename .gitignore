@@ -34,6 +34,7 @@ project.xcworkspace
 # IOS
 ios/build
 ios/Pods
+vendor/
 
 # Android/IJ
 android/.gradle
