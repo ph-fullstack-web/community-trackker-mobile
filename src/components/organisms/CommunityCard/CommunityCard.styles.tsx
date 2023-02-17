@@ -1,45 +1,44 @@
+import {COLORS} from 'constants/colors';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  bold_text: {
+  card_container_template: {
+    margin: 10,
+  },
+
+  card_details_container: {
+    flex: 0.8,
+    paddingVertical: 15,
+    paddingRight: 15,
+    paddingLeft: 30,
+  },
+  card_title_container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  card_title: {
     fontWeight: 'bold',
   },
-  card_template: {
-    borderColor: '#c5c5c5',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderRadius: 15,
-    flex: 1,
-    backgroundColor: '#ddd',
-    margin: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+  buttonContainer: {
+    marginTop: 15,
   },
-  header: {
-    padding: 15,
-    flexDirection: 'row',
-    alignItems: 'center',
+  button: {
+    padding: 5,
+    borderRadius: 20,
+    width: 130,
+    backgroundColor: COLORS.TRANSPARENT,
   },
-  thumbnail: {
-    paddingRight: 20,
+  buttonText: {
+    color: COLORS.VERY_LIGHT_GRAY,
+    textAlign: 'center',
+    fontSize: 13,
   },
-  thumbanil_size: {
-    width: 30,
-    height: 30,
-  },
-  footer: {
-    padding: 15,
-  },
-  horizontal_layout: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+
+  card_chart_container: {
+    flex: 0.2,
+    paddingVertical: 15,
+    paddingLeft: 15,
+    paddingRight: 30,
   },
 });
 

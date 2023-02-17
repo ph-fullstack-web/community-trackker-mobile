@@ -1,3 +1,4 @@
+import {COLORS} from 'constants/colors';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -6,7 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 10,
-    borderBottomColor: '#ccc',
+    borderBottomColor: COLORS.LIGHT_GRAY,
     borderBottomWidth: 2,
   },
   headerRight: {

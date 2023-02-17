@@ -1,16 +1,11 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
+  appCardContainer: {
+    flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 24,
-    marginRight: 4,
-  },
-  tooltipText: {
-    color: 'white',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
   },
 });
 

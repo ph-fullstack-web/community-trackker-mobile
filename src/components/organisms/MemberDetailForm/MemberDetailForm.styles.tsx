@@ -1,18 +1,23 @@
+import {COLORS} from 'constants/colors';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    paddingBottom: 60,
+  },
   accordion_container: {
     flex: 1,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: COLORS.LIGHT_GRAY,
     margin: 10,
     borderRadius: 15,
   },
   form_header: {
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    backgroundColor: '#ddd',
+    borderBottomColor: COLORS.LIGHT_GRAY,
+    backgroundColor: COLORS.LIGHT_GRAY,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
@@ -20,22 +25,26 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   community_button: {
-    backgroundColor: '#0d6fc3',
-    borderWidth: 1,
-    borderColor: 'transparent',
-    paddingVertical: 7,
+    flex: 1,
+    flexDirection: 'row',
+  },
+  community_button_empty_container: {
+    flex: 0.3,
+  },
+  community_button_view_container: {
+    flex: 0.7,
+  },
+  community_button_container: {
+    paddingVertical: 5,
     paddingHorizontal: 9,
-    borderRadius: 7,
-    marginTop: -10,
-    marginBottom: 15,
-    marginRight: 10,
-    width: '66%',
-    alignSelf: 'flex-end',
+  },
+  community_button_style: {
+    borderRadius: 20,
   },
   button_text: {
+    color: COLORS.VERY_LIGHT_GRAY,
     textAlign: 'center',
-    fontWeight: '500',
-    color: '#fff',
+    fontSize: 13,
   },
   toggle: {
     height: 30,
@@ -44,7 +53,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   toggleText: {
-    color: '#fff',
+    color: COLORS.WHITE,
   },
 });
 

@@ -5,14 +5,21 @@ export enum HTTPMethod {
   DELETE = 'DELETE',
 }
 
-export enum ScreenName {
-  Communities = 'Communities',
-  Members = 'Members',
-  CEC = 'CEC',
-  MembersDetails = 'MembersDetails',
+export enum MainStackScreenName {
   Dashboard = 'Dashboard',
-  Report = 'Report',
+  MyCommunities = 'MyCommunities',
+}
+
+// My Communities Screen
+
+export enum ScreenName {
+  CEC = 'CEC',
+  Communities = 'Communities',
   CommunityMembers = 'CommunityMembers',
+  Members = 'Members',
+  MembersDetails = 'MembersDetails',
+  Profile = 'Profile',
+  Report = 'Report',
 }
 
 export enum StackScreenName {
@@ -23,5 +30,5 @@ export enum StackScreenName {
 export enum ScreenTitle {
   Communities = 'Communities',
   Members = 'Members',
-  Profile = 'Profile'
+  Profile = 'Profile',
 }

@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -6,16 +7,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  info_button:{
-    marginTop:4,
+  info_button: {
+    backgroundColor: COLORS.TRANSPARENT,
   },
   modalView: {
     margin: 20,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
     borderRadius: 10,
     padding: 35,
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: COLORS.BLACK,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -32,13 +33,13 @@ const styles = StyleSheet.create({
     elevation: 2,
     paddingHorizontal: 9,
     paddingVertical: 5,
-    borderRadius: 7
+    borderRadius: 7,
   },
   buttonClose: {
-    backgroundColor: '#2196F3',
+    backgroundColor: COLORS.DARK_BLUE,
   },
   textStyle: {
-    color: 'white',
+    color: COLORS.WHITE,
     fontWeight: 'bold',
     textAlign: 'center',
   },

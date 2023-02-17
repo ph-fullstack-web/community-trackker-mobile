@@ -11,20 +11,61 @@ import {
 import {
   CECDashboardScreen,
   CommunitiesDashboardScreen,
-  Members,
+  MembersScreen,
   DashboardScreen,
+  ProfileScreen,
 } from 'components/screens';
 import {CommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 import {
+  MainRootNativeStackParamList,
   RootDrawerParamList,
   RootNativeStackParamList,
 } from '../@types/navigation';
 import styles from './MainNavigation.styles';
-import {ScreenName, StackScreenName} from 'constants/enums';
+import {
+  MainStackScreenName,
+  ScreenName,
+  StackScreenName,
+} from 'constants/enums';
 import {CommunityMembersScreen} from 'components/screens/CommunityMembersScreen';
 
-const Drawer = createDrawerNavigator<RootDrawerParamList>();
+const MainStack = createNativeStackNavigator<MainRootNativeStackParamList>();
 const Stack = createNativeStackNavigator<RootNativeStackParamList>();
+const Drawer = createDrawerNavigator<RootDrawerParamList>();
+
+const MyCommunitiesDrawerWrapper = () => {
+  return (
+    <CommunitiesDataProvider>
+      <Drawer.Navigator
+        initialRouteName={ScreenName.Profile}
+        screenOptions={{
+          headerBackground: HeaderBackground,
+          headerRight: HeaderRight,
+          headerLeft: HeaderLeft,
+          headerBackgroundContainerStyle: styles.header,
+          headerRightContainerStyle: styles.headerRight,
+          headerLeftContainerStyle: styles.headerLeft,
+          headerTitle: '',
+          drawerType: 'slide',
+          swipeEdgeWidth: 200,
+        }}
+        drawerContent={DrawerContent}
+      >
+        <Drawer.Screen name={ScreenName.Profile} component={ProfileScreen} />
+        <Drawer.Screen
+          name={ScreenName.Communities}
+          component={CommunitiesDashboardScreenWrapper}
+        />
+        <Drawer.Screen
+          name={ScreenName.CommunityMembers}
+          component={CommunityMembersScreen}
+        />
+        <Drawer.Screen name={ScreenName.Members} component={MembersScreen} />
+        <Drawer.Screen name={ScreenName.CEC} component={CECDashboardScreen} />
+      </Drawer.Navigator>
+    </CommunitiesDataProvider>
+  );
+};
 
 const CommunitiesDashboardScreenWrapper = () => {
   return (
@@ -46,38 +87,18 @@ const CommunitiesDashboardScreenWrapper = () => {
 export const MainNavigation = () => {
   return (
     <NavigationContainer>
-      <CommunitiesDataProvider>
-        <Drawer.Navigator
-          initialRouteName={ScreenName.Dashboard}
-          screenOptions={{
-            headerBackground: HeaderBackground,
-            headerRight: HeaderRight,
-            headerLeft: HeaderLeft,
-            headerBackgroundContainerStyle: styles.header,
-            headerRightContainerStyle: styles.headerRight,
-            headerLeftContainerStyle: styles.headerLeft,
-            headerTitle: '',
-            drawerType: 'slide',
-            swipeEdgeWidth: 200,
-          }}
-          drawerContent={DrawerContent}
-        >
-          <Drawer.Screen
-            name={ScreenName.Dashboard}
-            component={DashboardScreen}
-          />
-          <Drawer.Screen
-            name={ScreenName.Communities}
-            component={CommunitiesDashboardScreenWrapper}
-          />
-          <Drawer.Screen
-            name={ScreenName.CommunityMembers}
-            component={CommunityMembersScreen}
-          />
-          <Drawer.Screen name={ScreenName.Members} component={Members} />
-          <Drawer.Screen name={ScreenName.CEC} component={CECDashboardScreen} />
-        </Drawer.Navigator>
-      </CommunitiesDataProvider>
+      <MainStack.Navigator initialRouteName={MainStackScreenName.Dashboard}>
+        <MainStack.Screen
+          name={MainStackScreenName.Dashboard}
+          component={DashboardScreen}
+          options={{headerShown: false}}
+        />
+        <MainStack.Screen
+          name={MainStackScreenName.MyCommunities}
+          component={MyCommunitiesDrawerWrapper}
+          options={{headerShown: false}}
+        />
+      </MainStack.Navigator>
     </NavigationContainer>
   );
 };

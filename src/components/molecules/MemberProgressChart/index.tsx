@@ -1,4 +1,4 @@
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {ProgressChart} from 'components/atoms';
 import {ProgressChartLayout} from 'components/atoms/ProgressChart/ProgressChart.types';
 import styles from './MemberProgressChart.styles';
@@ -12,7 +12,7 @@ type ProgressChartProps = {
 
 export const MemberProgressChart = ({
   percentage,
-  color = COLORS.BLUE,
+  color = COLORS.DARK_BLUE,
   layout = 'horizontal',
 }: ProgressChartProps) => {
   const data = {
@@ -24,14 +24,14 @@ export const MemberProgressChart = ({
 
   const verticalProps = {
     height: 130,
-    strokeWidth: 16,
+    strokeWidth: 10,
     radius: 45,
   };
 
   const horizontalProps = {
     height: 90,
-    strokeWidth: 16,
-    radius: 20,
+    strokeWidth: 10,
+    radius: 28,
     width: 80,
   };
 
@@ -42,17 +42,16 @@ export const MemberProgressChart = ({
       <ProgressChart
         layout={layout}
         data={data}
-        strokeColor={COLORS.DARK_GRAY}
-        backgroundColor={COLORS.LIGHT_BLUE}
+        strokeColor={COLORS.LIGHT_GRAY}
         {...sizeProps}
       >
-        <>
+        {/* <>
           <Text style={styles.percentage}>
             {displayPercentage}
             <Text style={styles.percent}>%</Text>
           </Text>
           <Text>Members</Text>
-        </>
+        </> */}
       </ProgressChart>
     </View>
   );

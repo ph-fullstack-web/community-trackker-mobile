@@ -1,5 +1,28 @@
 export const COLORS = {
-  LIGHT_BLUE: '#eaf1fa',
-  BLUE: '#2f78c4',
-  DARK_GRAY: '#b6bbc2',
+  TRANSPARENT: 'transparent',
+  BLACK: '#000000',
+
+  //CSV Accent Colors
+  WHITE: '#FFFFFF',
+  MIDNIGHT_BLUE: '#000048',
+  DARK_BLUE: '#2F78C4',
+  MEDIUM_BLUE: '#6AA2DC',
+  LIGHT_BLUE: '#92BBE6',
+  DARK_PLUM: '#2E308E',
+  MEDIUM_PLUM: '#7373D8',
+  LIGHT_PLUM: '#85A0F9',
+  DARK_TEAL: '#06C7CC',
+  MEDIUM_TEAL: '#26EFE9',
+  LIGHT_TEAL: '#97F5F7',
+
+  //CSV Neutral Colors
+  DARK_GRAY: '#53565A',
+  MEDIUM_GRAY: '#97999B',
+  LIGHT_GRAY: '#D0D0CE',
+  VERY_LIGHT_GRAY: '#EFEFEE',
+  ULTRA_LIGHT_GRAY: '#F6F6F5',
+
+  //CSV Highlight Colors
+  HIGHLIGHT_RED: '#B81F2D',
+  HIGHLIGHT_YELLOW: '#E9C71D',
 };
