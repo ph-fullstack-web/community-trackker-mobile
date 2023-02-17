@@ -1,5 +1,5 @@
-import {COLORS} from 'constants/colors';
 import {StyleSheet} from 'react-native';
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
     borderRadius: 10,
     padding: 35,
     alignItems: 'center',
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.DARK_BLUE,
   },
   textStyle: {
-    color: 'white',
+    color: COLORS.WHITE,
     fontWeight: 'bold',
     textAlign: 'center',
   },

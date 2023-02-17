@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     top: 40,
     width: '97%',
     zIndex: 1,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.WHITE,
     maxHeight: 150,
   },
   resultContentContainer: {

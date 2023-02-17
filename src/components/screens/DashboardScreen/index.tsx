@@ -1,5 +1,6 @@
 import {AppCardObject} from 'components/molecules';
 import {DashboardTemplate} from 'components/templates';
+import {COLORS} from 'constants/colors';
 import {useUserDataProvider} from 'providers/UserDataProvider';
 
 export const DashboardScreen = () => {
@@ -12,7 +13,7 @@ export const DashboardScreen = () => {
         name: 'people',
         type: 'material',
         size: 50,
-        color: 'white',
+        color: COLORS.ULTRA_LIGHT_GRAY,
       },
       onPress: () => console.log('My Community'),
     },
@@ -22,7 +23,7 @@ export const DashboardScreen = () => {
         name: 'notebook',
         type: 'simple-line-icon',
         size: 50,
-        color: 'white',
+        color: COLORS.ULTRA_LIGHT_GRAY,
       },
       onPress: () => console.log('CEC Tracker'),
     },
@@ -32,7 +33,7 @@ export const DashboardScreen = () => {
         name: 'account-tree',
         type: 'material',
         size: 50,
-        color: 'white',
+        color: COLORS.ULTRA_LIGHT_GRAY,
       },
       onPress: () => console.log('Skill Tree'),
     },

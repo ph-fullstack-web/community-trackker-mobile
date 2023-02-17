@@ -47,5 +47,5 @@ ProgressChart.defaultProps = {
   height: 220,
   radius: 60,
   strokeWidth: 16,
-  backgroundColor: COLORS.WHITE,
+  backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
 };

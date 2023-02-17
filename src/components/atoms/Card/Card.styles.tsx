@@ -5,8 +5,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: COLORS.WHITE,
-    shadowColor: COLORS.MEDIUM_GRAY,
+    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
+    shadowColor: COLORS.DARK_GRAY,
     shadowOffset: {
       width: 0,
       height: 2,
