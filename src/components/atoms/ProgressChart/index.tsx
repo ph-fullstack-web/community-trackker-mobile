@@ -1,4 +1,3 @@
-import {COLORS} from 'constants/colors';
 import {View} from 'react-native';
 import {ProgressChart as RNProgressChart} from 'react-native-chart-kit';
 
@@ -9,7 +8,6 @@ export const ProgressChart = ({
   data,
   children,
   strokeColor,
-  backgroundColor,
   width,
   height,
   strokeWidth,
@@ -21,7 +19,7 @@ export const ProgressChart = ({
     layout === 'vertical' ? styles.veticalLabel : styles.horizontalLabel;
 
   return (
-    <View style={{...styles.container}}>
+    <>
       <RNProgressChart
         data={data}
         width={width}
@@ -32,13 +30,13 @@ export const ProgressChart = ({
         chartConfig={{
           color: () => strokeColor,
           backgroundGradientFromOpacity: 0,
-          backgroundGradientTo: backgroundColor,
+          backgroundGradientToOpacity: 0,
         }}
         hideLegend
         withCustomBarColorFromData
       />
       {children && <View style={{...labelStyles, height}}>{children}</View>}
-    </View>
+    </>
   );
 };
 
@@ -47,5 +45,4 @@ ProgressChart.defaultProps = {
   height: 220,
   radius: 60,
   strokeWidth: 16,
-  backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
 };

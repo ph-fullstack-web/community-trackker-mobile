@@ -1,7 +1,6 @@
 import {View, Text, Image} from 'react-native';
 
-import {Card} from '../../atoms/Card';
-import {Icon} from '../../atoms/Icon';
+import {Card, Icon} from 'components/atoms';
 import styles from './MemberCard.styles';
 
 type MemberCardProps = {

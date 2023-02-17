@@ -12,6 +12,9 @@ const styles = StyleSheet.create({
   noResultText: {
     fontSize: 20,
   },
+  listContentContainer: {
+    paddingVertical: 5,
+  },
 });
 
 export default styles;

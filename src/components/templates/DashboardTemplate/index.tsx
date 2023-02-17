@@ -1,13 +1,12 @@
 import {View} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
 
 import {AppContainer, ScreenHeader} from 'components/atoms';
 import {AppCard, AppCardObject} from 'components/molecules';
 import {EmployeeDetailsCard} from 'components/organisms';
+import {employeeSet100} from 'mocks/employeeSet100';
 import {User} from 'models/business';
 
 import styles from './DashboardTemplate.styles';
-import {employeeSet100} from 'mocks/employeeSet100';
 
 type DashboardTemplateProps = {
   user: User | undefined;
@@ -29,35 +28,30 @@ export const DashboardTemplate = (props: DashboardTemplateProps) => {
   };
 
   return (
-    <ScrollView keyboardShouldPersistTaps="handled">
-      <AppContainer>
-        <ScreenHeader title={dashboardTitle} />
-        {groupAppCardBySize(props?.applications).map(
-          (parentItem: AppCardObject[], parentIndex: number) => {
-            return (
-              <View key={parentIndex} style={styles.appCardContainer}>
-                {parentItem.map(
-                  (childItem: AppCardObject, childIndex: number) => {
-                    return (
-                      <AppCard
-                        key={childIndex}
-                        title={childItem.title}
-                        icon={childItem.icon}
-                        numColumns={props?.numColumns}
-                        onPress={childItem.onPress}
-                      />
-                    );
-                  }
-                )}
-              </View>
-            );
-          }
-        )}
-        <EmployeeDetailsCard
-          employee={employeeSet100[0]}
-          title={'My Details'}
-        />
-      </AppContainer>
-    </ScrollView>
+    <AppContainer keyboardShouldPersistTaps="handled">
+      <ScreenHeader title={dashboardTitle} />
+      {groupAppCardBySize(props?.applications).map(
+        (parentItem: AppCardObject[], parentIndex: number) => {
+          return (
+            <View key={parentIndex} style={styles.appCardContainer}>
+              {parentItem.map(
+                (childItem: AppCardObject, childIndex: number) => {
+                  return (
+                    <AppCard
+                      key={childIndex}
+                      title={childItem.title}
+                      icon={childItem.icon}
+                      numColumns={props?.numColumns}
+                      onPress={childItem.onPress}
+                    />
+                  );
+                }
+              )}
+            </View>
+          );
+        }
+      )}
+      <EmployeeDetailsCard employee={employeeSet100[0]} title="My Details" />
+    </AppContainer>
   );
 };

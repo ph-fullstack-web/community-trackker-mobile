@@ -11,7 +11,7 @@ export type ProgressChartData = {
 export type ProgressChartProps = ComponentWithChildren & {
   data: ProgressChartData;
   strokeColor: string;
-  backgroundColor: string;
+  backgroundColor?: string;
   width: number;
   height: number;
   radius?: number;

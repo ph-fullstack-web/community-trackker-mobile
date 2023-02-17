@@ -3,7 +3,8 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   cardContainer: {
     justifyContent: 'center',
-    margin: 5,
+    marginHorizontal: 5,
+    marginBottom: 10,
     padding: 20,
   },
   avatarContainer: {

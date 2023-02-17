@@ -1,16 +1,19 @@
-import {COLORS} from 'constants/colors';
 import {StyleSheet} from 'react-native';
+
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   card_container_template: {
-    margin: 10,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    marginVertical: 25,
+    marginHorizontal: 10,
   },
-
   card_details_container: {
-    flex: 0.8,
-    paddingVertical: 15,
-    paddingRight: 15,
-    paddingLeft: 30,
+    flex: 0.55,
+    padding: 15,
   },
   card_title_container: {
     flexDirection: 'row',
@@ -33,12 +36,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 13,
   },
-
   card_chart_container: {
-    flex: 0.2,
-    paddingVertical: 15,
-    paddingLeft: 15,
-    paddingRight: 30,
+    position: 'relative',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 

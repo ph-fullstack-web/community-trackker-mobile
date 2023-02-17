@@ -1,10 +1,17 @@
-import {StyleProp, View, ViewStyle} from 'react-native';
+import {ScrollView, ScrollViewProps} from 'react-native';
+
 import styles from './AppContainer.styles';
 
-type AppContainerProps = ComponentWithChildren & {
-  style?: StyleProp<ViewStyle>;
-};
+type AppContainerProps = ComponentWithChildren & ScrollViewProps;
 
-export const AppContainer = (props: AppContainerProps) => {
-  return <View style={[styles.container, props.style]}>{props.children}</View>;
+export const AppContainer = ({
+  children,
+  style,
+  ...otherProps
+}: AppContainerProps) => {
+  return (
+    <ScrollView {...otherProps} style={[styles.container, style]}>
+      {children}
+    </ScrollView>
+  );
 };
