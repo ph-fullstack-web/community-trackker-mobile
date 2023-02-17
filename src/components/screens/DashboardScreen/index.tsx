@@ -1,10 +1,19 @@
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+
+import {MainRootNativeStackParamList} from '../../../@types/navigation';
 import {AppCardObject} from 'components/molecules';
 import {DashboardTemplate} from 'components/templates';
 import {COLORS} from 'constants/colors';
 import {useUserDataProvider} from 'providers/UserDataProvider';
+import {MainStackScreenName} from 'constants/enums';
+
+type DashboardStackNavigationProp =
+  NativeStackNavigationProp<MainRootNativeStackParamList>;
 
 export const DashboardScreen = () => {
   const {user} = useUserDataProvider();
+  const {navigate} = useNavigation<DashboardStackNavigationProp>();
 
   const applications: AppCardObject[] = [
     {
@@ -15,7 +24,7 @@ export const DashboardScreen = () => {
         size: 50,
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
-      onPress: () => console.log('My Community'),
+      onPress: () => navigate(MainStackScreenName.MyCommunities),
     },
     {
       title: 'CEC Tracker',

@@ -5,11 +5,17 @@ export enum HTTPMethod {
   DELETE = 'DELETE',
 }
 
+export enum MainStackScreenName {
+  Dashboard = 'Dashboard',
+  MyCommunities = 'MyCommunities',
+}
+
+// My Communities Screen
+
 export enum ScreenName {
   CEC = 'CEC',
   Communities = 'Communities',
   CommunityMembers = 'CommunityMembers',
-  Dashboard = 'Dashboard',
   Members = 'Members',
   MembersDetails = 'MembersDetails',
   Profile = 'Profile',

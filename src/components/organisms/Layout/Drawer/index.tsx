@@ -3,22 +3,24 @@ import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {Divider, DrawerItem} from 'components/atoms';
-import {ScreenName} from 'constants/enums';
+import {MainStackScreenName, ScreenName} from 'constants/enums';
 import {DrawerAccordion, DrawerAccordionItem} from 'components/molecules';
+import {MainRootNativeStackParamList} from '../../../../@types/navigation';
+
 import styles from './Drawer.styles';
+import {useNavigation} from '@react-navigation/native';
 
 type DrawerItems = (Partial<DrawerAccordionItem> & {
   items?: DrawerAccordionItem[];
 })[];
 
+type MainStackNavigationProp =
+  NativeStackNavigationProp<MainRootNativeStackParamList>;
+
 const drawerItems: DrawerItems = [
-  {
-    icon: {name: 'dashboard', type: 'material'},
-    label: 'Dashboard',
-    onPress: navigation => navigation.navigate(ScreenName.Dashboard),
-  },
   {
     icon: {name: 'account-circle', type: 'material'},
     label: 'Profile',
@@ -141,6 +143,8 @@ const drawerItems: DrawerItems = [
 ];
 
 export const Drawer = ({navigation}: DrawerContentComponentProps) => {
+  const mainStackNavigation = useNavigation<MainStackNavigationProp>();
+
   return (
     <DrawerContentScrollView contentContainerStyle={styles.container}>
       <>
@@ -148,6 +152,14 @@ export const Drawer = ({navigation}: DrawerContentComponentProps) => {
           <Text style={styles.headerText}>Hi, User!</Text>
         </View>
         <Divider width={2} />
+        <DrawerItem
+          key="Dashboard"
+          icon={{name: 'dashboard', type: 'material'}}
+          label="Dashboard"
+          onPress={() =>
+            mainStackNavigation.navigate(MainStackScreenName.Dashboard)
+          }
+        />
         {drawerItems.map(item =>
           item.items ? (
             <DrawerAccordion

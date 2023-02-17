@@ -1,11 +1,23 @@
 import {DrawerScreenProps} from '@react-navigation/drawer';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
+// main screen navigation
+
+export type MainRootNativeStackParamList = {
+  Dashboard: undefined;
+  MyCommunities: undefined;
+};
+
+export type MainNativeStackScreenProp<
+  T extends keyof MainRootNativeStackParamList
+> = NativeStackScreenProps<MainRootNativeStackParamList, T>;
+
+// my communities navigation
+
 export type RootDrawerParamList = {
   CEC: undefined;
   Communities: undefined;
   CommunityMembers: {communityId: number} | undefined;
-  Dashboard: undefined;
   Members: undefined;
   Profile: undefined;
 };
