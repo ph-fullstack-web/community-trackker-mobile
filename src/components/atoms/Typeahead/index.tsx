@@ -10,6 +10,8 @@ type TypeaheadProps<T> = {
   label: keyof T;
   minimumChar?: number;
   onSelect: (item: T) => void;
+  placeholder?: string;
+  selected: string[];
   uniqueKey: keyof T;
 };
 
@@ -18,15 +20,12 @@ export const Typeahead = <T extends Record<string, any>>({
   label,
   minimumChar = 2,
   onSelect,
+  placeholder,
+  selected,
   uniqueKey,
 }: TypeaheadProps<T>) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<T[]>([]);
-
-  const resetForm = () => {
-    setQuery('');
-    setResults([]);
-  };
 
   const onSearch = (str: string) => {
     setQuery(str);
@@ -37,27 +36,48 @@ export const Typeahead = <T extends Record<string, any>>({
     resetForm();
   };
 
+  const resetForm = () => {
+    setQuery('');
+    setResults([]);
+  };
+
   useEffect(() => {
     let filteredResults: T[] = [];
+    const lowerCaseData = data.map(item =>
+      (item[label] as string).toLowerCase()
+    );
+    const lowerCaseQuery = query.toLowerCase();
 
     if (query.length >= minimumChar) {
-      filteredResults = data.filter(item =>
-        (item[label] as string).toLowerCase().includes(query)
-      );
+      for (let i = 0; i < lowerCaseData.length; i++) {
+        const item = lowerCaseData[i];
+
+        if (
+          item.indexOf(lowerCaseQuery) !== -1 &&
+          selected.indexOf(data[i][label]) === -1
+        ) {
+          filteredResults.push(data[i]);
+        }
+      }
     }
 
     setResults(filteredResults);
-  }, [data, label, minimumChar, query]);
+  }, [data, label, minimumChar, query, selected]);
 
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} onChangeText={onSearch} value={query} />
+      <TextInput
+        placeholder={placeholder}
+        onChangeText={onSearch}
+        style={styles.input}
+        value={query}
+      />
       <View style={styles.resultContainer}>
         {!!results.length && (
           <ScrollView
+            contentContainerStyle={styles.resultContentContainer}
             keyboardShouldPersistTaps="handled"
             horizontal
-            contentContainerStyle={styles.resultContentContainer}
           >
             <FlatList
               keyboardShouldPersistTaps="handled"

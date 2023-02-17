@@ -1,11 +1,8 @@
-import {COLORS} from 'constants/colors';
 import {StyleSheet} from 'react-native';
 
+import {COLORS} from 'constants/colors';
+
 const styles = StyleSheet.create({
-  container: {
-    height: '100%',
-    paddingBottom: 60,
-  },
   accordion_container: {
     flex: 1,
     borderWidth: 1,
@@ -25,14 +22,13 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   community_button: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  community_button_empty_container: {
-    flex: 0.3,
-  },
-  community_button_view_container: {
-    flex: 0.7,
+    borderWidth: 1,
+    borderColor: COLORS.TRANSPARENT,
+    borderRadius: 7,
+    marginTop: -10,
+    marginBottom: 15,
+    width: '72%',
+    alignSelf: 'flex-end',
   },
   community_button_container: {
     paddingVertical: 5,

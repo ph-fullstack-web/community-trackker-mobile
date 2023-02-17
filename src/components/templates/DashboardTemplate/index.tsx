@@ -21,7 +21,7 @@ export const DashboardTemplate = (props: DashboardTemplateProps) => {
   const groupAppCardBySize = (array: any[], size = props?.numColumns) => {
     return array.reduce(
       (acc: any[], curr: object, index: number) =>
-        (index % size == 0
+        (index % size === 0
           ? acc.push([curr])
           : acc[acc.length - 1].push(curr)) && acc,
       []
@@ -29,8 +29,8 @@ export const DashboardTemplate = (props: DashboardTemplateProps) => {
   };
 
   return (
-    <AppContainer>
-      <ScrollView keyboardShouldPersistTaps="handled">
+    <ScrollView keyboardShouldPersistTaps="handled">
+      <AppContainer>
         <ScreenHeader title={dashboardTitle} />
         {groupAppCardBySize(props?.applications).map(
           (parentItem: AppCardObject[], parentIndex: number) => {
@@ -57,7 +57,7 @@ export const DashboardTemplate = (props: DashboardTemplateProps) => {
           employee={employeeSet100[0]}
           title={'My Details'}
         />
-      </ScrollView>
-    </AppContainer>
+      </AppContainer>
+    </ScrollView>
   );
 };

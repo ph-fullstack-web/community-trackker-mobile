@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+
 import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
@@ -9,9 +10,10 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderRadius: 50,
+    borderColor: COLORS.LIGHT_GRAY,
+    borderRadius: 7,
     paddingLeft: 20,
-    fontSize: 16,
+    fontSize: 14,
     paddingVertical: 5,
     zIndex: 2,
   },

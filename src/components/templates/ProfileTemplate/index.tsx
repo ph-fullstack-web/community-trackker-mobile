@@ -12,11 +12,11 @@ export const ProfileTemplate = (props: ProfileTemplateProp) => {
   const dashboardTitle = `Hi, ${props?.user?.username}`;
 
   return (
-    <AppContainer>
-      <ScrollView keyboardShouldPersistTaps="handled">
+    <ScrollView keyboardShouldPersistTaps="handled">
+      <AppContainer>
         <ScreenHeader title={dashboardTitle} />
         <MemberDetailForm />
-      </ScrollView>
-    </AppContainer>
+      </AppContainer>
+    </ScrollView>
   );
 };
