@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
+. "$(dirname -- "$0")/common.sh"
 
-if [ -t 2 ]; then
-  exec >/dev/tty 2>&1
-fi
 npm run lint-staged
