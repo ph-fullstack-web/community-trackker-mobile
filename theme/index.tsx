@@ -1,7 +1,7 @@
 import { COLORS } from "constants/colors";
 
-const theme = {
-  LIGHT: {
+export const THEME = {
+  light: {
     GRADIENT: [COLORS.DARK_PLUM, COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE],
     CARD: {
       CONTAINER: {
@@ -98,8 +98,8 @@ const theme = {
     }
   },
 
-  DARK: {
-    GRADIENT: [COLORS.DARK_PLUM, COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE],
+  dark: {
+    GRADIENT: [COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE, COLORS.LIGHT_BLUE],
     CARD: {
       CONTAINER: {
         backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
@@ -195,5 +195,3 @@ const theme = {
     }
   },
 };
-
-export default theme;
