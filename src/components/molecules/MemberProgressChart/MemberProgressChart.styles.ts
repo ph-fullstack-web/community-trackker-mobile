@@ -27,16 +27,15 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     justifyContent: 'center',
-    backgroundColor: COLORS.VERY_LIGHT_GRAY,
+    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
     borderRadius: 40,
     width: 80,
     height: 80,
   },
   text: {
     textAlign: 'center',
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: COLORS.BLACK,
+    fontSize: 13,
+    fontWeight: '500',
   },
   percent: {
     fontSize: 14,

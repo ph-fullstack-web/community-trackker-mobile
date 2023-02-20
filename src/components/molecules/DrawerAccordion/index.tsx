@@ -1,9 +1,9 @@
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {useState} from 'react';
 import {ListItem} from '@rneui/base';
 import {DrawerNavigationHelpers} from '@react-navigation/drawer/lib/typescript/src/types';
 
-import {DrawerItem, Icon} from 'components/atoms';
+import {DrawerItem, Icon, Text} from 'components/atoms';
 import styles from './DrawerAccordion.styles';
 
 export type DrawerAccordionItem = {
@@ -32,7 +32,12 @@ export const DrawerAccordion = ({
       containerStyle={styles.container}
       content={
         <View style={styles.content}>
-          <Icon name={icon.name} type={icon.type} style={styles.icon} />
+          <Icon
+            name={icon.name}
+            type={icon.type}
+            color={icon.color}
+            style={styles.icon}
+          />
           <Text style={styles.label}>{label}</Text>
         </View>
       }
@@ -42,7 +47,11 @@ export const DrawerAccordion = ({
       {items.map(item => (
         <View key={item.label} style={styles.item}>
           <DrawerItem
-            icon={{name: item.icon.name, type: item.icon.type}}
+            icon={{
+              name: item.icon.name,
+              type: item.icon.type,
+              color: item.icon.color,
+            }}
             label={item.label}
             onPress={() => item.onPress(navigation)}
           />

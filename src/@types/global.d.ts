@@ -18,7 +18,21 @@ declare global {
 
   export interface Icon {
     name: string;
-    type?: string;
+    type:
+      | 'antdesign'
+      | 'entypo'
+      | 'evilicon'
+      | 'feather'
+      | 'font-awesome'
+      | 'font-awesome-5'
+      | 'fontisto'
+      | 'foundation'
+      | 'ionicon'
+      | 'material'
+      | 'material-community'
+      | 'octicon'
+      | 'simple-line-icon'
+      | 'zocial';
     size?: number;
     color?: string;
   }

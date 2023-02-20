@@ -1,7 +1,7 @@
 import {useState} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 
-import {Chip, Typeahead} from 'components/atoms';
+import {Chip, Text, Typeahead} from 'components/atoms';
 import {peopleskills} from 'mocks/peopleskills';
 import {PeopleSkill} from 'models/business';
 import styles from './SkillsForm.styles';

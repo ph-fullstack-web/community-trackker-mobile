@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
+    backgroundColor: COLORS.WHITE,
     borderRadius: 10,
     padding: 35,
     alignItems: 'center',
@@ -29,18 +29,18 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'left',
   },
-  button: {
-    elevation: 2,
+  buttonContainer: {
     paddingHorizontal: 9,
     paddingVertical: 5,
-    borderRadius: 7,
   },
-  buttonClose: {
+  button: {
     backgroundColor: COLORS.DARK_BLUE,
+    borderRadius: 20,
+    elevation: 2,
   },
   textStyle: {
-    color: COLORS.WHITE,
-    fontWeight: 'bold',
+    fontSize: 13,
+    color: COLORS.VERY_LIGHT_GRAY,
     textAlign: 'center',
   },
 });

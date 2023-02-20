@@ -1,7 +1,9 @@
 import {useState} from 'react';
-import {Modal, Pressable, Text, View} from 'react-native';
+import {Modal, View} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
-import {Button} from 'components/atoms';
+import {Button, Text} from 'components/atoms';
+import {COLORS} from 'constants/colors';
 import styles from './CommunityDetailsModal.styles';
 
 interface CommunityDetailsModalProps {
@@ -18,6 +20,7 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
           name: 'information',
           type: 'material-community',
           size: 15,
+          color: COLORS.MIDNIGHT_BLUE,
         }}
         buttonStyle={styles.info_button}
         onPress={() => setModalVisible(!modalVisible)}
@@ -35,13 +38,23 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>{props.communityDescription}</Text>
-
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
+              <Button
+                title="Close Modal"
+                titleStyle={styles.textStyle}
+                buttonStyle={styles.button}
+                containerStyle={styles.buttonContainer}
+                ViewComponent={LinearGradient}
+                linearGradientProps={{
+                  colors: [
+                    COLORS.DARK_PLUM,
+                    COLORS.DARK_BLUE,
+                    COLORS.MEDIUM_BLUE,
+                  ],
+                  start: {x: 0, y: 0.5},
+                  end: {x: 1, y: 0.5},
+                }}
                 onPress={() => setModalVisible(!modalVisible)}
-              >
-                <Text style={styles.textStyle}>Close Modal</Text>
-              </Pressable>
+              />
             </View>
           </View>
         </Modal>

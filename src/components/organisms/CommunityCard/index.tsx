@@ -1,8 +1,8 @@
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {CommunityDetailsModal, MemberProgressChart} from 'components/molecules';
-import {Button, Card} from 'components/atoms';
+import {Button, Card, Text} from 'components/atoms';
 import {COLORS} from 'constants/colors';
 import styles from './CommunityCard.styles';
 
@@ -22,10 +22,10 @@ export const CommunityCard = (props: CommunityCardProps) => {
     <Card style={styles.card_container_template}>
       <View style={styles.card_details_container}>
         <View style={styles.card_title_container}>
-          <Text style={styles.card_title}>{props.name}</Text>
+          <Text type="title">{props.name}</Text>
           <CommunityDetailsModal communityDescription={props.description} />
         </View>
-        <Text>Manager: {props.managerName}</Text>
+        <Text type="subtitle">Manager: {props.managerName}</Text>
         <Button
           title="View Members"
           titleStyle={styles.buttonText}

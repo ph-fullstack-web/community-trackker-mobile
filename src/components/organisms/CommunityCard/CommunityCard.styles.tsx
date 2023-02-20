@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     marginVertical: 25,
     marginHorizontal: 10,
+    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
   },
   card_details_container: {
     flex: 0.55,
@@ -18,9 +19,6 @@ const styles = StyleSheet.create({
   card_title_container: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  card_title: {
-    fontWeight: 'bold',
   },
   buttonContainer: {
     marginTop: 15,

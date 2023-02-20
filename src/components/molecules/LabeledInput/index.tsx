@@ -1,7 +1,7 @@
 import {Dispatch, SetStateAction} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 
-import {TextInput} from 'components/atoms';
+import {Text, TextInput} from 'components/atoms';
 import styles from './LabeledInput.styles';
 
 interface LabeledInputProps extends ComponentWithChildren {

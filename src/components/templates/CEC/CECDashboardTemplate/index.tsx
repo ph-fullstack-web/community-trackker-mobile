@@ -1,6 +1,4 @@
-import {Text} from 'react-native';
-
-import {AppContainer} from 'components/atoms';
+import {AppContainer, Text} from 'components/atoms';
 import styles from './CECDashboardTemplate.styles';
 
 export const CECDashboardTemplate = () => {

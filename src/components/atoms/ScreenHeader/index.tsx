@@ -1,5 +1,6 @@
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 
+import {Text} from '../Text';
 import styles from './ScreenHeader.styles';
 
 type ScreenHeaderProps = {
@@ -10,8 +11,14 @@ type ScreenHeaderProps = {
 export const ScreenHeader = (props: ScreenHeaderProps) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{props.title}</Text>
-      {props.subtitle && <Text style={styles.subtitle}>{props.subtitle}</Text>}
+      <Text type="title" style={styles.title}>
+        {props.title}
+      </Text>
+      {props.subtitle && (
+        <Text type="subtitle" style={styles.subtitle}>
+          {props.subtitle}
+        </Text>
+      )}
     </View>
   );
 };

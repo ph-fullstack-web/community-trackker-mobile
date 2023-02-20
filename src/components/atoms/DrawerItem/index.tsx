@@ -1,7 +1,8 @@
-import {Pressable, Text, View} from 'react-native';
+import {Pressable, View} from 'react-native';
 
 import styles from './DrawerItem.styles';
 import {Icon} from '../Icon';
+import {Text} from '../Text';
 import {COLORS} from 'constants/colors';
 
 export type DrawerItemProps = {
@@ -17,7 +18,12 @@ export const DrawerItem = ({icon, label, onPress}: DrawerItemProps) => {
       onPress={onPress}
     >
       <View style={styles.container}>
-        <Icon name={icon.name} type={icon.type} style={styles.icon} />
+        <Icon
+          name={icon.name}
+          type={icon.type}
+          color={icon.color}
+          style={styles.icon}
+        />
         <Text style={styles.label}>{label}</Text>
       </View>
     </Pressable>
