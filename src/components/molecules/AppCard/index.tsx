@@ -1,9 +1,11 @@
+import {useContext} from 'react';
 import {View, Text} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {Button} from 'components/atoms';
-import {COLORS} from 'constants/colors';
 import styles from './AppCard.styles';
+import {ThemeContext} from 'providers/ThemeProviders';
+import {THEME} from '../../../../theme';
 
 export type AppCardObject = {
   title: string;
@@ -13,6 +15,7 @@ export type AppCardObject = {
 };
 
 export const AppCard = (props: AppCardObject) => {
+  const {theme} = useContext(ThemeContext);
   return (
     <View
       style={[
@@ -26,7 +29,7 @@ export const AppCard = (props: AppCardObject) => {
         containerStyle={styles.appCardButtonContainer}
         ViewComponent={LinearGradient}
         linearGradientProps={{
-          colors: [COLORS.DARK_PLUM, COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE],
+          colors: THEME[`${theme}`].GRADIENT,
           start: {x: 0, y: 0.5},
           end: {x: 1, y: 0.5},
         }}
