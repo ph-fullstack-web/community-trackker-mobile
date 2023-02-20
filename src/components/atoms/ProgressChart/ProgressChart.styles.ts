@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     flexDirection: 'row',
   },
-  veticalLabel: {
+  verticalLabel: {
     color: 'black',
     display: 'flex',
     position: 'absolute',
