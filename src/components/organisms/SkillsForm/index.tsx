@@ -14,7 +14,9 @@ const SkillsForm = ({skills}: SkillsFormProps) => {
   const [skillsCopy, setSkillsCopy] = useState(skills);
 
   const addSkill = (skill: PeopleSkill) => {
-    setSkillsCopy(prevState => [...prevState, skill.peopleskills_desc]);
+    setSkillsCopy(prevState =>
+      [...prevState, skill.peopleskills_desc].sort((a, b) => a.localeCompare(b))
+    );
   };
 
   const removeSkill = (index: number) => {
@@ -25,9 +27,11 @@ const SkillsForm = ({skills}: SkillsFormProps) => {
     <View style={styles.container}>
       <Typeahead<PeopleSkill>
         data={peopleskills}
-        uniqueKey="peopleskills_id"
         label="peopleskills_desc"
         onSelect={addSkill}
+        placeholder="Add Skill"
+        selected={skillsCopy}
+        uniqueKey="peopleskills_id"
       />
       <View style={styles.chipsContainer}>
         {skillsCopy?.map((skill, i) => (

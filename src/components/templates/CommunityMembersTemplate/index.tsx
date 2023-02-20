@@ -82,10 +82,11 @@ export const CommunityMembersTemplate = (
             <NoResult />
           ) : (
             <FlatList
-              nestedScrollEnabled
+              scrollEnabled={false}
               data={filteredMembers}
               keyExtractor={item => item.employeeId.toString()}
               renderItem={({item}) => <MemberCard memberDetails={item} />}
+              style={styles.listContentContainer}
             />
           )}
         </>

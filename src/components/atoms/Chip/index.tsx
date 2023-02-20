@@ -21,6 +21,7 @@ export const Chip = ({onPress, title}: ChipProps) => {
         onPress={onPress}
         iconRight
         type="outline"
+        titleStyle={styles.chipTitle}
         containerStyle={styles.chip}
       />
     </View>
