@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     justifyContent: 'center',
     marginHorizontal: 5,
-    marginBottom: 10,
+    marginBottom: 15,
     padding: 20,
   },
   avatarContainer: {
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   name: {
-    fontWeight: 'bold',
     fontSize: 16,
   },
   email: {

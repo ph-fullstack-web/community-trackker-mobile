@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 
-import {AppContainer, ScreenHeader} from 'components/atoms';
+import {AppContainer, ScreenHeader, Text} from 'components/atoms';
 import {Search} from 'components/molecules';
 import {MemberCard} from 'components/organisms';
 import {StackScreenName} from 'constants/enums';

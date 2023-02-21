@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   appCardContainer: {
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   appCardTitle: {
-    textAlign: 'center',
+    color: COLORS.MIDNIGHT_BLUE,
   },
 });
 

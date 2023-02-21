@@ -1,7 +1,7 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {Button} from 'components/atoms';
+import {Button, Text} from 'components/atoms';
 import {COLORS} from 'constants/colors';
 import styles from './AppCard.styles';
 
@@ -34,7 +34,7 @@ export const AppCard = (props: AppCardObject) => {
         onPress={props.onPress}
       />
 
-      <Text>{props.title}</Text>
+      <Text style={styles.appCardTitle}>{props.title}</Text>
     </View>
   );
 };

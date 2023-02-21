@@ -1,5 +1,6 @@
-import {Pressable, Text, View} from 'react-native';
+import {Pressable, View} from 'react-native';
 
+import {Text} from '../Text';
 import {COLORS} from 'constants/colors';
 import styles from './TypeaheadList.styles';
 

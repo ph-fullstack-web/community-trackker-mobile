@@ -1,12 +1,12 @@
-import {COLORS} from 'constants/colors';
 import {StyleSheet} from 'react-native';
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
-    shadowColor: COLORS.DARK_GRAY,
+    backgroundColor: COLORS.WHITE,
+    shadowColor: COLORS.BLACK,
     shadowOffset: {
       width: 0,
       height: 2,

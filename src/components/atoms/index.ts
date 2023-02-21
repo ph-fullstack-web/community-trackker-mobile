@@ -8,5 +8,6 @@ export * from './DrawerItem';
 export * from './Icon';
 export * from './ProgressChart';
 export * from './ScreenHeader';
+export * from './Text';
 export * from './TextInput';
 export * from './Typeahead';

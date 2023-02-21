@@ -1,7 +1,8 @@
-import {View, Text, Image} from 'react-native';
+import {View, Image} from 'react-native';
 
-import {Card, Icon} from 'components/atoms';
+import {Card, Icon, Text} from 'components/atoms';
 import styles from './MemberCard.styles';
+import {COLORS} from 'constants/colors';
 
 type MemberCardProps = {
   memberDetails: {
@@ -29,11 +30,21 @@ export const MemberCard = (prop: MemberCardProps) => {
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
-          <Text style={styles.name}>{fullName}</Text>
+          <Text type="title" style={styles.name}>
+            {fullName}
+          </Text>
           {isActive ? (
-            <Icon name="user-following" type="simple-line-icon" color="gray" />
+            <Icon
+              name="user-following"
+              type="simple-line-icon"
+              color={COLORS.DARK_BLUE}
+            />
           ) : (
-            <Icon name="user-unfollow" type="simple-line-icon" color="gray" />
+            <Icon
+              name="user-unfollow"
+              type="simple-line-icon"
+              color={COLORS.DARK_GRAY}
+            />
           )}
         </View>
 
