@@ -1,11 +1,11 @@
-import {Image,Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 
 import styles from './EmployeeCard.styles';
 
-const id= '0000000';
-const name='Employee Name';
-const jobtitle ='Title';
-const community= 'Community';
+const id = '0000000';
+const name = 'Employee Name';
+const jobtitle = 'Title';
+const community = 'Community';
 const defaultAvatar = 'https://via.placeholder.com/100.png';
 
 export const EmployeeCard = () => {
@@ -21,7 +21,9 @@ export const EmployeeCard = () => {
           />
           <View>
             <Text>{name}</Text>
-            <Text>#{id} - {jobtitle}</Text>
+            <Text>
+              #{id} - {jobtitle}
+            </Text>
             <Text>{community}</Text>
           </View>
         </View>
