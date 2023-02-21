@@ -34,21 +34,29 @@ interface theme {
       web?: platformColors;
     };
   };
-}
-
-export const sampleTheme = {
-  colors:{
-    transparent: COLORS.TRANSPARENT,
-  },
-  components: {
+  component: {
     Button: {
       buttonStyle: {
-        padding: 5,
-        borderRadius: 20,
-        width: 130,
-        backgroundColor: COLORS.TRANSPARENT,
-      },
-    },
+        backgroundColor?: string 
+      }
+    }
+  }
+}
+
+export const sampleTheme: theme  = {
+  colors:{
+    primary: COLORS.MEDIUM_BLUE,
+    grey2: COLORS.MEDIUM_GRAY,
+    grey3: COLORS.LIGHT_GRAY,
+    grey4: COLORS.VERY_LIGHT_GRAY,
+    grey5: COLORS.ULTRA_LIGHT_GRAY,
+  },
+  component: {
+    Button: {
+      buttonStyle: {
+        backgroundColor: COLORS.MEDIUM_BLUE,
+      }
+    }
   }
 }
 

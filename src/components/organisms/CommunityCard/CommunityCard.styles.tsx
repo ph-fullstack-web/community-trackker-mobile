@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 20,
     width: 130,
-    backgroundColor: COLORS.TRANSPARENT,
   },
   buttonText: {
     color: COLORS.VERY_LIGHT_GRAY,
