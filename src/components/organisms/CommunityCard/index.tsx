@@ -1,5 +1,6 @@
 import {Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {useTheme} from '@rneui/themed';
 
 import {CommunityDetailsModal, MemberProgressChart} from 'components/molecules';
 import {Button, Card} from 'components/atoms';
@@ -18,8 +19,14 @@ interface CommunityCardProps {
 }
 
 export const CommunityCard = (props: CommunityCardProps) => {
+  const {theme} = useTheme();
   return (
-    <Card style={styles.card_container_template}>
+    <Card
+      style={[
+        styles.card_container_template,
+        {backgroundColor: theme.colors.grey4},
+      ]}
+    >
       <View style={styles.card_details_container}>
         <View style={styles.card_title_container}>
           <Text style={styles.card_title}>{props.name}</Text>
@@ -29,7 +36,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
         <Button
           title="View Members"
           titleStyle={styles.buttonText}
-          buttonStyle={styles.button}
+          buttonStyle={[styles.button, {backgroundColor: theme.colors.primary}]}
           containerStyle={styles.buttonContainer}
           ViewComponent={LinearGradient}
           linearGradientProps={{
