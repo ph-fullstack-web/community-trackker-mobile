@@ -10,7 +10,7 @@
     "start": "react-native start",
     "test": "jest",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"  
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@react-navigation/drawer": "^6.5.8",
