@@ -1,4 +1,56 @@
 import { COLORS } from "constants/colors";
+interface platformColors {
+  primary?: string;
+  secondary?: string;
+  grey?: string;
+  searchBg?: string;
+  success?: string;
+  error?: string;
+  warning?: string;
+}
+
+interface theme {
+  colors: {
+    primary?: string;
+    secondary?: string;
+    background?: string;
+    white?: string;
+    black?: string;
+    grey0?: string;
+    grey1?: string;
+    grey2?: string;
+    grey3?: string;
+    grey4?: string;
+    grey5?: string;
+    greyOutline?: string;
+    searchBg?: string;
+    success?: string;
+    error?: string;
+    warning?: string;
+    divider?: string;
+    platform?: {
+      ios?: platformColors;
+      android?: platformColors;
+      web?: platformColors;
+    };
+  };
+}
+
+export const sampleTheme = {
+  colors:{
+    transparent: COLORS.TRANSPARENT,
+  },
+  components: {
+    Button: {
+      buttonStyle: {
+        padding: 5,
+        borderRadius: 20,
+        width: 130,
+        backgroundColor: COLORS.TRANSPARENT,
+      },
+    },
+  }
+}
 
 export const THEME = {
   light: {
