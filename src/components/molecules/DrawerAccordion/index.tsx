@@ -2,6 +2,7 @@ import {View} from 'react-native';
 import {useState} from 'react';
 import {ListItem} from '@rneui/base';
 import {DrawerNavigationHelpers} from '@react-navigation/drawer/lib/typescript/src/types';
+import {useTheme} from '@rneui/themed';
 
 import {DrawerItem, Icon, Text} from 'components/atoms';
 import styles from './DrawerAccordion.styles';
@@ -26,6 +27,7 @@ export const DrawerAccordion = ({
   navigation,
 }: DrawerAccordionProps) => {
   const [expanded, setExpanded] = useState(false);
+  const {theme} = useTheme();
 
   return (
     <ListItem.Accordion
@@ -38,7 +40,9 @@ export const DrawerAccordion = ({
             color={icon.color}
             style={styles.icon}
           />
-          <Text style={styles.label}>{label}</Text>
+          <Text style={[styles.label, {color: theme.colors.blue2}]}>
+            {label}
+          </Text>
         </View>
       }
       isExpanded={expanded}

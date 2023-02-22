@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   appCardContainer: {
@@ -14,9 +13,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: 80,
     padding: 15,
-  },
-  appCardTitle: {
-    color: COLORS.MIDNIGHT_BLUE,
   },
 });
 

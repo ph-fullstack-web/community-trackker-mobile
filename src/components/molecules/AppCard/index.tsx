@@ -1,5 +1,6 @@
 import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {useTheme} from '@rneui/themed';
 
 import {Button, Text} from 'components/atoms';
 import styles from './AppCard.styles';
@@ -13,6 +14,8 @@ export type AppCardObject = {
 };
 
 export const AppCard = (props: AppCardObject) => {
+  const {theme} = useTheme();
+
   return (
     <View
       style={[
@@ -34,7 +37,7 @@ export const AppCard = (props: AppCardObject) => {
         onPress={props.onPress}
       />
 
-      <Text style={styles.appCardTitle}>{props.title}</Text>
+      <Text style={{color: theme.colors.blue2}}>{props.title}</Text>
     </View>
   );
 };

@@ -1,4 +1,5 @@
 import {StyleProp, View, ViewStyle} from 'react-native';
+import {useTheme} from '@rneui/themed';
 import styles from './Card.styles';
 
 type CardProps = ComponentWithChildren & {
@@ -6,5 +7,19 @@ type CardProps = ComponentWithChildren & {
 };
 
 export const Card = (props: CardProps) => {
-  return <View style={[styles.container, props.style]}>{props.children}</View>;
+  const {theme} = useTheme();
+  return (
+    <View
+      style={[
+        styles.container,
+        props.style,
+        {
+          backgroundColor: theme.colors.white,
+          shadowColor: theme.colors.black,
+        },
+      ]}
+    >
+      {props.children}
+    </View>
+  );
 };

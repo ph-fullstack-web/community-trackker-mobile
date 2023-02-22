@@ -5,6 +5,7 @@ import {
 } from '@react-navigation/drawer';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
+import {useTheme} from '@rneui/themed';
 
 import styles from './Drawer.styles';
 import {RootNativeStackParamList} from '../../../../@types/navigation';
@@ -23,6 +24,7 @@ type DrawerProps = DrawerContentComponentProps & {drawerItems: DrawerItems};
 export const Drawer = (props: DrawerProps) => {
   const {drawerItems, navigation} = props;
   const {user} = useUserDataProvider();
+  const {theme} = useTheme();
 
   const mainStackNavigation =
     useNavigation<NativeStackNavigationProp<RootNativeStackParamList>>();
