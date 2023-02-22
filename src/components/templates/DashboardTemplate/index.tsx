@@ -2,7 +2,7 @@ import {View} from 'react-native';
 
 import {AppContainer, ScreenHeader} from 'components/atoms';
 import {AppCard, AppCardObject} from 'components/molecules';
-import {EmployeeDetailsCard} from 'components/organisms';
+import {EmployeeCard, EmployeeDetailsCard} from 'components/organisms';
 import {employeeSet100} from 'mocks/employeeSet100';
 import {User} from 'models/business';
 
@@ -52,6 +52,7 @@ export const DashboardTemplate = (props: DashboardTemplateProps) => {
         }
       )}
       <EmployeeDetailsCard employee={employeeSet100[0]} title="My Details" />
+      <EmployeeCard />
     </AppContainer>
   );
 };

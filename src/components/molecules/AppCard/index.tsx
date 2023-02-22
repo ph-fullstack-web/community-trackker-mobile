@@ -2,8 +2,8 @@ import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {Button, Text} from 'components/atoms';
-import {COLORS} from 'constants/colors';
 import styles from './AppCard.styles';
+import {COLORS} from 'constants/colors';
 
 export type AppCardObject = {
   title: string;

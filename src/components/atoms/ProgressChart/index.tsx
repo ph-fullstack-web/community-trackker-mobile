@@ -16,7 +16,7 @@ export const ProgressChart = ({
   styles: customStyles = {},
 }: ProgressChartProps) => {
   const labelStyles =
-    layout === 'vertical' ? styles.veticalLabel : styles.horizontalLabel;
+    layout === 'vertical' ? styles.verticalLabel : styles.horizontalLabel;
 
   return (
     <>
