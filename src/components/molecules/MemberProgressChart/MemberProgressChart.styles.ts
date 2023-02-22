@@ -1,7 +1,5 @@
 import {StyleSheet} from 'react-native';
 
-import {COLORS} from 'constants/colors';
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -11,7 +9,6 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 2,
     zIndex: 1,
-    backgroundColor: COLORS.WHITE,
     height: 180,
     borderTopLeftRadius: 90,
     borderBottomLeftRadius: 90,
@@ -27,7 +24,6 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     justifyContent: 'center',
-    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
     borderRadius: 40,
     width: 80,
     height: 80,

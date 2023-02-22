@@ -1,4 +1,5 @@
 import {Image, View} from 'react-native';
+import {useTheme} from '@rneui/themed';
 
 import {Text} from 'components/atoms';
 import styles from './EmployeeCard.styles';
@@ -10,12 +11,13 @@ const community = 'Community';
 const defaultAvatar = 'https://via.placeholder.com/100.png';
 
 export const EmployeeCard = () => {
+  const {theme} = useTheme();
   return (
     <>
-      <View style={styles.card}>
+      <View style={[styles.card, {borderColor: theme.colors.grey3}]}>
         <View style={styles.horizontal_layout}>
           <Image
-            style={styles.profile_picture}
+            style={[styles.profile_picture, {borderColor: theme.colors.grey3}]}
             source={{
               uri: defaultAvatar,
             }}

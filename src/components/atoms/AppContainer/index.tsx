@@ -1,4 +1,5 @@
 import {ScrollView, ScrollViewProps} from 'react-native';
+import {useTheme} from '@rneui/themed';
 
 import styles from './AppContainer.styles';
 
@@ -9,8 +10,12 @@ export const AppContainer = ({
   style,
   ...otherProps
 }: AppContainerProps) => {
+  const {theme} = useTheme();
   return (
-    <ScrollView {...otherProps} style={[styles.container, style]}>
+    <ScrollView
+      {...otherProps}
+      style={[styles.container, style, {backgroundColor: theme.colors.white}]}
+    >
       {children}
     </ScrollView>
   );

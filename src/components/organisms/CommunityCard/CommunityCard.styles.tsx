@@ -1,7 +1,5 @@
 import {StyleSheet} from 'react-native';
 
-import {COLORS} from 'constants/colors';
-
 const styles = StyleSheet.create({
   card_container_template: {
     flex: 1,
@@ -10,7 +8,6 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     marginVertical: 25,
     marginHorizontal: 10,
-    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
   },
   card_details_container: {
     flex: 0.55,
@@ -29,7 +26,6 @@ const styles = StyleSheet.create({
     width: 130,
   },
   buttonText: {
-    color: COLORS.VERY_LIGHT_GRAY,
     textAlign: 'center',
     fontSize: 13,
   },

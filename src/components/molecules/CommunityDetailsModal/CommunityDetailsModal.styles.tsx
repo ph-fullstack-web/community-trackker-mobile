@@ -12,11 +12,9 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: COLORS.WHITE,
     borderRadius: 10,
     padding: 35,
     alignItems: 'center',
-    shadowColor: COLORS.BLACK,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -34,13 +32,11 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   button: {
-    backgroundColor: COLORS.DARK_BLUE,
     borderRadius: 20,
     elevation: 2,
   },
   textStyle: {
     fontSize: 13,
-    color: COLORS.VERY_LIGHT_GRAY,
     textAlign: 'center',
   },
 });

@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,7 +14,6 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     fontWeight: '400',
-    color: COLORS.MIDNIGHT_BLUE,
   },
 });
 

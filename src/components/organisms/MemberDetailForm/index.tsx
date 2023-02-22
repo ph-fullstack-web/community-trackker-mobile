@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {useTheme} from '@rneui/themed';
 
 import {Accordion, Button} from 'components/atoms';
 import {LabeledInput} from 'components/molecules';
@@ -10,21 +11,39 @@ import SkillsForm from '../SkillsForm';
 import styles from './MemberDetailForm.styles';
 
 export const MemberDetailForm = () => {
+  const {theme} = useTheme();
+
   return (
     <>
-      <View style={styles.accordion_container}>
+      <View
+        style={[styles.accordion_container, {borderColor: theme.colors.grey3}]}
+      >
         <Accordion
-          headerLabel="Employee Name"
-          headerStyle={styles.form_header}
+          headerLabel="Information"
+          headerStyle={[
+            styles.form_header,
+            {
+              borderBottomColor: theme.colors.grey3,
+              backgroundColor: theme.colors.grey3,
+            },
+          ]}
           expanded={true}
         >
           <DetailForm />
         </Accordion>
       </View>
-      <View style={styles.accordion_container}>
+      <View
+        style={[styles.accordion_container, {borderColor: theme.colors.grey3}]}
+      >
         <Accordion
           headerLabel="Skills"
-          headerStyle={styles.form_header}
+          headerStyle={[
+            styles.form_header,
+            {
+              borderBottomColor: theme.colors.grey3,
+              backgroundColor: theme.colors.grey3,
+            },
+          ]}
           expanded={false}
         >
           <SkillsForm skills={['Angular', 'ReactJS', 'TypeScript']} />
@@ -35,6 +54,7 @@ export const MemberDetailForm = () => {
 };
 
 const DetailForm = () => {
+  const {theme} = useTheme();
   const [idNumber, setIdNumber] = useState('');
   const [email, setEmail] = useState('');
   const [community, setCommunity] = useState('');
@@ -66,7 +86,7 @@ const DetailForm = () => {
       <View style={styles.community_button}>
         <Button
           title="View Community Info"
-          titleStyle={styles.button_text}
+          titleStyle={[styles.button_text, {color: theme.colors.grey4}]}
           containerStyle={styles.community_button_container}
           buttonStyle={styles.community_button_style}
           ViewComponent={LinearGradient}
