@@ -4,6 +4,7 @@ import {
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useTheme} from '@rneui/themed';
 
 import {Divider, DrawerItem, Text} from 'components/atoms';
 import {MainStackScreenName, ScreenName} from 'constants/enums';
@@ -165,12 +166,15 @@ const drawerItems: DrawerItems = [
 
 export const Drawer = ({navigation}: DrawerContentComponentProps) => {
   const mainStackNavigation = useNavigation<MainStackNavigationProp>();
+  const {theme} = useTheme();
 
   return (
     <DrawerContentScrollView contentContainerStyle={styles.container}>
       <>
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Hi, User!</Text>
+          <Text style={[styles.headerText, {color: theme.colors.blue2}]}>
+            Hi, User!
+          </Text>
         </View>
         <Divider width={2} />
         <DrawerItem

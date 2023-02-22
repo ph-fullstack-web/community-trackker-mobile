@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   verticalLabel: {
-    color: 'black',
+    color: COLORS.BLACK,
     display: 'flex',
     position: 'absolute',
     textAlign: 'center',

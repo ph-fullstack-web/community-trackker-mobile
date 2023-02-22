@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   bold_text: {
@@ -15,7 +14,6 @@ const styles = StyleSheet.create({
   },
   textfield: {
     borderWidth: 1,
-    borderColor: COLORS.LIGHT_GRAY,
     borderStyle: 'solid',
     paddingHorizontal: 9,
     paddingVertical: 3,

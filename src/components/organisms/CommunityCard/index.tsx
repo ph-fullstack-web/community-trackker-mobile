@@ -35,7 +35,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
         <Text type="subtitle">Manager: {props.managerName}</Text>
         <Button
           title="View Members"
-          titleStyle={styles.buttonText}
+          titleStyle={[styles.buttonText, {color: theme.colors.grey4}]}
           buttonStyle={[styles.button, {backgroundColor: theme.colors.primary}]}
           containerStyle={styles.buttonContainer}
           ViewComponent={LinearGradient}
