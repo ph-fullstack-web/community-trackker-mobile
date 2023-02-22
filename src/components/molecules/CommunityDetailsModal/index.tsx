@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {Modal, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {useTheme} from '@rneui/themed';
 
 import {Button, Text} from 'components/atoms';
 import {COLORS} from 'constants/colors';
@@ -12,6 +13,7 @@ interface CommunityDetailsModalProps {
 
 export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const {theme} = useTheme();
 
   return (
     <>
@@ -20,7 +22,7 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
           name: 'information',
           type: 'material-community',
           size: 15,
-          color: COLORS.MIDNIGHT_BLUE,
+          color: theme.colors.blue2,
         }}
         buttonStyle={styles.info_button}
         onPress={() => setModalVisible(!modalVisible)}
@@ -36,12 +38,23 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
           }}
         >
           <View style={styles.centeredView}>
-            <View style={styles.modalView}>
+            <View
+              style={[
+                styles.modalView,
+                {
+                  backgroundColor: theme.colors.white,
+                  shadowColor: theme.colors.black,
+                },
+              ]}
+            >
               <Text style={styles.modalText}>{props.communityDescription}</Text>
               <Button
                 title="Close Modal"
-                titleStyle={styles.textStyle}
-                buttonStyle={styles.button}
+                titleStyle={[styles.textStyle, {color: theme.colors.grey4}]}
+                buttonStyle={[
+                  styles.button,
+                  {backgroundColor: theme.colors.blue1},
+                ]}
                 containerStyle={styles.buttonContainer}
                 ViewComponent={LinearGradient}
                 linearGradientProps={{

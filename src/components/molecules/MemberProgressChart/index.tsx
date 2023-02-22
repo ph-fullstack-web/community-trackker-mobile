@@ -1,4 +1,5 @@
 import {View} from 'react-native';
+import {useTheme} from '@rneui/themed';
 
 import {ProgressChart, Text} from 'components/atoms';
 import {ProgressChartLayout} from 'components/atoms/ProgressChart/ProgressChart.types';
@@ -17,6 +18,8 @@ export const MemberProgressChart = ({
   color = COLORS.DARK_BLUE,
   layout = 'horizontal',
 }: ProgressChartProps) => {
+  const {theme} = useTheme();
+
   const data = {
     data: [percentage],
     colors: [color],
@@ -40,7 +43,7 @@ export const MemberProgressChart = ({
   const sizeProps = layout === 'horizontal' ? horizontalProps : verticalProps;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.colors.white}]}>
       <ProgressChart
         layout={layout}
         data={data}
@@ -48,7 +51,12 @@ export const MemberProgressChart = ({
         {...sizeProps}
       >
         <View style={styles.textWrapper}>
-          <View style={styles.textContainer}>
+          <View
+            style={[
+              styles.textContainer,
+              {backgroundColor: theme.colors.grey5},
+            ]}
+          >
             <Text style={styles.text}>
               {displayPercentage}
               <Text style={styles.percent}>%</Text>

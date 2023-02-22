@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {TextInput, View} from 'react-native';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
+import {useTheme} from '@rneui/themed';
 
 import {TypeaheadList} from '../TypeaheadList';
 import styles from './Typeahead.styles';
@@ -24,6 +25,7 @@ export const Typeahead = <T extends Record<string, any>>({
   selected,
   uniqueKey,
 }: TypeaheadProps<T>) => {
+  const {theme} = useTheme();
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<T[]>([]);
 
@@ -69,10 +71,12 @@ export const Typeahead = <T extends Record<string, any>>({
       <TextInput
         placeholder={placeholder}
         onChangeText={onSearch}
-        style={styles.input}
+        style={[styles.input, {borderColor: theme.colors.grey3}]}
         value={query}
       />
-      <View style={styles.resultContainer}>
+      <View
+        style={[styles.resultContainer, {backgroundColor: theme.colors.white}]}
+      >
         {!!results.length && (
           <ScrollView
             contentContainerStyle={styles.resultContentContainer}

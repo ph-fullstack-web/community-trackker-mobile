@@ -1,5 +1,6 @@
 import {Dispatch, SetStateAction} from 'react';
 import {View} from 'react-native';
+import {useTheme} from '@rneui/themed';
 
 import {Text, TextInput} from 'components/atoms';
 import styles from './LabeledInput.styles';
@@ -12,6 +13,8 @@ interface LabeledInputProps extends ComponentWithChildren {
 }
 
 export const LabeledInput = (props: LabeledInputProps) => {
+  const {theme} = useTheme();
+
   return (
     <>
       <View style={[styles.fieldSet, styles.horizontal_layout]}>
@@ -23,7 +26,7 @@ export const LabeledInput = (props: LabeledInputProps) => {
             placeholder={props.placeholder}
             onChangeText={props.onValueChange}
             value={props.value}
-            style={styles.textfield}
+            style={[styles.textfield, {borderColor: theme.colors.grey3}]}
           />
           {props.children}
         </View>

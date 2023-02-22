@@ -1,7 +1,5 @@
 import {StyleSheet} from 'react-native';
 
-import {COLORS} from 'constants/colors';
-
 const styles = StyleSheet.create({
   container: {
     width: '100%',
@@ -10,7 +8,6 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: COLORS.LIGHT_GRAY,
     borderRadius: 7,
     paddingLeft: 20,
     fontSize: 14,
@@ -24,7 +21,6 @@ const styles = StyleSheet.create({
     top: 40,
     width: '97%',
     zIndex: 1,
-    backgroundColor: COLORS.WHITE,
     maxHeight: 150,
   },
   resultContentContainer: {
