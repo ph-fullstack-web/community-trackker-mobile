@@ -1,4 +1,5 @@
-import { COLORS } from "constants/colors";
+import {COLORS} from 'constants/colors';
+
 interface platformColors {
   primary?: string;
   secondary?: string;
@@ -37,14 +38,14 @@ interface theme {
   component: {
     Button: {
       buttonStyle: {
-        backgroundColor?: string 
-      }
-    }
-  }
+        backgroundColor?: string;
+      };
+    };
+  };
 }
 
-export const sampleTheme: theme  = {
-  colors:{
+export const sampleTheme: theme = {
+  colors: {
     primary: COLORS.MEDIUM_BLUE,
     grey2: COLORS.MEDIUM_GRAY,
     grey3: COLORS.LIGHT_GRAY,
@@ -55,10 +56,10 @@ export const sampleTheme: theme  = {
     Button: {
       buttonStyle: {
         backgroundColor: COLORS.MEDIUM_BLUE,
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};
 
 export const THEME = {
   light: {
@@ -67,12 +68,12 @@ export const THEME = {
       CONTAINER: {
         backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
         shadowColor: COLORS.DARK_GRAY,
-      }
+      },
     },
     PROGRESS_CHART: {
-      VERTICAL_LABEL:{
+      VERTICAL_LABEL: {
         color: COLORS.BLACK,
-      }
+      },
     },
     TYPE_AHEAD: {
       RESULT_CONTAINER: {
@@ -126,8 +127,8 @@ export const THEME = {
         borderColor: COLORS.MEDIUM_GRAY,
       },
       PROFILE_PICTURE: {
-        borderColor: COLORS.MEDIUM_GRAY
-      },      
+        borderColor: COLORS.MEDIUM_GRAY,
+      },
     },
     LAYOUT: {
       HEADER_LEFT: {
@@ -139,7 +140,7 @@ export const THEME = {
         BUTTON: {
           backgroundColor: COLORS.TRANSPARENT,
         },
-      }
+      },
     },
     MEMBER_DETAIL_FORM: {
       ACCORDION_CONTAINER: {
@@ -155,7 +156,7 @@ export const THEME = {
       TOGGLE_TEXT: {
         color: COLORS.WHITE,
       },
-    }
+    },
   },
 
   dark: {
@@ -164,12 +165,12 @@ export const THEME = {
       CONTAINER: {
         backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
         shadowColor: COLORS.DARK_GRAY,
-      }
+      },
     },
     PROGRESS_CHART: {
-      VERTICAL_LABEL:{
+      VERTICAL_LABEL: {
         color: COLORS.BLACK,
-      }
+      },
     },
     TYPE_AHEAD: {
       RESULT_CONTAINER: {
@@ -223,8 +224,8 @@ export const THEME = {
         borderColor: COLORS.MEDIUM_GRAY,
       },
       PROFILE_PICTURE: {
-        borderColor: COLORS.MEDIUM_GRAY
-      },      
+        borderColor: COLORS.MEDIUM_GRAY,
+      },
     },
     LAYOUT: {
       HEADER_LEFT: {
@@ -236,7 +237,7 @@ export const THEME = {
         BUTTON: {
           backgroundColor: COLORS.TRANSPARENT,
         },
-      }
+      },
     },
     MEMBER_DETAIL_FORM: {
       ACCORDION_CONTAINER: {
@@ -252,6 +253,6 @@ export const THEME = {
       TOGGLE_TEXT: {
         color: COLORS.WHITE,
       },
-    }
+    },
   },
 };

@@ -1,21 +1,30 @@
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {
+  createDrawerNavigator,
+  DrawerContentComponentProps,
+} from '@react-navigation/drawer';
 
-import styles from '../Navigation.styles';
-import {RootDrawerParamList} from '../../@types/navigation';
 import {
   Drawer as DrawerContent,
   DrawerItems,
-  HeaderBackground,
-  HeaderLeft,
-  HeaderRight,
+  Header,
 } from 'components/organisms';
 import {SkillsDashboardScreen} from 'components/screens';
 import {COLORS} from 'constants/colors';
-import {DrawerScreen} from 'constants/navigation';
 
-const Drawer = createDrawerNavigator<RootDrawerParamList>();
+const Drawer = createDrawerNavigator<SkillTreeDrawerParamList>();
+type DrawerNavigation = SkillTreeDrawerScreenProps<'Skills'>['navigation'];
 
-const drawerItems: DrawerItems = [
+const drawerItems: DrawerItems<DrawerNavigation> = [
+  {
+    icon: {
+      name: 'dashboard',
+      type: 'material',
+      color: COLORS.MIDNIGHT_BLUE,
+    },
+    label: 'Dashboard',
+    onPress: navigation =>
+      navigation.navigate('CommunitiesDrawer', {screen: 'Dashboard'}),
+  },
   {
     icon: {
       name: 'account-tree',
@@ -23,7 +32,7 @@ const drawerItems: DrawerItems = [
       color: COLORS.MIDNIGHT_BLUE,
     },
     label: 'Skills',
-    onPress: navigation => navigation.navigate(DrawerScreen.Skills),
+    onPress: navigation => navigation.navigate('Skills'),
   },
   {
     icon: {name: 'color-lens', type: 'material', color: COLORS.MIDNIGHT_BLUE},
@@ -69,34 +78,22 @@ const drawerItems: DrawerItems = [
   },
 ];
 
+const renderDrawer = (props: DrawerContentComponentProps) => (
+  <DrawerContent<DrawerNavigation> {...props} drawerItems={drawerItems} />
+);
+
 export const SkillTreeDrawerNavigation = () => {
   return (
     <Drawer.Navigator
-      initialRouteName={DrawerScreen.Skills}
+      initialRouteName="Skills"
       screenOptions={{
-        headerBackground: HeaderBackground,
-        headerRight: HeaderRight,
-        headerLeft: HeaderLeft,
-        headerBackgroundContainerStyle: styles.header,
-        headerRightContainerStyle: styles.headerRight,
-        headerLeftContainerStyle: styles.headerLeft,
-        headerTitle: '',
+        header: Header,
         drawerType: 'slide',
         swipeEdgeWidth: 200,
       }}
-      drawerContent={({navigation, state, descriptors}) => (
-        <DrawerContent
-          navigation={navigation}
-          state={state}
-          descriptors={descriptors}
-          drawerItems={drawerItems}
-        />
-      )}
+      drawerContent={renderDrawer}
     >
-      <Drawer.Screen
-        name={DrawerScreen.Skills}
-        component={SkillsDashboardScreen}
-      />
+      <Drawer.Screen name="Skills" component={SkillsDashboardScreen} />
     </Drawer.Navigator>
   );
 };

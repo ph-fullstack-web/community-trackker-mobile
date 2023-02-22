@@ -1,17 +1,13 @@
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-
-import {RootNativeStackParamList} from '../../../@types/navigation';
 import {AppCardObject} from 'components/molecules';
 import {DashboardTemplate} from 'components/templates';
 import {COLORS} from 'constants/colors';
-import {StackScreen} from 'constants/navigation';
 import {useUserDataProvider} from 'providers/UserDataProvider';
 
-export const DashboardScreen = () => {
+type DashboardScreenProps = CommunityDrawerScreenProps<'Dashboard'>;
+
+export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
+  const {navigate} = navigation;
   const {user} = useUserDataProvider();
-  const {navigate} =
-    useNavigation<NativeStackNavigationProp<RootNativeStackParamList>>();
 
   const applications: AppCardObject[] = [
     {
@@ -22,7 +18,14 @@ export const DashboardScreen = () => {
         size: 50,
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
-      onPress: () => navigate(StackScreen.MyCommunities),
+      onPress: () =>
+        navigate('CommunitiesDrawer', {
+          screen: 'CommunitiesStack',
+          params: {
+            screen: 'CommunityMembers',
+            params: {communityId: user!.communityId},
+          },
+        }),
     },
     {
       title: 'CEC Tracker',
@@ -32,7 +35,7 @@ export const DashboardScreen = () => {
         size: 50,
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
-      onPress: () => navigate(StackScreen.CECTracker),
+      onPress: () => navigate('CECTracker'),
     },
     {
       title: 'Skill Tree',
@@ -42,7 +45,7 @@ export const DashboardScreen = () => {
         size: 50,
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
-      onPress: () => navigate(StackScreen.SkillTree),
+      onPress: () => navigate('SkillTree'),
     },
   ];
 

@@ -1,5 +1,7 @@
 import {CECDashboardTemplate} from 'components/templates/CECTracker';
 
-export const CECDashboardScreen = () => {
+type CECDashboardScreenProps = CECTrackerDrawerScreenProps<'CEC'>;
+
+export const CECDashboardScreen = ({}: CECDashboardScreenProps) => {
   return <CECDashboardTemplate />;
 };

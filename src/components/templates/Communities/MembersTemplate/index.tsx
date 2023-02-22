@@ -1,30 +1,23 @@
 import {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
-import {RouteProp, useRoute} from '@react-navigation/native';
 
-import {RootNativeStackParamList} from '../../../../@types/navigation';
 import {AppContainer, ScreenHeader} from 'components/atoms';
 import {NoResult, Search} from 'components/molecules';
 import {MemberCard} from 'components/organisms';
-import {StackScreen} from 'constants/navigation';
 import {Community, Employee} from 'models/business';
-import styles from './MembersTemplate.styles';
 
-type MembersScreenRouteProp = RouteProp<
-  RootNativeStackParamList,
-  StackScreen.MembersStack
->;
+import styles from './MembersTemplate.styles';
 
 type MembersTemplateProps = {
   communityList: Community[] | undefined;
+  route: CommunityStackScreenProps<'CommunityMembers'>['route'];
 };
 
-export const MembersTemplate = (props: MembersTemplateProps) => {
-  const route = useRoute<MembersScreenRouteProp>();
-  const {communityId} = route.params as {communityId: number};
-
-  const {communityList} = props;
-
+export const MembersTemplate = ({
+  communityList,
+  route,
+}: MembersTemplateProps) => {
+  const {communityId} = route.params!;
   const [community, setCommunity] = useState<Community>();
   const [filteredMembers, setFilteredMembers] = useState<Employee[]>([]);
 

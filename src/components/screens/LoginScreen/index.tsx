@@ -1,5 +1,7 @@
 import {LoginTemplate} from 'components/templates';
 
-export const LoginScreen = () => {
+type LoginScreenProps = RootNativeStackScreenProps<'Login'>;
+
+export const LoginScreen = ({}: LoginScreenProps) => {
   return <LoginTemplate />;
 };

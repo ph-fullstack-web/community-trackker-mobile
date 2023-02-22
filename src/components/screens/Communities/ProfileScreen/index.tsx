@@ -1,7 +1,9 @@
 import {ProfileTemplate} from 'components/templates';
 import {useUserDataProvider} from 'providers/UserDataProvider';
 
-export const ProfileScreen = () => {
+type ProfileScreenProps = CommunityDrawerScreenProps<'Profile'>;
+
+export const ProfileScreen = ({}: ProfileScreenProps) => {
   const {user} = useUserDataProvider();
 
   return <ProfileTemplate user={user} />;

@@ -1,5 +1,7 @@
 import {SkillsDashboardTemplate} from 'components/templates';
 
-export const SkillsDashboardScreen = () => {
+type SkillDashboardScreenProps = SkillTreeDrawerScreenProps<'Skills'>;
+
+export const SkillsDashboardScreen = ({}: SkillDashboardScreenProps) => {
   return <SkillsDashboardTemplate />;
 };

@@ -2,17 +2,26 @@ import {
   createDrawerNavigator,
   DrawerContentComponentProps,
 } from '@react-navigation/drawer';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
   Drawer as DrawerContent,
   DrawerItems,
   Header,
 } from 'components/organisms';
-import {CECDashboardScreen} from 'components/screens';
+import {
+  CommunitiesDashboardScreen,
+  DashboardScreen,
+  MembersScreen,
+  ProfileScreen,
+  ReportScreen,
+} from 'components/screens';
 import {COLORS} from 'constants/colors';
 
-const Drawer = createDrawerNavigator<CECTrackerDrawerParamList>();
-type DrawerNavigation = CECTrackerDrawerScreenProps<'CEC'>['navigation'];
+const Drawer = createDrawerNavigator<CommunityDrawerParamList>();
+const Stack = createNativeStackNavigator<CommunityStackParamList>();
+type DrawerNavigation =
+  CommunityDrawerScreenProps<'CommunitiesStack'>['navigation'];
 
 const drawerItems: DrawerItems<DrawerNavigation> = [
   {
@@ -22,17 +31,27 @@ const drawerItems: DrawerItems<DrawerNavigation> = [
       color: COLORS.MIDNIGHT_BLUE,
     },
     label: 'Dashboard',
-    onPress: navigation =>
-      navigation.navigate('CommunitiesDrawer', {screen: 'Dashboard'}),
+    onPress: navigation => navigation.navigate('Dashboard'),
   },
   {
     icon: {
-      name: 'assignment',
+      name: 'account-circle',
       type: 'material',
       color: COLORS.MIDNIGHT_BLUE,
     },
-    label: 'CEC Requests',
-    onPress: navigation => navigation.navigate('CEC'),
+    label: 'Profile',
+    onPress: navigation => navigation.navigate('Profile'),
+  },
+  {
+    icon: {name: 'groups', type: 'material', color: COLORS.MIDNIGHT_BLUE},
+    label: 'Communities',
+    onPress: navigation =>
+      navigation.navigate('CommunitiesStack', {screen: 'Communities'}),
+  },
+  {
+    icon: {name: 'description', type: 'material', color: COLORS.MIDNIGHT_BLUE},
+    label: 'Report',
+    onPress: navigation => navigation.navigate('Report'),
   },
   {
     icon: {name: 'color-lens', type: 'material', color: COLORS.MIDNIGHT_BLUE},
@@ -82,10 +101,10 @@ const renderDrawer = (props: DrawerContentComponentProps) => (
   <DrawerContent<DrawerNavigation> {...props} drawerItems={drawerItems} />
 );
 
-export const CECTrackerDrawerNavigation = () => {
+export const CommunitiesDrawerNavigation = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="CEC"
+      initialRouteName="Dashboard"
       screenOptions={{
         header: Header,
         drawerType: 'slide',
@@ -93,7 +112,25 @@ export const CECTrackerDrawerNavigation = () => {
       }}
       drawerContent={renderDrawer}
     >
-      <Drawer.Screen name="CEC" component={CECDashboardScreen} />
+      <Drawer.Screen name="Dashboard" component={DashboardScreen} />
+      <Drawer.Screen name="Profile" component={ProfileScreen} />
+      <Drawer.Screen
+        name="CommunitiesStack"
+        component={CommunitiesNativeStackNavigation}
+      />
+      <Drawer.Screen name="Report" component={ReportScreen} />
     </Drawer.Navigator>
+  );
+};
+
+export const CommunitiesNativeStackNavigation = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Communities"
+      screenOptions={{headerShown: false}}
+    >
+      <Stack.Screen name="Communities" component={CommunitiesDashboardScreen} />
+      <Stack.Screen name="CommunityMembers" component={MembersScreen} />
+    </Stack.Navigator>
   );
 };

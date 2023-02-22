@@ -1,28 +1,23 @@
 import {FlatList} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {AppContainer, ScreenHeader} from 'components/atoms';
-import {ScreenTitle, StackScreen} from 'constants/navigation';
 import {CommunityCard} from 'components/organisms';
+import {ScreenTitle} from 'constants/navigation';
 import {Community} from 'models/business';
-import {RootNativeStackParamList} from '../../../../@types/navigation';
 
 import styles from './CommunitiesDashboardTemplate.styles';
 
 type CommunitiesDashboardTemplateProp = {
   communityList: Community[] | undefined;
+  navigation: CommunityStackScreenProps<'Communities'>['navigation'];
 };
 
-export const CommunitiesDashboardTemplate = (
-  props: CommunitiesDashboardTemplateProp
-) => {
-  const {navigate} =
-    useNavigation<NativeStackNavigationProp<RootNativeStackParamList>>();
-  const {communityList} = props;
-
+export const CommunitiesDashboardTemplate = ({
+  communityList,
+  navigation,
+}: CommunitiesDashboardTemplateProp) => {
   const handleViewMembers = (communityId: number) => {
-    navigate(StackScreen.MembersStack, {communityId});
+    navigation.navigate('CommunityMembers', {communityId});
   };
 
   return (
