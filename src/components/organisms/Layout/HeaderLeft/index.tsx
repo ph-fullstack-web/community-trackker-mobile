@@ -3,7 +3,7 @@ import {useNavigation, useNavigationState} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {Button} from 'components/atoms';
-import {ScreenName, StackScreenName} from 'constants/enums';
+import {DrawerScreen, StackScreen} from 'constants/navigation';
 import {
   RootDrawerParamList,
   RootNativeStackParamList,
@@ -27,14 +27,14 @@ export const HeaderLeft = () => {
     if (currentRoute?.state) {
       const {index, routeNames} = currentRoute?.state;
       if (routeNames && index && index > 0) {
-        const stackName: keyof typeof StackScreenName = routeNames[
+        const stackName: keyof typeof StackScreen = routeNames[
           index - 1
-        ] as keyof typeof StackScreenName;
+        ] as keyof typeof StackScreen;
         navigateStack(stackName);
         return;
       }
-      const drawerName: keyof typeof ScreenName =
-        currentRoute?.name as keyof typeof ScreenName;
+      const drawerName: keyof typeof DrawerScreen =
+        currentRoute?.name as keyof typeof DrawerScreen;
       navigateDrawer(drawerName);
       return;
     }

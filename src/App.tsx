@@ -1,13 +1,13 @@
 import {SafeAreaView, StyleSheet} from 'react-native';
 
-import {MainNavigation} from 'navigation/MainNavigation';
+import {RootNavigation} from 'navigation';
 import {AppProvider} from 'providers/AppProvider';
 
 const App = () => {
   return (
     <AppProvider>
       <SafeAreaView style={styles.container}>
-        <MainNavigation />
+        <RootNavigation />
       </SafeAreaView>
     </AppProvider>
   );
