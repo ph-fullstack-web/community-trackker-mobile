@@ -12,6 +12,7 @@ import {Divider, DrawerItem, Text} from 'components/atoms';
 import {DrawerAccordion, DrawerAccordionItem} from 'components/molecules';
 import {COLORS} from 'constants/colors';
 import {StackScreen} from 'constants/navigation';
+import {useUserDataProvider} from 'providers/UserDataProvider';
 
 export type DrawerItems = (Partial<DrawerAccordionItem> & {
   items?: DrawerAccordionItem[];
@@ -21,6 +22,7 @@ type DrawerProps = DrawerContentComponentProps & {drawerItems: DrawerItems};
 
 export const Drawer = (props: DrawerProps) => {
   const {drawerItems, navigation} = props;
+  const {user} = useUserDataProvider();
 
   const mainStackNavigation =
     useNavigation<NativeStackNavigationProp<RootNativeStackParamList>>();
@@ -29,7 +31,7 @@ export const Drawer = (props: DrawerProps) => {
     <DrawerContentScrollView contentContainerStyle={styles.container}>
       <>
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Hi, User!</Text>
+          <Text style={styles.headerText}>Hi, {user?.fullname}</Text>
         </View>
         <Divider width={2} />
         <DrawerItem

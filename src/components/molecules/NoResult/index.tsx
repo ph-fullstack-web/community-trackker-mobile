@@ -14,3 +14,7 @@ export const NoResult = (props: NoResultProps) => {
     </View>
   );
 };
+
+NoResult.defaultProps = {
+  message: 'No Record Found',
+};

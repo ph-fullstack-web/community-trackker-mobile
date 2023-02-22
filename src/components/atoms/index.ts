@@ -1,5 +1,6 @@
 export * from './Accordion';
 export * from './AppContainer';
+export * from './Avatar';
 export * from './Button';
 export * from './Card';
 export * from './Chip';

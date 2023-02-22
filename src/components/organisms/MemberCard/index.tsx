@@ -1,7 +1,7 @@
-import {View, Image} from 'react-native';
+import {View} from 'react-native';
 
-import {Card, Icon, Text} from 'components/atoms';
 import styles from './MemberCard.styles';
+import {Avatar, Card, defaultAvatar, Icon, Text} from 'components/atoms';
 import {COLORS} from 'constants/colors';
 
 type MemberCardProps = {
@@ -16,17 +16,11 @@ type MemberCardProps = {
 
 export const MemberCard = (prop: MemberCardProps) => {
   const {image, fullName, csvEmail, dateHired, isActive} = prop.memberDetails;
-  const defaultAvatar = 'https://via.placeholder.com/30.png';
 
   return (
     <Card style={styles.cardContainer}>
       <View style={styles.avatarContainer}>
-        <Image
-          style={styles.image}
-          source={{
-            uri: image ?? defaultAvatar,
-          }}
-        />
+        <Avatar size={70} source={{uri: image ?? defaultAvatar}} />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>

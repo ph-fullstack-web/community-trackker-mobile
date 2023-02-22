@@ -1,9 +1,10 @@
-import {AppContainer, Text} from 'components/atoms';
+import {AppContainer} from 'components/atoms';
+import {NotAvailable} from 'components/molecules';
 
 export const LoginTemplate = () => {
   return (
     <AppContainer keyboardShouldPersistTaps="handled">
-      <Text>Screen is still not available</Text>
+      <NotAvailable />
     </AppContainer>
   );
 };
