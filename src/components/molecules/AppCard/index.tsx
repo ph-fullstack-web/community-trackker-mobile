@@ -1,7 +1,7 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {Button} from 'components/atoms';
+import {Button, Text} from 'components/atoms';
 import styles from './AppCard.styles';
 import {COLORS} from 'constants/colors';
 

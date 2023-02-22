@@ -1,5 +1,6 @@
-import {Image, Text, View} from 'react-native';
+import {Image, View} from 'react-native';
 
+import {Text} from 'components/atoms';
 import styles from './EmployeeCard.styles';
 
 const id = '0000000';
