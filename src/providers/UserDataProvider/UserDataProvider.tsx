@@ -26,6 +26,7 @@ export const UserDataProvider = ({children}: UserDataProviderProps) => {
   return (
     <UserDataContext.Provider
       value={{
+        isUserLoggedIn: !!store.user,
         user: store.user,
         isDataLoading: store.isDataLoading,
       }}
