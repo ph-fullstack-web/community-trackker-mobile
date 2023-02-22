@@ -24,6 +24,7 @@ export type User = {
   userId: string;
   username: string;
   csvEmail: string;
+  fullname: string;
 };
 
 export type PeopleSkill = {

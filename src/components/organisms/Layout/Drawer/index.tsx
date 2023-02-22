@@ -4,173 +4,34 @@ import {
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-
-import {Divider, DrawerItem, Text} from 'components/atoms';
-import {MainStackScreenName, ScreenName} from 'constants/enums';
-import {DrawerAccordion, DrawerAccordionItem} from 'components/molecules';
-import {MainRootNativeStackParamList} from '../../../../@types/navigation';
+import {useNavigation} from '@react-navigation/native';
 
 import styles from './Drawer.styles';
-import {useNavigation} from '@react-navigation/native';
+import {RootNativeStackParamList} from '../../../../@types/navigation';
+import {Divider, DrawerItem, Text} from 'components/atoms';
+import {DrawerAccordion, DrawerAccordionItem} from 'components/molecules';
 import {COLORS} from 'constants/colors';
+import {StackScreen} from 'constants/navigation';
+import {useUserDataProvider} from 'providers/UserDataProvider';
 
-type DrawerItems = (Partial<DrawerAccordionItem> & {
+export type DrawerItems = (Partial<DrawerAccordionItem> & {
   items?: DrawerAccordionItem[];
 })[];
 
-type MainStackNavigationProp =
-  NativeStackNavigationProp<MainRootNativeStackParamList>;
+type DrawerProps = DrawerContentComponentProps & {drawerItems: DrawerItems};
 
-const drawerItems: DrawerItems = [
-  {
-    icon: {
-      name: 'account-circle',
-      type: 'material',
-      color: COLORS.MIDNIGHT_BLUE,
-    },
-    label: 'Profile',
-    onPress: navigation => navigation.navigate(ScreenName.Profile),
-  },
-  {
-    icon: {name: 'groups', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-    label: 'Communities',
-    onPress: navigation => navigation.navigate(ScreenName.Communities),
-  },
-  {
-    icon: {name: 'group', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-    items: [
-      {
-        icon: {name: 'group', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-        label: 'Quality Engineering',
-        onPress: navigation =>
-          navigation.navigate(ScreenName.CommunityMembers, {
-            communityId: 1,
-          }),
-      },
-      {
-        icon: {name: 'group', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-        label: 'Cloud and DevOps',
-        onPress: navigation =>
-          navigation.navigate(ScreenName.CommunityMembers, {
-            communityId: 2,
-          }),
-      },
-      {
-        icon: {name: 'group', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-        label: 'Mobile Cross Platform',
-        onPress: navigation =>
-          navigation.navigate(ScreenName.CommunityMembers, {
-            communityId: 3,
-          }),
-      },
-      {
-        icon: {name: 'group', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-        label: 'Enterprise Coffee',
-        onPress: navigation =>
-          navigation.navigate(ScreenName.CommunityMembers, {
-            communityId: 4,
-          }),
-      },
-      {
-        icon: {name: 'group', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-        label: 'Enterprise .NET',
-        onPress: navigation =>
-          navigation.navigate(ScreenName.CommunityMembers, {
-            communityId: 5,
-          }),
-      },
-      {
-        icon: {name: 'group', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-        label: 'Program Management',
-        onPress: navigation =>
-          navigation.navigate(ScreenName.CommunityMembers, {
-            communityId: 6,
-          }),
-      },
-      {
-        icon: {name: 'group', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-        label: 'Product Strategy',
-        onPress: navigation =>
-          navigation.navigate(ScreenName.CommunityMembers, {
-            communityId: 7,
-          }),
-      },
-      {
-        icon: {name: 'group', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-        label: 'Full-Stack Web',
-        onPress: navigation =>
-          navigation.navigate(ScreenName.CommunityMembers, {
-            communityId: 8,
-          }),
-      },
-      {
-        icon: {name: 'group', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-        label: 'Big Data & Analytics',
-        onPress: navigation =>
-          navigation.navigate(ScreenName.CommunityMembers, {
-            communityId: 9,
-          }),
-      },
-    ],
-    label: 'Members',
-  },
-  {
-    icon: {name: 'description', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-    label: 'Report',
-    onPress: navigation => navigation.navigate(ScreenName.Report),
-  },
-  {
-    icon: {name: 'color-lens', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-    items: [
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Blue',
-        onPress: () => console.log('Blue'),
-      },
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Plum',
-        onPress: () => console.log('Plum'),
-      },
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Teal',
-        onPress: () => console.log('Teal'),
-      },
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Dark',
-        onPress: () => console.log('Dark'),
-      },
-    ],
-    label: 'Themes',
-  },
-];
+export const Drawer = (props: DrawerProps) => {
+  const {drawerItems, navigation} = props;
+  const {user} = useUserDataProvider();
 
-export const Drawer = ({navigation}: DrawerContentComponentProps) => {
-  const mainStackNavigation = useNavigation<MainStackNavigationProp>();
+  const mainStackNavigation =
+    useNavigation<NativeStackNavigationProp<RootNativeStackParamList>>();
 
   return (
     <DrawerContentScrollView contentContainerStyle={styles.container}>
       <>
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Hi, User!</Text>
+          <Text style={styles.headerText}>Hi, {user?.fullname}</Text>
         </View>
         <Divider width={2} />
         <DrawerItem
@@ -182,7 +43,7 @@ export const Drawer = ({navigation}: DrawerContentComponentProps) => {
           }}
           label="Dashboard"
           onPress={() =>
-            mainStackNavigation.navigate(MainStackScreenName.Dashboard)
+            mainStackNavigation.navigate(StackScreen.DashboardStack)
           }
         />
         {drawerItems.map(item =>
