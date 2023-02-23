@@ -11,6 +11,12 @@ export type layoutProps = {
   radius: number;
   width: number;
 };
+export type RequestProps = {
+  approved: number;
+  pending: number;
+  draft: number;
+  rejected: number;
+};
 
 export type CecCardChartProps = {
   data: dataProps;
@@ -19,8 +25,13 @@ export type CecCardChartProps = {
   percentage: number;
 };
 
+export type CecCardRequestDetails = {
+  requests: RequestProps;
+};
+
 export type CecCardProps = {
   percentage: number;
   fillColor: string;
   layout: ChartLayout;
+  cecRequests: RequestProps;
 };

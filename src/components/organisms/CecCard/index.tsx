@@ -3,7 +3,11 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useTheme} from '@rneui/themed';
 
 import {Button, Card, ProgressChart, Text} from 'components/atoms';
-import {CecCardChartProps, CecCardProps} from './CecCard.types';
+import {
+  CecCardChartProps,
+  CecCardProps,
+  CecCardRequestDetails,
+} from './CecCard.types';
 import styles from './CecCard.styles';
 import {COLORS} from 'constants/colors';
 
@@ -11,6 +15,12 @@ export const CecCard = ({
   percentage = 40 / 100,
   fillColor = COLORS.DARK_BLUE,
   layout = 'horizontal',
+  cecRequests = {
+    approved: 6,
+    pending: 9,
+    draft: 8,
+    rejected: 8,
+  },
 }: CecCardProps) => {
   const {theme} = useTheme();
 
@@ -20,10 +30,10 @@ export const CecCard = ({
   };
 
   const horizontalProps = {
-    height: 150,
+    height: 170,
     strokeWidth: 15,
     radius: 66,
-    width: 150,
+    width: 170,
   };
 
   return (
@@ -37,7 +47,7 @@ export const CecCard = ({
         />
       </View>
       <View style={styles.details_wrapper}>
-        <CecCardDetails />
+        <CecCardDetails requests={cecRequests} />
         <Button
           title="View Details"
           titleStyle={styles.buttonText}
@@ -82,13 +92,28 @@ export const CecCardChart = (props: CecCardChartProps) => {
   );
 };
 
-export const CecCardDetails = () => {
+export const CecCardDetails = (props: CecCardRequestDetails) => {
+  const {requests} = props;
+  const {approved, pending, draft, rejected} = requests;
+
   return (
-    <View>
-      <Text>Approved: 6</Text>
-      <Text>Pending: 9</Text>
-      <Text>Draft: 8</Text>
-      <Text>Rejected: 8</Text>
-    </View>
+    <>
+      <View style={styles.horizontal_layout}>
+        <Text style={styles.bold}>{approved}</Text>
+        <Text style={styles.uppercase}> - Approved</Text>
+      </View>
+      <View style={styles.horizontal_layout}>
+        <Text style={styles.bold}>{pending}</Text>
+        <Text style={styles.uppercase}> - Pending</Text>
+      </View>
+      <View style={styles.horizontal_layout}>
+        <Text style={styles.bold}>{draft}</Text>
+        <Text style={styles.uppercase}> - Draft</Text>
+      </View>
+      <View style={styles.horizontal_layout}>
+        <Text style={styles.bold}>{rejected}</Text>
+        <Text style={styles.uppercase}> - Rejected</Text>
+      </View>
+    </>
   );
 };

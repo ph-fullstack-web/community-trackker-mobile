@@ -15,6 +15,16 @@ const styles = StyleSheet.create({
     flex: 0.45,
     padding: 15,
   },
+  horizontal_layout: {
+    flexDirection: 'row',
+    alignContent: 'center',
+  },
+  uppercase: {
+    textTransform: 'uppercase',
+  },
+  bold: {
+    fontWeight: 'bold',
+  },
   buttonContainer: {
     marginTop: 15,
   },
@@ -36,20 +46,20 @@ const styles = StyleSheet.create({
   chart_wrapper: {
     flexDirection: 'row',
     position: 'absolute',
-    left: -10,
+    left: -20,
     paddingVertical: 15,
     paddingLeft: 15,
     paddingRight: 2,
     zIndex: 1,
     backgroundColor: COLORS.WHITE,
-    height: 180,
+    height: 200,
     borderTopRightRadius: 90,
     borderBottomRightRadius: 90,
   },
   text_wrapper: {
     position: 'absolute',
-    height: 180,
-    width: 180,
+    height: 200,
+    width: 200,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
