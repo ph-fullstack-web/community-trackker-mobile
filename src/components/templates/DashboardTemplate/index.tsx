@@ -7,10 +7,21 @@ import {
   NoResult,
   SkillBadge,
 } from 'components/molecules';
-import {UserDetailsCard} from 'components/organisms';
+import {CecCard, UserDetailsCard} from 'components/organisms';
+import {COLORS} from 'constants/colors';
 import {PeopleSkill, User} from 'models/business';
 
 import styles from './DashboardTemplate.styles';
+
+const percentage = 40 / 100;
+const fillColor = COLORS.DARK_BLUE;
+const layout = 'horizontal';
+const cecRequests = {
+  approved: 6,
+  pending: 9,
+  draft: 8,
+  rejected: 8,
+};
 
 type DashboardTemplateProps = {
   user: User | undefined;
@@ -100,7 +111,12 @@ export const DashboardTemplate = (props: DashboardTemplateProps) => {
         </View>
         <View style={styles.sectionContainer}>
           <Text style={styles.titleSeparator}>CEC POINTS</Text>
-          {/** Insert CEC Progress Chart */}
+          <CecCard
+            percentage={percentage}
+            fillColor={fillColor}
+            layout={layout}
+            cecRequests={cecRequests}
+          />
         </View>
         <View style={styles.sectionContainer}>
           <Text style={styles.titleSeparator}>SKILLS</Text>

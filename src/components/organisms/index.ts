@@ -1,3 +1,4 @@
+export * from './CecCard';
 export * from './CommunityCard';
 export * from './Layout';
 export * from './MemberCard';
