@@ -2,12 +2,22 @@ import {View} from 'react-native';
 
 import {AppContainer, ScreenHeader} from 'components/atoms';
 import {AppCard, AppCardObject} from 'components/molecules';
-import {EmployeeCard, EmployeeDetailsCard} from 'components/organisms';
+import {CecCard, EmployeeCard, EmployeeDetailsCard} from 'components/organisms';
 import {employeeSet100} from 'mocks/employeeSet100';
 import {User} from 'models/business';
+import {COLORS} from 'constants/colors';
 
 import styles from './DashboardTemplate.styles';
-import {CecCard} from 'components/organisms/CecCard';
+
+const percentage = 40 / 100;
+const fillColor = COLORS.DARK_BLUE;
+const layout = 'horizontal';
+const cecRequests = {
+  approved: 6,
+  pending: 9,
+  draft: 8,
+  rejected: 8,
+};
 
 type DashboardTemplateProps = {
   user: User | undefined;
@@ -52,7 +62,12 @@ export const DashboardTemplate = (props: DashboardTemplateProps) => {
           );
         }
       )}
-      <CecCard />
+      <CecCard
+        percentage={percentage}
+        fillColor={fillColor}
+        layout={layout}
+        cecRequests={cecRequests}
+      />
       <EmployeeDetailsCard employee={employeeSet100[0]} title="My Details" />
       <EmployeeCard />
     </AppContainer>

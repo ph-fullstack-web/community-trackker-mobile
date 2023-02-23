@@ -11,17 +11,8 @@ import {
 import styles from './CecCard.styles';
 import {COLORS} from 'constants/colors';
 
-export const CecCard = ({
-  percentage = 40 / 100,
-  fillColor = COLORS.DARK_BLUE,
-  layout = 'horizontal',
-  cecRequests = {
-    approved: 6,
-    pending: 9,
-    draft: 8,
-    rejected: 8,
-  },
-}: CecCardProps) => {
+export const CecCard = (props: CecCardProps) => {
+  const {percentage, fillColor, layout, cecRequests} = props;
   const {theme} = useTheme();
 
   const data = {
