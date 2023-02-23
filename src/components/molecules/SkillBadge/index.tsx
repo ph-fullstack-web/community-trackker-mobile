@@ -10,7 +10,7 @@ export const SkillBadge = (props: SkillBadgeProps) => {
   const skillBadgeMap = new Map<number, Icon>([
     [
       1,
-      {type: 'material-community', name: 'angular', color: COLORS.SCARLET_RED},
+      {type: 'material-community', name: 'angular', color: COLORS.AMERICAN_RED},
     ],
     [2, {type: 'material-community', name: 'react', color: COLORS.SKY_BLUE}],
     [3, {type: 'material-community', name: 'vuejs', color: COLORS.MINT_GREEN}],
