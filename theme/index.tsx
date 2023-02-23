@@ -1,4 +1,5 @@
-import { COLORS } from "constants/colors";
+import {COLORS} from 'constants/colors';
+
 interface platformColors {
   primary?: string;
   secondary?: string;
@@ -39,8 +40,8 @@ interface theme {
   };
 }
 
-export const sampleTheme: theme  = {
-  colors:{
+export const sampleTheme: theme = {
+  colors: {
     primary: COLORS.MEDIUM_BLUE,
     white: COLORS.WHITE,
     black: COLORS.BLACK,
@@ -51,5 +52,5 @@ export const sampleTheme: theme  = {
     grey3: COLORS.LIGHT_GRAY,
     grey4: COLORS.VERY_LIGHT_GRAY,
     grey5: COLORS.ULTRA_LIGHT_GRAY,
-  }
+  };
 };
