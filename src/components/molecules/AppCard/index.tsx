@@ -3,26 +3,17 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useTheme} from '@rneui/themed';
 
 import {Button, Text} from 'components/atoms';
-import styles from './AppCard.styles';
 import {COLORS} from 'constants/colors';
 
-export type AppCardObject = {
-  title: string;
-  icon: Icon;
-  numColumns?: number;
-  onPress: () => void;
-};
+import styles from './AppCard.styles';
+import {AppCardProps} from './AppCard.types';
 
-export const AppCard = (props: AppCardObject) => {
+export const AppCard = (props: AppCardProps) => {
   const {theme} = useTheme();
+  const {numColumns = 3, icon, title, onPress} = props;
 
   return (
-    <View
-      style={[
-        styles.appCardContainer,
-        {width: `${100 / (props.numColumns ?? 3)}%`},
-      ]}
-    >
+    <View style={[styles.appCardContainer, {width: `${100 / numColumns}%`}]}>
       <Button
         title=""
         buttonStyle={styles.appCardButton}
@@ -33,11 +24,13 @@ export const AppCard = (props: AppCardObject) => {
           start: {x: 0, y: 0.5},
           end: {x: 1, y: 0.5},
         }}
-        icon={props.icon}
-        onPress={props.onPress}
+        icon={icon}
+        onPress={onPress}
       />
 
-      <Text style={{color: theme.colors.blue2}}>{props.title}</Text>
+      <Text style={{color: theme.colors.blue2}}>{title}</Text>
     </View>
   );
 };
+
+export * from './AppCard.types';

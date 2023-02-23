@@ -14,7 +14,11 @@ type HeaderLeftDrawerNavigationProp = DrawerNavigationProp<RootDrawerParamList>;
 type HeaderLeftStackNavigationProp =
   NativeStackNavigationProp<RootNativeStackParamList>;
 
-export const HeaderLeft = () => {
+type HeaderLeftProps = {
+  buttonColor?: string;
+};
+
+export const HeaderLeft = (props: HeaderLeftProps) => {
   const {toggleDrawer, navigate: navigateDrawer} =
     useNavigation<HeaderLeftDrawerNavigationProp>();
   const {navigate: navigateStack} =
@@ -51,6 +55,7 @@ export const HeaderLeft = () => {
         icon={{
           name: 'west',
           type: 'material',
+          color: props.buttonColor,
         }}
         buttonStyle={styles.button}
       />
@@ -63,6 +68,7 @@ export const HeaderLeft = () => {
       icon={{
         name: 'menu',
         type: 'material',
+        color: props.buttonColor,
       }}
       buttonStyle={styles.button}
     />

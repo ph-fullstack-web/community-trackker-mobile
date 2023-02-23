@@ -17,9 +17,11 @@ const styles = StyleSheet.create({
   fullname: {
     marginTop: 10,
     fontSize: 24,
+    color: COLORS.ULTRA_LIGHT_GRAY,
   },
   email: {
     fontSize: 14,
+    color: COLORS.LIGHT_GRAY,
   },
   linkContainer: {
     flexDirection: 'row',

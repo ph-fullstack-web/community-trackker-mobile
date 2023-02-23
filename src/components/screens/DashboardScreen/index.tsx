@@ -2,18 +2,19 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {RootNativeStackParamList} from '../../../@types/navigation';
-import {AppCardObject} from 'components/molecules';
+import {AppCardProps} from 'components/molecules';
 import {DashboardTemplate} from 'components/templates';
 import {COLORS} from 'constants/colors';
 import {StackScreen} from 'constants/navigation';
 import {useUserDataProvider} from 'providers/UserDataProvider';
+import {StatusBar} from 'react-native';
 
 export const DashboardScreen = () => {
   const {user} = useUserDataProvider();
   const {navigate} =
     useNavigation<NativeStackNavigationProp<RootNativeStackParamList>>();
 
-  const applications: AppCardObject[] = [
+  const applications: AppCardProps[] = [
     {
       title: 'My Community',
       icon: {
@@ -47,6 +48,12 @@ export const DashboardScreen = () => {
   ];
 
   return (
-    <DashboardTemplate applications={applications} numColumns={3} user={user} />
+    <>
+      <StatusBar
+        barStyle={'light-content'}
+        backgroundColor={COLORS.MIDNIGHT_BLUE}
+      />
+      <DashboardTemplate applications={applications} user={user} />
+    </>
   );
 };

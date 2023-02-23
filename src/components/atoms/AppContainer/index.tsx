@@ -1,7 +1,8 @@
-import {ScrollView, ScrollViewProps} from 'react-native';
+import {ScrollView, ScrollViewProps, StatusBar} from 'react-native';
 import {useTheme} from '@rneui/themed';
 
 import styles from './AppContainer.styles';
+import {COLORS} from 'constants/colors';
 
 type AppContainerProps = ComponentWithChildren & ScrollViewProps;
 
@@ -17,6 +18,7 @@ export const AppContainer = ({
       {...otherProps}
       style={[styles.container, style, {backgroundColor: theme.colors.white}]}
     >
+      <StatusBar barStyle="dark-content" backgroundColor={COLORS.WHITE} />
       {children}
     </ScrollView>
   );

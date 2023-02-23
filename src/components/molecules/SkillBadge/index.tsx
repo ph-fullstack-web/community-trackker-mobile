@@ -1,14 +1,10 @@
 import {View} from 'react-native';
 
-import styles from './SkillBadge.styles';
-import {Avatar, Icon} from 'components/atoms';
+import {Icon} from 'components/atoms';
 import {COLORS} from 'constants/colors';
 
-type SkillBadgeProps = {
-  size: number;
-  skillId: number;
-  numColumns?: number;
-};
+import styles from './SkillBadge.styles';
+import {SkillBadgeProps} from './SkillBadge.types';
 
 export const SkillBadge = (props: SkillBadgeProps) => {
   const skillBadgeMap = new Map<number, Icon>([
@@ -39,13 +35,16 @@ export const SkillBadge = (props: SkillBadgeProps) => {
   const skillBadge = skillBadgeMap.get(props.skillId);
 
   return (
-    <View
-      style={[styles.container, {width: `${100 / (props.numColumns ?? 3)}%`}]}
-    >
+    <View style={[styles.container, {width: `${100 / props.numColumns}%`}]}>
       {skillBadge ? (
         <Icon {...skillBadge} size={props.size} />
       ) : (
-        <Avatar size={props.size} />
+        <Icon
+          name="help-circle-outline"
+          type="material-community"
+          color={COLORS.GRAY}
+          size={props.size}
+        />
       )}
     </View>
   );
