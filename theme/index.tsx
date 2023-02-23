@@ -52,5 +52,5 @@ export const sampleTheme: theme = {
     grey3: COLORS.LIGHT_GRAY,
     grey4: COLORS.VERY_LIGHT_GRAY,
     grey5: COLORS.ULTRA_LIGHT_GRAY,
-  };
+  },
 };
