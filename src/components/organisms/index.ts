@@ -1,3 +1,4 @@
+export * from './CecCard';
 export * from './CommunityCard';
 export * from './EmployeeCard';
 export * from './EmployeeDetailsCard';
