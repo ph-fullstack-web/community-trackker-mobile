@@ -13,6 +13,7 @@ export const AppContainer = ({
   const {theme} = useTheme();
   return (
     <ScrollView
+      showsVerticalScrollIndicator={false}
       {...otherProps}
       style={[styles.container, style, {backgroundColor: theme.colors.white}]}
     >
