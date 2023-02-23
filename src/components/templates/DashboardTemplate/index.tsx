@@ -7,6 +7,7 @@ import {employeeSet100} from 'mocks/employeeSet100';
 import {User} from 'models/business';
 
 import styles from './DashboardTemplate.styles';
+import {CecCard} from 'components/organisms/CecCard';
 
 type DashboardTemplateProps = {
   user: User | undefined;
@@ -51,6 +52,7 @@ export const DashboardTemplate = (props: DashboardTemplateProps) => {
           );
         }
       )}
+      <CecCard />
       <EmployeeDetailsCard employee={employeeSet100[0]} title="My Details" />
       <EmployeeCard />
     </AppContainer>
