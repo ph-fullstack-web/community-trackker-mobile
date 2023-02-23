@@ -7,8 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 10,
-    borderBottomColor: COLORS.LIGHT_GRAY,
-    borderBottomWidth: 2,
+    backgroundColor: COLORS.WHITE,
   },
   headerRight: {
     paddingRight: 10,

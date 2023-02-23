@@ -15,7 +15,7 @@ export const DashboardScreen = () => {
 
   const applications: AppCardObject[] = [
     {
-      title: 'My Communities',
+      title: 'My Community',
       icon: {
         name: 'groups',
         type: 'material',

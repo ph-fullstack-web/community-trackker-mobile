@@ -25,6 +25,8 @@ export type User = {
   username: string;
   csvEmail: string;
   fullname: string;
+  cecPoints: number;
+  skills: PeopleSkill[];
 };
 
 export type PeopleSkill = {

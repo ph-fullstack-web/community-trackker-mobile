@@ -5,4 +5,32 @@ export const mockUser: User = {
   username: 'Eren Yeager',
   csvEmail: 'eren.yeager@gmail.com',
   fullname: 'Eren Yeager',
+  cecPoints: 30,
+  skills: [
+    {
+      peopleskills_id: 1,
+      peopleskills_desc: 'Angular',
+      is_active: true,
+    },
+    {
+      peopleskills_id: 2,
+      peopleskills_desc: 'React',
+      is_active: true,
+    },
+    {
+      peopleskills_id: 3,
+      peopleskills_desc: 'Vue',
+      is_active: true,
+    },
+    {
+      peopleskills_id: 4,
+      peopleskills_desc: 'Javascript',
+      is_active: true,
+    },
+    {
+      peopleskills_id: 5,
+      peopleskills_desc: 'Java',
+      is_active: true,
+    },
+  ],
 };
