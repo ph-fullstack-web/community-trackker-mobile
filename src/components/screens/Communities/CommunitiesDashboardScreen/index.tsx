@@ -1,7 +1,9 @@
 import {CommunitiesDashboardTemplate} from 'components/templates';
+import {CommunityStackScreens} from 'constants/navigation';
 import {useCommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 
-type CommunitiesDashboardScreenProps = CommunityStackScreenProps<'Communities'>;
+type CommunitiesDashboardScreenProps =
+  CommunityStackScreenProps<CommunityStackScreens.Communities>;
 
 export const CommunitiesDashboardScreen = ({
   navigation,

@@ -2,10 +2,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // import {LoginScreen} from 'components/screens';
+import {RootNativeStackScreens} from 'constants/navigation';
 import {CommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
-import {CECTrackerDrawerNavigation} from './CECTrackerNavigation';
 import {CommunitiesDrawerNavigation} from './CommunitiesNavigation';
-import {SkillTreeDrawerNavigation} from './SkillTreeNavigation';
 
 const Stack = createNativeStackNavigator<RootNativeStackParamList>();
 
@@ -15,7 +14,7 @@ export const RootNavigation = () => {
       <CommunitiesDataProvider>
         {/*TODO: remove DashboardStack as initial route when login screen has been implemented */}
         <Stack.Navigator
-          initialRouteName="CommunitiesDrawer"
+          initialRouteName={RootNativeStackScreens.CommunitiesDrawer}
           screenOptions={{headerShown: false}}
         >
           {/* <Stack.Screen
@@ -23,16 +22,8 @@ export const RootNavigation = () => {
             component={LoginScreen}
           /> */}
           <Stack.Screen
-            name="CommunitiesDrawer"
+            name={RootNativeStackScreens.CommunitiesDrawer}
             component={CommunitiesDrawerNavigation}
-          />
-          <Stack.Screen
-            name="CECTracker"
-            component={CECTrackerDrawerNavigation}
-          />
-          <Stack.Screen
-            name="SkillTree"
-            component={SkillTreeDrawerNavigation}
           />
         </Stack.Navigator>
       </CommunitiesDataProvider>

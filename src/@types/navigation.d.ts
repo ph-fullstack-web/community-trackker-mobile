@@ -13,8 +13,6 @@ declare global {
   export type RootNativeStackParamList = {
     Login: undefined;
     CommunitiesDrawer: NavigatorScreenParams<CommunityDrawerParamList>;
-    CECTracker: undefined;
-    SkillTree: undefined;
   };
 
   export type RootNativeStackScreenProps<
@@ -26,6 +24,8 @@ declare global {
     Profile: undefined;
     CommunitiesStack: NavigatorScreenParams<CommunityStackParamList>;
     Report: undefined;
+    CEC: undefined;
+    Skills: undefined;
   };
 
   export type CommunityDrawerScreenProps<
@@ -37,32 +37,13 @@ declare global {
 
   export type CommunityStackParamList = {
     Communities: undefined;
-    CommunityMembers: {communityId: number};
+    CommunityMembers: {
+      communityId: number;
+      previousScreen: string;
+    };
   };
 
   export type CommunityStackScreenProps<
     T extends keyof CommunityStackParamList
   > = NativeStackScreenProps<CommunityStackParamList, T>;
-
-  export type CECTrackerDrawerParamList = {
-    CEC: undefined;
-  };
-
-  export type CECTrackerDrawerScreenProps<
-    T extends keyof CECTrackerDrawerParamList
-  > = CompositeScreenProps<
-    DefaultDrawerScreenProps<CECTrackerDrawerParamList, T>,
-    NativeStackScreenProps<RootNativeStackParamList>
-  >;
-
-  export type SkillTreeDrawerParamList = {
-    Skills: undefined;
-  };
-
-  export type SkillTreeDrawerScreenProps<
-    T extends keyof SkillTreeDrawerParamList
-  > = CompositeScreenProps<
-    DefaultDrawerScreenProps<SkillTreeDrawerParamList, T>,
-    NativeStackScreenProps<RootNativeStackParamList>
-  >;
 }

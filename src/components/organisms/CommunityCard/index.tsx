@@ -15,7 +15,7 @@ interface CommunityCardProps {
   managerName: string;
   totalMembers: number;
   percentage: number;
-  onViewMembers: (communityId: number) => void;
+  onViewMembers: () => void;
 }
 
 export const CommunityCard = (props: CommunityCardProps) => {
@@ -44,7 +44,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
             start: {x: 0, y: 0.5},
             end: {x: 1, y: 0.5},
           }}
-          onPress={() => props.onViewMembers(props.communityId)}
+          onPress={props.onViewMembers}
         />
       </View>
       <View style={styles.card_chart_container}>

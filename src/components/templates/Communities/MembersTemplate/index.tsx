@@ -4,13 +4,14 @@ import {FlatList} from 'react-native';
 import {AppContainer, ScreenHeader} from 'components/atoms';
 import {NoResult, Search} from 'components/molecules';
 import {MemberCard} from 'components/organisms';
+import {CommunityStackScreens} from 'constants/navigation';
 import {Community, Employee} from 'models/business';
 
 import styles from './MembersTemplate.styles';
 
 type MembersTemplateProps = {
-  communityList: Community[] | undefined;
-  route: CommunityStackScreenProps<'CommunityMembers'>['route'];
+  communityList?: Community[];
+  route: CommunityStackScreenProps<CommunityStackScreens.CommunityMembers>['route'];
 };
 
 export const MembersTemplate = ({

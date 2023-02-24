@@ -1,9 +1,14 @@
 import {AppCardObject} from 'components/molecules';
 import {DashboardTemplate} from 'components/templates';
 import {COLORS} from 'constants/colors';
+import {
+  CommunityDrawerScreens,
+  CommunityStackScreens,
+} from 'constants/navigation';
 import {useUserDataProvider} from 'providers/UserDataProvider';
 
-type DashboardScreenProps = CommunityDrawerScreenProps<'Dashboard'>;
+type DashboardScreenProps =
+  CommunityDrawerScreenProps<CommunityDrawerScreens.Dashboard>;
 
 export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
   const {navigate} = navigation;
@@ -19,11 +24,11 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
       onPress: () =>
-        navigate('CommunitiesDrawer', {
-          screen: 'CommunitiesStack',
+        navigate(CommunityDrawerScreens.CommunitiesStack, {
+          screen: CommunityStackScreens.CommunityMembers,
           params: {
-            screen: 'CommunityMembers',
-            params: {communityId: user!.communityId},
+            communityId: user!.communityId,
+            previousScreen: CommunityDrawerScreens.Dashboard,
           },
         }),
     },
@@ -35,7 +40,7 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
         size: 50,
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
-      onPress: () => navigate('CECTracker'),
+      onPress: () => navigate(CommunityDrawerScreens.CEC),
     },
     {
       title: 'Skill Tree',
@@ -45,7 +50,7 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
         size: 50,
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
-      onPress: () => navigate('SkillTree'),
+      onPress: () => navigate(CommunityDrawerScreens.Skills),
     },
   ];
 

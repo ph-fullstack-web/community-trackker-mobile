@@ -25,4 +25,6 @@ export const COLORS = {
   //CSV Highlight Colors
   HIGHLIGHT_RED: '#B81F2D',
   HIGHLIGHT_YELLOW: '#E9C71D',
+
+  DEFAULT_BACKGROUND: '#F0F0F0',
 };

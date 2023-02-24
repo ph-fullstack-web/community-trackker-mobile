@@ -4,10 +4,11 @@ import {
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 
-import styles from './Drawer.styles';
 import {Divider, DrawerItem, Text} from 'components/atoms';
 import {DrawerAccordion, DrawerAccordionItem} from 'components/molecules';
 import {useUserDataProvider} from 'providers/UserDataProvider';
+
+import styles from './Drawer.styles';
 
 export type DrawerItems<T> = (Partial<DrawerAccordionItem<T>> & {
   items?: DrawerAccordionItem<T>[];
@@ -28,24 +29,32 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
           <Text style={styles.headerText}>Hi, {user?.fullname}</Text>
         </View>
         <Divider width={2} />
-        {drawerItems.map(item =>
-          item.items ? (
-            <DrawerAccordion<T>
-              key={item.label!}
-              icon={item.icon!}
-              items={item.items}
-              label={item.label!}
-              navigation={navigation as T}
-            />
-          ) : (
-            <DrawerItem
-              key={item.label!}
-              icon={item.icon!}
-              label={item.label!}
-              onPress={() => item.onPress!(navigation as T)}
-            />
-          )
-        )}
+        <View style={styles.itemsContainer}>
+          {drawerItems.map(item =>
+            item.items ? (
+              <DrawerAccordion<T>
+                key={item.label!}
+                icon={item.icon!}
+                items={item.items}
+                label={item.label!}
+                navigation={navigation as T}
+              />
+            ) : (
+              <DrawerItem
+                key={item.label!}
+                icon={item.icon!}
+                label={item.label!}
+                onPress={() => item.onPress!(navigation as T)}
+              />
+            )
+          )}
+        </View>
+        <Divider width={2} />
+        <DrawerItem
+          icon={{name: 'logout', type: 'material'}}
+          label="Log Out"
+          onPress={() => console.log('Logging out...')}
+        />
       </>
     </DrawerContentScrollView>
   );

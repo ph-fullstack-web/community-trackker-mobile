@@ -1,124 +1,80 @@
+import {useCallback, useMemo} from 'react';
 import {
   createDrawerNavigator,
   DrawerContentComponentProps,
 } from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+import {Drawer as DrawerContent, Header} from 'components/organisms';
 import {
-  Drawer as DrawerContent,
-  DrawerItems,
-  Header,
-} from 'components/organisms';
-import {
+  CECDashboardScreen,
   CommunitiesDashboardScreen,
   DashboardScreen,
   MembersScreen,
   ProfileScreen,
   ReportScreen,
+  SkillsDashboardScreen,
 } from 'components/screens';
-import {COLORS} from 'constants/colors';
+import {DEFAULT_DRAWER_ITEMS} from 'constants/drawer';
+import {
+  CommunityDrawerScreens,
+  CommunityStackScreens,
+} from 'constants/navigation';
+
+type DrawerNavigation =
+  CommunityDrawerScreenProps<CommunityDrawerScreens.CommunitiesStack>['navigation'];
 
 const Drawer = createDrawerNavigator<CommunityDrawerParamList>();
 const Stack = createNativeStackNavigator<CommunityStackParamList>();
-type DrawerNavigation =
-  CommunityDrawerScreenProps<'CommunitiesStack'>['navigation'];
-
-const drawerItems: DrawerItems<DrawerNavigation> = [
-  {
-    icon: {
-      name: 'dashboard',
-      type: 'material',
-      color: COLORS.MIDNIGHT_BLUE,
-    },
-    label: 'Dashboard',
-    onPress: navigation => navigation.navigate('Dashboard'),
-  },
-  {
-    icon: {
-      name: 'account-circle',
-      type: 'material',
-      color: COLORS.MIDNIGHT_BLUE,
-    },
-    label: 'Profile',
-    onPress: navigation => navigation.navigate('Profile'),
-  },
-  {
-    icon: {name: 'groups', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-    label: 'Communities',
-    onPress: navigation =>
-      navigation.navigate('CommunitiesStack', {screen: 'Communities'}),
-  },
-  {
-    icon: {name: 'description', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-    label: 'Report',
-    onPress: navigation => navigation.navigate('Report'),
-  },
-  {
-    icon: {name: 'color-lens', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-    items: [
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Blue',
-        onPress: () => console.log('Blue'),
-      },
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Plum',
-        onPress: () => console.log('Plum'),
-      },
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Teal',
-        onPress: () => console.log('Teal'),
-      },
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Dark',
-        onPress: () => console.log('Dark'),
-      },
-    ],
-    label: 'Themes',
-  },
-];
-
-const renderDrawer = (props: DrawerContentComponentProps) => (
-  <DrawerContent<DrawerNavigation> {...props} drawerItems={drawerItems} />
-);
 
 export const CommunitiesDrawerNavigation = () => {
+  const drawerItems = useMemo(
+    () => DEFAULT_DRAWER_ITEMS<DrawerNavigation>(),
+    []
+  );
+
+  const renderDrawer = useCallback(
+    (props: DrawerContentComponentProps) => (
+      <DrawerContent<DrawerNavigation> {...props} drawerItems={drawerItems} />
+    ),
+    [drawerItems]
+  );
+
   return (
     <Drawer.Navigator
-      initialRouteName="Dashboard"
+      initialRouteName={CommunityDrawerScreens.Dashboard}
       screenOptions={{
         header: Header,
         drawerType: 'slide',
         swipeEdgeWidth: 200,
       }}
       drawerContent={renderDrawer}
+      backBehavior="history"
     >
-      <Drawer.Screen name="Dashboard" component={DashboardScreen} />
-      <Drawer.Screen name="Profile" component={ProfileScreen} />
       <Drawer.Screen
-        name="CommunitiesStack"
+        name={CommunityDrawerScreens.Dashboard}
+        component={DashboardScreen}
+      />
+      <Drawer.Screen
+        name={CommunityDrawerScreens.Profile}
+        component={ProfileScreen}
+      />
+      <Drawer.Screen
+        name={CommunityDrawerScreens.CommunitiesStack}
         component={CommunitiesNativeStackNavigation}
       />
-      <Drawer.Screen name="Report" component={ReportScreen} />
+      <Drawer.Screen
+        name={CommunityDrawerScreens.CEC}
+        component={CECDashboardScreen}
+      />
+      <Drawer.Screen
+        name={CommunityDrawerScreens.Skills}
+        component={SkillsDashboardScreen}
+      />
+      <Drawer.Screen
+        name={CommunityDrawerScreens.Report}
+        component={ReportScreen}
+      />
     </Drawer.Navigator>
   );
 };
@@ -126,11 +82,17 @@ export const CommunitiesDrawerNavigation = () => {
 export const CommunitiesNativeStackNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Communities"
+      initialRouteName={CommunityStackScreens.Communities}
       screenOptions={{headerShown: false}}
     >
-      <Stack.Screen name="Communities" component={CommunitiesDashboardScreen} />
-      <Stack.Screen name="CommunityMembers" component={MembersScreen} />
+      <Stack.Screen
+        name={CommunityStackScreens.Communities}
+        component={CommunitiesDashboardScreen}
+      />
+      <Stack.Screen
+        name={CommunityStackScreens.CommunityMembers}
+        component={MembersScreen}
+      />
     </Stack.Navigator>
   );
 };
