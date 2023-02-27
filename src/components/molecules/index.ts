@@ -6,3 +6,4 @@ export * from './MemberProgressChart';
 export * from './NoResult';
 export * from './NotAvailable';
 export * from './Search';
+export * from './SkillBadge';

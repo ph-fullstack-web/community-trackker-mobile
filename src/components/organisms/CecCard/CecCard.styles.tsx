@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   details_wrapper: {
     flex: 0.45,
     padding: 15,
+    backgroundColor: COLORS.WHITE,
   },
   horizontal_layout: {
     flexDirection: 'row',
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
   },
   text_container: {
     justifyContent: 'center',
-    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
+    backgroundColor: COLORS.WHITE,
     borderRadius: 40,
     width: 80,
     height: 80,

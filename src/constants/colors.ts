@@ -1,6 +1,8 @@
 export const COLORS = {
   TRANSPARENT: 'transparent',
   BLACK: '#000000',
+  GRAY: 'gray',
+  DEFAULT_BACKGROUND: '#F0F0F0',
 
   //CSV Accent Colors
   WHITE: '#FFFFFF',
@@ -26,5 +28,10 @@ export const COLORS = {
   HIGHLIGHT_RED: '#B81F2D',
   HIGHLIGHT_YELLOW: '#E9C71D',
 
-  DEFAULT_BACKGROUND: '#F0F0F0',
+  // Skill COLORS:
+  AMERICAN_RED: '#B52E31',
+  SKY_BLUE: '#61DBFB',
+  MINT_GREEN: '#41B883',
+  MINION_YELLOW: '#F0DB4F',
+  JAVA_ORANGE: '#f89820',
 };

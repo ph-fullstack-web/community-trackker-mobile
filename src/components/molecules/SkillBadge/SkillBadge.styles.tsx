@@ -1,18 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  appCardContainer: {
+  container: {
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
-  },
-  appCardButtonContainer: {
-    paddingBottom: 10,
-  },
-  appCardButton: {
-    borderRadius: 50,
-    width: 80,
-    padding: 15,
   },
 });
 

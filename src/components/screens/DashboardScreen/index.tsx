@@ -1,4 +1,4 @@
-import {AppCardObject} from 'components/molecules';
+import {AppCardProps} from 'components/molecules';
 import {DashboardTemplate} from 'components/templates';
 import {COLORS} from 'constants/colors';
 import {
@@ -14,9 +14,9 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
   const {navigate} = navigation;
   const {user} = useUserDataProvider();
 
-  const applications: AppCardObject[] = [
+  const applications: AppCardProps[] = [
     {
-      title: 'My Communities',
+      title: 'My Community',
       icon: {
         name: 'groups',
         type: 'material',
@@ -54,7 +54,5 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
     },
   ];
 
-  return (
-    <DashboardTemplate applications={applications} numColumns={3} user={user} />
-  );
+  return <DashboardTemplate applications={applications} user={user} />;
 };

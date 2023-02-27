@@ -2,7 +2,7 @@ import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useTheme} from '@rneui/themed';
 
-import {Button, Card, ProgressChart, Text} from 'components/atoms';
+import {Button, ProgressChart, Text} from 'components/atoms';
 import {
   CecCardChartProps,
   CecCardProps,
@@ -28,7 +28,7 @@ export const CecCard = (props: CecCardProps) => {
   };
 
   return (
-    <Card style={[styles.container, {backgroundColor: theme.colors.grey5}]}>
+    <View style={[styles.container, {backgroundColor: theme.colors.white}]}>
       <View style={styles.card_chart_container}>
         <CecCardChart
           data={data}
@@ -53,7 +53,7 @@ export const CecCard = (props: CecCardProps) => {
           onPress={() => console.log('LGTM')}
         />
       </View>
-    </Card>
+    </View>
   );
 };
 
