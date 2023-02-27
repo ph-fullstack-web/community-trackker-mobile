@@ -1,50 +1,62 @@
-import {DrawerNavigationProp} from '@react-navigation/drawer';
-import {useNavigation, useNavigationState} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useCallback, useMemo} from 'react';
+import {
+  getFocusedRouteNameFromRoute,
+  useNavigation,
+} from '@react-navigation/native';
+import {DrawerHeaderProps} from '@react-navigation/drawer';
 
 import {Button} from 'components/atoms';
-import {DrawerScreen, StackScreen} from 'constants/navigation';
-import {
-  RootDrawerParamList,
-  RootNativeStackParamList,
-} from '../../../../@types/navigation';
+import {CommunityStackScreens} from 'constants/navigation';
+
 import styles from './HeaderLeft.styles';
 
-type HeaderLeftDrawerNavigationProp = DrawerNavigationProp<RootDrawerParamList>;
-type HeaderLeftStackNavigationProp =
-  NativeStackNavigationProp<RootNativeStackParamList>;
+type HeaderLeftProps = DrawerHeaderProps;
 
-export const HeaderLeft = () => {
-  const {toggleDrawer, navigate: navigateDrawer} =
-    useNavigation<HeaderLeftDrawerNavigationProp>();
-  const {navigate: navigateStack} =
-    useNavigation<HeaderLeftStackNavigationProp>();
-  const drawerRouteIndex = useNavigationState(state => state.index);
-  const drawerRoutes = useNavigationState(state => state.routes);
-  const currentRoute = drawerRoutes[drawerRouteIndex];
+type Params = {previousScreen: string};
+
+export const HeaderLeft = ({navigation, route}: HeaderLeftProps) => {
+  const {getState: getDrawerState, goBack, toggleDrawer} = navigation;
+  const currentScreen = useMemo(
+    () => getFocusedRouteNameFromRoute(route),
+    [route]
+  );
+  const {getState: getStackState, pop} =
+    useNavigation<
+      CommunityStackScreenProps<CommunityStackScreens.Communities>['navigation']
+    >();
+  const stackScreenNames: string[] = Object.values(CommunityStackScreens);
+
+  const getPreviousScreen = useCallback(() => {
+    const {index: drawerIndex, routes: drawerRoutes} = getDrawerState();
+    const {params: drawerParams, state} = drawerRoutes[drawerIndex];
+
+    if (drawerParams && 'params' in drawerParams) {
+      return (drawerParams.params as Params).previousScreen;
+    }
+
+    const {index: stackIndex, routes: stackRoutes} = state as ReturnType<
+      typeof getStackState
+    >;
+    const {params: stackParams} = stackRoutes[stackIndex];
+
+    return (stackParams as Params).previousScreen;
+  }, [getDrawerState]);
+
+  const showBackButton = useMemo(
+    () =>
+      stackScreenNames.includes(currentScreen!) &&
+      currentScreen !== CommunityStackScreens.Communities,
+    [currentScreen, stackScreenNames]
+  );
 
   const handleGoBack = () => {
-    if (currentRoute?.state) {
-      const {index, routeNames} = currentRoute?.state;
-      if (routeNames && index && index > 0) {
-        const stackName: keyof typeof StackScreen = routeNames[
-          index - 1
-        ] as keyof typeof StackScreen;
-        navigateStack(stackName);
-        return;
-      }
-      const drawerName: keyof typeof DrawerScreen =
-        currentRoute?.name as keyof typeof DrawerScreen;
-      navigateDrawer(drawerName);
-      return;
-    }
+    const previousScreen = getPreviousScreen();
+    const isStackScreen = stackScreenNames.includes(previousScreen);
+
+    isStackScreen ? pop() : goBack();
   };
 
-  const handleToggleDrawer = () => {
-    toggleDrawer();
-  };
-
-  if (currentRoute?.state?.index) {
+  if (showBackButton) {
     return (
       <Button
         onPress={handleGoBack}
@@ -59,7 +71,7 @@ export const HeaderLeft = () => {
 
   return (
     <Button
-      onPress={handleToggleDrawer}
+      onPress={toggleDrawer}
       icon={{
         name: 'menu',
         type: 'material',

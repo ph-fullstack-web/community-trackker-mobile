@@ -55,9 +55,3 @@ declare global {
       | 'zocial';
   };
 }
-
-declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootDrawerParamList {}
-  }
-}

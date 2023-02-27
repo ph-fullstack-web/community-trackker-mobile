@@ -5,4 +5,5 @@ export const mockUser: User = {
   username: 'Eren Yeager',
   csvEmail: 'eren.yeager@gmail.com',
   fullname: 'Eren Yeager',
+  communityId: 2,
 };

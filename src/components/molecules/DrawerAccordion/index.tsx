@@ -1,31 +1,31 @@
 import {View} from 'react-native';
 import {useState} from 'react';
 import {ListItem} from '@rneui/base';
-import {DrawerNavigationHelpers} from '@react-navigation/drawer/lib/typescript/src/types';
 import {useTheme} from '@rneui/themed';
 
 import {DrawerItem, Icon, Text} from 'components/atoms';
+
 import styles from './DrawerAccordion.styles';
 
-export type DrawerAccordionItem = {
+export type DrawerAccordionItem<T> = {
   icon: Icon;
   label: string;
-  onPress: (navigation: DrawerNavigationHelpers) => void;
+  onPress: (navigation: T) => void;
 };
 
-export type DrawerAccordionProps = {
+export type DrawerAccordionProps<T> = {
   icon: Icon;
   label: string;
-  items: DrawerAccordionItem[];
-  navigation: DrawerNavigationHelpers;
+  items: DrawerAccordionItem<T>[];
+  navigation: T;
 };
 
-export const DrawerAccordion = ({
+export const DrawerAccordion = <T,>({
   icon,
   items,
   label,
   navigation,
-}: DrawerAccordionProps) => {
+}: DrawerAccordionProps<T>) => {
   const [expanded, setExpanded] = useState(false);
   const {theme} = useTheme();
 

@@ -25,6 +25,7 @@ export type User = {
   username: string;
   csvEmail: string;
   fullname: string;
+  communityId: number;
 };
 
 export type PeopleSkill = {

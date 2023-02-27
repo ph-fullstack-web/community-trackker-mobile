@@ -1,25 +1,20 @@
-export enum DrawerScreen {
-  Dashboard = 'Dashboard',
-
-  Communities = 'Communities',
-  Members = 'Members',
-  Profile = 'Profile',
-  Report = 'Report',
-
-  CEC = 'CEC',
-  Skills = 'Skills',
+export enum RootNativeStackScreens {
+  Login = 'Login',
+  CommunitiesDrawer = 'CommunitiesDrawer',
 }
 
-export enum StackScreen {
-  LoginStack = 'LoginStack',
-  DashboardStack = 'DashboardStack',
-
-  MyCommunities = 'MyCommunities',
-  CECTracker = 'CECTracker',
-  SkillTree = 'SkillTree',
-
+export enum CommunityDrawerScreens {
+  Dashboard = 'Dashboard',
+  Profile = 'Profile',
   CommunitiesStack = 'CommunitiesStack',
-  MembersStack = 'MembersStack',
+  CEC = 'CEC',
+  Skills = 'Skills',
+  Report = 'Report',
+}
+
+export enum CommunityStackScreens {
+  Communities = 'Communities',
+  CommunityMembers = 'CommunityMembers',
 }
 
 export enum ScreenTitle {
@@ -27,8 +22,6 @@ export enum ScreenTitle {
   Members = 'Members',
   Profile = 'Profile',
   Report = 'Report',
-
   CEC = 'CEC',
-
   Skills = 'Skills',
 }
