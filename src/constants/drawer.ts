@@ -62,46 +62,4 @@ export const DEFAULT_DRAWER_ITEMS = <
     label: 'Report',
     onPress: navigation => navigation.navigate(CommunityDrawerScreens.Report),
   },
-  {
-    icon: {name: 'color-lens', type: 'material', color: COLORS.MIDNIGHT_BLUE},
-    items: [
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Blue',
-        onPress: () => console.log('Blue'),
-      },
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Plum',
-        onPress: () => console.log('Plum'),
-      },
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Teal',
-        onPress: () => console.log('Teal'),
-      },
-      {
-        icon: {
-          name: 'color-lens',
-          type: 'material',
-          color: COLORS.MIDNIGHT_BLUE,
-        },
-        label: 'Dark',
-        onPress: () => console.log('Dark'),
-      },
-    ],
-    label: 'Themes',
-  },
 ];

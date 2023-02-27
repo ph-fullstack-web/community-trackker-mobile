@@ -3,19 +3,17 @@ import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
-    backgroundColor: COLORS.WHITE,
+    paddingHorizontal: 0,
   },
   topContainer: {
     backgroundColor: COLORS.MIDNIGHT_BLUE,
-    borderBottomRightRadius: 50,
-    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 40,
+    borderBottomLeftRadius: 40,
   },
   bottomContainer: {
     flex: 1,
     paddingHorizontal: 20,
     paddingBottom: 20,
-    backgroundColor: COLORS.WHITE,
   },
   titleSeparator: {
     fontSize: 11,

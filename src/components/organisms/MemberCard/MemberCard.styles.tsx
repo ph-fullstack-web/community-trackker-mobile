@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     marginBottom: 15,
     padding: 20,
+    borderLeftWidth: 0,
   },
   avatarContainer: {
     flex: 0.25,

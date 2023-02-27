@@ -6,6 +6,7 @@ import {
 import {DrawerHeaderProps} from '@react-navigation/drawer';
 
 import {Button} from 'components/atoms';
+import {COLORS} from 'constants/colors';
 import {CommunityStackScreens} from 'constants/navigation';
 
 import styles from './HeaderLeft.styles';
@@ -63,6 +64,7 @@ export const HeaderLeft = ({navigation, route}: HeaderLeftProps) => {
         icon={{
           name: 'west',
           type: 'material',
+          color: COLORS.WHITE,
         }}
         buttonStyle={styles.button}
       />
@@ -75,6 +77,7 @@ export const HeaderLeft = ({navigation, route}: HeaderLeftProps) => {
       icon={{
         name: 'menu',
         type: 'material',
+        color: COLORS.WHITE,
       }}
       buttonStyle={styles.button}
     />

@@ -6,7 +6,6 @@ import {
   CommunityStackScreens,
 } from 'constants/navigation';
 import {useUserDataProvider} from 'providers/UserDataProvider';
-import {StatusBar} from 'react-native';
 
 type DashboardScreenProps =
   CommunityDrawerScreenProps<CommunityDrawerScreens.Dashboard>;
@@ -55,13 +54,5 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
     },
   ];
 
-  return (
-    <>
-      <StatusBar
-        barStyle={'light-content'}
-        backgroundColor={COLORS.MIDNIGHT_BLUE}
-      />
-      <DashboardTemplate applications={applications} user={user} />
-    </>
-  );
+  return <DashboardTemplate applications={applications} user={user} />;
 };

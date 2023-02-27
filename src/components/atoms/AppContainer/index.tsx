@@ -18,7 +18,10 @@ export const AppContainer = ({
       {...otherProps}
       style={[styles.container, style, {backgroundColor: theme.colors.white}]}
     >
-      <StatusBar barStyle="dark-content" backgroundColor={COLORS.WHITE} />
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={COLORS.MIDNIGHT_BLUE}
+      />
       {children}
     </ScrollView>
   );

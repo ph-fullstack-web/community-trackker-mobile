@@ -1,6 +1,6 @@
-import {ScrollView, View} from 'react-native';
+import {View} from 'react-native';
 
-import {Text} from 'components/atoms';
+import {AppContainer, Text} from 'components/atoms';
 import {
   AppMenu,
   CecCard,
@@ -51,14 +51,11 @@ export const DashboardTemplate = (props: DashboardTemplateProps) => {
   ];
 
   return (
-    <View style={styles.mainContainer}>
+    <AppContainer style={styles.mainContainer}>
       <View style={styles.topContainer}>
         <UserDetailsCard user={props.user} />
       </View>
-      <ScrollView
-        style={styles.bottomContainer}
-        showsVerticalScrollIndicator={false}
-      >
+      <View style={styles.bottomContainer}>
         {sections.map((item, index) => {
           return (
             <View key={index} style={styles.sectionContainer}>
@@ -67,7 +64,7 @@ export const DashboardTemplate = (props: DashboardTemplateProps) => {
             </View>
           );
         })}
-      </ScrollView>
-    </View>
+      </View>
+    </AppContainer>
   );
 };

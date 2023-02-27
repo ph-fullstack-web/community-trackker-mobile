@@ -13,7 +13,7 @@ export const Header = (props: HeaderProps) => {
     <View style={styles.container}>
       <HeaderLeft {...props} />
       <View style={styles.logoContainer}>
-        <Logo height="100%" width="75%" />
+        <Logo height="130%" />
       </View>
     </View>
   );

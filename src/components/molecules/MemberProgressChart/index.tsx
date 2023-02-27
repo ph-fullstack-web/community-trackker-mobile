@@ -54,7 +54,7 @@ export const MemberProgressChart = ({
           <View
             style={[
               styles.textContainer,
-              {backgroundColor: theme.colors.grey5},
+              {backgroundColor: theme.colors.grey0},
             ]}
           >
             <Text style={styles.text}>
