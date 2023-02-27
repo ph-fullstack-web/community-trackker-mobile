@@ -1,18 +1,19 @@
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-
-import {RootNativeStackParamList} from '../../../@types/navigation';
 import {AppCardProps} from 'components/molecules';
 import {DashboardTemplate} from 'components/templates';
 import {COLORS} from 'constants/colors';
-import {StackScreen} from 'constants/navigation';
+import {
+  CommunityDrawerScreens,
+  CommunityStackScreens,
+} from 'constants/navigation';
 import {useUserDataProvider} from 'providers/UserDataProvider';
 import {StatusBar} from 'react-native';
 
-export const DashboardScreen = () => {
+type DashboardScreenProps =
+  CommunityDrawerScreenProps<CommunityDrawerScreens.Dashboard>;
+
+export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
+  const {navigate} = navigation;
   const {user} = useUserDataProvider();
-  const {navigate} =
-    useNavigation<NativeStackNavigationProp<RootNativeStackParamList>>();
 
   const applications: AppCardProps[] = [
     {
@@ -23,7 +24,14 @@ export const DashboardScreen = () => {
         size: 50,
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
-      onPress: () => navigate(StackScreen.MyCommunities),
+      onPress: () =>
+        navigate(CommunityDrawerScreens.CommunitiesStack, {
+          screen: CommunityStackScreens.CommunityMembers,
+          params: {
+            communityId: user!.communityId,
+            previousScreen: CommunityDrawerScreens.Dashboard,
+          },
+        }),
     },
     {
       title: 'CEC Tracker',
@@ -33,7 +41,7 @@ export const DashboardScreen = () => {
         size: 50,
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
-      onPress: () => navigate(StackScreen.CECTracker),
+      onPress: () => navigate(CommunityDrawerScreens.CEC),
     },
     {
       title: 'Skill Tree',
@@ -43,7 +51,7 @@ export const DashboardScreen = () => {
         size: 50,
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
-      onPress: () => navigate(StackScreen.SkillTree),
+      onPress: () => navigate(CommunityDrawerScreens.Skills),
     },
   ];
 

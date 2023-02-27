@@ -33,4 +33,5 @@ export const mockUser: User = {
       is_active: true,
     },
   ],
+  communityId: 2,
 };

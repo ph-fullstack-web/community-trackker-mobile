@@ -2,6 +2,7 @@ export const COLORS = {
   TRANSPARENT: 'transparent',
   BLACK: '#000000',
   GRAY: 'gray',
+  DEFAULT_BACKGROUND: '#F0F0F0',
 
   //CSV Accent Colors
   WHITE: '#FFFFFF',

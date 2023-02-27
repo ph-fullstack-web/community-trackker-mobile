@@ -1,5 +1,9 @@
 import {CECDashboardTemplate} from 'components/templates/CECTracker';
+import {CommunityDrawerScreens} from 'constants/navigation';
 
-export const CECDashboardScreen = () => {
+type CECDashboardScreenProps =
+  CommunityDrawerScreenProps<CommunityDrawerScreens.CEC>;
+
+export const CECDashboardScreen = ({}: CECDashboardScreenProps) => {
   return <CECDashboardTemplate />;
 };

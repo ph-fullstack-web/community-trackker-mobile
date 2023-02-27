@@ -27,6 +27,7 @@ export type User = {
   fullname: string;
   cecPoints: number;
   skills: PeopleSkill[];
+  communityId: number;
 };
 
 export type PeopleSkill = {
