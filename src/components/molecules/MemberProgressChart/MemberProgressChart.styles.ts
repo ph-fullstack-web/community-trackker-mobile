@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -35,6 +36,18 @@ const styles = StyleSheet.create({
   },
   percent: {
     fontSize: 14,
+  },
+  container_light: {
+    backgroundColor: COLORS.WHITE,
+  },
+  container_dark: {
+    backgroundColor: COLORS.BLACK,
+  },
+  textContainer_light: {
+    backgroundColor: COLORS.MEDIUM_GRAY,
+  },
+  textContainer_dark: {
+    backgroundColor: COLORS.LIGHT_GRAY,
   },
 });
 

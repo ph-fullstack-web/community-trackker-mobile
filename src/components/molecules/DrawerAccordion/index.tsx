@@ -1,10 +1,9 @@
 import {View} from 'react-native';
 import {useState} from 'react';
 import {ListItem} from '@rneui/base';
-import {useTheme} from '@rneui/themed';
 
+import {useThemeProvider} from 'providers/ThemeProvider';
 import {DrawerItem, Icon, Text} from 'components/atoms';
-
 import styles from './DrawerAccordion.styles';
 
 export type DrawerAccordionItem<T> = {
@@ -27,7 +26,7 @@ export const DrawerAccordion = <T,>({
   navigation,
 }: DrawerAccordionProps<T>) => {
   const [expanded, setExpanded] = useState(false);
-  const {theme} = useTheme();
+  const {mode} = useThemeProvider();
 
   return (
     <ListItem.Accordion
@@ -40,7 +39,12 @@ export const DrawerAccordion = <T,>({
             color={icon.color}
             style={styles.icon}
           />
-          <Text style={[styles.label, {color: theme.colors.blue2}]}>
+          <Text
+            style={[
+              styles.label,
+              styles[`label_${mode}` as keyof typeof styles],
+            ]}
+          >
             {label}
           </Text>
         </View>

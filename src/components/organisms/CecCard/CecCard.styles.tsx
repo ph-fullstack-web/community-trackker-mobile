@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-
 import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
@@ -80,6 +79,18 @@ const styles = StyleSheet.create({
   },
   percent: {
     fontSize: 14,
+  },
+  container_light: {
+    backgroundColor: COLORS.WHITE,
+  },
+  container_dark: {
+    backgroundColor: COLORS.DARK_GRAY,
+  },
+  button_light: {
+    backgroundColor: COLORS.MEDIUM_BLUE,
+  },
+  button_dark: {
+    backgroundColor: COLORS.LIGHT_BLUE,
   },
 });
 

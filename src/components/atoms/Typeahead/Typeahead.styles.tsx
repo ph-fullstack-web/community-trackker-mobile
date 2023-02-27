@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,6 +27,18 @@ const styles = StyleSheet.create({
   resultContentContainer: {
     width: '100%',
     paddingVertical: 5,
+  },
+  input_light: {
+    borderColor: COLORS.LIGHT_GRAY,
+  },
+  input_dark: {
+    borderColor: COLORS.MEDIUM_GRAY,
+  },
+  resultContainer_light: {
+    backgroundColor: COLORS.WHITE,
+  },
+  resultContainer_dark: {
+    backgroundColor: COLORS.BLACK,
   },
 });
 

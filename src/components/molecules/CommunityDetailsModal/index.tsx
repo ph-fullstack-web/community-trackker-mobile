@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import {Modal, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {useTheme} from '@rneui/themed';
 
+import {useThemeProvider} from 'providers/ThemeProvider';
 import {Button, Text} from 'components/atoms';
 import {COLORS} from 'constants/colors';
 import styles from './CommunityDetailsModal.styles';
@@ -13,7 +13,9 @@ interface CommunityDetailsModalProps {
 
 export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const {theme} = useTheme();
+  const {mode} = useThemeProvider();
+
+  const iconColor = mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE;
 
   return (
     <>
@@ -22,7 +24,7 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
           name: 'information',
           type: 'material-community',
           size: 15,
-          color: theme.colors.blue2,
+          color: iconColor,
         }}
         buttonStyle={styles.info_button}
         onPress={() => setModalVisible(!modalVisible)}
@@ -41,19 +43,19 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
             <View
               style={[
                 styles.modalView,
-                {
-                  backgroundColor: theme.colors.white,
-                  shadowColor: theme.colors.black,
-                },
+                styles[`modalView_${mode}` as keyof typeof styles],
               ]}
             >
               <Text style={styles.modalText}>{props.communityDescription}</Text>
               <Button
                 title="Close Modal"
-                titleStyle={[styles.textStyle, {color: theme.colors.grey4}]}
+                titleStyle={[
+                  styles.textStyle,
+                  styles[`textStyle_${mode}` as keyof typeof styles],
+                ]}
                 buttonStyle={[
                   styles.button,
-                  {backgroundColor: theme.colors.blue1},
+                  styles[`button_${mode}` as keyof typeof styles],
                 ]}
                 containerStyle={styles.buttonContainer}
                 ViewComponent={LinearGradient}
