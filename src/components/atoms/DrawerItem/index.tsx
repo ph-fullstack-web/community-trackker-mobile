@@ -1,3 +1,4 @@
+import {memo, useMemo} from 'react';
 import {Pressable, View} from 'react-native';
 import {useTheme} from '@rneui/themed';
 
@@ -12,11 +13,19 @@ export type DrawerItemProps = {
   onPress: () => void;
 };
 
-export const DrawerItem = ({icon, label, onPress}: DrawerItemProps) => {
+export const DrawerItem = memo(({icon, label, onPress}: DrawerItemProps) => {
   const {theme} = useTheme();
+  const rippleStyle = useMemo(
+    () => ({color: theme.colors.grey4}),
+    [theme.colors.grey4]
+  );
+  const textStyle = useMemo(
+    () => [styles.label, {color: theme.colors.blue2}],
+    [theme.colors.blue2]
+  );
 
   return (
-    <Pressable android_ripple={{color: theme.colors.grey4}} onPress={onPress}>
+    <Pressable android_ripple={rippleStyle} onPress={onPress}>
       <View style={styles.container}>
         <Icon
           name={icon.name}
@@ -24,8 +33,8 @@ export const DrawerItem = ({icon, label, onPress}: DrawerItemProps) => {
           color={icon.color}
           style={styles.icon}
         />
-        <Text style={[styles.label, {color: theme.colors.blue2}]}>{label}</Text>
+        <Text style={textStyle}>{label}</Text>
       </View>
     </Pressable>
   );
-};
+});

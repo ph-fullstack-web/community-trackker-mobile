@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
+import {useCallback, useRef, useState} from 'react';
+import {FlatList, ListRenderItemInfo} from 'react-native';
 
 import {AppContainer, ScreenHeader} from 'components/atoms';
 import {NoResult, Search} from 'components/molecules';
@@ -18,28 +18,21 @@ export const MembersTemplate = ({
   communityList,
   route,
 }: MembersTemplateProps) => {
-  const {communityId} = route.params!;
-  const [community, setCommunity] = useState<Community>();
-  const [filteredMembers, setFilteredMembers] = useState<Employee[]>([]);
-
-  useEffect(() => {
-    if (communityId) {
-      const communities: Community[] =
-        communityList?.filter(item => item.communityId === communityId) ?? [];
-
-      setCommunity(() => communities[0]);
-    }
-  }, [communityId, communityList]);
-
-  useEffect(() => {
-    setFilteredMembers(() => community?.members ?? []);
-  }, [community?.members]);
+  const {communityId} = route.params;
+  const community = useRef<Partial<Community>>(
+    communityList?.filter(item => item.communityId === communityId)[0] ?? {}
+  );
+  const [filteredMembers, setFilteredMembers] = useState<Employee[]>(
+    community.current.members ?? []
+  );
+  const itemKey = (item: Employee) => item.employeeId.toString();
 
   const handleSearch = (text: string) => {
     const searchText = text.trim().toLowerCase();
+
     if (searchText !== '') {
       setFilteredMembers(() =>
-        (community?.members ?? [])?.filter(
+        (community.current.members ?? [])?.filter(
           ({fullName, csvEmail, dateHired}: Employee) =>
             fullName.toLowerCase().indexOf(searchText) !== -1 ||
             csvEmail.toLowerCase().indexOf(searchText) !== -1 ||
@@ -47,17 +40,24 @@ export const MembersTemplate = ({
         )
       );
     } else {
-      return setFilteredMembers(() => community?.members ?? []);
+      return setFilteredMembers(() => community.current.members ?? []);
     }
   };
+
+  const renderItems = useCallback(
+    ({item}: ListRenderItemInfo<Employee>) => (
+      <MemberCard memberDetails={item} />
+    ),
+    []
+  );
 
   return (
     <AppContainer>
       <ScreenHeader
-        title={community?.name ?? ''}
-        subtitle={`Managed By: ${community?.managerName ?? ''}`}
+        title={community.current.name ?? ''}
+        subtitle={`Managed By: ${community.current.managerName ?? ''}`}
       />
-      {(community?.members ?? [])?.length === 0 ? (
+      {!community.current.members?.length ? (
         <NoResult message="No Members Found" />
       ) : (
         <>
@@ -68,8 +68,8 @@ export const MembersTemplate = ({
             <FlatList
               scrollEnabled={false}
               data={filteredMembers}
-              keyExtractor={item => item.employeeId.toString()}
-              renderItem={({item}) => <MemberCard memberDetails={item} />}
+              keyExtractor={itemKey}
+              renderItem={renderItems}
               style={styles.listContentContainer}
             />
           )}

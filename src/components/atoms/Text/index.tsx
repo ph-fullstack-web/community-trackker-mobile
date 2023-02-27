@@ -1,3 +1,4 @@
+import {useMemo} from 'react';
 import {Text as DefaultText, TextProps as DefaultTextProps} from 'react-native';
 
 import styles from './Text.styles';
@@ -17,8 +18,13 @@ export type TextProps = ThemeProps &
   TextTypeProps;
 
 export const Text = (props: TextProps) => {
+  const textStyle = useMemo(
+    () => [styles[props.type], props.style],
+    [props.style, props.type]
+  );
+
   return (
-    <DefaultText {...props} style={[styles[props.type], props.style]}>
+    <DefaultText {...props} style={textStyle}>
       {props.children}
     </DefaultText>
   );

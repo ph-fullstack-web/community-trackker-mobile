@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import {View} from 'react-native';
 
 import {Text} from '../Text';
@@ -8,7 +9,7 @@ type ScreenHeaderProps = {
   subtitle?: string;
 };
 
-export const ScreenHeader = (props: ScreenHeaderProps) => {
+export const ScreenHeader = memo((props: ScreenHeaderProps) => {
   return (
     <View style={styles.container}>
       <Text type="title" style={styles.title}>
@@ -21,4 +22,4 @@ export const ScreenHeader = (props: ScreenHeaderProps) => {
       )}
     </View>
   );
-};
+});

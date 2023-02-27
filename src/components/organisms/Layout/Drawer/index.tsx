@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 import {ImageBackground, View} from 'react-native';
 import {
   DrawerContentComponentProps,
@@ -27,23 +27,54 @@ type DrawerProps<T> = DrawerContentComponentProps & {
   drawerItems: DrawerItems<T>;
 };
 
+const imgBg = require('assets/images/CSV-Cover.png');
+const logOutIcon: Icon = {
+  name: 'logout',
+  type: 'material',
+  color: COLORS.MIDNIGHT_BLUE,
+};
+
 export const Drawer = <T,>(props: DrawerProps<T>) => {
   const {drawerItems, navigation} = props;
   const {user} = useUserDataProvider();
   const [isDark, setIsDark] = useState<boolean>(false);
 
   const handleSwitchTheme = () => {
-    setIsDark(() => !isDark);
+    setIsDark(prevState => !prevState);
   };
+
+  const onLogOut = () => {
+    console.log('Logging Out...');
+  };
+
+  const renderDrawerItems = useCallback(
+    () =>
+      drawerItems.map(item =>
+        item.items ? (
+          <DrawerAccordion<T>
+            key={item.label!}
+            icon={item.icon!}
+            items={item.items}
+            label={item.label!}
+            navigation={navigation as T}
+          />
+        ) : (
+          <DrawerItem
+            key={item.label!}
+            icon={item.icon!}
+            label={item.label!}
+            onPress={() => item.onPress!(navigation as T)}
+          />
+        )
+      ),
+    [drawerItems, navigation]
+  );
 
   return (
     <DrawerContentScrollView contentContainerStyle={styles.container}>
       <>
         <View style={styles.headerContainer}>
-          <ImageBackground
-            style={styles.headerBackground}
-            source={require('assets/images/CSV-Cover.png')}
-          >
+          <ImageBackground style={styles.headerBackground} source={imgBg}>
             <Avatar size={70} />
             <View style={styles.headerTextContainer}>
               <Text style={styles.greetingText}>Hi, {user?.fullname}</Text>
@@ -51,26 +82,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
             </View>
           </ImageBackground>
         </View>
-        <View style={styles.itemsContainer}>
-          {drawerItems.map(item =>
-            item.items ? (
-              <DrawerAccordion<T>
-                key={item.label!}
-                icon={item.icon!}
-                items={item.items}
-                label={item.label!}
-                navigation={navigation as T}
-              />
-            ) : (
-              <DrawerItem
-                key={item.label!}
-                icon={item.icon!}
-                label={item.label!}
-                onPress={() => item.onPress!(navigation as T)}
-              />
-            )
-          )}
-        </View>
+        <View style={styles.itemsContainer}>{renderDrawerItems()}</View>
         <Divider width={0.5} />
         <View style={styles.footerContainer}>
           <View style={styles.themeContainer}>
@@ -87,15 +99,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
               onValueChange={handleSwitchTheme}
             />
           </View>
-          <DrawerItem
-            icon={{
-              name: 'logout',
-              type: 'material',
-              color: COLORS.MIDNIGHT_BLUE,
-            }}
-            label="Log Out"
-            onPress={() => console.log('Logging out...')}
-          />
+          <DrawerItem icon={logOutIcon} label="Log Out" onPress={onLogOut} />
         </View>
       </>
     </DrawerContentScrollView>

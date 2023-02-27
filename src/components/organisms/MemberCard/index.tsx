@@ -1,3 +1,4 @@
+import {memo, useMemo} from 'react';
 import {View} from 'react-native';
 
 import styles from './MemberCard.styles';
@@ -14,32 +15,31 @@ type MemberCardProps = {
   };
 };
 
-export const MemberCard = (prop: MemberCardProps) => {
-  const {image, fullName, csvEmail, dateHired, isActive} = prop.memberDetails;
+export const MemberCard = memo(({memberDetails}: MemberCardProps) => {
+  const {image, fullName, csvEmail, dateHired, isActive} = memberDetails;
+  const avatar = useMemo(() => ({uri: image ?? defaultAvatar}), [image]);
+  const UserIcon = useMemo(
+    () => (
+      <Icon
+        name={isActive ? 'user-following' : 'user-unfollow'}
+        type="simple-line-icon"
+        color={isActive ? COLORS.DARK_BLUE : COLORS.DARK_GRAY}
+      />
+    ),
+    [isActive]
+  );
 
   return (
     <Card style={styles.cardContainer}>
       <View style={styles.avatarContainer}>
-        <Avatar size={70} source={{uri: image ?? defaultAvatar}} />
+        <Avatar size={70} source={avatar} />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
           <Text type="title" style={styles.name}>
             {fullName}
           </Text>
-          {isActive ? (
-            <Icon
-              name="user-following"
-              type="simple-line-icon"
-              color={COLORS.DARK_BLUE}
-            />
-          ) : (
-            <Icon
-              name="user-unfollow"
-              type="simple-line-icon"
-              color={COLORS.DARK_GRAY}
-            />
-          )}
+          {UserIcon}
         </View>
 
         <Text style={styles.email}>{csvEmail}</Text>
@@ -47,4 +47,4 @@ export const MemberCard = (prop: MemberCardProps) => {
       </View>
     </Card>
   );
-};
+});
