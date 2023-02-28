@@ -17,7 +17,7 @@ import {
 import {COLORS} from 'constants/colors';
 import {useUserDataProvider} from 'providers/UserDataProvider';
 
-import styles from './Drawer.styles';
+import {useStyle} from './Drawer.styles';
 
 export type DrawerItems<T> = (Partial<DrawerAccordionItem<T>> & {
   items?: DrawerAccordionItem<T>[];
@@ -31,6 +31,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
   const {drawerItems, navigation} = props;
   const {user} = useUserDataProvider();
   const [isDark, setIsDark] = useState<boolean>(false);
+  const {styles} = useStyle();
 
   const handleSwitchTheme = () => {
     setIsDark(() => !isDark);
