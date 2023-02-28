@@ -23,7 +23,7 @@ export const CecCard = (props: CecCardProps) => {
   const horizontalProps = {
     height: 170,
     strokeWidth: 15,
-    radius: 66,
+    radius: 65,
     width: 170,
   };
 

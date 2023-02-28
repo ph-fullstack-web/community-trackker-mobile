@@ -36,7 +36,7 @@ export const MemberProgressChart = ({
   const horizontalProps = {
     height: 150,
     strokeWidth: 15,
-    radius: 66,
+    radius: 65,
     width: 150,
   };
 
