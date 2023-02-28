@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   details_wrapper: {
-    flex: 0.45,
+    flex: 0.4,
     padding: 15,
-    backgroundColor: COLORS.WHITE,
+    paddingLeft: 0,
   },
   horizontal_layout: {
     flexDirection: 'row',
@@ -51,10 +51,9 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 2,
     zIndex: 1,
-    backgroundColor: COLORS.WHITE,
     height: 200,
-    borderTopRightRadius: 90,
-    borderBottomRightRadius: 90,
+    borderTopRightRadius: 100,
+    borderBottomRightRadius: 100,
   },
   text_wrapper: {
     position: 'absolute',
@@ -67,7 +66,6 @@ const styles = StyleSheet.create({
   },
   text_container: {
     justifyContent: 'center',
-    backgroundColor: COLORS.WHITE,
     borderRadius: 40,
     width: 80,
     height: 80,
@@ -81,7 +79,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   container_light: {
-    backgroundColor: COLORS.WHITE,
+    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
   },
   container_dark: {
     backgroundColor: COLORS.DARK_GRAY,
@@ -91,6 +89,24 @@ const styles = StyleSheet.create({
   },
   button_dark: {
     backgroundColor: COLORS.LIGHT_BLUE,
+  },
+  chart_wrapper_light: {
+    backgroundColor: COLORS.WHITE,
+  },
+  chart_wrapper_dark: {
+    backgroundColor: COLORS.BLACK,
+  },
+  details_wrapper_light: {
+    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
+  },
+  details_wrapper_dark: {
+    backgroundColor: COLORS.DARK_GRAY,
+  },
+  text_container_light: {
+    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
+  },
+  text_container_dark: {
+    backgroundColor: COLORS.DARK_GRAY,
   },
 });
 

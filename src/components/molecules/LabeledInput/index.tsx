@@ -19,7 +19,9 @@ export const LabeledInput = (props: LabeledInputProps) => {
     <>
       <View style={[styles.fieldSet, styles.horizontal_layout]}>
         <View style={styles.label_width}>
-          <Text style={styles.bold_text}>{props.label}</Text>
+          <Text style={styles.bold_text} type="default">
+            {props.label}
+          </Text>
         </View>
         <View style={styles.textinput_width}>
           <TextInput

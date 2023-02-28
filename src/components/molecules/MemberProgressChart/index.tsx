@@ -42,24 +42,27 @@ export const MemberProgressChart = ({
 
   const sizeProps = layout === 'horizontal' ? horizontalProps : verticalProps;
 
+  const strokeColor =
+    mode === 'light' ? COLORS.LIGHT_GRAY : COLORS.VERY_DARK_GRAY;
+
   return (
     <View
       style={[
         styles.container,
-        styles[`container_${mode}` as keyof typeof styles],
+        styles[`container_${mode}` as keyof typeof undefined],
       ]}
     >
       <ProgressChart
         layout={layout}
         data={data}
-        strokeColor={COLORS.LIGHT_GRAY}
+        strokeColor={strokeColor}
         {...sizeProps}
       >
         <View style={styles.textWrapper}>
           <View
             style={[
               styles.textContainer,
-              styles[`textContainer_${mode}` as keyof typeof styles],
+              styles[`textContainer_${mode}` as keyof typeof undefined],
             ]}
           >
             <Text style={styles.text}>

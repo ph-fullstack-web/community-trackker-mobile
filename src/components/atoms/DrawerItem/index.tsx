@@ -16,7 +16,10 @@ export const DrawerItem = ({icon, label, onPress}: DrawerItemProps) => {
   const {mode} = useThemeProvider();
 
   return (
-    <Pressable android_ripple={styles[`ripple_${mode}`]} onPress={onPress}>
+    <Pressable
+      android_ripple={styles[`ripple_${mode}` as keyof typeof undefined]}
+      onPress={onPress}
+    >
       <View style={styles.container}>
         <Icon
           name={icon.name}

@@ -27,10 +27,12 @@ const styles = StyleSheet.create({
     width: '70%',
   },
   textfield_light: {
+    color: COLORS.BLACK,
     borderColor: COLORS.LIGHT_GRAY,
   },
   textfield_dark: {
     borderColor: COLORS.VERY_LIGHT_GRAY,
+    color: COLORS.VERY_LIGHT_GRAY,
   },
 });
 

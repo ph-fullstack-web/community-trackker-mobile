@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import {useThemeProvider} from 'providers/ThemeProvider';
 import {Button, Text} from 'components/atoms';
-import {COLORS} from 'constants/colors';
+import {COLORS, GRADIENT} from 'constants/colors';
 import styles from './CommunityDetailsModal.styles';
 
 interface CommunityDetailsModalProps {
@@ -32,7 +32,7 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
 
       <View style={styles.centeredView}>
         <Modal
-          animationType="slide"
+          animationType="fade"
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => {
@@ -43,7 +43,7 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
             <View
               style={[
                 styles.modalView,
-                styles[`modalView_${mode}` as keyof typeof styles],
+                styles[`modalView_${mode}` as keyof typeof undefined],
               ]}
             >
               <Text style={styles.modalText}>{props.communityDescription}</Text>
@@ -55,16 +55,12 @@ export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
                 ]}
                 buttonStyle={[
                   styles.button,
-                  styles[`button_${mode}` as keyof typeof styles],
+                  styles[`button_${mode}` as keyof typeof undefined],
                 ]}
                 containerStyle={styles.buttonContainer}
                 ViewComponent={LinearGradient}
                 linearGradientProps={{
-                  colors: [
-                    COLORS.DARK_PLUM,
-                    COLORS.DARK_BLUE,
-                    COLORS.MEDIUM_BLUE,
-                  ],
+                  colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
                   start: {x: 0, y: 0.5},
                   end: {x: 1, y: 0.5},
                 }}

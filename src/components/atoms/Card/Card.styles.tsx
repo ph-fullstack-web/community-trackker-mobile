@@ -7,9 +7,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 20,
     shadowColor: COLORS.BLACK,
-    borderBottomColor: COLORS.VERY_LIGHT_GRAY,
     borderBottomWidth: 4,
-    borderLeftColor: COLORS.VERY_LIGHT_GRAY,
     borderLeftWidth: 3,
 
     shadowOffset: {
@@ -21,9 +19,13 @@ const styles = StyleSheet.create({
   },
   container_light: {
     backgroundColor: COLORS.WHITE,
+    borderBottomColor: COLORS.VERY_LIGHT_GRAY,
+    borderLeftColor: COLORS.VERY_LIGHT_GRAY,
   },
   container_dark: {
     backgroundColor: COLORS.DARK_GRAY,
+    borderBottomColor: COLORS.VERY_DARK_GRAY,
+    borderLeftColor: COLORS.VERY_DARK_GRAY,
   },
 });
 

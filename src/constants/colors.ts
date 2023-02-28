@@ -1,6 +1,6 @@
 export const COLORS = {
   TRANSPARENT: 'transparent',
-  BLACK: '#000000',
+  BLACK: '#1A1A1A',
   GRAY: 'gray',
   DEFAULT_BACKGROUND: '#F0F0F0',
 
@@ -18,6 +18,7 @@ export const COLORS = {
   LIGHT_TEAL: '#97F5F7',
 
   //CSV Neutral Colors
+  VERY_DARK_GRAY: '#3D3D3D',
   DARK_GRAY: '#53565A',
   MEDIUM_GRAY: '#97999B',
   LIGHT_GRAY: '#D0D0CE',
@@ -34,4 +35,9 @@ export const COLORS = {
   MINT_GREEN: '#41B883',
   MINION_YELLOW: '#F0DB4F',
   JAVA_ORANGE: '#f89820',
+};
+
+export const GRADIENT = {
+  light_theme: [COLORS.DARK_PLUM, COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE],
+  dark_theme: [COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE, COLORS.LIGHT_BLUE],
 };

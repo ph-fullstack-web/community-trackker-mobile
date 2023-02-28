@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useThemeProvider} from 'providers/ThemeProvider';
 import {Accordion, Button} from 'components/atoms';
 import {LabeledInput} from 'components/molecules';
-import {COLORS} from 'constants/colors';
+import {GRADIENT} from 'constants/colors';
 import SkillsForm from '../SkillsForm';
 
 import styles from './MemberDetailForm.styles';
@@ -18,7 +18,7 @@ export const MemberDetailForm = () => {
       <View
         style={[
           styles.accordion_container,
-          styles[`accordion_container_${mode}` as keyof typeof styles],
+          styles[`accordion_container_${mode}` as keyof typeof undefined],
         ]}
       >
         <Accordion
@@ -35,7 +35,7 @@ export const MemberDetailForm = () => {
       <View
         style={[
           styles.accordion_container,
-          styles[`accordion_container_${mode}` as keyof typeof styles],
+          styles[`accordion_container_${mode}` as keyof typeof undefined],
         ]}
       >
         <Accordion
@@ -94,7 +94,7 @@ const DetailForm = () => {
           buttonStyle={styles.community_button_style}
           ViewComponent={LinearGradient}
           linearGradientProps={{
-            colors: [COLORS.DARK_PLUM, COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE],
+            colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
             start: {x: 0, y: 0.5},
             end: {x: 1, y: 0.5},
           }}

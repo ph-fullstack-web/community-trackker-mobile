@@ -3,6 +3,7 @@ import {Chip as DefaultChip} from '@rneui/base';
 import {useThemeProvider} from 'providers/ThemeProvider';
 
 import styles from './Chip.styles';
+import {COLORS} from 'constants/colors';
 
 type ChipProps = {
   onPress?: () => void;
@@ -19,6 +20,7 @@ export const Chip = ({onPress, title}: ChipProps) => {
           name: 'close',
           type: 'material',
           size: 20,
+          color: mode === 'light' ? COLORS.BLACK : COLORS.ULTRA_LIGHT_GRAY,
         }}
         onPress={onPress}
         iconRight
@@ -27,7 +29,10 @@ export const Chip = ({onPress, title}: ChipProps) => {
           styles.chipTitle,
           styles[`chipTitle_${mode}` as keyof typeof styles],
         ]}
-        containerStyle={[styles.chip, styles[`chip_${mode}`]]}
+        containerStyle={[
+          styles.chip,
+          styles[`chip_${mode}` as keyof typeof undefined],
+        ]}
       />
     </View>
   );

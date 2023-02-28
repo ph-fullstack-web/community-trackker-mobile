@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.WHITE,
   },
   container_dark: {
-    backgroundColor: COLORS.DARK_GRAY,
+    backgroundColor: COLORS.BLACK,
   },
 });
 

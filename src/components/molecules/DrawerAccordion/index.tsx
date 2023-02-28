@@ -30,7 +30,7 @@ export const DrawerAccordion = <T,>({
 
   return (
     <ListItem.Accordion
-      containerStyle={styles.container}
+      containerStyle={styles[`container_${mode}` as keyof typeof undefined]}
       content={
         <View style={styles.content}>
           <Icon

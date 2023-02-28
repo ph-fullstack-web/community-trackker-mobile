@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useThemeProvider} from 'providers/ThemeProvider';
 import {CommunityDetailsModal, MemberProgressChart} from 'components/molecules';
 import {Button, Card, Text} from 'components/atoms';
-import {COLORS} from 'constants/colors';
+import {GRADIENT} from 'constants/colors';
 import styles from './CommunityCard.styles';
 
 interface CommunityCardProps {
@@ -20,11 +20,12 @@ interface CommunityCardProps {
 
 export const CommunityCard = (props: CommunityCardProps) => {
   const {mode} = useThemeProvider();
+
   return (
     <Card
       style={[
         styles.card_container_template,
-        styles[`card_container_template_${mode}` as keyof typeof styles],
+        styles[`card_container_template_${mode}` as keyof typeof Card],
       ]}
     >
       <View style={styles.card_details_container}>
@@ -41,12 +42,12 @@ export const CommunityCard = (props: CommunityCardProps) => {
           ]}
           buttonStyle={[
             styles.button,
-            styles[`button_${mode}` as keyof typeof styles],
+            styles[`button_${mode}` as keyof typeof Button],
           ]}
           containerStyle={styles.buttonContainer}
           ViewComponent={LinearGradient}
           linearGradientProps={{
-            colors: [COLORS.DARK_PLUM, COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE],
+            colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
             start: {x: 0, y: 0.5},
             end: {x: 1, y: 0.5},
           }}

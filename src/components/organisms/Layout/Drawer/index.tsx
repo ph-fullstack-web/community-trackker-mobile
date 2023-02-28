@@ -37,9 +37,15 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
   };
 
   const icon = mode === 'light' ? 'wb-sunny' : 'nightlight-round';
+  const iconColor = mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE;
 
   return (
-    <DrawerContentScrollView contentContainerStyle={styles.container}>
+    <DrawerContentScrollView
+      contentContainerStyle={[
+        styles.container,
+        styles[`container_${mode}` as keyof typeof undefined],
+      ]}
+    >
       <>
         <View style={styles.headerContainer}>
           <ImageBackground
@@ -76,8 +82,13 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
         <Divider width={0.5} />
         <View style={styles.footerContainer}>
           <View style={styles.themeContainer}>
-            <Icon name={icon} type="material" color={COLORS.MIDNIGHT_BLUE} />
-            <Text style={styles.themeLabel}>
+            <Icon name={icon} type="material" color={iconColor} />
+            <Text
+              style={[
+                styles.themeLabel,
+                styles[`themeLabel_${mode}` as keyof typeof undefined],
+              ]}
+            >
               {mode?.charAt(0).toUpperCase() + mode?.slice(1)} Mode
             </Text>
             <Switch
@@ -93,7 +104,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
             icon={{
               name: 'logout',
               type: 'material',
-              color: COLORS.MIDNIGHT_BLUE,
+              color: iconColor,
             }}
             label="Log Out"
             onPress={() => console.log('Logging out...')}

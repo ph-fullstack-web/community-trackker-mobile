@@ -9,7 +9,7 @@ import {
   CecCardRequestDetails,
 } from './CecCard.types';
 import styles from './CecCard.styles';
-import {COLORS} from 'constants/colors';
+import {COLORS, GRADIENT} from 'constants/colors';
 
 export const CecCard = (props: CecCardProps) => {
   const {percentage, fillColor, layout, cecRequests} = props;
@@ -31,7 +31,7 @@ export const CecCard = (props: CecCardProps) => {
     <View
       style={[
         styles.container,
-        styles[`container_${mode}` as keyof typeof styles],
+        styles[`container_${mode}` as keyof typeof undefined],
       ]}
     >
       <View style={styles.card_chart_container}>
@@ -42,19 +42,24 @@ export const CecCard = (props: CecCardProps) => {
           percentage={percentage}
         />
       </View>
-      <View style={styles.details_wrapper}>
+      <View
+        style={[
+          styles.details_wrapper,
+          styles[`details_wrapper_${mode}` as keyof typeof undefined],
+        ]}
+      >
         <CecCardDetails requests={cecRequests} />
         <Button
           title="View Details"
           titleStyle={styles.buttonText}
           buttonStyle={[
             styles.button,
-            styles[`button_${mode}` as keyof typeof styles],
+            styles[`button_${mode}` as keyof typeof Button],
           ]}
           containerStyle={styles.buttonContainer}
           ViewComponent={LinearGradient}
           linearGradientProps={{
-            colors: [COLORS.DARK_PLUM, COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE],
+            colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
             start: {x: 0, y: 0.5},
             end: {x: 1, y: 0.5},
           }}
@@ -72,7 +77,12 @@ export const CecCardChart = (props: CecCardChartProps) => {
   const strokeColor = mode === 'light' ? COLORS.LIGHT_GRAY : COLORS.MEDIUM_GRAY;
 
   return (
-    <View style={styles.chart_wrapper}>
+    <View
+      style={[
+        styles.chart_wrapper,
+        styles[`chart_wrapper_${mode}` as keyof typeof undefined],
+      ]}
+    >
       <ProgressChart
         layout={layout}
         data={data}
@@ -80,7 +90,12 @@ export const CecCardChart = (props: CecCardChartProps) => {
         {...layoutSetting}
       >
         <View style={styles.text_wrapper}>
-          <View style={styles.text_container}>
+          <View
+            style={[
+              styles.text_container,
+              styles[`text_container_${mode}` as keyof typeof undefined],
+            ]}
+          >
             <Text style={styles.text}>
               {displayPercentage}
               <Text style={styles.percent}> Pts</Text>

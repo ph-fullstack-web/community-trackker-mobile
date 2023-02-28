@@ -5,6 +5,7 @@ import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {useThemeProvider} from 'providers/ThemeProvider';
 import {TypeaheadList} from '../TypeaheadList';
 import styles from './Typeahead.styles';
+import {COLORS} from 'constants/colors';
 
 type TypeaheadProps<T> = {
   data: T[];
@@ -71,6 +72,9 @@ export const Typeahead = <T extends Record<string, any>>({
       <TextInput
         placeholder={placeholder}
         onChangeText={onSearch}
+        placeholderTextColor={
+          mode === 'light' ? COLORS.BLACK : COLORS.ULTRA_LIGHT_GRAY
+        }
         style={[styles.input, styles[`input_${mode}` as keyof typeof styles]]}
         value={query}
       />

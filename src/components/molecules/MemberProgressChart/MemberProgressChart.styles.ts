@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.BLACK,
   },
   textContainer_light: {
-    backgroundColor: COLORS.MEDIUM_GRAY,
+    backgroundColor: COLORS.ULTRA_LIGHT_GRAY,
   },
   textContainer_dark: {
-    backgroundColor: COLORS.LIGHT_GRAY,
+    backgroundColor: COLORS.DARK_GRAY,
   },
 });
 

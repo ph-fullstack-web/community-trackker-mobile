@@ -3,7 +3,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import {useThemeProvider} from 'providers/ThemeProvider';
 import {Button, Text} from 'components/atoms';
-import {COLORS} from 'constants/colors';
+import {GRADIENT} from 'constants/colors';
 import styles from './AppCard.styles';
 import {AppCardProps} from './AppCard.types';
 
@@ -19,7 +19,7 @@ export const AppCard = (props: AppCardProps) => {
         containerStyle={styles.appCardButtonContainer}
         ViewComponent={LinearGradient}
         linearGradientProps={{
-          colors: [COLORS.DARK_PLUM, COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE],
+          colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
           start: {x: 0, y: 0.5},
           end: {x: 1, y: 0.5},
         }}
