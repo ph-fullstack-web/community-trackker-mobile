@@ -7,6 +7,7 @@ export * from './Chip';
 export * from './Divider';
 export * from './DrawerItem';
 export * from './Icon';
+export * from './InfiniteScroll';
 export * from './ProgressChart';
 export * from './ScreenHeader';
 export * from './Switch';

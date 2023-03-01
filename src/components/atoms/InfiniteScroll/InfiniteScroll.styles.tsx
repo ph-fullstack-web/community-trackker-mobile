@@ -1,19 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-    width: '100%',
-  },
-  search: {
-    paddingBottom: 10,
-  },
   spinnerContainer: {
+    paddingBottom: 15,
     flexGrow: 1,
     justifyContent: 'center',
-  },
-  listContentContainer: {
-    paddingVertical: 5,
   },
 });
 

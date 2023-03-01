@@ -1,9 +1,10 @@
 import {View} from 'react-native';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
-import styles from './MemberCard.styles';
 import {Avatar, Card, defaultAvatar, Icon, Text} from 'components/atoms';
 import {COLORS} from 'constants/colors';
+import {useThemeProvider} from 'providers/ThemeProvider';
+
+import styles from './MemberCard.styles';
 
 type MemberCardProps = {
   memberDetails: {
@@ -18,6 +19,7 @@ type MemberCardProps = {
 export const MemberCard = (prop: MemberCardProps) => {
   const {image, fullName, csvEmail, dateHired, isActive} = prop.memberDetails;
   const {mode} = useThemeProvider();
+
   return (
     <Card style={styles.cardContainer}>
       <View style={styles.avatarContainer}>
