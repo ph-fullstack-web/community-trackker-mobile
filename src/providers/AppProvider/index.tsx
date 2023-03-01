@@ -1,15 +1,12 @@
 import {UserDataProvider} from 'providers/UserDataProvider';
-import {ThemeProvider, createTheme} from '@rneui/themed';
-import {sampleTheme} from '../../../theme';
+import {ThemeProvider} from 'providers/ThemeProvider';
 
 type AppProvidersProps = ComponentWithChildren;
-
-const appTheme = createTheme(sampleTheme);
 
 export const AppProvider = ({children}: AppProvidersProps) => {
   return (
     <UserDataProvider>
-      <ThemeProvider theme={appTheme}>{children}</ThemeProvider>
+      <ThemeProvider>{children}</ThemeProvider>
     </UserDataProvider>
   );
 };

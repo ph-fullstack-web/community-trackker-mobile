@@ -1,14 +1,15 @@
 import {TextInput as DefaultTextInput} from 'react-native';
+import {useThemeProvider} from 'providers/ThemeProvider';
+import {COLORS} from 'constants/colors';
 
-type ThemeProps = {
-  lightColor?: string;
-  darkColor?: string;
-};
-
-export type TextInputProps = ThemeProps & DefaultTextInput['props'];
+export type TextInputProps = DefaultTextInput['props'];
 
 export const TextInput = (props: TextInputProps) => {
   const {...otherProps} = props;
-
-  return <DefaultTextInput {...otherProps} />;
+  const {mode} = useThemeProvider();
+  const placeHolderColor =
+    mode === 'light' ? COLORS.BLACK : COLORS.ULTRA_LIGHT_GRAY;
+  return (
+    <DefaultTextInput placeholderTextColor={placeHolderColor} {...otherProps} />
+  );
 };

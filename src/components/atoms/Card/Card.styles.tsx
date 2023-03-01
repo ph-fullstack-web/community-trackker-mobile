@@ -6,10 +6,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     borderRadius: 20,
-
-    borderBottomColor: COLORS.VERY_LIGHT_GRAY,
+    shadowColor: COLORS.BLACK,
     borderBottomWidth: 4,
-    borderLeftColor: COLORS.VERY_LIGHT_GRAY,
     borderLeftWidth: 3,
 
     shadowOffset: {
@@ -18,6 +16,16 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
+  },
+  container_light: {
+    backgroundColor: COLORS.WHITE,
+    borderBottomColor: COLORS.VERY_LIGHT_GRAY,
+    borderLeftColor: COLORS.VERY_LIGHT_GRAY,
+  },
+  container_dark: {
+    backgroundColor: COLORS.DARK_GRAY,
+    borderBottomColor: COLORS.VERY_DARK_GRAY,
+    borderLeftColor: COLORS.VERY_DARK_GRAY,
   },
 });
 

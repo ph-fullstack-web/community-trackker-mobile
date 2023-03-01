@@ -1,8 +1,9 @@
 import {View} from 'react-native';
 import {Chip as DefaultChip} from '@rneui/base';
-import {useTheme} from '@rneui/themed';
+import {useThemeProvider} from 'providers/ThemeProvider';
 
 import styles from './Chip.styles';
+import {COLORS} from 'constants/colors';
 
 type ChipProps = {
   onPress?: () => void;
@@ -10,7 +11,7 @@ type ChipProps = {
 };
 
 export const Chip = ({onPress, title}: ChipProps) => {
-  const {theme} = useTheme();
+  const {mode} = useThemeProvider();
   return (
     <View style={styles.container}>
       <DefaultChip
@@ -19,12 +20,19 @@ export const Chip = ({onPress, title}: ChipProps) => {
           name: 'close',
           type: 'material',
           size: 20,
+          color: mode === 'light' ? COLORS.BLACK : COLORS.ULTRA_LIGHT_GRAY,
         }}
         onPress={onPress}
         iconRight
         type="outline"
-        titleStyle={[styles.chipTitle, {color: theme.colors.blue1}]}
-        containerStyle={[styles.chip, {borderColor: theme.colors.blue1}]}
+        titleStyle={[
+          styles.chipTitle,
+          styles[`chipTitle_${mode}` as keyof typeof styles],
+        ]}
+        containerStyle={[
+          styles.chip,
+          styles[`chip_${mode}` as keyof typeof undefined],
+        ]}
       />
     </View>
   );
