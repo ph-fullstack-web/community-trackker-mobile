@@ -1,8 +1,9 @@
 import {View} from 'react-native';
 
-import styles from './MemberCard.styles';
 import {Avatar, Card, defaultAvatar, Icon, Text} from 'components/atoms';
 import {COLORS} from 'constants/colors';
+
+import styles from './MemberCard.styles';
 
 type MemberCardProps = {
   memberDetails: {
