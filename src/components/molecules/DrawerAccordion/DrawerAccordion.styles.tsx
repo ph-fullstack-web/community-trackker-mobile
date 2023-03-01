@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,6 +20,12 @@ const styles = StyleSheet.create({
   },
   item: {
     paddingLeft: 16,
+  },
+  label_light: {
+    color: COLORS.MIDNIGHT_BLUE,
+  },
+  label_dark: {
+    color: COLORS.LIGHT_BLUE,
   },
 });
 

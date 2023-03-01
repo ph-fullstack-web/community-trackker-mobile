@@ -1,6 +1,6 @@
 import {ScrollView, ScrollViewProps, StatusBar} from 'react-native';
-import {useTheme} from '@rneui/themed';
 
+import {useThemeProvider} from 'providers/ThemeProvider';
 import styles from './AppContainer.styles';
 import {COLORS} from 'constants/colors';
 
@@ -11,12 +11,16 @@ export const AppContainer = ({
   style,
   ...otherProps
 }: AppContainerProps) => {
-  const {theme} = useTheme();
+  const {mode} = useThemeProvider();
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
       {...otherProps}
-      style={[styles.container, style, {backgroundColor: theme.colors.white}]}
+      style={[
+        styles.container,
+        style,
+        styles[`container_${mode}` as keyof typeof styles],
+      ]}
     >
       <StatusBar
         barStyle="light-content"

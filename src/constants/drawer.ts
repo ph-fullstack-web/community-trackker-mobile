@@ -11,12 +11,14 @@ export const DEFAULT_DRAWER_ITEMS = <
     DrawerNavigationProp<CommunityDrawerParamList>,
     NativeStackNavigationProp<RootNativeStackParamList>
   >
->(): DrawerItems<T> => [
+>(
+  mode: string | undefined
+): DrawerItems<T> => [
   {
     icon: {
       name: 'dashboard',
       type: 'material',
-      color: COLORS.MIDNIGHT_BLUE,
+      color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
     },
     label: 'Dashboard',
     onPress: navigation =>
@@ -26,13 +28,17 @@ export const DEFAULT_DRAWER_ITEMS = <
     icon: {
       name: 'account-circle',
       type: 'material',
-      color: COLORS.MIDNIGHT_BLUE,
+      color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
     },
     label: 'Profile',
     onPress: navigation => navigation.navigate(CommunityDrawerScreens.Profile),
   },
   {
-    icon: {name: 'groups', type: 'material', color: COLORS.MIDNIGHT_BLUE},
+    icon: {
+      name: 'groups',
+      type: 'material',
+      color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
+    },
     label: 'Communities',
     onPress: navigation =>
       navigation.navigate(CommunityDrawerScreens.CommunitiesStack, {
@@ -43,7 +49,7 @@ export const DEFAULT_DRAWER_ITEMS = <
     icon: {
       name: 'assignment',
       type: 'material',
-      color: COLORS.MIDNIGHT_BLUE,
+      color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
     },
     label: 'CEC Requests',
     onPress: navigation => navigation.navigate(CommunityDrawerScreens.CEC),
@@ -52,13 +58,17 @@ export const DEFAULT_DRAWER_ITEMS = <
     icon: {
       name: 'account-tree',
       type: 'material',
-      color: COLORS.MIDNIGHT_BLUE,
+      color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
     },
     label: 'Skills',
     onPress: navigation => navigation.navigate(CommunityDrawerScreens.Skills),
   },
   {
-    icon: {name: 'description', type: 'material', color: COLORS.MIDNIGHT_BLUE},
+    icon: {
+      name: 'description',
+      type: 'material',
+      color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
+    },
     label: 'Report',
     onPress: navigation => navigation.navigate(CommunityDrawerScreens.Report),
   },

@@ -1,10 +1,10 @@
 import {useState} from 'react';
 import {View, StyleProp, ViewStyle} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {useTheme} from '@rneui/themed';
 
+import {useThemeProvider} from 'providers/ThemeProvider';
 import {Button, TextInput} from 'components/atoms';
-import {COLORS} from 'constants/colors';
+import {COLORS, GRADIENT} from 'constants/colors';
 import styles from './Search.styles';
 
 type SearchProps = {
@@ -14,17 +14,14 @@ type SearchProps = {
 
 export const Search = (props: SearchProps) => {
   const [searchText, setSearchText] = useState<string>('');
-  const {theme} = useTheme();
+  const {mode} = useThemeProvider();
 
   return (
     <View style={[styles.searchContainer, props.viewStyle]}>
       <TextInput
         style={[
           styles.searchInput,
-          {
-            backgroundColor: theme.colors.white,
-            shadowColor: theme.colors.black,
-          },
+          styles[`searchInput_${mode}` as keyof typeof styles],
         ]}
         placeholder="Search..."
         onChangeText={text => setSearchText(() => text)}
@@ -35,7 +32,7 @@ export const Search = (props: SearchProps) => {
         buttonStyle={styles.searchButton}
         ViewComponent={LinearGradient}
         linearGradientProps={{
-          colors: [COLORS.DARK_PLUM, COLORS.DARK_BLUE, COLORS.MEDIUM_BLUE],
+          colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
           start: {x: 0, y: 0.5},
           end: {x: 1, y: 0.5},
         }}

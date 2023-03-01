@@ -1,6 +1,6 @@
 import {Pressable, View} from 'react-native';
-import {useTheme} from '@rneui/themed';
 
+import {useThemeProvider} from 'providers/ThemeProvider';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
 
@@ -13,10 +13,13 @@ export type DrawerItemProps = {
 };
 
 export const DrawerItem = ({icon, label, onPress}: DrawerItemProps) => {
-  const {theme} = useTheme();
+  const {mode} = useThemeProvider();
 
   return (
-    <Pressable android_ripple={{color: theme.colors.grey4}} onPress={onPress}>
+    <Pressable
+      android_ripple={styles[`ripple_${mode}` as keyof typeof undefined]}
+      onPress={onPress}
+    >
       <View style={styles.container}>
         <Icon
           name={icon.name}
@@ -24,7 +27,11 @@ export const DrawerItem = ({icon, label, onPress}: DrawerItemProps) => {
           color={icon.color}
           style={styles.icon}
         />
-        <Text style={[styles.label, {color: theme.colors.blue2}]}>{label}</Text>
+        <Text
+          style={[styles.label, styles[`text_${mode}` as keyof typeof styles]]}
+        >
+          {label}
+        </Text>
       </View>
     </Pressable>
   );
