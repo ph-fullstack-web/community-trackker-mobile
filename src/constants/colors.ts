@@ -35,6 +35,9 @@ export const COLORS = {
   MINT_GREEN: '#41B883',
   MINION_YELLOW: '#F0DB4F',
   JAVA_ORANGE: '#f89820',
+
+  // RGBA
+  RGBABLACK: 'rgba(0,0,0,0.5)',
 };
 
 export const GRADIENT = {
