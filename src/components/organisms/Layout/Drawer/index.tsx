@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import {ImageBackground, View} from 'react-native';
 import {
   DrawerContentComponentProps,
@@ -16,6 +15,7 @@ import {
 } from 'components/atoms';
 import {COLORS} from 'constants/colors';
 import {useUserDataProvider} from 'providers/UserDataProvider';
+import {useThemeProvider} from 'providers/ThemeProvider';
 
 import styles from './Drawer.styles';
 
@@ -30,14 +30,22 @@ type DrawerProps<T> = DrawerContentComponentProps & {
 export const Drawer = <T,>(props: DrawerProps<T>) => {
   const {drawerItems, navigation} = props;
   const {user} = useUserDataProvider();
-  const [isDark, setIsDark] = useState<boolean>(false);
+  const {mode, toggleTheme} = useThemeProvider();
 
   const handleSwitchTheme = () => {
-    setIsDark(() => !isDark);
+    toggleTheme();
   };
 
+  const icon = mode === 'light' ? 'wb-sunny' : 'nightlight-round';
+  const iconColor = mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE;
+
   return (
-    <DrawerContentScrollView contentContainerStyle={styles.container}>
+    <DrawerContentScrollView
+      contentContainerStyle={[
+        styles.container,
+        styles[`container_${mode}` as keyof typeof undefined],
+      ]}
+    >
       <>
         <ImageBackground
           style={styles.headerBackground}
@@ -72,16 +80,21 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
         <Divider width={0.5} />
         <View style={styles.footerContainer}>
           <View style={styles.themeContainer}>
-            <Icon
-              name="nightlight-round"
-              type="material"
-              color={COLORS.MIDNIGHT_BLUE}
-            />
-            <Text style={styles.themeLabel}>Dark Mode</Text>
+            <Icon name={icon} type="material" color={iconColor} />
+            <Text
+              style={[
+                styles.themeLabel,
+                styles[`themeLabel_${mode}` as keyof typeof undefined],
+              ]}
+            >
+              {mode?.charAt(0).toUpperCase() + mode?.slice(1)} Mode
+            </Text>
             <Switch
               trackColor={{false: COLORS.DARK_GRAY, true: COLORS.LIGHT_GRAY}}
-              thumbColor={isDark ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_GRAY}
-              value={isDark}
+              thumbColor={
+                mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_GRAY
+              }
+              value={mode !== 'light' ? true : false}
               onValueChange={handleSwitchTheme}
             />
           </View>
@@ -89,7 +102,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
             icon={{
               name: 'logout',
               type: 'material',
-              color: COLORS.MIDNIGHT_BLUE,
+              color: iconColor,
             }}
             label="Log Out"
             onPress={() => console.log('Logging out...')}

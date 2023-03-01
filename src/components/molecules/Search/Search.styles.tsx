@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 0.8,
     borderRadius: 50,
+    shadowColor: COLORS.BLACK,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -28,6 +29,12 @@ const styles = StyleSheet.create({
     height: 45,
     borderRadius: 30,
     backgroundColor: COLORS.TRANSPARENT,
+  },
+  searchInput_light: {
+    backgroundColor: COLORS.WHITE,
+  },
+  searchInput_dark: {
+    backgroundColor: COLORS.DARK_GRAY,
   },
 });
 

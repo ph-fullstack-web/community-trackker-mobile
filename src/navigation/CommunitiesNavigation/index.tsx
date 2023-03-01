@@ -20,6 +20,7 @@ import {
   CommunityDrawerScreens,
   CommunityStackScreens,
 } from 'constants/navigation';
+import {useThemeProvider} from 'providers/ThemeProvider';
 
 type DrawerNavigation =
   CommunityDrawerScreenProps<CommunityDrawerScreens.CommunitiesStack>['navigation'];
@@ -28,9 +29,10 @@ const Drawer = createDrawerNavigator<CommunityDrawerParamList>();
 const Stack = createNativeStackNavigator<CommunityStackParamList>();
 
 export const CommunitiesDrawerNavigation = () => {
+  const {mode} = useThemeProvider();
   const drawerItems = useMemo(
-    () => DEFAULT_DRAWER_ITEMS<DrawerNavigation>(),
-    []
+    () => DEFAULT_DRAWER_ITEMS<DrawerNavigation>(mode),
+    [mode]
   );
 
   const renderDrawer = useCallback(

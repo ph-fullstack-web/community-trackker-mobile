@@ -1,5 +1,6 @@
 import {View} from 'react-native';
 
+import {useThemeProvider} from 'providers/ThemeProvider';
 import styles from './MemberCard.styles';
 import {Avatar, Card, defaultAvatar, Icon, Text} from 'components/atoms';
 import {COLORS} from 'constants/colors';
@@ -16,7 +17,7 @@ type MemberCardProps = {
 
 export const MemberCard = (prop: MemberCardProps) => {
   const {image, fullName, csvEmail, dateHired, isActive} = prop.memberDetails;
-
+  const {mode} = useThemeProvider();
   return (
     <Card style={styles.cardContainer}>
       <View style={styles.avatarContainer}>
@@ -31,13 +32,13 @@ export const MemberCard = (prop: MemberCardProps) => {
             <Icon
               name="user-following"
               type="simple-line-icon"
-              color={COLORS.DARK_BLUE}
+              color={mode === 'light' ? COLORS.DARK_BLUE : COLORS.MEDIUM_TEAL}
             />
           ) : (
             <Icon
               name="user-unfollow"
               type="simple-line-icon"
-              color={COLORS.DARK_GRAY}
+              color={mode === 'light' ? COLORS.DARK_GRAY : COLORS.LIGHT_GRAY}
             />
           )}
         </View>

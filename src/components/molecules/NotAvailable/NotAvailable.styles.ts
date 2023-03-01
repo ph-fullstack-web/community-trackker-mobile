@@ -9,7 +9,12 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
+  },
+  text_light: {
     color: COLORS.MIDNIGHT_BLUE,
+  },
+  text_dark: {
+    color: COLORS.VERY_LIGHT_GRAY,
   },
 });
 

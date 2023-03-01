@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: COLORS.RGBABLACK,
   },
   info_button: {
     backgroundColor: COLORS.TRANSPARENT,
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 35,
     alignItems: 'center',
+    shadowColor: COLORS.BLACK,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -38,6 +40,24 @@ const styles = StyleSheet.create({
   textStyle: {
     fontSize: 13,
     textAlign: 'center',
+  },
+  modalView_light: {
+    backgroundColor: COLORS.WHITE,
+  },
+  modalView_dark: {
+    backgroundColor: COLORS.BLACK,
+  },
+  textStyle_light: {
+    color: COLORS.VERY_LIGHT_GRAY,
+  },
+  textStyle_dark: {
+    color: COLORS.LIGHT_GRAY,
+  },
+  button_light: {
+    backgroundColor: COLORS.DARK_BLUE,
+  },
+  button_dark: {
+    backgroundColor: COLORS.MIDNIGHT_BLUE,
   },
 });
 

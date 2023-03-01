@@ -45,12 +45,30 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     margin: 14,
     alignItems: 'center',
+    backgroundColor: COLORS.TRANSPARENT,
   },
   themeLabel: {
     fontSize: 16,
     fontWeight: '400',
     marginHorizontal: 10,
+  },
+  container_light: {
+    backgroundColor: COLORS.WHITE,
+  },
+  container_dark: {
+    backgroundColor: COLORS.BLACK,
+  },
+  itemsContainer_light: {
+    backgroundColor: COLORS.WHITE,
+  },
+  itemsContainer_dark: {
+    backgroundColor: COLORS.BLACK,
+  },
+  themeLabel_light: {
     color: COLORS.MIDNIGHT_BLUE,
+  },
+  themeLabel_dark: {
+    color: COLORS.LIGHT_BLUE,
   },
 });
 
