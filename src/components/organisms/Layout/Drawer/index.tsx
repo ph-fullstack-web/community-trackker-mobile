@@ -47,18 +47,16 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
       ]}
     >
       <>
-        <View style={styles.headerContainer}>
-          <ImageBackground
-            style={styles.headerBackground}
-            source={require('assets/images/CSV-Cover.png')}
-          >
-            <Avatar size={70} />
-            <View style={styles.headerTextContainer}>
-              <Text style={styles.greetingText}>Hi, {user?.fullname}</Text>
-              <Text style={styles.emailText}>{user?.csvEmail}</Text>
-            </View>
-          </ImageBackground>
-        </View>
+        <ImageBackground
+          style={styles.headerBackground}
+          source={require('assets/images/CSV-Cover.png')}
+        >
+          <Avatar size={70} />
+          <View style={styles.headerTextContainer}>
+            <Text style={styles.greetingText}>Hi, {user?.fullname}</Text>
+            <Text style={styles.emailText}>{user?.csvEmail}</Text>
+          </View>
+        </ImageBackground>
         <View style={styles.itemsContainer}>
           {drawerItems.map(item =>
             item.items ? (

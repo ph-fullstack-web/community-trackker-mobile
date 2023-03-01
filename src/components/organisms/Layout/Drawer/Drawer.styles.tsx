@@ -6,11 +6,7 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     flex: 1,
   },
-  headerContainer: {
-    flex: 0.25,
-  },
   headerBackground: {
-    flex: 1,
     padding: 16,
   },
   headerTextContainer: {
@@ -39,11 +35,10 @@ const styles = StyleSheet.create({
     textShadowRadius: 1,
   },
   itemsContainer: {
-    flex: 0.8,
+    flex: 1,
     marginVertical: 16,
   },
   footerContainer: {
-    flex: 0.15,
     marginVertical: 16,
   },
   themeContainer: {
