@@ -3,7 +3,7 @@ import {View} from 'react-native';
 
 import {Chip, Text, Typeahead} from 'components/atoms';
 import {peopleskills} from 'mocks/peopleskills';
-import {PeopleSkill} from 'models/business';
+import {Peopleskills} from 'models/business';
 import styles from './SkillsForm.styles';
 
 type SkillsFormProps = {
@@ -13,7 +13,7 @@ type SkillsFormProps = {
 const SkillsForm = ({skills}: SkillsFormProps) => {
   const [skillsCopy, setSkillsCopy] = useState(skills);
 
-  const addSkill = (skill: PeopleSkill) => {
+  const addSkill = (skill: Peopleskills) => {
     setSkillsCopy(prevState =>
       [...prevState, skill.peopleskills_desc].sort((a, b) => a.localeCompare(b))
     );
@@ -25,7 +25,7 @@ const SkillsForm = ({skills}: SkillsFormProps) => {
 
   return (
     <View style={styles.container}>
-      <Typeahead<PeopleSkill>
+      <Typeahead<Peopleskills>
         data={peopleskills}
         label="peopleskills_desc"
         onSelect={addSkill}

@@ -1,51 +1,47 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
-import {ActivityIndicator, ListRenderItemInfo, View} from 'react-native';
+import {useCallback, useEffect, useState} from 'react';
+import {ListRenderItemInfo} from 'react-native';
 
 import {AppContainer, InfiniteScroll, ScreenHeader} from 'components/atoms';
-import {NoResult, Search} from 'components/molecules';
+import {NoResult, Search, Spinner} from 'components/molecules';
 import {MemberCard} from 'components/organisms';
-import {CommunityStackScreens} from 'constants/navigation';
-import {Community, Employee} from 'models/business';
+import {CommunityMembers, People} from 'models/business';
 
 import styles from './MembersTemplate.styles';
 
 type MembersTemplateProps = {
-  communityList?: Community[];
-  route: CommunityStackScreenProps<CommunityStackScreens.CommunityMembers>['route'];
+  isLoading: boolean;
+  communityWithMembers: CommunityMembers;
 };
 
 const LIMIT = 10;
 
 export const MembersTemplate = ({
-  communityList,
-  route,
+  isLoading,
+  communityWithMembers,
 }: MembersTemplateProps) => {
-  const {communityId} = route.params!;
-  const communityRef = useRef<Community | null>(
-    communityList?.filter(item => item.communityId === communityId)[0] ?? null
+  const [filteredMembers, setFilteredMembers] = useState<People[]>([]);
+  const [members, setMembers] = useState<People[]>(
+    communityWithMembers?.members ?? []
   );
-  const community = communityRef.current;
-  const [filteredMembers, setFilteredMembers] = useState<Employee[]>([]);
-  const [members, setMembers] = useState<Employee[]>(community?.members ?? []);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [lastPageCount, setLastPageCount] = useState(0);
   const [page, setPage] = useState(0);
 
   const handleSearch = (text: string) => {
     const searchText = text.trim().toLowerCase();
-    let result = community?.members ?? [];
+    let result = communityWithMembers?.members ?? [];
 
     if (searchText) {
       result = result.filter(
-        ({fullName, csvEmail, dateHired}: Employee) =>
-          fullName.toLowerCase().indexOf(searchText) !== -1 ||
-          csvEmail.toLowerCase().indexOf(searchText) !== -1 ||
-          dateHired.indexOf(searchText) !== -1
+        ({full_name, csv_email, hired_date}: People) =>
+          full_name.toLowerCase().indexOf(searchText) !== -1 ||
+          csv_email.toLowerCase().indexOf(searchText) !== -1 ||
+          hired_date.indexOf(searchText) !== -1
       );
     }
 
     setMembers(result);
-    setIsLoading(true);
+    setIsLoadingMore(true);
     setPage(0);
     setFilteredMembers([]);
   };
@@ -68,20 +64,12 @@ export const MembersTemplate = ({
     [members, page]
   );
 
-  const renderItem = ({item}: ListRenderItemInfo<Employee>) => (
+  const renderItem = ({item}: ListRenderItemInfo<People>) => (
     <MemberCard memberDetails={item} />
   );
 
-  const Spinner = useCallback(() => {
-    return (
-      <View style={styles.spinnerContainer}>
-        <ActivityIndicator size={75} />
-      </View>
-    );
-  }, []);
-
   useEffect(() => {
-    loadMore().then(() => setIsLoading(false));
+    loadMore().then(() => setIsLoadingMore(false));
   }, [loadMore]);
 
   return (
@@ -91,19 +79,19 @@ export const MembersTemplate = ({
       horizontal
     >
       <ScreenHeader
-        title={community?.name ?? ''}
-        subtitle={`Managed By: ${community?.managerName ?? ''}`}
+        title={communityWithMembers?.community_name ?? ''}
+        subtitle={`Managed By: ${communityWithMembers?.manager?.name ?? ''}`}
       />
       <>
-        {!!community?.members.length && (
+        {!!communityWithMembers?.members.length && (
           <Search onSearch={handleSearch} viewStyle={styles.search} />
         )}
-        {isLoading ? (
+        {isLoading || isLoadingMore ? (
           <Spinner />
         ) : (
-          <InfiniteScroll<Employee>
+          <InfiniteScroll<People>
             data={filteredMembers}
-            keyExtractor={item => item.employeeId.toString()}
+            keyExtractor={item => item.people_id.toString()}
             renderItem={renderItem}
             style={styles.listContentContainer}
             lastPageCount={lastPageCount}

@@ -8,10 +8,6 @@ const styles = StyleSheet.create({
   search: {
     paddingBottom: 10,
   },
-  spinnerContainer: {
-    flexGrow: 1,
-    justifyContent: 'center',
-  },
   listContentContainer: {
     paddingVertical: 5,
   },

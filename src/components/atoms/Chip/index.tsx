@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 import {Chip as DefaultChip} from '@rneui/base';
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 
 import styles from './Chip.styles';
 import {COLORS} from 'constants/colors';

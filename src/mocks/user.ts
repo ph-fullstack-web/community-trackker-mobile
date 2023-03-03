@@ -1,5 +1,6 @@
 import {User} from 'models/business';
 
+//TODO: remove after people API integration
 export const mockUser: User = {
   userId: '000001',
   username: 'Eren Yeager',

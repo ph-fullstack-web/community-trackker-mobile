@@ -1,7 +1,7 @@
 import {Dispatch, SetStateAction} from 'react';
 import {View} from 'react-native';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import {Text, TextInput} from 'components/atoms';
 import styles from './LabeledInput.styles';
 

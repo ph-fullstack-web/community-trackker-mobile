@@ -3,16 +3,19 @@ import {FlatList} from 'react-native';
 import {AppContainer, ScreenHeader} from 'components/atoms';
 import {CommunityCard} from 'components/organisms';
 import {CommunityStackScreens, ScreenTitle} from 'constants/navigation';
-import {Community} from 'models/business';
+import {CommunityWithMembersPercentage} from 'models/business';
 
 import styles from './CommunitiesDashboardTemplate.styles';
+import {Spinner} from 'components/molecules';
 
 type CommunitiesDashboardTemplateProp = {
-  communityList: Community[] | undefined;
+  isLoading: boolean;
+  communityList: CommunityWithMembersPercentage[] | undefined;
   navigation: CommunityStackScreenProps<CommunityStackScreens.Communities>['navigation'];
 };
 
 export const CommunitiesDashboardTemplate = ({
+  isLoading,
   communityList,
   navigation,
 }: CommunitiesDashboardTemplateProp) => {
@@ -26,18 +29,22 @@ export const CommunitiesDashboardTemplate = ({
   return (
     <AppContainer>
       <ScreenHeader title={ScreenTitle.Communities} />
-      <FlatList
-        scrollEnabled={false}
-        data={communityList}
-        contentContainerStyle={styles.listContentContainer}
-        keyExtractor={item => item.communityId.toString()}
-        renderItem={({item}) => (
-          <CommunityCard
-            onViewMembers={() => handleViewMembers(item.communityId)}
-            {...item}
-          />
-        )}
-      />
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <FlatList
+          scrollEnabled={false}
+          data={communityList}
+          contentContainerStyle={styles.listContentContainer}
+          keyExtractor={item => item.community_id.toString()}
+          renderItem={({item}) => (
+            <CommunityCard
+              community={item}
+              onViewMembers={() => handleViewMembers(item.community_id)}
+            />
+          )}
+        />
+      )}
     </AppContainer>
   );
 };

@@ -1,6 +1,6 @@
 import {ScrollView, ScrollViewProps, StatusBar} from 'react-native';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import styles from './AppContainer.styles';
 import {COLORS} from 'constants/colors';
 

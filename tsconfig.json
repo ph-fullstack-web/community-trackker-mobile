@@ -22,7 +22,8 @@
       "mocks/*": ["mocks/*"],
       "models/*": ["models/*"],
       "navigation/*": ["navigation/*"],
-      "providers/*": ["providers/*"]
+      "providers/*": ["providers/*"],
+      "api/*": ["api/*"]
     }
   }
 }

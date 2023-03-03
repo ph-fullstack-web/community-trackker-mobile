@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import {Accordion, Button} from 'components/atoms';
 import {LabeledInput} from 'components/molecules';
 import {GRADIENT} from 'constants/colors';

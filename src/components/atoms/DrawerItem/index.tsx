@@ -1,6 +1,6 @@
 import {Pressable, View} from 'react-native';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
 

@@ -1,6 +1,7 @@
-import {PeopleSkill} from 'models/business';
+import {Peopleskills} from 'models/business';
 
-export const peopleskills: PeopleSkill[] = [
+//TODO: remove after people API integration
+export const peopleskills: Peopleskills[] = [
   {
     peopleskills_id: 3,
     peopleskills_desc: 'ADLS',

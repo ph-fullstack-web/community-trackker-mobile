@@ -1,5 +1,5 @@
 import {StyleProp, View, ViewStyle} from 'react-native';
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import styles from './Card.styles';
 
 type CardProps = ComponentWithChildren & {

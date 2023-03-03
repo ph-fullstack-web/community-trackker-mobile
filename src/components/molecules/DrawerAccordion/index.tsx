@@ -2,7 +2,7 @@ import {View} from 'react-native';
 import {useState} from 'react';
 import {ListItem} from '@rneui/base';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import {DrawerItem, Icon, Text} from 'components/atoms';
 import styles from './DrawerAccordion.styles';
 

@@ -1,24 +1,28 @@
 import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
-import {CommunityDetailsModal, MemberProgressChart} from 'components/molecules';
 import {Button, Card, Text} from 'components/atoms';
+import {CommunityDetailsModal, MemberProgressChart} from 'components/molecules';
 import {GRADIENT} from 'constants/colors';
+import {CommunityWithMembersPercentage} from 'models/business';
+import {useThemeProvider} from 'providers';
+
 import styles from './CommunityCard.styles';
 
 interface CommunityCardProps {
-  icon?: string;
-  communityId: number;
-  name: string;
-  description: string;
-  managerName: string;
-  totalMembers: number;
-  percentage: number;
+  community: CommunityWithMembersPercentage;
   onViewMembers: () => void;
 }
 
 export const CommunityCard = (props: CommunityCardProps) => {
+  const {
+    community: {
+      community_name,
+      community_description,
+      manager_full_name,
+      percentage,
+    },
+  } = props;
   const {mode} = useThemeProvider();
 
   return (
@@ -30,10 +34,10 @@ export const CommunityCard = (props: CommunityCardProps) => {
     >
       <View style={styles.card_details_container}>
         <View style={styles.card_title_container}>
-          <Text type="title">{props.name}</Text>
-          <CommunityDetailsModal communityDescription={props.description} />
+          <Text type="title">{community_name}</Text>
+          <CommunityDetailsModal communityDescription={community_description} />
         </View>
-        <Text type="subtitle">Manager: {props.managerName}</Text>
+        <Text type="subtitle">Manager: {manager_full_name}</Text>
         <Button
           title="View Members"
           titleStyle={[
@@ -55,7 +59,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
         />
       </View>
       <View style={styles.card_chart_container}>
-        <MemberProgressChart percentage={props.percentage / 100} />
+        <MemberProgressChart percentage={percentage / 100} />
       </View>
     </Card>
   );

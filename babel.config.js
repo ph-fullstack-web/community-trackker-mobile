@@ -12,6 +12,7 @@ module.exports = {
           models: './src/models',
           navigation: './src/navigation',
           providers: './src/providers',
+          api: './src/api',
         },
       },
     ],

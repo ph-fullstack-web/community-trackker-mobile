@@ -15,7 +15,7 @@ import {
 } from 'components/atoms';
 import {COLORS} from 'constants/colors';
 import {useUserDataProvider} from 'providers/UserDataProvider';
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 
 import styles from './Drawer.styles';
 

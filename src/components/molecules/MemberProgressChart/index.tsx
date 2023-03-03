@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import {ProgressChart, Text} from 'components/atoms';
 import {ProgressChartLayout} from 'components/atoms/ProgressChart/ProgressChart.types';
 import {COLORS} from 'constants/colors';

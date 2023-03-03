@@ -1,6 +1,6 @@
 import {Text as DefaultText, TextProps as DefaultTextProps} from 'react-native';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import styles from './Text.styles';
 
 type ThemeProps = {

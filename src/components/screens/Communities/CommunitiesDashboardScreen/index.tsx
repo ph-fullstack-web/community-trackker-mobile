@@ -1,6 +1,6 @@
+import {useGetCommunities} from 'api/hooks';
 import {CommunitiesDashboardTemplate} from 'components/templates';
 import {CommunityStackScreens} from 'constants/navigation';
-import {useCommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 
 type CommunitiesDashboardScreenProps =
   CommunityStackScreenProps<CommunityStackScreens.Communities>;
@@ -8,11 +8,11 @@ type CommunitiesDashboardScreenProps =
 export const CommunitiesDashboardScreen = ({
   navigation,
 }: CommunitiesDashboardScreenProps) => {
-  const {communityList} = useCommunitiesDataProvider();
-
+  const {isLoading, data} = useGetCommunities();
   return (
     <CommunitiesDashboardTemplate
-      communityList={communityList}
+      isLoading={isLoading}
+      communityList={data}
       navigation={navigation}
     />
   );
