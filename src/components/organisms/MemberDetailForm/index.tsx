@@ -3,15 +3,27 @@ import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {useThemeProvider} from 'providers';
+import {SkillSet} from 'models/business';
 import {Accordion, Button} from 'components/atoms';
 import {LabeledInput} from 'components/molecules';
 import {GRADIENT} from 'constants/colors';
 import SkillsForm from '../SkillsForm';
-
 import styles from './MemberDetailForm.styles';
 
-export const MemberDetailForm = () => {
+type MemberDetailFormProps = {
+  skills: SkillSet[];
+  email: string;
+  cognizantId: number;
+};
+
+export const MemberDetailForm = ({
+  skills,
+  email,
+  cognizantId,
+}: MemberDetailFormProps) => {
   const {mode} = useThemeProvider();
+
+  const skillsList = skills?.map(skill => skill.description);
 
   return (
     <>
@@ -29,7 +41,7 @@ export const MemberDetailForm = () => {
           ]}
           expanded={true}
         >
-          <DetailForm />
+          <DetailForm csvemail={email} cognizantId={cognizantId} />
         </Accordion>
       </View>
       <View
@@ -46,17 +58,22 @@ export const MemberDetailForm = () => {
           ]}
           expanded={false}
         >
-          <SkillsForm skills={['Angular', 'ReactJS', 'TypeScript']} />
+          <SkillsForm skills={skillsList} />
         </Accordion>
       </View>
     </>
   );
 };
 
-const DetailForm = () => {
+type DetailFormProps = {
+  csvemail: string;
+  cognizantId: number;
+};
+
+const DetailForm = ({csvemail, cognizantId}: DetailFormProps) => {
   const {mode} = useThemeProvider();
-  const [idNumber, setIdNumber] = useState('');
-  const [email, setEmail] = useState('');
+  const [idNumber, setIdNumber] = useState(cognizantId.toString());
+  const [email, setEmail] = useState(csvemail);
   const [community, setCommunity] = useState('');
   const [manager, setManager] = useState('');
 
@@ -64,14 +81,14 @@ const DetailForm = () => {
     <View style={styles.formContainer}>
       <LabeledInput
         label="Cognizant ID"
-        placeholder="00000000"
+        placeholder={idNumber || '00000000'}
         value={idNumber}
         onValueChange={setIdNumber}
       />
 
       <LabeledInput
         label="Email"
-        placeholder="yourname@cognizant.com"
+        placeholder={email || 'yourname@cognizant.com'}
         value={email}
         onValueChange={setEmail}
       />

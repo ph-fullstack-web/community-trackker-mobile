@@ -5,6 +5,7 @@ import {
   CommunityDrawerScreens,
   CommunityStackScreens,
 } from 'constants/navigation';
+import {useGetPerson} from 'api/hooks';
 import {useUserDataProvider} from 'providers/UserDataProvider';
 
 type DashboardScreenProps =
@@ -13,6 +14,9 @@ type DashboardScreenProps =
 export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
   const {navigate} = navigation;
   const {user} = useUserDataProvider();
+  const personId: number = 1;
+
+  const {data} = useGetPerson(personId);
 
   const applications: AppCardProps[] = [
     {
@@ -54,5 +58,5 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
     },
   ];
 
-  return <DashboardTemplate applications={applications} user={user} />;
+  return <DashboardTemplate applications={applications} user={data?.data} />;
 };

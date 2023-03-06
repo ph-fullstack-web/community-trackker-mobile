@@ -12,12 +12,13 @@ export type Employee = {
 
 export type User = {
   //TODO: delete after people API integration
-  userId: string;
+  people_id: string;
+  cognizantid_id: number;
   username: string;
-  csvEmail: string;
-  fullname: string;
+  csv_email: string;
+  full_name: string;
   cecPoints: number;
-  skills: Peopleskills[];
+  skills: SkillSet[];
   communityId: number;
 };
 

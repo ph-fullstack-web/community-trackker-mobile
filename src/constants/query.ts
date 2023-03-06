@@ -6,4 +6,5 @@ export enum Query {
   GetManagers = 'managers',
   GetCommunityManagers = 'communityManagers',
   GetCommunityWithMembers = 'communityWithMembers',
+  GetPeople = 'people',
 }

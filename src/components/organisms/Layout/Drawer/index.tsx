@@ -14,7 +14,7 @@ import {
   Text,
 } from 'components/atoms';
 import {COLORS} from 'constants/colors';
-import {useUserDataProvider} from 'providers/UserDataProvider';
+import {useGetPerson} from 'api/hooks';
 import {useThemeProvider} from 'providers';
 
 import styles from './Drawer.styles';
@@ -29,7 +29,9 @@ type DrawerProps<T> = DrawerContentComponentProps & {
 
 export const Drawer = <T,>(props: DrawerProps<T>) => {
   const {drawerItems, navigation} = props;
-  const {user} = useUserDataProvider();
+  const personId: number = 1;
+
+  const {data} = useGetPerson(personId);
   const {mode, toggleTheme} = useThemeProvider();
 
   const handleSwitchTheme = () => {
@@ -53,8 +55,8 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
         >
           <Avatar size={70} />
           <View style={styles.headerTextContainer}>
-            <Text style={styles.greetingText}>Hi, {user?.fullname}</Text>
-            <Text style={styles.emailText}>{user?.csvEmail}</Text>
+            <Text style={styles.greetingText}>Hi, {data?.data?.full_name}</Text>
+            <Text style={styles.emailText}>{data?.data?.csv_email}</Text>
           </View>
         </ImageBackground>
         <View style={styles.itemsContainer}>

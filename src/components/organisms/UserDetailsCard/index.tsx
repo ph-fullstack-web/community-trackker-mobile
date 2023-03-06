@@ -16,10 +16,10 @@ export const UserDetailsCard = (props: UserDetailsCardProps) => {
       <Avatar size={120} />
       <View style={styles.userDetails}>
         <Text type="title" style={styles.fullname}>
-          {user?.fullname}
+          {user?.full_name}
         </Text>
         <Text type="subtitle" style={styles.email}>
-          {user?.csvEmail}
+          {user?.csv_email}
         </Text>
       </View>
     </View>

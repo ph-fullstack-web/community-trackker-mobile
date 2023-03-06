@@ -1,12 +1,18 @@
 import {ProfileTemplate} from 'components/templates';
-import {CommunityDrawerScreens} from 'constants/navigation';
-import {useUserDataProvider} from 'providers/UserDataProvider';
+import {useGetPerson} from 'api/hooks';
 
-type ProfileScreenProps =
-  CommunityDrawerScreenProps<CommunityDrawerScreens.Profile>;
+export const ProfileScreen = () => {
+  const personId: number = 1;
 
-export const ProfileScreen = ({}: ProfileScreenProps) => {
-  const {user} = useUserDataProvider();
+  const {isLoading, data, isError, error, isFetching} = useGetPerson(personId);
 
-  return <ProfileTemplate user={user} />;
+  return (
+    <ProfileTemplate
+      isLoading={isLoading}
+      person={data?.data}
+      isError={isError}
+      error={error}
+      isFetching={isFetching}
+    />
+  );
 };

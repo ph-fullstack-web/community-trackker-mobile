@@ -1,7 +1,7 @@
 import {View} from 'react-native';
 
 import {NoResult, SkillBadge} from 'components/molecules';
-import {Peopleskills} from 'models/business';
+import {SkillSet} from 'models/business';
 
 import styles from './SkillBadgeContainer.styles';
 import {SkillBadgeContainerProps} from './SkillBadgeContainer.types';
@@ -15,12 +15,12 @@ export const SkillBadgeContainer = (props: SkillBadgeContainerProps) => {
 
   return (
     <View style={styles.row}>
-      {user?.skills?.map((item: Peopleskills, index: number) => {
+      {user?.skills?.map((item: SkillSet, index: number) => {
         return (
           <SkillBadge
             key={index}
             size={props.size}
-            skillId={item.peopleskills_id}
+            skillId={item.id}
             numColumns={props.numColumns}
           />
         );

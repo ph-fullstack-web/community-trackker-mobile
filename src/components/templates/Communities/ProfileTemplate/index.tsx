@@ -1,18 +1,44 @@
 import {AppContainer, ScreenHeader} from 'components/atoms';
+import {ErrorMessage, Spinner} from 'components/molecules';
 import {MemberDetailForm} from 'components/organisms';
 import {User} from 'models/business';
 
 type ProfileTemplateProp = {
-  user: User | undefined;
+  isLoading: boolean;
+  person: User;
+  isError: boolean;
+  error: any;
+  isFetching: boolean;
 };
 
-export const ProfileTemplate = (props: ProfileTemplateProp) => {
-  const dashboardTitle = `Hi, ${props?.user?.username}`;
+export const ProfileTemplate = ({
+  isLoading,
+  person,
+  isError,
+  error,
+  isFetching,
+}: ProfileTemplateProp) => {
+  const dashboardTitle = `Hi, ${person?.full_name}`;
 
   return (
     <AppContainer keyboardShouldPersistTaps="handled">
       <ScreenHeader title={dashboardTitle} />
-      <MemberDetailForm />
+
+      {isError ? (
+        <ErrorMessage code={error.code} message={error.message} />
+      ) : (
+        <>
+          {isLoading || isFetching ? (
+            <Spinner />
+          ) : (
+            <MemberDetailForm
+              skills={person?.skills}
+              email={person?.csv_email}
+              cognizantId={person?.cognizantid_id}
+            />
+          )}
+        </>
+      )}
     </AppContainer>
   );
 };
