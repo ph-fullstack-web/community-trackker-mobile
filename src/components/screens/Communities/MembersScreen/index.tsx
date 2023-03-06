@@ -7,7 +7,16 @@ type MembersScreenProps =
 
 export const MembersScreen = ({route}: MembersScreenProps) => {
   const {communityId} = route.params!;
-  const {isLoading, data} = useGetCommunityWithMembers(communityId);
+  const {isLoading, data, isError, error, isFetching} =
+    useGetCommunityWithMembers(communityId);
 
-  return <MembersTemplate isLoading={isLoading} communityWithMembers={data} />;
+  return (
+    <MembersTemplate
+      isLoading={isLoading}
+      communityWithMembers={data}
+      isError={isError}
+      error={error}
+      isFetching={isFetching}
+    />
+  );
 };

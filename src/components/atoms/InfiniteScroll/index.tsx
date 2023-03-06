@@ -1,6 +1,8 @@
 import {useCallback} from 'react';
-import {ActivityIndicator, FlatListProps, View} from 'react-native';
+import {FlatListProps} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
+
+import {Spinner} from 'components/molecules';
 
 import styles from './InfiniteScroll.styles';
 
@@ -22,9 +24,7 @@ export const InfiniteScroll = <T,>({
   const ListSpinner = useCallback(
     () =>
       lastPageCount >= limit ? (
-        <View style={styles.spinnerContainer}>
-          <ActivityIndicator size={35} />
-        </View>
+        <Spinner size={35} viewStyle={styles.spinnerContainer} />
       ) : null,
     [lastPageCount, limit]
   );

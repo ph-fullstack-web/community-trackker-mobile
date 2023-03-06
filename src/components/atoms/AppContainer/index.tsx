@@ -17,10 +17,11 @@ export const AppContainer = ({
       showsVerticalScrollIndicator={false}
       {...otherProps}
       style={[
-        styles.container,
+        styles.scrollStyle,
         style,
         styles[`container_${mode}` as keyof typeof styles],
       ]}
+      contentContainerStyle={styles.scrollContentContainer}
     >
       <StatusBar
         barStyle="light-content"

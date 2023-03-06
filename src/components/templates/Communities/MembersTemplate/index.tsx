@@ -2,7 +2,7 @@ import {useCallback, useEffect, useState} from 'react';
 import {ListRenderItemInfo} from 'react-native';
 
 import {AppContainer, InfiniteScroll, ScreenHeader} from 'components/atoms';
-import {NoResult, Search, Spinner} from 'components/molecules';
+import {ErrorMessage, NoResult, Search, Spinner} from 'components/molecules';
 import {MemberCard} from 'components/organisms';
 import {CommunityMembers, People} from 'models/business';
 
@@ -11,6 +11,9 @@ import styles from './MembersTemplate.styles';
 type MembersTemplateProps = {
   isLoading: boolean;
   communityWithMembers: CommunityMembers;
+  isError: boolean;
+  error: any;
+  isFetching: boolean;
 };
 
 const LIMIT = 10;
@@ -18,14 +21,21 @@ const LIMIT = 10;
 export const MembersTemplate = ({
   isLoading,
   communityWithMembers,
+  isError,
+  error,
+  isFetching,
 }: MembersTemplateProps) => {
   const [filteredMembers, setFilteredMembers] = useState<People[]>([]);
-  const [members, setMembers] = useState<People[]>(
-    communityWithMembers?.members ?? []
-  );
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [members, setMembers] = useState<People[]>([]);
   const [lastPageCount, setLastPageCount] = useState(0);
   const [page, setPage] = useState(0);
+
+  useEffect(() => {
+    if (!isFetching) {
+      setMembers(communityWithMembers?.members ?? []);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFetching]);
 
   const handleSearch = (text: string) => {
     const searchText = text.trim().toLowerCase();
@@ -41,7 +51,6 @@ export const MembersTemplate = ({
     }
 
     setMembers(result);
-    setIsLoadingMore(true);
     setPage(0);
     setFilteredMembers([]);
   };
@@ -69,38 +78,40 @@ export const MembersTemplate = ({
   );
 
   useEffect(() => {
-    loadMore().then(() => setIsLoadingMore(false));
+    loadMore();
   }, [loadMore]);
 
   return (
-    <AppContainer
-      contentContainerStyle={styles.container}
-      keyboardShouldPersistTaps="handled"
-      horizontal
-    >
+    <AppContainer keyboardShouldPersistTaps="handled" horizontal>
       <ScreenHeader
         title={communityWithMembers?.community_name ?? ''}
         subtitle={`Managed By: ${communityWithMembers?.manager?.name ?? ''}`}
       />
-      <>
-        {!!communityWithMembers?.members.length && (
-          <Search onSearch={handleSearch} viewStyle={styles.search} />
-        )}
-        {isLoading || isLoadingMore ? (
-          <Spinner />
-        ) : (
-          <InfiniteScroll<People>
-            data={filteredMembers}
-            keyExtractor={item => item.people_id.toString()}
-            renderItem={renderItem}
-            style={styles.listContentContainer}
-            lastPageCount={lastPageCount}
-            limit={LIMIT}
-            ListEmptyComponent={<NoResult message="No Members Found" />}
-            setPage={setPage}
-          />
-        )}
-      </>
+      {isError ? (
+        <ErrorMessage code={error.code} message={error.message} />
+      ) : (
+        <>
+          {communityWithMembers?.members.length ? (
+            <Search onSearch={handleSearch} viewStyle={styles.search} />
+          ) : (
+            <></>
+          )}
+          {isLoading || isFetching ? (
+            <Spinner />
+          ) : (
+            <InfiniteScroll<People>
+              data={filteredMembers}
+              keyExtractor={item => item.people_id.toString()}
+              renderItem={renderItem}
+              style={styles.listContentContainer}
+              lastPageCount={lastPageCount}
+              limit={LIMIT}
+              ListEmptyComponent={<NoResult message="No Members Found" />}
+              setPage={setPage}
+            />
+          )}
+        </>
+      )}
     </AppContainer>
   );
 };

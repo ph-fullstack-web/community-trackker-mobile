@@ -1,6 +1,7 @@
 export * from './AppCard';
 export * from './CommunityDetailsModal';
 export * from './DrawerAccordion';
+export * from './ErrorMessage';
 export * from './LabeledInput';
 export * from './MemberProgressChart';
 export * from './NoResult';
