@@ -85,7 +85,11 @@ export const MembersTemplate = ({
     <AppContainer keyboardShouldPersistTaps="handled" horizontal>
       <ScreenHeader
         title={communityWithMembers?.community_name ?? ''}
-        subtitle={`Managed By: ${communityWithMembers?.manager?.name ?? ''}`}
+        subtitle={
+          communityWithMembers?.manager?.name
+            ? `Managed By: ${communityWithMembers?.manager?.name}`
+            : ''
+        }
       />
       {isError ? (
         <ErrorMessage code={error.code} message={error.message} />
