@@ -25,7 +25,7 @@ export const ProfileTemplate = ({
       <ScreenHeader title={dashboardTitle} />
 
       {isError ? (
-        <ErrorMessage code={error.code} message={error.message} />
+        <ErrorMessage status={error.status} message={error.message} />
       ) : (
         <>
           {isLoading || isFetching ? (

@@ -1,3 +1,4 @@
+import {HttpStatusCode} from 'axios';
 import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
@@ -5,33 +6,31 @@ import {useNavigation} from '@react-navigation/native';
 import styles from './ErrorMessage.styles';
 import {Button, Icon, Text} from 'components/atoms';
 import {COLORS, GRADIENT} from 'constants/colors';
+import {errorIconMap} from 'constants/errors';
 import {RootNativeStackScreens} from 'constants/navigation';
 import {useThemeProvider} from 'providers';
 
 type ErrorMessageProps = {
-  code: number;
+  status: HttpStatusCode;
   message: string;
   size: number;
   buttonTitle: string;
   onPress?: () => void;
 };
 
-const errorMap = new Map<number, Icon>([
-  [400, {type: 'material', name: 'error-outline'}],
-  [500, {type: 'material', name: 'wifi-off'}],
-  [401, {type: 'material', name: 'block-flipped'}],
-  [403, {type: 'material', name: 'block-flipped'}],
-]);
-
 export const ErrorMessage = (props: ErrorMessageProps) => {
-  const {code, message, size, buttonTitle, onPress} = props;
+  const {status, message, size, buttonTitle, onPress} = props;
   const {mode} = useThemeProvider();
   const {navigate} =
     useNavigation<
       RootNativeStackScreenProps<RootNativeStackScreens.Login>['navigation']
     >();
 
-  const icon = errorMap.get(code);
+  let icon = errorIconMap.get(HttpStatusCode.InternalServerError);
+
+  if (errorIconMap.has(status)) {
+    icon = errorIconMap.get(HttpStatusCode.InternalServerError);
+  }
 
   const handleOnPress = () => {
     if (onPress) {
@@ -44,8 +43,8 @@ export const ErrorMessage = (props: ErrorMessageProps) => {
   return (
     <View style={styles.container}>
       <Icon
-        type={icon?.type ?? 'material'}
-        name={icon?.name ?? 'wifi-off'}
+        type={icon!.type}
+        name={icon!.name}
         color={mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.VERY_LIGHT_GRAY}
         size={size}
       />
@@ -79,7 +78,7 @@ export const ErrorMessage = (props: ErrorMessageProps) => {
 };
 
 ErrorMessage.defaultProps = {
-  code: 500,
+  code: HttpStatusCode.InternalServerError,
   message: 'Something went wrong',
   size: 250,
   buttonTitle: 'Back to Login',

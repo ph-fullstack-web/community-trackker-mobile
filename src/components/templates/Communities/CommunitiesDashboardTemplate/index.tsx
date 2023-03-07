@@ -34,7 +34,7 @@ export const CommunitiesDashboardTemplate = ({
     <AppContainer keyboardShouldPersistTaps="handled" horizontal>
       <ScreenHeader title={ScreenTitle.Communities} />
       {isError ? (
-        <ErrorMessage code={error.code} message={error.message} />
+        <ErrorMessage status={error.status} message={error.message} />
       ) : isLoading ? (
         <Spinner />
       ) : (
