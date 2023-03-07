@@ -13,9 +13,9 @@ type DashboardScreenProps =
 export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
   const {navigate} = navigation;
 
-  const personId: number = 1;
+  const personId: number = 1; //TODO: to remove once login module is implemented
 
-  const data = useGetPerson(personId)?.data;
+  const {isLoading, data, error, isError} = useGetPerson(personId);
 
   const applications: AppCardProps[] = [
     {
@@ -30,7 +30,7 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
         navigate(CommunityDrawerScreens.CommunitiesStack, {
           screen: CommunityStackScreens.CommunityMembers,
           params: {
-            communityId: data!.communityId,
+            communityId: data!.community_id,
             previousScreen: CommunityDrawerScreens.Dashboard,
           },
         }),
@@ -57,5 +57,15 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
     },
   ];
 
-  return <DashboardTemplate applications={applications} user={data} />;
+  return (
+    <DashboardTemplate
+      applications={applications}
+      full_name={data?.full_name}
+      csv_email={data?.csv_email}
+      skills={data?.skills}
+      isLoading={isLoading}
+      isError={isError}
+      error={error}
+    />
+  );
 };

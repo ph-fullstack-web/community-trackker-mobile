@@ -1,103 +1,67 @@
-import {useState} from 'react';
+import {SetStateAction, useState} from 'react';
 import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {useThemeProvider} from 'providers';
-import {SkillSet} from 'models/business';
-import {Accordion, Button} from 'components/atoms';
+import {Button} from 'components/atoms';
 import {LabeledInput} from 'components/molecules';
 import {GRADIENT} from 'constants/colors';
-import SkillsForm from '../SkillsForm';
-import styles from './MemberDetailForm.styles';
+import {useThemeProvider} from 'providers';
 
-type MemberDetailFormProps = {
-  skills: SkillSet[];
-  email: string;
-  cognizantId: number;
-};
+import styles from './MemberDetailForm.styles';
+import {MemberDetailFormProps} from './MemberDetailForm.types';
 
 export const MemberDetailForm = ({
-  skills,
-  email,
-  cognizantId,
+  csv_email,
+  cognizantid_id,
+  community_id,
+  communities,
 }: MemberDetailFormProps) => {
   const {mode} = useThemeProvider();
 
-  const skillsList = skills?.map(skill => skill.description);
+  const [form, setForm] = useState({
+    cognizantid_id,
+    community_id,
+    csv_email,
+    manager_name: '',
+    community_name: '',
+  });
 
-  return (
-    <>
-      <View
-        style={[
-          styles.accordion_container,
-          styles[`accordion_container_${mode}` as keyof typeof undefined],
-        ]}
-      >
-        <Accordion
-          headerLabel="Information"
-          headerStyle={[
-            styles.form_header,
-            styles[`form_header_${mode}` as keyof typeof styles],
-          ]}
-          expanded={true}
-        >
-          <DetailForm csvemail={email} cognizantId={cognizantId} />
-        </Accordion>
-      </View>
-      <View
-        style={[
-          styles.accordion_container,
-          styles[`accordion_container_${mode}` as keyof typeof undefined],
-        ]}
-      >
-        <Accordion
-          headerLabel="Skills"
-          headerStyle={[
-            styles.form_header,
-            styles[`form_header_${mode}` as keyof typeof styles],
-          ]}
-          expanded={false}
-        >
-          <SkillsForm skills={skillsList} />
-        </Accordion>
-      </View>
-    </>
-  );
-};
+  // TODO: remove textfields and implement dropdown for community and manager
 
-type DetailFormProps = {
-  csvemail: string;
-  cognizantId: number;
-};
-
-const DetailForm = ({csvemail, cognizantId}: DetailFormProps) => {
-  const {mode} = useThemeProvider();
-  const [idNumber, setIdNumber] = useState(cognizantId.toString());
-  const [email, setEmail] = useState(csvemail);
-  const [community, setCommunity] = useState('');
-  const [manager, setManager] = useState('');
+  const handleUpdateForm = (key: string, value: SetStateAction<string>) => {
+    let fields = {[key]: value};
+    let community_name: string = form.community_name;
+    if (key === 'community_id') {
+      const community = communities.find(
+        item => item.community_id === community_id
+      );
+      community_name = community?.community_name ?? '';
+      fields = {...fields, community_name};
+    }
+    setForm({...form, ...fields});
+  };
 
   return (
     <View style={styles.formContainer}>
       <LabeledInput
         label="Cognizant ID"
-        placeholder={idNumber || '00000000'}
-        value={idNumber}
-        onValueChange={setIdNumber}
+        placeholder={form.cognizantid_id?.toString() || '00000000'}
+        value={form.cognizantid_id?.toString()}
+        onValueChange={value => handleUpdateForm('cognizantid_id', value)}
       />
 
       <LabeledInput
         label="Email"
-        placeholder={email || 'yourname@cognizant.com'}
-        value={email}
-        onValueChange={setEmail}
+        placeholder={form.csv_email || 'yourname@cognizant.com'}
+        value={form.csv_email}
+        onValueChange={value => handleUpdateForm('csv_email', value)}
       />
 
       <LabeledInput
         label="Community"
         placeholder="Community name"
-        value={community}
-        onValueChange={setCommunity}
+        value={form.community_name}
+        onValueChange={value => handleUpdateForm('community_id', value)}
       />
 
       <View style={styles.community_button}>
@@ -122,8 +86,8 @@ const DetailForm = ({csvemail, cognizantId}: DetailFormProps) => {
       <LabeledInput
         label="Manager"
         placeholder="Juan Dela Cruz"
-        value={manager}
-        onValueChange={setManager}
+        value={form.manager_name}
+        onValueChange={value => handleUpdateForm('manager_name', value)}
       />
     </View>
   );

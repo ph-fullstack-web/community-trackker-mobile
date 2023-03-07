@@ -4,7 +4,7 @@ import {ScreenTitle} from 'constants/navigation';
 
 export const CECDashboardTemplate = () => {
   return (
-    <AppContainer keyboardShouldPersistTaps="handled">
+    <AppContainer>
       <ScreenHeader title={ScreenTitle.CEC} />
       <NotAvailable />
     </AppContainer>

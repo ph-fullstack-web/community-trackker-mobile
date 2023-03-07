@@ -4,22 +4,22 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 
 import styles from './ErrorMessage.styles';
+import {ErrorMessageProps} from './ErrorMessage.types';
+
 import {Button, Icon, Text} from 'components/atoms';
 import {COLORS, GRADIENT} from 'constants/colors';
 import {errorIconMap} from 'constants/errors';
 import {RootNativeStackScreens} from 'constants/navigation';
 import {useThemeProvider} from 'providers';
 
-type ErrorMessageProps = {
-  status: HttpStatusCode;
-  message: string;
-  size: number;
-  buttonTitle: string;
-  onPress?: () => void;
-};
-
-export const ErrorMessage = (props: ErrorMessageProps) => {
-  const {status, message, size, buttonTitle, onPress} = props;
+export const ErrorMessage = ({
+  status,
+  message,
+  size,
+  buttonTitle,
+  showButton,
+  onPress,
+}: ErrorMessageProps) => {
   const {mode} = useThemeProvider();
   const {navigate} =
     useNavigation<
@@ -29,7 +29,7 @@ export const ErrorMessage = (props: ErrorMessageProps) => {
   let icon = errorIconMap.get(HttpStatusCode.InternalServerError);
 
   if (errorIconMap.has(status)) {
-    icon = errorIconMap.get(HttpStatusCode.InternalServerError);
+    icon = errorIconMap.get(status);
   }
 
   const handleOnPress = () => {
@@ -53,7 +53,7 @@ export const ErrorMessage = (props: ErrorMessageProps) => {
       >
         {message}
       </Text>
-      {buttonTitle ? (
+      {showButton ? (
         <Button
           title={buttonTitle}
           titleStyle={styles.buttonText}
@@ -82,4 +82,5 @@ ErrorMessage.defaultProps = {
   message: 'Something went wrong',
   size: 250,
   buttonTitle: 'Back to Login',
+  showButton: true,
 };

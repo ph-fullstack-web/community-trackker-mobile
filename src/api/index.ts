@@ -11,20 +11,16 @@ export const communityTrackerAPI = axios.create({
 });
 
 communityTrackerAPI.interceptors.response.use(
-  (response: AxiosResponse) => {
-    return response;
-  },
-  (e: AxiosError<unknown, any>) => {
-    const error: any = e.toJSON();
-    if (error?.code === AxiosErrorCode.ERR_NETWORK) {
+  (response: AxiosResponse) => response,
+  (error: AxiosError<unknown, any>) => {
+    const errorJSON: any = error.toJSON();
+    if (errorJSON?.code === AxiosErrorCode.ERR_NETWORK) {
       return Promise.reject({
-        ...error,
+        ...errorJSON,
         status: HttpStatusCode.InternalServerError,
       });
-    } else if (error?.code === AxiosErrorCode.ERR_BAD_REQUEST) {
-      return Promise.reject({...error, status: HttpStatusCode.BadRequest});
     }
 
-    return Promise.reject(error);
+    return Promise.reject(errorJSON);
   }
 );

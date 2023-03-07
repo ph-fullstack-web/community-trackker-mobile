@@ -16,18 +16,11 @@ export enum AxiosErrorCode {
 }
 
 export const errorIconMap = new Map<number, Icon>([
-  [
-    HttpStatusCode.BadRequest,
-    {type: 'font-awesome-5', name: 'triangle-exclamation'},
-  ],
-  [
-    HttpStatusCode.InternalServerError,
-    {type: 'font-awesome-5', name: 'wifi-slash'},
-  ],
-  [HttpStatusCode.Unauthorized, {type: 'font-awesome-5', name: 'user-slash'}],
-  [HttpStatusCode.Forbidden, {type: 'font-awesome-5', name: 'ban'}],
-  [
-    HttpStatusCode.UnprocessableEntity,
-    {type: 'font-awesome-5', name: 'triangle-exclamation'},
-  ],
+  [HttpStatusCode.InternalServerError, {type: 'material', name: 'wifi-off'}],
+  [HttpStatusCode.Unauthorized, {type: 'simple-line-icon', name: 'lock'}],
+  [HttpStatusCode.Forbidden, {type: 'simple-line-icon', name: 'ban'}],
+  [HttpStatusCode.BadRequest, {type: 'simple-line-icon', name: 'close'}],
+  [HttpStatusCode.UnprocessableEntity, {type: 'material', name: 'close'}],
+  [HttpStatusCode.UnprocessableEntity, {type: 'material', name: 'close'}],
+  [HttpStatusCode.NotFound, {type: 'material', name: 'search-off'}],
 ]);

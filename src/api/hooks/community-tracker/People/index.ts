@@ -5,37 +5,28 @@ import {
   GetPeopleWorkState,
   GetPerson,
   GetPersonByCsvEmail,
-  GetPeopleWithSkills,
+  GetPeopleBySkills,
 } from 'api/services';
 import {Query} from 'constants/query';
 
 export const useGetPeople = () => {
-  const response = useQuery(Query.GetPeople, () => GetPeople());
-  return response?.data;
+  return useQuery(Query.GetPeople, () => GetPeople());
 };
 
 export const useGetPeopleWorkState = () => {
-  const response = useQuery(Query.GetPeopleWorkState, () =>
-    GetPeopleWorkState()
-  );
-  return response?.data;
+  return useQuery(Query.GetPeopleWorkState, () => GetPeopleWorkState());
 };
 
 export const useGetPersonByCsvEmail = (csvEmail: string) => {
-  const response = useQuery(Query.GetPersonByCsvEmail, () =>
+  return useQuery(Query.GetPersonByCsvEmail, () =>
     GetPersonByCsvEmail(csvEmail)
   );
-  return response?.data;
 };
 
 export const useGetPerson = (peopleId: number) => {
-  const response = useQuery(Query.GetPerson, () => GetPerson(peopleId));
-  return response?.data;
+  return useQuery(Query.GetPerson, () => GetPerson(peopleId));
 };
 
-export const useGetPeopleWithSkills = (skills: string) => {
-  const response = useQuery(Query.GetPeopleWithSkills, () =>
-    GetPeopleWithSkills(skills)
-  );
-  return response?.data;
+export const useGetPeopleBySkills = (skills: string) => {
+  return useQuery(Query.GetPeopleBySkills, () => GetPeopleBySkills(skills));
 };

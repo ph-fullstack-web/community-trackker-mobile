@@ -4,23 +4,18 @@ import {ListRenderItemInfo} from 'react-native';
 import {AppContainer, InfiniteScroll, ScreenHeader} from 'components/atoms';
 import {ErrorMessage, NoResult, Search, Spinner} from 'components/molecules';
 import {MemberCard} from 'components/organisms';
-import {CommunityMembers, People} from 'models/business';
+import {People} from 'models/business';
 
 import styles from './MembersTemplate.styles';
-
-type MembersTemplateProps = {
-  isLoading: boolean;
-  communityWithMembers: CommunityMembers;
-  isError: boolean;
-  error: any;
-  isFetching: boolean;
-};
+import {MembersTemplateProps} from './MembersTemplate.types';
 
 const LIMIT = 10;
 
 export const MembersTemplate = ({
+  membersList = [],
+  community_name = '',
+  manager_name = '',
   isLoading,
-  communityWithMembers,
   isError,
   error,
   isFetching,
@@ -32,14 +27,17 @@ export const MembersTemplate = ({
 
   useEffect(() => {
     if (!isFetching) {
-      setMembers(communityWithMembers?.members ?? []);
+      setMembers(membersList);
+      if (!members.length) {
+        setFilteredMembers(membersList);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFetching]);
 
   const handleSearch = (text: string) => {
     const searchText = text.trim().toLowerCase();
-    let result = communityWithMembers?.members ?? [];
+    let result = membersList;
 
     if (searchText) {
       result = result.filter(
@@ -82,20 +80,16 @@ export const MembersTemplate = ({
   }, [loadMore]);
 
   return (
-    <AppContainer keyboardShouldPersistTaps="handled" horizontal>
+    <AppContainer horizontal>
       <ScreenHeader
-        title={communityWithMembers?.community_name ?? ''}
-        subtitle={
-          communityWithMembers?.manager?.name
-            ? `Managed By: ${communityWithMembers?.manager?.name}`
-            : ''
-        }
+        title={community_name}
+        subtitle={manager_name ? `Managed By: ${manager_name}` : ''}
       />
       {isError ? (
-        <ErrorMessage code={error.code} message={error.message} />
+        <ErrorMessage status={error.status} message={error.message} />
       ) : (
         <>
-          {communityWithMembers?.members.length ? (
+          {membersList.length ? (
             <Search onSearch={handleSearch} viewStyle={styles.search} />
           ) : (
             <></>

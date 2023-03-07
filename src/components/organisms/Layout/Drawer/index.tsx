@@ -4,7 +4,7 @@ import {
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 
-import {DrawerAccordion, DrawerAccordionItem} from 'components/molecules';
+import {useGetPerson} from 'api/hooks';
 import {
   Avatar,
   Divider,
@@ -13,8 +13,12 @@ import {
   Switch,
   Text,
 } from 'components/atoms';
+import {
+  DrawerAccordion,
+  DrawerAccordionItem,
+  Spinner,
+} from 'components/molecules';
 import {COLORS} from 'constants/colors';
-import {useGetPerson} from 'api/hooks';
 import {useThemeProvider} from 'providers';
 
 import styles from './Drawer.styles';
@@ -31,7 +35,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
   const {drawerItems, navigation} = props;
   const personId: number = 1;
 
-  const data = useGetPerson(personId)?.data;
+  const {isLoading, data} = useGetPerson(personId);
   const {mode, toggleTheme} = useThemeProvider();
 
   const handleSwitchTheme = () => {
@@ -53,11 +57,17 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
           style={styles.headerBackground}
           source={require('assets/images/CSV-Cover.png')}
         >
-          <Avatar size={70} />
-          <View style={styles.headerTextContainer}>
-            <Text style={styles.greetingText}>Hi, {data?.full_name}</Text>
-            <Text style={styles.emailText}>{data?.csv_email}</Text>
-          </View>
+          {isLoading ? (
+            <Spinner size={35} viewStyle={styles.spinnerContainer} />
+          ) : (
+            <>
+              <Avatar size={70} />
+              <View style={styles.headerTextContainer}>
+                <Text style={styles.greetingText}>Hi, {data?.full_name}</Text>
+                <Text style={styles.emailText}>{data?.csv_email}</Text>
+              </View>
+            </>
+          )}
         </ImageBackground>
         <View style={styles.itemsContainer}>
           {drawerItems.map(item =>

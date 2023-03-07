@@ -18,8 +18,10 @@ export const MembersScreen = ({route}: MembersScreenProps) => {
 
   return (
     <MembersTemplate
+      membersList={data?.members}
+      community_name={data?.community_name}
+      manager_name={data?.manager.name}
       isLoading={isLoading}
-      communityWithMembers={data}
       isError={isError}
       error={error}
       isFetching={isFetching}

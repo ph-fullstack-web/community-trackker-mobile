@@ -9,27 +9,19 @@ import {
 import {Query} from 'constants/query';
 
 export const useGetCommunities = () => {
-  const response = useQuery(Query.GetCommunities, () => GetCommunities());
-  return response;
+  return useQuery(Query.GetCommunities, () => GetCommunities());
 };
 
 export const useGetCommunity = (communityId: number) => {
-  const response = useQuery(Query.GetCommunity, () =>
-    GetCommunity(communityId)
-  );
-  return response;
+  return useQuery(Query.GetCommunity, () => GetCommunity(communityId));
 };
 
 export const useGetCommunityJobLevels = () => {
-  const response = useQuery(Query.GetCommunityJobLevels, () =>
-    GetCommunityJobLevels()
-  );
-  return response;
+  return useQuery(Query.GetCommunityJobLevels, () => GetCommunityJobLevels());
 };
 
 export const useGetCommunitiesWithPercentage = () => {
-  const response = useQuery(Query.GetCommunitiesWithPercentage, () =>
+  return useQuery(Query.GetCommunitiesWithPercentage, () =>
     GetCommunitiesWithPercentage()
   );
-  return response;
 };

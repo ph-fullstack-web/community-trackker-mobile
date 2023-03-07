@@ -1,6 +1,7 @@
 import {View} from 'react-native';
 
 import {AppContainer, Text} from 'components/atoms';
+import {ErrorMessage, Spinner} from 'components/molecules';
 import {
   AppMenu,
   CecCard,
@@ -15,6 +16,7 @@ import {
   DashboardTemplateProps,
 } from './DashboardTemplate.types';
 
+// TODO: to remove once cec related APIs has been integrated
 const percentage = 40 / 100;
 const fillColor = COLORS.DARK_BLUE;
 const layout = 'horizontal';
@@ -25,9 +27,15 @@ const cecRequests = {
   rejected: 8,
 };
 
-export const DashboardTemplate = (props: DashboardTemplateProps) => {
-  const {user, applications} = props;
-
+export const DashboardTemplate = ({
+  skills = [],
+  csv_email = '',
+  full_name = '',
+  applications,
+  isLoading,
+  isError,
+  error,
+}: DashboardTemplateProps) => {
   const sections: DashboardSection[] = [
     {
       title: 'APPLICATIONS',
@@ -46,25 +54,33 @@ export const DashboardTemplate = (props: DashboardTemplateProps) => {
     },
     {
       title: 'SKILLS',
-      content: <SkillBadgeContainer user={user} />,
+      content: <SkillBadgeContainer skills={skills} />,
     },
   ];
 
   return (
-    <AppContainer style={styles.mainContainer}>
-      <View style={styles.topContainer}>
-        <UserDetailsCard user={props.user} />
-      </View>
-      <View style={styles.bottomContainer}>
-        {sections.map((item, index) => {
-          return (
-            <View key={index} style={styles.sectionContainer}>
-              <Text style={styles.titleSeparator}>{item.title}</Text>
-              {item.content}
-            </View>
-          );
-        })}
-      </View>
+    <AppContainer style={styles.mainContainer} horizontal={isLoading}>
+      {isError ? (
+        <ErrorMessage status={error.status} message={error.message} />
+      ) : isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <View style={styles.topContainer}>
+            <UserDetailsCard full_name={full_name} csv_email={csv_email} />
+          </View>
+          <View style={styles.bottomContainer}>
+            {sections.map((item, index) => {
+              return (
+                <View key={index} style={styles.sectionContainer}>
+                  <Text style={styles.titleSeparator}>{item.title}</Text>
+                  {item.content}
+                </View>
+              );
+            })}
+          </View>
+        </>
+      )}
     </AppContainer>
   );
 };

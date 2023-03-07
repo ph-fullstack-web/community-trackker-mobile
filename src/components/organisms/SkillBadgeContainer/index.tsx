@@ -7,15 +7,15 @@ import styles from './SkillBadgeContainer.styles';
 import {SkillBadgeContainerProps} from './SkillBadgeContainer.types';
 
 export const SkillBadgeContainer = (props: SkillBadgeContainerProps) => {
-  const {user} = props;
+  const {skills = []} = props;
 
-  if (user?.skills?.length === 0) {
+  if (skills.length === 0) {
     return <NoResult message="No Skills Found" />;
   }
 
   return (
     <View style={styles.row}>
-      {user?.skills?.map((item: SkillSet, index: number) => {
+      {skills?.map((item: SkillSet, index: number) => {
         return (
           <SkillBadge
             key={index}

@@ -4,13 +4,9 @@ import {GetManagers, GetCommunityManagers} from 'api/services';
 import {Query} from 'constants/query';
 
 export const useGetManagers = () => {
-  const response = useQuery(Query.GetManagers, () => GetManagers());
-  return response;
+  return useQuery(Query.GetManagers, () => GetManagers());
 };
 
 export const useGetCommunityManagers = () => {
-  const response = useQuery(Query.GetCommunityManagers, () =>
-    GetCommunityManagers()
-  );
-  return response;
+  return useQuery(Query.GetCommunityManagers, () => GetCommunityManagers());
 };

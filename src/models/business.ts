@@ -97,6 +97,13 @@ export type PeopleWithSkills = {
   details: PeopleDetailsDesc[];
 };
 
+export type PersonBySkills = {
+  full_name: string;
+  skills: string[];
+  project_id: number;
+  people_count: number;
+};
+
 export type Peopleskills = {
   peopleskills_id: number;
   peopleskills_desc: string;

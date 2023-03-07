@@ -1,26 +1,18 @@
 import {FlatList} from 'react-native';
 
 import {AppContainer, ScreenHeader} from 'components/atoms';
-import {ErrorMessage, Spinner} from 'components/molecules';
+import {ErrorMessage, NoResult, Spinner} from 'components/molecules';
 import {CommunityCard} from 'components/organisms';
 import {CommunityStackScreens, ScreenTitle} from 'constants/navigation';
-import {CommunityWithMembersPercentage} from 'models/business';
 
 import styles from './CommunitiesDashboardTemplate.styles';
-
-type CommunitiesDashboardTemplateProp = {
-  isLoading: boolean;
-  isError: boolean;
-  error: any;
-  communityList: CommunityWithMembersPercentage[] | undefined;
-  navigation: CommunityStackScreenProps<CommunityStackScreens.Communities>['navigation'];
-};
+import {CommunitiesDashboardTemplateProp} from './CommunitiesDashboardTemplate.types';
 
 export const CommunitiesDashboardTemplate = ({
   isLoading,
-  communityList,
   isError,
   error,
+  communityList = [],
   navigation,
 }: CommunitiesDashboardTemplateProp) => {
   const handleViewMembers = (communityId: number) => {
@@ -31,7 +23,7 @@ export const CommunitiesDashboardTemplate = ({
   };
 
   return (
-    <AppContainer keyboardShouldPersistTaps="handled" horizontal>
+    <AppContainer horizontal>
       <ScreenHeader title={ScreenTitle.Communities} />
       {isError ? (
         <ErrorMessage status={error.status} message={error.message} />
@@ -49,6 +41,7 @@ export const CommunitiesDashboardTemplate = ({
               onViewMembers={() => handleViewMembers(item.community_id)}
             />
           )}
+          ListEmptyComponent={<NoResult message="No Communities Found" />}
         />
       )}
     </AppContainer>

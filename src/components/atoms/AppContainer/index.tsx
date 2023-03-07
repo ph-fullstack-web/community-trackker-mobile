@@ -22,6 +22,7 @@ export const AppContainer = ({
         styles[`container_${mode}` as keyof typeof styles],
       ]}
       contentContainerStyle={styles.scrollContentContainer}
+      keyboardShouldPersistTaps="handled"
     >
       <StatusBar
         barStyle="light-content"

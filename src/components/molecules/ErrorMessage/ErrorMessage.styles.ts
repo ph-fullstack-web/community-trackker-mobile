@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     padding: 50,
   },
   text: {
+    marginTop: 25,
     fontSize: 20,
   },
   text_light: {

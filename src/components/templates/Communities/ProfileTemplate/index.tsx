@@ -1,41 +1,61 @@
 import {AppContainer, ScreenHeader} from 'components/atoms';
 import {ErrorMessage, Spinner} from 'components/molecules';
-import {MemberDetailForm} from 'components/organisms';
-import {PeopleWithSkills} from 'models/business';
+import {
+  AccordionContainer,
+  MemberDetailForm,
+  SkillsForm,
+} from 'components/organisms';
 
-type ProfileTemplateProp = {
-  isLoading: boolean;
-  person: PeopleWithSkills;
-  isError: boolean;
-  error: any;
-  isFetching: boolean;
-};
+import {ProfileTemplateProp} from './ProfileTemplate.types';
 
 export const ProfileTemplate = ({
+  full_name = '',
+  csv_email = '',
+  cognizantid_id = 0,
+  community_id = 0,
+  skills = [],
   isLoading,
-  person,
   isError,
   error,
   isFetching,
+  isCommunitiesLoading,
+  communities = [],
+  isCommunitiesError,
+  communitiesError,
+  isCommunitiesFetching,
 }: ProfileTemplateProp) => {
-  const dashboardTitle = `Hi, ${person?.full_name}`;
+  const dashboardTitle = full_name && `Hi, ${full_name}`;
+
+  const showSpinner =
+    isLoading || isFetching || isCommunitiesLoading || isCommunitiesFetching;
 
   return (
-    <AppContainer keyboardShouldPersistTaps="handled">
+    <AppContainer horizontal={showSpinner}>
       <ScreenHeader title={dashboardTitle} />
 
-      {isError ? (
-        <ErrorMessage status={error.status} message={error.message} />
+      {isError || isCommunitiesError ? (
+        <ErrorMessage
+          status={error.status ?? communitiesError.status}
+          message={error.message ?? communitiesError.message}
+        />
       ) : (
         <>
-          {isLoading || isFetching ? (
+          {showSpinner ? (
             <Spinner />
           ) : (
-            <MemberDetailForm
-              skills={person?.skills}
-              email={person?.csv_email}
-              cognizantId={person?.cognizantid_id}
-            />
+            <>
+              <AccordionContainer headerLabel={'Information'} expanded={true}>
+                <MemberDetailForm
+                  csv_email={csv_email}
+                  cognizantid_id={cognizantid_id}
+                  community_id={community_id}
+                  communities={communities}
+                />
+              </AccordionContainer>
+              <AccordionContainer headerLabel={'Skills'} expanded={false}>
+                <SkillsForm skills={skills?.map(skill => skill.description)} />
+              </AccordionContainer>
+            </>
           )}
         </>
       )}

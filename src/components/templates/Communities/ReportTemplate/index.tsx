@@ -4,7 +4,7 @@ import {ScreenTitle} from 'constants/navigation';
 
 export const ReportTemplate = () => {
   return (
-    <AppContainer keyboardShouldPersistTaps="handled">
+    <AppContainer>
       <ScreenHeader title={ScreenTitle.Report} />
       <NotAvailable />
     </AppContainer>
