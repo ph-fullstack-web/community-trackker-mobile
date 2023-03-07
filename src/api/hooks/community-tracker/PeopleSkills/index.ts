@@ -4,6 +4,6 @@ import {GetPeopleSkills} from 'api/services';
 import {Query} from 'constants/query';
 
 export const useGetPeopleSkills = () => {
-  const response = useQuery(Query.GetCommunities, () => GetPeopleSkills());
-  return response;
+  const response = useQuery(Query.GetPeopleSkills, () => GetPeopleSkills());
+  return response?.data;
 };

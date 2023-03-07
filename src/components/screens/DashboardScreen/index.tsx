@@ -16,7 +16,7 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
   const {user} = useUserDataProvider();
   const personId: number = 1;
 
-  const {data} = useGetPerson(personId);
+  const data = useGetPerson(personId)?.data;
 
   const applications: AppCardProps[] = [
     {
@@ -58,5 +58,5 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
     },
   ];
 
-  return <DashboardTemplate applications={applications} user={data?.data} />;
+  return <DashboardTemplate applications={applications} user={data} />;
 };

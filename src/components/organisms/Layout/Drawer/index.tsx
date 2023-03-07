@@ -31,7 +31,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
   const {drawerItems, navigation} = props;
   const personId: number = 1;
 
-  const {data} = useGetPerson(personId);
+  const data = useGetPerson(personId)?.data;
   const {mode, toggleTheme} = useThemeProvider();
 
   const handleSwitchTheme = () => {
@@ -55,8 +55,8 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
         >
           <Avatar size={70} />
           <View style={styles.headerTextContainer}>
-            <Text style={styles.greetingText}>Hi, {data?.data?.full_name}</Text>
-            <Text style={styles.emailText}>{data?.data?.csv_email}</Text>
+            <Text style={styles.greetingText}>Hi, {data?.full_name}</Text>
+            <Text style={styles.emailText}>{data?.csv_email}</Text>
           </View>
         </ImageBackground>
         <View style={styles.itemsContainer}>

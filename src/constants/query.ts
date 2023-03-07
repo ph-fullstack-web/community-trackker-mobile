@@ -7,4 +7,11 @@ export enum Query {
   GetCommunityManagers = 'communityManagers',
   GetCommunityWithMembers = 'communityWithMembers',
   GetPeople = 'people',
+  GetPeopleWorkState = 'peopleWorkState',
+  GetPerson = 'person',
+  GetPersonByCsvEmail = 'personByCsvEmail',
+  GetPersonSkills = 'personSkills',
+  GetPeopleDetails = 'peopleDetails',
+  GetPeopleDetailsDescription = 'peopleDetailsDescription',
+  GetPeopleSkills = 'peopleSkills',
 }

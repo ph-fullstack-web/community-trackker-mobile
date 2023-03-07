@@ -28,6 +28,15 @@ export const GetPerson = async (personId: number) => {
   return response?.data;
 };
 
+export const GetPersonByCsvEmail = async (csvEmail: string) => {
+  const response = await communityTrackerAPI({
+    url: `people/email/${csvEmail}`,
+    method: HTTPMethod.GET,
+  });
+
+  return response?.data;
+};
+
 export const GetPersonSkills = async (skillId: number) => {
   const response = await communityTrackerAPI({
     url: `people/skills?skills=${skillId}`,

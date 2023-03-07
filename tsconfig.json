@@ -23,7 +23,8 @@
       "models/*": ["models/*"],
       "navigation/*": ["navigation/*"],
       "providers/*": ["providers/*"],
-      "api/*": ["api/*"]
+      "api/*": ["api/*"],
+      "utils/*" : ["utils/*"],
     }
   }
 }
