@@ -37,9 +37,9 @@ export const GetPersonByCsvEmail = async (csvEmail: string) => {
   return response?.data;
 };
 
-export const GetPersonSkills = async (skillId: number) => {
+export const GetPeopleWithSkills = async (skills: string) => {
   const response = await communityTrackerAPI({
-    url: `people/skills?skills=${skillId}`,
+    url: `people/skills?skills=${skills}`,
     method: HTTPMethod.GET,
   });
 

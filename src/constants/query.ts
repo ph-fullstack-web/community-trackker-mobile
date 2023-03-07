@@ -10,7 +10,7 @@ export enum Query {
   GetPeopleWorkState = 'peopleWorkState',
   GetPerson = 'person',
   GetPersonByCsvEmail = 'personByCsvEmail',
-  GetPersonSkills = 'personSkills',
+  GetPeopleWithSkills = 'peopleSkills',
   GetPeopleDetails = 'peopleDetails',
   GetPeopleDetailsDescription = 'peopleDetailsDescription',
   GetPeopleSkills = 'peopleSkills',

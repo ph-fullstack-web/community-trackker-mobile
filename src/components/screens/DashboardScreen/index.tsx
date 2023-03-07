@@ -6,14 +6,13 @@ import {
   CommunityStackScreens,
 } from 'constants/navigation';
 import {useGetPerson} from 'api/hooks';
-import {useUserDataProvider} from 'providers/UserDataProvider';
 
 type DashboardScreenProps =
   CommunityDrawerScreenProps<CommunityDrawerScreens.Dashboard>;
 
 export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
   const {navigate} = navigation;
-  const {user} = useUserDataProvider();
+
   const personId: number = 1;
 
   const data = useGetPerson(personId)?.data;
@@ -31,7 +30,7 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
         navigate(CommunityDrawerScreens.CommunitiesStack, {
           screen: CommunityStackScreens.CommunityMembers,
           params: {
-            communityId: user!.communityId,
+            communityId: data!.communityId,
             previousScreen: CommunityDrawerScreens.Dashboard,
           },
         }),
