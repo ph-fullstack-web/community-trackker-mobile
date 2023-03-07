@@ -1,11 +1,11 @@
 import {AppContainer, ScreenHeader} from 'components/atoms';
 import {ErrorMessage, Spinner} from 'components/molecules';
 import {MemberDetailForm} from 'components/organisms';
-import {User} from 'models/business';
+import {PeopleWithSkills} from 'models/business';
 
 type ProfileTemplateProp = {
   isLoading: boolean;
-  person: User;
+  person: PeopleWithSkills;
   isError: boolean;
   error: any;
   isFetching: boolean;

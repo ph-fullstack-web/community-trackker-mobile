@@ -1,27 +1,3 @@
-export type Employee = {
-  //TODO: delete after people API integration
-  employeeId: number;
-  cognizantId: number;
-  lastName: string;
-  firstName: string;
-  fullName: string;
-  csvEmail: string;
-  isActive: boolean;
-  dateHired: string;
-};
-
-export type User = {
-  //TODO: delete after people API integration
-  people_id: string;
-  cognizantid_id: number;
-  username: string;
-  csv_email: string;
-  full_name: string;
-  cecPoints: number;
-  skills: SkillSet[];
-  communityId: number;
-};
-
 export type AdminManager = {
   id: number;
   cognizant_id: string;

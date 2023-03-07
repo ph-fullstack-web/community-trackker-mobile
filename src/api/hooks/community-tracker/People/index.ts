@@ -5,7 +5,7 @@ import {
   GetPeopleWorkState,
   GetPerson,
   GetPersonByCsvEmail,
-  GetPersonSkills,
+  GetPeopleWithSkills,
 } from 'api/services';
 import {Query} from 'constants/query';
 
@@ -33,9 +33,9 @@ export const useGetPerson = (peopleId: number) => {
   return response?.data;
 };
 
-export const useGetPersonSkills = (skillId: number) => {
-  const response = useQuery(Query.GetPersonSkills, () =>
-    GetPersonSkills(skillId)
+export const useGetPeopleWithSkills = (skills: string) => {
+  const response = useQuery(Query.GetPeopleWithSkills, () =>
+    GetPeopleWithSkills(skills)
   );
   return response?.data;
 };
