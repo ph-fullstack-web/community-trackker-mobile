@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   text: {
     marginTop: 25,
     fontSize: 20,
+    textAlign: 'center',
   },
   text_light: {
     color: COLORS.MIDNIGHT_BLUE,

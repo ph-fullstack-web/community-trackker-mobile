@@ -1,5 +1,6 @@
 import {communityTrackerAPI} from 'api';
 import {HTTPMethod} from 'constants/enums';
+import {communityTrackerRoutes} from 'constants/routes';
 import {
   People,
   PeopleWithSkills,
@@ -9,7 +10,7 @@ import {
 
 export const GetPeople = async (): Promise<People[]> => {
   const response = await communityTrackerAPI({
-    url: 'people',
+    url: communityTrackerRoutes.people.GetPeople(),
     method: HTTPMethod.GET,
   });
 
@@ -18,7 +19,7 @@ export const GetPeople = async (): Promise<People[]> => {
 
 export const GetPeopleWorkState = async (): Promise<WorkState[]> => {
   const response = await communityTrackerAPI({
-    url: 'people/workstate',
+    url: communityTrackerRoutes.people.GetPeopleWorkState(),
     method: HTTPMethod.GET,
   });
 
@@ -29,7 +30,7 @@ export const GetPerson = async (
   personId: number
 ): Promise<PeopleWithSkills> => {
   const response = await communityTrackerAPI({
-    url: `people/${personId}`,
+    url: communityTrackerRoutes.people.GetPerson(personId),
     method: HTTPMethod.GET,
   });
 
@@ -40,7 +41,7 @@ export const GetPersonByCsvEmail = async (
   csvEmail: string
 ): Promise<People> => {
   const response = await communityTrackerAPI({
-    url: `people/email/${csvEmail}`,
+    url: communityTrackerRoutes.people.GetPersonByCsvEmail(csvEmail),
     method: HTTPMethod.GET,
   });
 
@@ -51,7 +52,7 @@ export const GetPeopleBySkills = async (
   skills: string
 ): Promise<PersonBySkills[]> => {
   const response = await communityTrackerAPI({
-    url: `people/skills?skills=${skills}`,
+    url: communityTrackerRoutes.people.GetPeopleBySkills(skills),
     method: HTTPMethod.GET,
   });
 

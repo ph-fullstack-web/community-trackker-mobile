@@ -1,10 +1,11 @@
 import {communityTrackerAPI} from 'api';
 import {HTTPMethod} from 'constants/enums';
+import {communityTrackerRoutes} from 'constants/routes';
 import {PeopleDetails, PeopleDetailsDesc} from 'models/business';
 
 export const GetPeopleDetails = async (): Promise<PeopleDetails[]> => {
   const response = await communityTrackerAPI({
-    url: 'peopledetails',
+    url: communityTrackerRoutes.peopleDetails.GetPeopleDetails(),
     method: HTTPMethod.GET,
   });
 
@@ -15,7 +16,7 @@ export const GetPeopleDetailsDescription = async (): Promise<
   PeopleDetailsDesc[]
 > => {
   const response = await communityTrackerAPI({
-    url: 'peopledetails/description',
+    url: communityTrackerRoutes.peopleDetails.GetPeopleDetailsDescription(),
     method: HTTPMethod.GET,
   });
 
