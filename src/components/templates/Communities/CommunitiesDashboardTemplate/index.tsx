@@ -1,19 +1,18 @@
 import {FlatList} from 'react-native';
 
 import {AppContainer, ScreenHeader} from 'components/atoms';
+import {ErrorMessage, NoResult, Spinner} from 'components/molecules';
 import {CommunityCard} from 'components/organisms';
 import {CommunityStackScreens, ScreenTitle} from 'constants/navigation';
-import {Community} from 'models/business';
 
 import styles from './CommunitiesDashboardTemplate.styles';
-
-type CommunitiesDashboardTemplateProp = {
-  communityList: Community[] | undefined;
-  navigation: CommunityStackScreenProps<CommunityStackScreens.Communities>['navigation'];
-};
+import {CommunitiesDashboardTemplateProp} from './CommunitiesDashboardTemplate.types';
 
 export const CommunitiesDashboardTemplate = ({
-  communityList,
+  isLoading,
+  isError,
+  error,
+  communityList = [],
   navigation,
 }: CommunitiesDashboardTemplateProp) => {
   const handleViewMembers = (communityId: number) => {
@@ -24,20 +23,27 @@ export const CommunitiesDashboardTemplate = ({
   };
 
   return (
-    <AppContainer>
+    <AppContainer horizontal>
       <ScreenHeader title={ScreenTitle.Communities} />
-      <FlatList
-        scrollEnabled={false}
-        data={communityList}
-        contentContainerStyle={styles.listContentContainer}
-        keyExtractor={item => item.communityId.toString()}
-        renderItem={({item}) => (
-          <CommunityCard
-            onViewMembers={() => handleViewMembers(item.communityId)}
-            {...item}
-          />
-        )}
-      />
+      {isError ? (
+        <ErrorMessage status={error.status} message={error.message} />
+      ) : isLoading ? (
+        <Spinner />
+      ) : (
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={communityList}
+          contentContainerStyle={styles.listContentContainer}
+          keyExtractor={item => item.community_id.toString()}
+          renderItem={({item}) => (
+            <CommunityCard
+              community={item}
+              onViewMembers={() => handleViewMembers(item.community_id)}
+            />
+          )}
+          ListEmptyComponent={<NoResult message="No Communities Found" />}
+        />
+      )}
     </AppContainer>
   );
 };

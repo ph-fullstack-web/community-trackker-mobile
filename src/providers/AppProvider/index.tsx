@@ -1,12 +1,14 @@
-import {UserDataProvider} from 'providers/UserDataProvider';
+import {QueryClient, QueryClientProvider} from 'react-query';
+
 import {ThemeProvider} from 'providers/ThemeProvider';
 
 type AppProvidersProps = ComponentWithChildren;
 
 export const AppProvider = ({children}: AppProvidersProps) => {
+  const queryClient = new QueryClient();
   return (
-    <UserDataProvider>
+    <QueryClientProvider client={queryClient}>
       <ThemeProvider>{children}</ThemeProvider>
-    </UserDataProvider>
+    </QueryClientProvider>
   );
 };

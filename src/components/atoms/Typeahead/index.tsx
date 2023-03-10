@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {TextInput, View} from 'react-native';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import {TypeaheadList} from '../TypeaheadList';
 import styles from './Typeahead.styles';
 import {COLORS} from 'constants/colors';

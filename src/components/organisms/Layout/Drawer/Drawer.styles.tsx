@@ -70,6 +70,10 @@ const styles = StyleSheet.create({
   themeLabel_dark: {
     color: COLORS.LIGHT_BLUE,
   },
+  spinnerContainer: {
+    bottom: 0,
+    padding: 40,
+  },
 });
 
 export default styles;

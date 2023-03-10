@@ -1,6 +1,6 @@
 import {ScrollView, ScrollViewProps, StatusBar} from 'react-native';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import styles from './AppContainer.styles';
 import {COLORS} from 'constants/colors';
 
@@ -17,10 +17,12 @@ export const AppContainer = ({
       showsVerticalScrollIndicator={false}
       {...otherProps}
       style={[
-        styles.container,
+        styles.scrollStyle,
         style,
         styles[`container_${mode}` as keyof typeof styles],
       ]}
+      contentContainerStyle={styles.scrollContentContainer}
+      keyboardShouldPersistTaps="handled"
     >
       <StatusBar
         barStyle="light-content"

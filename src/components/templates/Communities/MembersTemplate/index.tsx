@@ -1,118 +1,87 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
-import {ActivityIndicator, ListRenderItemInfo, View} from 'react-native';
+import {useEffect, useState} from 'react';
+import {ListRenderItemInfo} from 'react-native';
 
 import {AppContainer, InfiniteScroll, ScreenHeader} from 'components/atoms';
-import {NoResult, Search} from 'components/molecules';
+import {ErrorMessage, NoResult, Search, Spinner} from 'components/molecules';
 import {MemberCard} from 'components/organisms';
-import {CommunityStackScreens} from 'constants/navigation';
-import {Community, Employee} from 'models/business';
 
 import styles from './MembersTemplate.styles';
-
-type MembersTemplateProps = {
-  communityList?: Community[];
-  route: CommunityStackScreenProps<CommunityStackScreens.CommunityMembers>['route'];
-};
-
-const LIMIT = 10;
+import {MembersTemplateProps} from './MembersTemplate.types';
+import {PeopleUnderCommunitySearch} from 'models/business';
 
 export const MembersTemplate = ({
-  communityList,
-  route,
+  rows,
+  setSearch,
+  setPage,
+  currentPage = 1,
+  lastPage = 0,
+  membersList = [],
+  community_name = '',
+  manager_name = '',
+  isLoading,
+  isError,
+  error,
+  isFetching,
 }: MembersTemplateProps) => {
-  const {communityId} = route.params!;
-  const communityRef = useRef<Community | null>(
-    communityList?.filter(item => item.communityId === communityId)[0] ?? null
-  );
-  const community = communityRef.current;
-  const [filteredMembers, setFilteredMembers] = useState<Employee[]>([]);
-  const [members, setMembers] = useState<Employee[]>(community?.members ?? []);
-  const [isLoading, setIsLoading] = useState(true);
-  const [lastPageCount, setLastPageCount] = useState(0);
-  const [page, setPage] = useState(0);
+  const [displayedMembers, setDisplayedMembers] =
+    useState<PeopleUnderCommunitySearch[]>(membersList);
 
-  const handleSearch = (text: string) => {
-    const searchText = text.trim().toLowerCase();
-    let result = community?.members ?? [];
-
-    if (searchText) {
-      result = result.filter(
-        ({fullName, csvEmail, dateHired}: Employee) =>
-          fullName.toLowerCase().indexOf(searchText) !== -1 ||
-          csvEmail.toLowerCase().indexOf(searchText) !== -1 ||
-          dateHired.indexOf(searchText) !== -1
+  useEffect(() => {
+    if (!isFetching) {
+      setDisplayedMembers(prevState =>
+        currentPage > 1 ? [...prevState, ...membersList] : membersList
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFetching]);
 
-    setMembers(result);
-    setIsLoading(true);
-    setPage(0);
-    setFilteredMembers([]);
+  const handleSearch = (text: string) => {
+    setSearch(() => text.trim().toLowerCase());
+    setPage(() => 1);
   };
 
-  const loadMore = useCallback(
-    () =>
-      new Promise<void>(resolve => {
-        setTimeout(() => {
-          const startIndex = LIMIT * page;
-          const filterMembers =
-            members.filter(
-              (_, i) => i >= startIndex && i < startIndex + LIMIT
-            ) || [];
+  const handleEndReached = () => {
+    setPage(prevState => prevState + 1);
+  };
 
-          setFilteredMembers(prevState => [...prevState, ...filterMembers]);
-          setLastPageCount(filterMembers.length);
-          resolve();
-        }, 0);
-      }),
-    [members, page]
-  );
-
-  const renderItem = ({item}: ListRenderItemInfo<Employee>) => (
+  const renderItem = ({
+    item,
+  }: ListRenderItemInfo<PeopleUnderCommunitySearch>) => (
     <MemberCard memberDetails={item} />
   );
 
-  const Spinner = useCallback(() => {
-    return (
-      <View style={styles.spinnerContainer}>
-        <ActivityIndicator size={75} />
-      </View>
-    );
-  }, []);
-
-  useEffect(() => {
-    loadMore().then(() => setIsLoading(false));
-  }, [loadMore]);
-
   return (
-    <AppContainer
-      contentContainerStyle={styles.container}
-      keyboardShouldPersistTaps="handled"
-      horizontal
-    >
+    <AppContainer horizontal>
       <ScreenHeader
-        title={community?.name ?? ''}
-        subtitle={`Managed By: ${community?.managerName ?? ''}`}
+        title={community_name}
+        subtitle={manager_name ? `Managed By: ${manager_name}` : ''}
       />
-      <>
-        {!!community?.members.length && (
-          <Search onSearch={handleSearch} viewStyle={styles.search} />
-        )}
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <InfiniteScroll<Employee>
-            data={filteredMembers}
-            keyExtractor={item => item.employeeId.toString()}
-            renderItem={renderItem}
-            style={styles.listContentContainer}
-            lastPageCount={lastPageCount}
-            limit={LIMIT}
-            ListEmptyComponent={<NoResult message="No Members Found" />}
-            setPage={setPage}
-          />
-        )}
-      </>
+      {isError ? (
+        <ErrorMessage status={error.status} message={error.message} />
+      ) : (
+        <>
+          {membersList.length ? (
+            <Search onSearch={handleSearch} viewStyle={styles.search} />
+          ) : (
+            <></>
+          )}
+          {isLoading || (isFetching && currentPage === 1) ? (
+            <Spinner />
+          ) : (
+            <InfiniteScroll<PeopleUnderCommunitySearch>
+              data={displayedMembers}
+              keyExtractor={item => item.people_id.toString()}
+              renderItem={renderItem}
+              style={styles.listContentContainer}
+              currentPage={currentPage}
+              lastPage={lastPage}
+              limit={rows}
+              ListEmptyComponent={<NoResult message="No Members Found" />}
+              handleEndReached={handleEndReached}
+            />
+          )}
+        </>
+      )}
     </AppContainer>
   );
 };

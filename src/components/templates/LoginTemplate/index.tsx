@@ -3,7 +3,7 @@ import {NotAvailable} from 'components/molecules';
 
 export const LoginTemplate = () => {
   return (
-    <AppContainer keyboardShouldPersistTaps="handled">
+    <AppContainer>
       <NotAvailable />
     </AppContainer>
   );

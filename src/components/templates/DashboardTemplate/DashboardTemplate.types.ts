@@ -1,11 +1,16 @@
 import {ReactNode} from 'react';
 
 import {AppCardProps} from 'components/molecules';
-import {User} from 'models/business';
+import {SkillSet} from 'models/business';
 
 export type DashboardTemplateProps = {
-  user: User | undefined;
   applications: AppCardProps[];
+  skills?: SkillSet[];
+  full_name?: string;
+  csv_email?: string;
+  isLoading: boolean;
+  isError: boolean;
+  error: any;
 };
 
 export type DashboardSection = {

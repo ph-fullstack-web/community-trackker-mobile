@@ -1,40 +1,40 @@
 import {useCallback} from 'react';
-import {ActivityIndicator, FlatListProps, View} from 'react-native';
+import {FlatListProps} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
+
+import {Spinner} from 'components/molecules';
 
 import styles from './InfiniteScroll.styles';
 
 type InfiniteScrollProps<T> = FlatListProps<T> & {
-  lastPageCount: number;
+  currentPage: number;
+  lastPage: number;
   limit?: number;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
+  handleEndReached: () => void;
 };
 
 export const InfiniteScroll = <T,>({
   data,
   keyExtractor,
-  lastPageCount,
+  currentPage,
+  lastPage,
   limit = 10,
   renderItem,
-  setPage,
+  handleEndReached,
   ...otherProps
 }: InfiniteScrollProps<T>) => {
   const ListSpinner = useCallback(
     () =>
-      lastPageCount >= limit ? (
-        <View style={styles.spinnerContainer}>
-          <ActivityIndicator size={35} />
-        </View>
+      currentPage < lastPage ? (
+        <Spinner size={35} viewStyle={styles.spinnerContainer} />
       ) : null,
-    [lastPageCount, limit]
+    [lastPage, currentPage]
   );
 
-  const onEndList = async () => {
-    if (lastPageCount < limit) {
-      return;
+  const onEndList = async (distanceFromEnd: number) => {
+    if (distanceFromEnd === 0 && currentPage < lastPage) {
+      handleEndReached();
     }
-
-    setPage(prevState => prevState + 1);
   };
 
   return (
@@ -46,7 +46,7 @@ export const InfiniteScroll = <T,>({
       initialNumToRender={limit}
       ListFooterComponent={ListSpinner}
       onEndReachedThreshold={0}
-      onEndReached={onEndList}
+      onEndReached={({distanceFromEnd}) => onEndList(distanceFromEnd)}
       windowSize={limit}
       {...otherProps}
     />

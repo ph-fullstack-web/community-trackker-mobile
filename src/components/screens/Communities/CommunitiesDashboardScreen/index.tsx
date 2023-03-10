@@ -1,6 +1,6 @@
+import {useGetCommunitiesWithPercentage} from 'api/hooks';
 import {CommunitiesDashboardTemplate} from 'components/templates';
 import {CommunityStackScreens} from 'constants/navigation';
-import {useCommunitiesDataProvider} from 'providers/CommunitiesDataProvider';
 
 type CommunitiesDashboardScreenProps =
   CommunityStackScreenProps<CommunityStackScreens.Communities>;
@@ -8,11 +8,14 @@ type CommunitiesDashboardScreenProps =
 export const CommunitiesDashboardScreen = ({
   navigation,
 }: CommunitiesDashboardScreenProps) => {
-  const {communityList} = useCommunitiesDataProvider();
+  const {isLoading, data, error, isError} = useGetCommunitiesWithPercentage();
 
   return (
     <CommunitiesDashboardTemplate
-      communityList={communityList}
+      isLoading={isLoading}
+      isError={isError}
+      error={error}
+      communityList={data}
       navigation={navigation}
     />
   );

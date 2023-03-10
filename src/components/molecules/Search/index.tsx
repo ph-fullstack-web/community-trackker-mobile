@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {View, StyleProp, ViewStyle} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import {Button, TextInput} from 'components/atoms';
 import {COLORS, GRADIENT} from 'constants/colors';
 import styles from './Search.styles';

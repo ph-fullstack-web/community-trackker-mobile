@@ -20,7 +20,7 @@ import {
   CommunityDrawerScreens,
   CommunityStackScreens,
 } from 'constants/navigation';
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 
 type DrawerNavigation =
   CommunityDrawerScreenProps<CommunityDrawerScreens.CommunitiesStack>['navigation'];

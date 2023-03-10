@@ -1,3 +1,2 @@
 export * from './AppProvider';
-export * from './CommunitiesDataProvider';
-export * from './UserDataProvider';
+export * from './ThemeProvider';

@@ -5,14 +5,17 @@ import {
   CommunityDrawerScreens,
   CommunityStackScreens,
 } from 'constants/navigation';
-import {useUserDataProvider} from 'providers/UserDataProvider';
+import {useGetPerson} from 'api/hooks';
 
 type DashboardScreenProps =
   CommunityDrawerScreenProps<CommunityDrawerScreens.Dashboard>;
 
 export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
   const {navigate} = navigation;
-  const {user} = useUserDataProvider();
+
+  const personId: number = 1; //TODO: to remove once login module is implemented
+
+  const {isLoading, data, error, isError} = useGetPerson(personId);
 
   const applications: AppCardProps[] = [
     {
@@ -27,7 +30,7 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
         navigate(CommunityDrawerScreens.CommunitiesStack, {
           screen: CommunityStackScreens.CommunityMembers,
           params: {
-            communityId: user!.communityId,
+            communityId: data!.community_id,
             previousScreen: CommunityDrawerScreens.Dashboard,
           },
         }),
@@ -54,5 +57,15 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
     },
   ];
 
-  return <DashboardTemplate applications={applications} user={user} />;
+  return (
+    <DashboardTemplate
+      applications={applications}
+      full_name={data?.full_name}
+      csv_email={data?.csv_email}
+      skills={data?.skills}
+      isLoading={isLoading}
+      isError={isError}
+      error={error}
+    />
+  );
 };

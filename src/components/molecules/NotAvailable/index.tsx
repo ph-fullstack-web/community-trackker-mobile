@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import styles from './NotAvailable.styles';
 import {Icon, Text} from 'components/atoms';
 import {COLORS} from 'constants/colors';
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 
 type NotAvailableProps = {
   message: string;

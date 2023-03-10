@@ -1,26 +1,26 @@
 import {View} from 'react-native';
 
 import {NoResult, SkillBadge} from 'components/molecules';
-import {PeopleSkill} from 'models/business';
+import {SkillSet} from 'models/business';
 
 import styles from './SkillBadgeContainer.styles';
 import {SkillBadgeContainerProps} from './SkillBadgeContainer.types';
 
 export const SkillBadgeContainer = (props: SkillBadgeContainerProps) => {
-  const {user} = props;
+  const {skills = []} = props;
 
-  if (user?.skills?.length === 0) {
+  if (skills.length === 0) {
     return <NoResult message="No Skills Found" />;
   }
 
   return (
     <View style={styles.row}>
-      {user?.skills?.map((item: PeopleSkill, index: number) => {
+      {skills?.map((item: SkillSet, index: number) => {
         return (
           <SkillBadge
             key={index}
             size={props.size}
-            skillId={item.peopleskills_id}
+            skillId={item.id}
             numColumns={props.numColumns}
           />
         );

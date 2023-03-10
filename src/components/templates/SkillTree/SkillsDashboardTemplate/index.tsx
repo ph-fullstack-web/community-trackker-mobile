@@ -4,7 +4,7 @@ import {ScreenTitle} from 'constants/navigation';
 
 export const SkillsDashboardTemplate = () => {
   return (
-    <AppContainer keyboardShouldPersistTaps="handled">
+    <AppContainer>
       <ScreenHeader title={ScreenTitle.Skills} />
       <NotAvailable />
     </AppContainer>

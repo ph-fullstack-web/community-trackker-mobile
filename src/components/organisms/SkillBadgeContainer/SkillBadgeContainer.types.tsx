@@ -1,7 +1,7 @@
-import {User} from 'models/business';
+import {SkillSet} from 'models/business';
 
 export type SkillBadgeContainerProps = {
-  user: User | undefined;
+  skills: SkillSet[];
   size: number;
   numColumns: number;
 };

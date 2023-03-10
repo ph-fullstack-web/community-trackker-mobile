@@ -1,7 +1,7 @@
 import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import {Button, Text} from 'components/atoms';
 import {GRADIENT} from 'constants/colors';
 import styles from './AppCard.styles';

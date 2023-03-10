@@ -3,11 +3,11 @@ import {ListItem} from '@rneui/themed';
 
 import styles from './Accordion.styles';
 
-interface AccordionProps extends ComponentWithChildren {
+export type AccordionProps = ComponentWithChildren & {
   expanded: boolean;
   headerLabel: string;
-  headerStyle: object;
-}
+  headerStyle?: object;
+};
 
 export const Accordion = (props: AccordionProps) => {
   const [expanded, setExpanded] = useState(props.expanded);

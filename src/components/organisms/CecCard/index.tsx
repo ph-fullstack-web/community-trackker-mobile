@@ -1,7 +1,7 @@
 import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import {Button, ProgressChart, Text} from 'components/atoms';
 import {
   CecCardChartProps,

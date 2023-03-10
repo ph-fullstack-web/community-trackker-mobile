@@ -1,5 +1,5 @@
 import {TextInput as DefaultTextInput} from 'react-native';
-import {useThemeProvider} from 'providers/ThemeProvider';
+import {useThemeProvider} from 'providers';
 import {COLORS} from 'constants/colors';
 
 export type TextInputProps = DefaultTextInput['props'];

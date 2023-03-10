@@ -1,16 +1,18 @@
 import {Dispatch, SetStateAction} from 'react';
 import {View} from 'react-native';
 
-import {useThemeProvider} from 'providers/ThemeProvider';
-import {Text, TextInput} from 'components/atoms';
+import {Text, TextInput, TextInputProps} from 'components/atoms';
+import {useThemeProvider} from 'providers';
+
 import styles from './LabeledInput.styles';
 
-interface LabeledInputProps extends ComponentWithChildren {
-  label: string;
-  placeholder: string;
-  value?: string;
-  onValueChange: Dispatch<SetStateAction<string>>;
-}
+type LabeledInputProps = ComponentWithChildren &
+  TextInputProps & {
+    label: string;
+    placeholder: string;
+    value?: string;
+    onValueChange: Dispatch<SetStateAction<string>>;
+  };
 
 export const LabeledInput = (props: LabeledInputProps) => {
   const {mode} = useThemeProvider();
