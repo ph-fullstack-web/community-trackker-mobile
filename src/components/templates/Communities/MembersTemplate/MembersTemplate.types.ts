@@ -1,7 +1,13 @@
-import {People} from 'models/business';
+import {Dispatch, SetStateAction} from 'react';
+import {PeopleUnderCommunitySearch} from 'models/business';
 
 export type MembersTemplateProps = {
-  membersList?: People[];
+  rows: number;
+  setSearch: Dispatch<SetStateAction<string>>;
+  setPage: Dispatch<SetStateAction<number>>;
+  currentPage?: number;
+  lastPage?: number;
+  membersList?: PeopleUnderCommunitySearch[];
   community_name?: string;
   manager_name?: string;
   isLoading: boolean;

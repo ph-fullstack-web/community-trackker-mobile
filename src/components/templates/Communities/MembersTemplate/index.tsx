@@ -1,17 +1,20 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {ListRenderItemInfo} from 'react-native';
 
 import {AppContainer, InfiniteScroll, ScreenHeader} from 'components/atoms';
 import {ErrorMessage, NoResult, Search, Spinner} from 'components/molecules';
 import {MemberCard} from 'components/organisms';
-import {People} from 'models/business';
 
 import styles from './MembersTemplate.styles';
 import {MembersTemplateProps} from './MembersTemplate.types';
-
-const LIMIT = 10;
+import {PeopleUnderCommunitySearch} from 'models/business';
 
 export const MembersTemplate = ({
+  rows,
+  setSearch,
+  setPage,
+  currentPage = 1,
+  lastPage = 0,
   membersList = [],
   community_name = '',
   manager_name = '',
@@ -20,64 +23,32 @@ export const MembersTemplate = ({
   error,
   isFetching,
 }: MembersTemplateProps) => {
-  const [filteredMembers, setFilteredMembers] = useState<People[]>([]);
-  const [members, setMembers] = useState<People[]>([]);
-  const [lastPageCount, setLastPageCount] = useState(0);
-  const [page, setPage] = useState(0);
+  const [displayedMembers, setDisplayedMembers] =
+    useState<PeopleUnderCommunitySearch[]>(membersList);
 
   useEffect(() => {
     if (!isFetching) {
-      setMembers(membersList);
-      if (!members.length) {
-        setFilteredMembers(membersList);
-      }
+      setDisplayedMembers(prevState =>
+        currentPage > 1 ? [...prevState, ...membersList] : membersList
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFetching]);
 
   const handleSearch = (text: string) => {
-    const searchText = text.trim().toLowerCase();
-    let result = membersList;
-
-    if (searchText) {
-      result = result.filter(
-        ({full_name, csv_email, hired_date}: People) =>
-          full_name.toLowerCase().indexOf(searchText) !== -1 ||
-          csv_email.toLowerCase().indexOf(searchText) !== -1 ||
-          hired_date.indexOf(searchText) !== -1
-      );
-    }
-
-    setMembers(result);
-    setPage(0);
-    setFilteredMembers([]);
+    setSearch(() => text.trim().toLowerCase());
+    setPage(() => 1);
   };
 
-  const loadMore = useCallback(
-    () =>
-      new Promise<void>(resolve => {
-        setTimeout(() => {
-          const startIndex = LIMIT * page;
-          const filterMembers =
-            members.filter(
-              (_, i) => i >= startIndex && i < startIndex + LIMIT
-            ) || [];
+  const handleEndReached = () => {
+    setPage(prevState => prevState + 1);
+  };
 
-          setFilteredMembers(prevState => [...prevState, ...filterMembers]);
-          setLastPageCount(filterMembers.length);
-          resolve();
-        }, 0);
-      }),
-    [members, page]
-  );
-
-  const renderItem = ({item}: ListRenderItemInfo<People>) => (
+  const renderItem = ({
+    item,
+  }: ListRenderItemInfo<PeopleUnderCommunitySearch>) => (
     <MemberCard memberDetails={item} />
   );
-
-  useEffect(() => {
-    loadMore();
-  }, [loadMore]);
 
   return (
     <AppContainer horizontal>
@@ -94,18 +65,19 @@ export const MembersTemplate = ({
           ) : (
             <></>
           )}
-          {isLoading || isFetching ? (
+          {isLoading || (isFetching && currentPage === 1) ? (
             <Spinner />
           ) : (
-            <InfiniteScroll<People>
-              data={filteredMembers}
+            <InfiniteScroll<PeopleUnderCommunitySearch>
+              data={displayedMembers}
               keyExtractor={item => item.people_id.toString()}
               renderItem={renderItem}
               style={styles.listContentContainer}
-              lastPageCount={lastPageCount}
-              limit={LIMIT}
+              currentPage={currentPage}
+              lastPage={lastPage}
+              limit={rows}
               ListEmptyComponent={<NoResult message="No Members Found" />}
-              setPage={setPage}
+              handleEndReached={handleEndReached}
             />
           )}
         </>

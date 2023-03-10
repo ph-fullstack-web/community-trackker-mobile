@@ -11,6 +11,12 @@ interface CommunityTrackerRoutes {
   };
   communityMembers: {
     GetCommunityWithMembers: (communityId: number) => string;
+    GetCommunityWithMembersSearch: (
+      communityId: number,
+      page?: number,
+      rows?: number,
+      search?: string
+    ) => string;
   };
   people: {
     GetPeople: () => string;
@@ -42,6 +48,13 @@ export const communityTrackerRoutes: CommunityTrackerRoutes = {
   communityMembers: {
     GetCommunityWithMembers: (communityId: number) =>
       `community-members/${communityId}`,
+    GetCommunityWithMembersSearch: (
+      communityId: number,
+      page: number = 1,
+      rows: number = 10,
+      search: string = ''
+    ) =>
+      `community-members/search/${communityId}?page=${page}&rows=${rows}&full_name=${search}&csv_email=${search}`,
   },
   people: {
     GetPeople: () => 'people',

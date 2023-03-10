@@ -28,6 +28,20 @@ export type CommunityMembers = {
   manager: AdminManager;
 };
 
+export type CommunityMembersSearch = {
+  community_id: string;
+  community_name: string;
+  manager: AdminManager;
+  total_members: number;
+  members: PeopleUnderCommunitySearch[];
+};
+
+export type CommunityMembersSearchResponse = {
+  current_page: number;
+  last_page: number;
+  community: CommunityMembersSearch;
+};
+
 export type CommunityWithMembersPercentage = {
   community_id: number;
   community_name: string;
@@ -73,6 +87,15 @@ export type People = {
   is_active: boolean;
   is_probationary: boolean;
   community: Community;
+};
+
+export type PeopleUnderCommunitySearch = {
+  people_id: number;
+  full_name: string;
+  csv_email: string;
+  hired_date: string;
+  community_id: number;
+  is_active: boolean;
 };
 
 export type Manager = {

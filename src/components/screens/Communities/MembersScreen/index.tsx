@@ -1,6 +1,6 @@
-import {useMemo} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 
-import {useGetCommunityWithMembers} from 'api/hooks';
+import {useGetCommunityWithMembersSearch} from 'api/hooks';
 import {MembersTemplate} from 'components/templates';
 import {CommunityStackScreens} from 'constants/navigation';
 
@@ -13,14 +13,28 @@ export const MembersScreen = ({route}: MembersScreenProps) => {
     [route.params.communityId]
   );
 
-  const {isLoading, data, isError, error, isFetching} =
-    useGetCommunityWithMembers(communityId);
+  const rows = 10;
+  const [page, setPage] = useState<number>(1);
+  const [search, setSearch] = useState<string>('');
+
+  const {isLoading, data, isError, error, isFetching, refetch} =
+    useGetCommunityWithMembersSearch(communityId, page, rows, search);
+
+  useEffect(() => {
+    refetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page, search]);
 
   return (
     <MembersTemplate
-      membersList={data?.members}
-      community_name={data?.community_name}
-      manager_name={data?.manager.name}
+      rows={rows}
+      setSearch={setSearch}
+      setPage={setPage}
+      currentPage={page}
+      lastPage={data?.last_page}
+      membersList={data?.community?.members}
+      community_name={data?.community?.community_name}
+      manager_name={data?.community?.manager.name}
       isLoading={isLoading}
       isError={isError}
       error={error}
