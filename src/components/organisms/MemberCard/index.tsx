@@ -2,13 +2,13 @@ import {View} from 'react-native';
 
 import {Avatar, Card, defaultAvatar, Icon, Text} from 'components/atoms';
 import {COLORS} from 'constants/colors';
-import {People} from 'models/business';
+import {PeopleUnderCommunitySearch} from 'models/business';
 import {useThemeProvider} from 'providers';
 
 import styles from './MemberCard.styles';
 
 type MemberCardProps = {
-  memberDetails: People;
+  memberDetails: PeopleUnderCommunitySearch;
 };
 
 export const MemberCard = (prop: MemberCardProps) => {
