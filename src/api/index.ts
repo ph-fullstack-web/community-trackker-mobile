@@ -1,5 +1,5 @@
 import axios, {AxiosError, AxiosResponse, HttpStatusCode} from 'axios';
-import {API_URL_LOCAL_AND, API_URL_LOCAL_IOS} from 'react-native-dotenv';
+import {API_URL_LOCAL_AND, API_URL_LOCAL_IOS} from '@env';
 import {AxiosErrorCode} from 'constants/errors';
 import {Platform} from 'react-native';
 
