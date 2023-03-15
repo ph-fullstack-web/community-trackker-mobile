@@ -41,7 +41,9 @@ export const MemberCard = (prop: MemberCardProps) => {
         </View>
 
         <Text style={styles.email}>{csv_email}</Text>
-        <Text style={styles.dateHired}>{hired_date}</Text>
+        <Text style={styles.dateHired}>
+          {new Date(hired_date).toLocaleDateString()}
+        </Text>
       </View>
     </Card>
   );

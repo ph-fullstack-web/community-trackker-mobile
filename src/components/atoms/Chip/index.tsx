@@ -8,23 +8,26 @@ import {COLORS} from 'constants/colors';
 type ChipProps = {
   onPress?: () => void;
   title: string;
+  type?: 'solid' | 'outline';
 };
 
-export const Chip = ({onPress, title}: ChipProps) => {
+export const Chip = ({onPress, title, type = 'outline'}: ChipProps) => {
   const {mode} = useThemeProvider();
   return (
     <View style={styles.container}>
       <DefaultChip
         title={title}
-        icon={{
-          name: 'close',
-          type: 'material',
-          size: 20,
-          color: mode === 'light' ? COLORS.BLACK : COLORS.ULTRA_LIGHT_GRAY,
-        }}
+        icon={
+          onPress && {
+            name: 'close',
+            type: 'material',
+            size: 20,
+            color: mode === 'light' ? COLORS.BLACK : COLORS.ULTRA_LIGHT_GRAY,
+          }
+        }
         onPress={onPress}
         iconRight
-        type="outline"
+        type={type}
         titleStyle={[
           styles.chipTitle,
           styles[`chipTitle_${mode}` as keyof typeof styles],

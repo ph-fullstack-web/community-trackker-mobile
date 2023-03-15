@@ -24,6 +24,10 @@ const styles = StyleSheet.create({
     zIndex: 1,
     maxHeight: 150,
   },
+  noResultContainer: {
+    paddingHorizontal: 12,
+    marginBottom: 5,
+  },
   resultContentContainer: {
     width: '100%',
     paddingVertical: 5,
