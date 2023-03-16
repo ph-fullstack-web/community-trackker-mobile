@@ -10,6 +10,7 @@ import {COLORS} from 'constants/colors';
 import {CommunityStackScreens} from 'constants/navigation';
 
 import styles from './HeaderLeft.styles';
+import {Keyboard} from 'react-native';
 
 type HeaderLeftProps = DrawerHeaderProps;
 
@@ -50,6 +51,11 @@ export const HeaderLeft = ({navigation, route}: HeaderLeftProps) => {
     [currentScreen, stackScreenNames]
   );
 
+  const handleToggleDrawer = () => {
+    Keyboard.dismiss();
+    toggleDrawer();
+  };
+
   const handleGoBack = () => {
     const previousScreen = getPreviousScreen();
     const isStackScreen = stackScreenNames.includes(previousScreen);
@@ -73,7 +79,7 @@ export const HeaderLeft = ({navigation, route}: HeaderLeftProps) => {
 
   return (
     <Button
-      onPress={toggleDrawer}
+      onPress={handleToggleDrawer}
       icon={{
         name: 'menu',
         type: 'material',
