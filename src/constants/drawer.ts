@@ -4,14 +4,20 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/type
 
 import {DrawerItems} from 'components/organisms';
 import {COLORS} from './colors';
-import {CommunityDrawerScreens, CommunityStackScreens} from './navigation';
+import {
+  CommunityDrawerScreens,
+  CommunityStackScreens,
+  MaintenanceDrawerScreens,
+  ScreenTitle,
+} from './navigation';
 
-export const DEFAULT_DRAWER_ITEMS = <
-  T extends CompositeNavigationProp<
-    DrawerNavigationProp<CommunityDrawerParamList>,
-    NativeStackNavigationProp<RootNativeStackParamList>
-  >
->(
+type NavigationProp = CompositeNavigationProp<
+  DrawerNavigationProp<CommunityDrawerParamList>,
+  NativeStackNavigationProp<RootNativeStackParamList>
+> &
+  DrawerNavigationProp<MaintenanceDrawerParamList>;
+
+export const DEFAULT_DRAWER_ITEMS = <T extends NavigationProp>(
   mode: string | undefined
 ): DrawerItems<T> => [
   {
@@ -20,7 +26,7 @@ export const DEFAULT_DRAWER_ITEMS = <
       type: 'material',
       color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
     },
-    label: 'Dashboard',
+    label: ScreenTitle.Dashboard,
     onPress: navigation =>
       navigation.navigate(CommunityDrawerScreens.Dashboard),
   },
@@ -30,7 +36,7 @@ export const DEFAULT_DRAWER_ITEMS = <
       type: 'material',
       color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
     },
-    label: 'Profile',
+    label: ScreenTitle.Profile,
     onPress: navigation => navigation.navigate(CommunityDrawerScreens.Profile),
   },
   {
@@ -39,7 +45,7 @@ export const DEFAULT_DRAWER_ITEMS = <
       type: 'material',
       color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
     },
-    label: 'Communities',
+    label: ScreenTitle.Communities,
     onPress: navigation =>
       navigation.navigate(CommunityDrawerScreens.CommunitiesStack, {
         screen: CommunityStackScreens.Communities,
@@ -51,8 +57,9 @@ export const DEFAULT_DRAWER_ITEMS = <
       type: 'material',
       color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
     },
-    label: 'CEC Requests',
-    onPress: navigation => navigation.navigate(CommunityDrawerScreens.CEC),
+    label: ScreenTitle.CECRequests,
+    onPress: navigation =>
+      navigation.navigate(CommunityDrawerScreens.CECRequestsDrawer),
   },
   {
     icon: {
@@ -60,8 +67,9 @@ export const DEFAULT_DRAWER_ITEMS = <
       type: 'material',
       color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
     },
-    label: 'Skills',
-    onPress: navigation => navigation.navigate(CommunityDrawerScreens.Skills),
+    label: ScreenTitle.SkillTree,
+    onPress: navigation =>
+      navigation.navigate(CommunityDrawerScreens.SkillTreeDrawer),
   },
   {
     icon: {
@@ -69,7 +77,41 @@ export const DEFAULT_DRAWER_ITEMS = <
       type: 'material',
       color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
     },
-    label: 'Report',
+    label: ScreenTitle.Report,
     onPress: navigation => navigation.navigate(CommunityDrawerScreens.Report),
+  },
+  {
+    icon: {
+      name: 'construction',
+      type: 'material',
+      color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
+    },
+    label: ScreenTitle.Maintenance,
+    onPress: navigation =>
+      navigation.navigate(CommunityDrawerScreens.MaintenanceDrawer, {
+        screen: MaintenanceDrawerScreens.Skills,
+      }),
+    items: [
+      {
+        icon: {
+          name: 'psychology',
+          type: 'material',
+          color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
+        },
+        label: ScreenTitle.Skills,
+        onPress: navigation =>
+          navigation.navigate(MaintenanceDrawerScreens.Skills),
+      },
+      {
+        icon: {
+          name: 'assignment',
+          type: 'material',
+          color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
+        },
+        label: ScreenTitle.Projects,
+        onPress: navigation =>
+          navigation.navigate(MaintenanceDrawerScreens.Projects),
+      },
+    ],
   },
 ];

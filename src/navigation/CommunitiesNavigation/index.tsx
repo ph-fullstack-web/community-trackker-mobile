@@ -12,20 +12,25 @@ import {
   DashboardScreen,
   MembersScreen,
   ProfileScreen,
+  ProjectsScreen,
   ReportScreen,
   SkillsDashboardScreen,
+  SkillsScreen,
 } from 'components/screens';
 import {DEFAULT_DRAWER_ITEMS} from 'constants/drawer';
 import {
   CommunityDrawerScreens,
   CommunityStackScreens,
+  MaintenanceDrawerScreens,
 } from 'constants/navigation';
 import {useThemeProvider} from 'providers';
 
 type DrawerNavigation =
-  CommunityDrawerScreenProps<CommunityDrawerScreens.CommunitiesStack>['navigation'];
+  CommunityDrawerScreenProps<CommunityDrawerScreens.CommunitiesStack>['navigation'] &
+    MaintenanceDrawerScreenProps<MaintenanceDrawerScreens.Skills>['navigation'];
 
 const Drawer = createDrawerNavigator<CommunityDrawerParamList>();
+const MaintenanceDrawer = createDrawerNavigator<MaintenanceDrawerParamList>();
 const Stack = createNativeStackNavigator<CommunityStackParamList>();
 
 export const CommunitiesDrawerNavigation = () => {
@@ -66,16 +71,24 @@ export const CommunitiesDrawerNavigation = () => {
         component={CommunitiesNativeStackNavigation}
       />
       <Drawer.Screen
-        name={CommunityDrawerScreens.CEC}
+        name={CommunityDrawerScreens.CECRequestsDrawer}
         component={CECDashboardScreen}
       />
       <Drawer.Screen
-        name={CommunityDrawerScreens.Skills}
+        name={CommunityDrawerScreens.SkillTreeDrawer}
         component={SkillsDashboardScreen}
       />
       <Drawer.Screen
         name={CommunityDrawerScreens.Report}
         component={ReportScreen}
+      />
+      <MaintenanceDrawer.Screen
+        name={MaintenanceDrawerScreens.Skills}
+        component={SkillsScreen}
+      />
+      <MaintenanceDrawer.Screen
+        name={MaintenanceDrawerScreens.Projects}
+        component={ProjectsScreen}
       />
     </Drawer.Navigator>
   );
