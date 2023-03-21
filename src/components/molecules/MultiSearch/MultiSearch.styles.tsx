@@ -43,12 +43,15 @@ const styles = StyleSheet.create({
   searchInput_dark: {
     backgroundColor: COLORS.DARK_GRAY,
   },
+  chipsScrollContainer: {
+    zIndex: -1,
+    maxHeight: 100,
+  },
   chipsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: '100%',
     marginBottom: 10,
-    zIndex: -1,
   },
   resultContentContainer: {
     marginTop: 10,

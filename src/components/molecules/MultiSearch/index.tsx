@@ -1,27 +1,15 @@
 import {useEffect, useState} from 'react';
-import {View, StyleProp, ViewStyle} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {Button, Chip, Typeahead} from 'components/atoms';
 import {COLORS, GRADIENT} from 'constants/colors';
-
 import {useThemeProvider} from 'providers';
 
 import styles from './MultiSearch.styles';
+import {MultiSearchProps} from './MultiSearch.types';
 
-interface T extends Record<string, any> {}
-
-type MultiSearchProps = {
-  onSearch: (searchText: string) => void;
-  viewStyle?: StyleProp<ViewStyle>;
-  dropdownValues: T[];
-  defaultValues?: T[];
-  labelProp: string;
-  idProp: string;
-  placeholder?: string;
-};
-
-export const MultiSearch = ({
+export const MultiSearch = <T extends Record<string, any>>({
   onSearch,
   viewStyle,
   dropdownValues = [],
@@ -29,7 +17,7 @@ export const MultiSearch = ({
   labelProp = '',
   idProp = '',
   placeholder = 'Search...',
-}: MultiSearchProps) => {
+}: MultiSearchProps<T>) => {
   const [selectedValues, setSelectedValues] = useState<T[]>(defaultValues);
   const {mode} = useThemeProvider();
 
@@ -90,12 +78,17 @@ export const MultiSearch = ({
           }
         />
       </View>
-
-      <View style={styles.chipsContainer}>
-        {selectedValues?.map((value, i) => (
-          <Chip key={i} onPress={() => deselect(i)} title={value[labelProp]} />
-        ))}
-      </View>
+      <ScrollView style={styles.chipsScrollContainer}>
+        <View style={styles.chipsContainer}>
+          {selectedValues?.map((value, i) => (
+            <Chip
+              key={i}
+              onPress={() => deselect(i)}
+              title={value[labelProp]}
+            />
+          ))}
+        </View>
+      </ScrollView>
     </View>
   );
 };
