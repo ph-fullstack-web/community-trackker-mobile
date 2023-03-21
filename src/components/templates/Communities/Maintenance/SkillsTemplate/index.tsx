@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {ScrollView, View} from 'react-native';
+import {FlatList} from 'react-native';
 
 import {AppContainer, ScreenHeader} from 'components/atoms';
 import {
@@ -11,7 +11,6 @@ import {
 } from 'components/molecules';
 import {ScreenTitle} from 'constants/navigation';
 import {Peopleskills} from 'models/business';
-import {groupArrayByColumn} from 'utils/formatter';
 
 import {SkillsTemplateProps} from './SkillsTemplate.types';
 import styles from './SkillsTemplate.styles';
@@ -22,7 +21,7 @@ export const SkillsTemplate = ({
   isError,
   error,
   isFetching,
-  numColumns = 1,
+  refetch,
   onEdit,
   onDelete,
 }: SkillsTemplateProps) => {
@@ -57,32 +56,23 @@ export const SkillsTemplate = ({
           )}
           {isLoading || isFetching ? (
             <Spinner />
-          ) : displayedSkills.length ? (
-            <ScrollView showsVerticalScrollIndicator={false}>
-              {groupArrayByColumn(displayedSkills, numColumns).map(
-                (parentItem: Peopleskills[], parentIndex: number) => {
-                  return (
-                    <View key={parentIndex} style={styles.listContainer}>
-                      {parentItem.map(
-                        (childItem: Peopleskills, childIndex: number) => {
-                          return (
-                            <SkillCard
-                              numColumns={numColumns}
-                              key={childIndex}
-                              data={childItem}
-                              onEdit={onEdit}
-                              onDelete={onDelete}
-                            />
-                          );
-                        }
-                      )}
-                    </View>
-                  );
-                }
-              )}
-            </ScrollView>
           ) : (
-            <NoResult message="No Skills Found" />
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              data={displayedSkills}
+              keyExtractor={item => item.peopleskills_id.toString()}
+              renderItem={({item, index}) => (
+                <SkillCard
+                  key={index}
+                  data={item}
+                  onEdit={onEdit}
+                  onDelete={onDelete}
+                />
+              )}
+              ListEmptyComponent={<NoResult message="No Skills Found" />}
+              refreshing={isFetching}
+              onRefresh={refetch}
+            />
           )}
         </>
       )}

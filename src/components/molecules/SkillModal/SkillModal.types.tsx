@@ -1,7 +1,6 @@
 import {Peopleskills} from 'models/business';
 
-export type SkillCardProps = {
+export type SkillModalProps = {
   data: Peopleskills;
   onEdit: (data: Peopleskills) => void;
-  onDelete: (data: Peopleskills) => void;
 };

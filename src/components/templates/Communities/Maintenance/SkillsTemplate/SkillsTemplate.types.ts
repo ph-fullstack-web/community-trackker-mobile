@@ -1,3 +1,8 @@
+import {
+  QueryObserverResult,
+  RefetchOptions,
+  RefetchQueryFilters,
+} from 'react-query';
 import {Peopleskills} from 'models/business';
 
 export type SkillsTemplateProps = {
@@ -6,7 +11,9 @@ export type SkillsTemplateProps = {
   isError: boolean;
   error: any;
   isFetching: boolean;
-  numColumns?: number;
-  onEdit: (skillId: number) => void;
-  onDelete: (skillId: number) => void;
+  refetch: <TPageData>(
+    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
+  ) => Promise<QueryObserverResult<Peopleskills[], unknown>>;
+  onEdit: (data: Peopleskills) => void;
+  onDelete: (data: Peopleskills) => void;
 };

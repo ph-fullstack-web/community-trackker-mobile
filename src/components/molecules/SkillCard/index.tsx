@@ -6,34 +6,22 @@ import {useThemeProvider} from 'providers';
 
 import styles from './SkillCard.styles';
 import {SkillCardProps} from './SkillCard.types';
+import {SkillModal} from '../SkillModal';
 
-export const SkillCard = ({
-  numColumns = 2,
-  data: {peopleskills_id, peopleskills_desc, is_active},
-  onEdit,
-  onDelete,
-}: SkillCardProps) => {
+export const SkillCard = ({data, onEdit, onDelete}: SkillCardProps) => {
   const {mode} = useThemeProvider();
 
   return (
-    <Card style={[styles.cardContainer, {width: `${100 / numColumns}%`}]}>
+    <Card style={styles.cardContainer}>
       <View style={styles.titleContainer}>
         <Text style={styles[`text_${mode}` as keyof typeof styles]}>
-          {peopleskills_desc}
+          {data.peopleskills_desc}
         </Text>
       </View>
       <View style={styles.buttonContainer}>
-        {is_active ? (
+        {data.is_active ? (
           <>
-            <Icon
-              type="material"
-              name="edit"
-              color={
-                mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.VERY_LIGHT_GRAY
-              }
-              size={25}
-              onPress={() => onEdit(peopleskills_id)}
-            />
+            <SkillModal data={data} onEdit={onEdit} />
             <Icon
               type="material"
               name="delete"
@@ -41,7 +29,7 @@ export const SkillCard = ({
                 mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.VERY_LIGHT_GRAY
               }
               size={25}
-              onPress={() => onDelete(peopleskills_id)}
+              onPress={() => onDelete(data)}
             />
           </>
         ) : (

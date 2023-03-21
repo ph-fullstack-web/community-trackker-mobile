@@ -9,4 +9,5 @@ export * from './NotAvailable';
 export * from './Search';
 export * from './SkillBadge';
 export * from './SkillCard';
+export * from './SkillModal';
 export * from './Spinner';
