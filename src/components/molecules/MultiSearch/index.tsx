@@ -58,25 +58,42 @@ export const MultiSearch = <T extends Record<string, any>>({
             resultContentContainerStyle={styles.resultContentContainer}
           />
         </View>
-        <Button
-          containerStyle={styles.searchButtonContainer}
-          buttonStyle={styles.searchButton}
-          ViewComponent={LinearGradient}
-          linearGradientProps={{
-            colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
-            start: {x: 0, y: 0.5},
-            end: {x: 1, y: 0.5},
-          }}
-          icon={{
-            name: 'magnifier',
-            type: 'simple-line-icon',
-            size: 15,
-            color: COLORS.ULTRA_LIGHT_GRAY,
-          }}
-          onPress={() =>
-            onSearch(selectedValues.map(value => value[idProp]).join(','))
-          }
-        />
+        <View style={styles.buttonsContainer}>
+          <Button
+            buttonStyle={styles.searchButton}
+            ViewComponent={LinearGradient}
+            linearGradientProps={{
+              colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
+              start: {x: 0, y: 0.5},
+              end: {x: 1, y: 0.5},
+            }}
+            icon={{
+              name: 'clear',
+              type: 'materia;',
+              size: 15,
+              color: COLORS.ULTRA_LIGHT_GRAY,
+            }}
+            onPress={() => setSelectedValues([])}
+          />
+          <Button
+            buttonStyle={styles.searchButton}
+            ViewComponent={LinearGradient}
+            linearGradientProps={{
+              colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
+              start: {x: 0, y: 0.5},
+              end: {x: 1, y: 0.5},
+            }}
+            icon={{
+              name: 'magnifier',
+              type: 'simple-line-icon',
+              size: 15,
+              color: COLORS.ULTRA_LIGHT_GRAY,
+            }}
+            onPress={() =>
+              onSearch(selectedValues.map(value => value[idProp]).join(','))
+            }
+          />
+        </View>
       </View>
       <ScrollView style={styles.chipsScrollContainer}>
         <View style={styles.chipsContainer}>

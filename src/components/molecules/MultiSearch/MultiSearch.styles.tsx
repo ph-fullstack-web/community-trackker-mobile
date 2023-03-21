@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   searchInputContainer: {
-    flex: 0.8,
+    flex: 0.72,
     flexDirection: 'row',
   },
   searchInput: {
@@ -28,8 +28,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
   },
-  searchButtonContainer: {
-    flex: 0.15,
+  buttonsContainer: {
+    flex: 0.25,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   searchButton: {
     width: 45,
