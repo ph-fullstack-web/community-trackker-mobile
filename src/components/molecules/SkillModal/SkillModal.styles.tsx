@@ -78,6 +78,9 @@ const styles = StyleSheet.create({
   button_dark: {
     backgroundColor: COLORS.MIDNIGHT_BLUE,
   },
+  spinnerContainer: {
+    paddingTop: 50,
+  },
 });
 
 export default styles;
