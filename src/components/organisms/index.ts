@@ -5,6 +5,7 @@ export * from './CommunityCard';
 export * from './Layout';
 export * from './MemberCard';
 export * from './MemberDetailForm';
+export * from './MemberSkillCard';
 export * from './SkillBadgeContainer';
 export * from './SkillsForm';
 export * from './UserDetailsCard';

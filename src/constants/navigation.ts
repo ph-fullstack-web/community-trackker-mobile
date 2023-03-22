@@ -34,4 +34,5 @@ export enum ScreenTitle {
   Report = 'Report',
   Skills = 'Skills',
   SkillTree = 'Skill Tree',
+  PeopleBySkills = 'People By Skills',
 }
