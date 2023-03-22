@@ -98,10 +98,9 @@ export const SkillsScreen = ({}: SkillsScreenProps) => {
   return (
     <SkillsTemplate
       skills={skills}
-      isLoading={isLoading || isMutationOngoing}
+      isLoading={isLoading || isFetching || isMutationOngoing}
       isError={isError}
       error={error}
-      isFetching={isFetching}
       onEdit={handleEdit}
       onDelete={handleDelete}
       refetch={refetch}

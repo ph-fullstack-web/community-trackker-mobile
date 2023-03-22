@@ -8,15 +8,17 @@ type CommunitiesDashboardScreenProps =
 export const CommunitiesDashboardScreen = ({
   navigation,
 }: CommunitiesDashboardScreenProps) => {
-  const {isLoading, data, error, isError} = useGetCommunitiesWithPercentage();
+  const {isLoading, isFetching, data, refetch, error, isError} =
+    useGetCommunitiesWithPercentage();
 
   return (
     <CommunitiesDashboardTemplate
-      isLoading={isLoading}
+      isLoading={isLoading || isFetching}
       isError={isError}
       error={error}
       communityList={data}
       navigation={navigation}
+      refetch={refetch}
     />
   );
 };

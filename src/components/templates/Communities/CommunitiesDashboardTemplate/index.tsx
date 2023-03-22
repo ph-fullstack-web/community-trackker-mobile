@@ -14,6 +14,7 @@ export const CommunitiesDashboardTemplate = ({
   error,
   communityList = [],
   navigation,
+  refetch,
 }: CommunitiesDashboardTemplateProp) => {
   const handleViewMembers = (communityId: number) => {
     navigation.push(CommunityStackScreens.CommunityMembers, {
@@ -42,6 +43,8 @@ export const CommunitiesDashboardTemplate = ({
             />
           )}
           ListEmptyComponent={<NoResult message="No Communities Found" />}
+          refreshing={isLoading}
+          onRefresh={refetch}
         />
       )}
     </AppContainer>

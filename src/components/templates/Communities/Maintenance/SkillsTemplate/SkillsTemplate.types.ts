@@ -10,7 +10,6 @@ export type SkillsTemplateProps = {
   isLoading: boolean;
   isError: boolean;
   error: any;
-  isFetching: boolean;
   refetch: <TPageData>(
     options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
   ) => Promise<QueryObserverResult<Peopleskills[], unknown>>;

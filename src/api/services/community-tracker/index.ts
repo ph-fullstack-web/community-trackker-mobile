@@ -4,3 +4,4 @@ export * from './CommunityMembers';
 export * from './People';
 export * from './PeopleDetails';
 export * from './PeopleSkills';
+export * from './Projects';

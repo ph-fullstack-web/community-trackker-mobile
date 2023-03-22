@@ -18,10 +18,10 @@ export const ReportTemplate = ({
   error,
   setSelectedSkills,
   isLoadingPeople,
-  isFetchingPeople,
   people,
   isPeopleError,
   peopleError,
+  refetchPeople,
 }: ReportTemplateProp) => {
   const handleSearch = (searchText: string) => {
     setSelectedSkills(searchText);
@@ -46,7 +46,7 @@ export const ReportTemplate = ({
             labelProp="peopleskills_desc"
             idProp="peopleskills_id"
           />
-          {isLoadingPeople || isFetchingPeople ? (
+          {isLoadingPeople ? (
             <Spinner />
           ) : (
             <FlatList
@@ -56,6 +56,8 @@ export const ReportTemplate = ({
                 <MemberSkillCard key={index} memberDetails={item} />
               )}
               ListEmptyComponent={<NoResult message="No Members Found" />}
+              refreshing={isLoadingPeople}
+              onRefresh={refetchPeople}
             />
           )}
         </>

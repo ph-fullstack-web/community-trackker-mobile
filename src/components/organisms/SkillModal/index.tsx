@@ -3,14 +3,13 @@ import {Modal, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {Button, Icon, Switch, Text, TextInput} from 'components/atoms';
+import {Spinner} from 'components/molecules';
 import {COLORS, GRADIENT} from 'constants/colors';
 import {Peopleskills} from 'models/business';
-import {useThemeProvider} from 'providers';
+import {useThemeProvider, useMutationProvider} from 'providers';
 
 import styles from './SkillModal.styles';
 import {SkillModalProps} from './SkillModal.types';
-import {Spinner} from '../Spinner';
-import {useMutationProvider} from 'providers/MutationProvider';
 
 export const SkillModal = ({data, onEdit}: SkillModalProps) => {
   const {mode} = useThemeProvider();
@@ -85,9 +84,7 @@ export const SkillModal = ({data, onEdit}: SkillModalProps) => {
                       })
                     }
                   />
-                  <Text style={styles.modalText}>
-                    {form.is_active ? 'Active' : 'Inactive'}
-                  </Text>
+                  <Text style={styles.modalText}>Active</Text>
                 </View>
                 <View style={styles.buttonsContainer}>
                   <Button
