@@ -2,30 +2,29 @@ import {useState} from 'react';
 import {View} from 'react-native';
 
 import {useGetPeopleSkills} from 'api/hooks';
-import {Chip, Text, Typeahead} from 'components/atoms';
+import {Chip, Text} from 'components/atoms';
 import {Spinner} from 'components/molecules';
-import {Peopleskills} from 'models/business';
 
 import styles from './SkillsForm.styles';
 
 type SkillsFormProps = {
   skills: string[];
 };
-// TODO: update once community tracker mutations has been integrated
+
 export const SkillsForm = ({skills}: SkillsFormProps) => {
-  const [skillsCopy, setSkillsCopy] = useState(skills);
+  const [skillsCopy /*, setSkillsCopy*/] = useState(skills);
 
-  const {isLoading, isFetching, data = []} = useGetPeopleSkills();
+  const {isLoading, isFetching /*, data = []*/} = useGetPeopleSkills();
 
-  const addSkill = (skill: Peopleskills) => {
-    setSkillsCopy(prevState =>
-      [...prevState, skill.peopleskills_desc].sort((a, b) => a.localeCompare(b))
-    );
-  };
+  // const addSkill = (skill: Peopleskills) => {
+  //   setSkillsCopy(prevState =>
+  //     [...prevState, skill.peopleskills_desc].sort((a, b) => a.localeCompare(b))
+  //   );
+  // };
 
-  const removeSkill = (index: number) => {
-    setSkillsCopy(prevState => prevState?.filter((_, i) => i !== index));
-  };
+  // const removeSkill = (index: number) => {
+  //   setSkillsCopy(prevState => prevState?.filter((_, i) => i !== index));
+  // };
 
   return (
     <View style={styles.container}>
@@ -33,17 +32,22 @@ export const SkillsForm = ({skills}: SkillsFormProps) => {
         <Spinner />
       ) : (
         <>
-          <Typeahead<Peopleskills>
+          {/**TODO: update once community tracker mutations has been integrated */}
+          {/* <Typeahead<Peopleskills>
             data={data}
             label="peopleskills_desc"
             onSelect={addSkill}
             placeholder="Add Skill"
             selected={skillsCopy}
             uniqueKey="peopleskills_id"
-          />
+          /> */}
           <View style={styles.chipsContainer}>
             {skillsCopy?.map((skill, i) => (
-              <Chip key={i} onPress={() => removeSkill(i)} title={skill} />
+              <Chip
+                key={i}
+                //onPress={() => removeSkill(i)}
+                title={skill}
+              />
             ))}
           </View>
           {!skillsCopy?.length && <Text>No skills found</Text>}

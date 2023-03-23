@@ -1,13 +1,8 @@
 import {View} from 'react-native';
 
 import {AppContainer, Text} from 'components/atoms';
-import {ErrorMessage, Spinner} from 'components/molecules';
-import {
-  AppMenu,
-  CecCard,
-  SkillBadgeContainer,
-  UserDetailsCard,
-} from 'components/organisms';
+import {ErrorMessage, SkillBadgeContainer, Spinner} from 'components/molecules';
+import {AppMenu, CecCard, UserDetailsCard} from 'components/organisms';
 import {COLORS} from 'constants/colors';
 
 import styles from './DashboardTemplate.styles';

@@ -8,7 +8,6 @@ export * from './MemberDetailForm';
 export * from './MemberSkillCard';
 export * from './ProjectCard';
 export * from './ProjectModal';
-export * from './SkillBadgeContainer';
 export * from './SkillCard';
 export * from './SkillModal';
 export * from './SkillsForm';

@@ -1,11 +1,11 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  row: {
-    flex: 1,
+  container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    alignItems: 'flex-start',
+    width: '100%',
+    marginBottom: 10,
   },
 });
 

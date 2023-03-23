@@ -5,6 +5,7 @@ import {ListItem} from '@rneui/base';
 import {useThemeProvider} from 'providers';
 import {DrawerItem, Icon, Text} from 'components/atoms';
 import styles from './DrawerAccordion.styles';
+import {COLORS} from 'constants/colors';
 
 export type DrawerAccordionItem<T> = {
   icon: Icon;
@@ -30,7 +31,7 @@ export const DrawerAccordion = <T,>({
 
   return (
     <ListItem.Accordion
-      containerStyle={styles[`container_${mode}` as keyof typeof undefined]}
+      containerStyle={styles.container}
       content={
         <View style={styles.content}>
           <Icon
@@ -49,6 +50,11 @@ export const DrawerAccordion = <T,>({
           </Text>
         </View>
       }
+      icon={{
+        name: 'chevron-down',
+        type: 'material-community',
+        color: mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
+      }}
       isExpanded={expanded}
       onPress={() => setExpanded(prevState => !prevState)}
     >

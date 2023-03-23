@@ -8,9 +8,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: COLORS.RGBABLACK,
   },
-  info_button: {
-    backgroundColor: COLORS.TRANSPARENT,
-  },
   modalView: {
     margin: 20,
     borderRadius: 10,

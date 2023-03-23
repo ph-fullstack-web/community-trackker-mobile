@@ -116,6 +116,7 @@ export type PeopleWithSkills = {
   project_id: number;
   is_active: boolean;
   is_probationary: boolean;
+  community: Community;
   skills: SkillSet[];
   details: PeopleDetailsDesc[];
 };
