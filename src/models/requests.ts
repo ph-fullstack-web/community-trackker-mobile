@@ -10,3 +10,9 @@ export type UpdateProjectRequest = {
   project_code: string;
   is_active: boolean;
 };
+
+export type UpdateSkillRequest = {
+  peopleskills_id: number;
+  description: string;
+  is_active: boolean;
+};

@@ -6,11 +6,8 @@ import {useThemeProvider} from 'providers';
 
 import styles from './ProjectCard.styles';
 import {ProjectCardProps} from './ProjectCard.types';
-//import {ProjectModal} from '../ProjectModal';
 
-export const ProjectCard = ({
-  data /*, onDelete, onEdit*/,
-}: ProjectCardProps) => {
+export const ProjectCard = ({data}: ProjectCardProps) => {
   const {mode} = useThemeProvider();
 
   return (
@@ -39,10 +36,7 @@ export const ProjectCard = ({
       {/**TODO: uncomment when mutation would be enabled */}
       {/* <View style={styles.buttonContainer}>
         <>
-          <ProjectModal
-            data={{...data, project_name: data.project}}
-            onEdit={onEdit}
-          />
+          <ProjectModal data={data} onEdit={onEdit} />
           <Icon
             type="material"
             name="delete"

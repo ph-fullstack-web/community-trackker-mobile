@@ -6,9 +6,8 @@ import {useThemeProvider} from 'providers';
 
 import styles from './SkillCard.styles';
 import {SkillCardProps} from './SkillCard.types';
-//import {SkillModal} from '../SkillModal';
 
-export const SkillCard = ({data /*, onDelete, onEdit*/}: SkillCardProps) => {
+export const SkillCard = ({data}: SkillCardProps) => {
   const {mode} = useThemeProvider();
 
   return (

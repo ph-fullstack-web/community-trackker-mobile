@@ -9,6 +9,7 @@ import {
 import {SkillsTemplate} from 'components/templates';
 import {MaintenanceDrawerScreens} from 'constants/navigation';
 import {Peopleskills} from 'models/business';
+import {UpdateSkillRequest} from 'models/requests';
 import {useMutationProvider} from 'providers';
 
 type SkillsScreenProps =
@@ -77,7 +78,7 @@ export const SkillsScreen = ({}: SkillsScreenProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDeleting, isDeleteSuccess, isDeleteError]);
 
-  const handleEdit = (data: Peopleskills) => {
+  const handleEdit = (data: UpdateSkillRequest) => {
     updateSkill(data);
   };
 

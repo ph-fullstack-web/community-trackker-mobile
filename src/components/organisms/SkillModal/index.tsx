@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Button, Icon, Switch, Text, TextInput} from 'components/atoms';
 import {Spinner} from 'components/molecules';
 import {COLORS, GRADIENT} from 'constants/colors';
-import {Peopleskills} from 'models/business';
+import {UpdateSkillRequest} from 'models/requests';
 import {useThemeProvider, useMutationProvider} from 'providers';
 
 import styles from './SkillModal.styles';
@@ -15,10 +15,18 @@ export const SkillModal = ({data, onEdit}: SkillModalProps) => {
   const {mode} = useThemeProvider();
   const {isLoading} = useMutationProvider();
   const [visible, setVisible] = useState<boolean>(false);
-  const [form, setForm] = useState<Peopleskills>(data);
+  const [form, setForm] = useState<UpdateSkillRequest>({
+    peopleskills_id: data.peopleskills_id,
+    description: data.peopleskills_desc,
+    is_active: data.is_active,
+  });
 
   useEffect(() => {
-    setForm(data);
+    setForm({
+      peopleskills_id: data.peopleskills_id,
+      description: data.peopleskills_desc,
+      is_active: data.is_active,
+    });
   }, [data]);
 
   return (
@@ -59,10 +67,10 @@ export const SkillModal = ({data, onEdit}: SkillModalProps) => {
               <>
                 <TextInput
                   style={styles.modelTextInput}
-                  value={form.peopleskills_desc}
+                  value={form.description}
                   onChangeText={value =>
                     setForm(prevState => {
-                      return {...prevState, peopleskills_desc: value};
+                      return {...prevState, description: value};
                     })
                   }
                 />

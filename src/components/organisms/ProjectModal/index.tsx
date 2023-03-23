@@ -15,10 +15,20 @@ export const ProjectModal = ({data, onEdit}: ProjectModalProps) => {
   const {mode} = useThemeProvider();
   const {isLoading} = useMutationProvider();
   const [visible, setVisible] = useState<boolean>(false);
-  const [form, setForm] = useState<UpdateProjectRequest>(data);
+  const [form, setForm] = useState<UpdateProjectRequest>({
+    id: data.id,
+    project_name: data.project,
+    project_code: data.project_code,
+    is_active: data.is_active,
+  });
 
   useEffect(() => {
-    setForm(data);
+    setForm({
+      id: data.id,
+      project_name: data.project,
+      project_code: data.project_code,
+      is_active: data.is_active,
+    });
   }, [data]);
 
   return (

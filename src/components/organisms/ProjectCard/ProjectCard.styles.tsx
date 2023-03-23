@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flex: 1,
-    paddingRight: 0,
     justifyContent: 'flex-start',
+    marginRight: 20,
   },
   subtitleContainer: {
     flexDirection: 'row',
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     flex: 0.2,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 
