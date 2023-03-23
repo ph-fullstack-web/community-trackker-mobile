@@ -43,7 +43,7 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
         size: 50,
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
-      onPress: () => navigate(CommunityDrawerScreens.CEC),
+      onPress: () => navigate(CommunityDrawerScreens.CECRequestsDrawer),
     },
     {
       title: 'Skill Tree',
@@ -53,7 +53,7 @@ export const DashboardScreen = ({navigation}: DashboardScreenProps) => {
         size: 50,
         color: COLORS.ULTRA_LIGHT_GRAY,
       },
-      onPress: () => navigate(CommunityDrawerScreens.Skills),
+      onPress: () => navigate(CommunityDrawerScreens.SkillTreeDrawer),
     },
   ];
 

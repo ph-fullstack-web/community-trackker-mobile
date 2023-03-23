@@ -31,6 +31,8 @@ interface CommunityTrackerRoutes {
   };
   peopleSkills: {
     GetPeopleSkills: () => string;
+    UpdatePeopleSkill: (skillId: number) => string;
+    DeletePeopleSkill: (skillId: number) => string;
   };
 }
 
@@ -69,5 +71,7 @@ export const communityTrackerRoutes: CommunityTrackerRoutes = {
   },
   peopleSkills: {
     GetPeopleSkills: () => 'peopleskills',
+    UpdatePeopleSkill: (skillId: number) => `peopleskills/${skillId}`,
+    DeletePeopleSkill: (skillId: number) => `peopleskills/${skillId}`,
   },
 };

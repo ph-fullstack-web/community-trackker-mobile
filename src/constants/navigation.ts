@@ -7,9 +7,10 @@ export enum CommunityDrawerScreens {
   Dashboard = 'Dashboard',
   Profile = 'Profile',
   CommunitiesStack = 'CommunitiesStack',
-  CEC = 'CEC',
-  Skills = 'Skills',
+  CECRequestsDrawer = 'CECRequestsDrawer',
+  SkillTreeDrawer = 'SkillTreeDrawer',
   Report = 'Report',
+  MaintenanceDrawer = 'MaintenanceDrawer',
 }
 
 export enum CommunityStackScreens {
@@ -17,12 +18,21 @@ export enum CommunityStackScreens {
   CommunityMembers = 'CommunityMembers',
 }
 
-export enum ScreenTitle {
-  Communities = 'Communities',
-  Members = 'Members',
-  Profile = 'Profile',
-  Report = 'Report',
-  CEC = 'CEC',
+export enum MaintenanceDrawerScreens {
   Skills = 'Skills',
+  Projects = 'Projects',
+}
+
+export enum ScreenTitle {
+  CEC = 'CEC',
+  CECRequests = 'CEC Requests',
+  Communities = 'Communities',
+  Dashboard = 'Dashboard',
+  Maintenance = 'Maintenance',
+  Profile = 'Profile',
+  Projects = 'Projects',
+  Report = 'Report',
+  Skills = 'Skills',
+  SkillTree = 'Skill Tree',
   PeopleBySkills = 'People By Skills',
 }

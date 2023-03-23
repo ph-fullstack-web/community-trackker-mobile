@@ -1,8 +1,21 @@
-import {useQuery} from 'react-query';
+import {useMutation, useQuery} from 'react-query';
 
-import {GetPeopleSkills} from 'api/services';
+import {
+  DeletePeopleSkill,
+  GetPeopleSkills,
+  UpdatePeopleSkill,
+} from 'api/services';
 import {Query} from 'constants/query';
+import {Peopleskills} from 'models/business';
 
 export const useGetPeopleSkills = () => {
   return useQuery(Query.GetPeopleSkills, () => GetPeopleSkills());
+};
+
+export const useUpdatePeopleSkill = () => {
+  return useMutation((data: Peopleskills) => UpdatePeopleSkill(data));
+};
+
+export const useDeletePeopleSkill = () => {
+  return useMutation((skillId: number) => DeletePeopleSkill(skillId));
 };

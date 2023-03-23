@@ -24,8 +24,9 @@ declare global {
     Profile: undefined;
     CommunitiesStack: NavigatorScreenParams<CommunityStackParamList>;
     Report: undefined;
-    CEC: undefined;
-    Skills: undefined;
+    MaintenanceDrawer: NavigatorScreenParams<MaintenanceDrawerParamList>;
+    CECRequestsDrawer: undefined;
+    SkillTreeDrawer: undefined;
   };
 
   export type CommunityDrawerScreenProps<
@@ -46,4 +47,13 @@ declare global {
   export type CommunityStackScreenProps<
     T extends keyof CommunityStackParamList
   > = NativeStackScreenProps<CommunityStackParamList, T>;
+
+  export type MaintenanceDrawerParamList = {
+    Skills: undefined;
+    Projects: undefined;
+  };
+
+  export type MaintenanceDrawerScreenProps<
+    T extends keyof MaintenanceDrawerParamList
+  > = DefaultDrawerScreenProps<MaintenanceDrawerParamList, T>;
 }
