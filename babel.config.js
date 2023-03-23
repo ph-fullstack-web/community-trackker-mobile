@@ -17,19 +17,19 @@ module.exports = {
         },
       },
     ],
-    ["module:react-native-dotenv", {
-      "envName": "APP_ENV",
-      "moduleName": "@env",
-      "path": ".env",
-      "blocklist": null,
-      "allowlist": [
-        "API_URL_LOCAL_IOS",
-        "API_URL_LOCAL_AND"
-      ],
-      "safe": false,
-      "allowUndefined": true,
-      "verbose": false
-    }],
+    [
+      'module:react-native-dotenv',
+      {
+        envName: 'APP_ENV',
+        moduleName: '@env',
+        path: '.env',
+        blocklist: null,
+        allowlist: ['API_URL_IOS', 'API_URL_AND'],
+        safe: false,
+        allowUndefined: true,
+        verbose: false,
+      },
+    ],
     'react-native-reanimated/plugin',
   ],
 };

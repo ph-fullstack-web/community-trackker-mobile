@@ -51,10 +51,13 @@ export const GetPersonByCsvEmail = async (
 export const GetPeopleBySkills = async (
   skills: string
 ): Promise<PersonBySkills[]> => {
-  const response = await communityTrackerAPI({
-    url: communityTrackerRoutes.people.GetPeopleBySkills(skills),
-    method: HTTPMethod.GET,
-  });
+  if (skills.length) {
+    const response = await communityTrackerAPI({
+      url: communityTrackerRoutes.people.GetPeopleBySkills(skills),
+      method: HTTPMethod.GET,
+    });
 
-  return response?.data?.data;
+    return response?.data?.data;
+  }
+  return Promise.resolve([]);
 };

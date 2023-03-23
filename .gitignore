@@ -54,3 +54,5 @@ android/keystores/debug.keystore
 
 # ENV
 .env
+.env.*
+!.env.template

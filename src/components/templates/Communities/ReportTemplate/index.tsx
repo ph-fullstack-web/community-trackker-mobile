@@ -1,12 +1,65 @@
+import {FlatList} from 'react-native';
 import {AppContainer, ScreenHeader} from 'components/atoms';
-import {NotAvailable} from 'components/molecules';
+import {
+  ErrorMessage,
+  MultiSearch,
+  NoResult,
+  Spinner,
+} from 'components/molecules';
+import {MemberSkillCard} from 'components/organisms';
 import {ScreenTitle} from 'constants/navigation';
 
-export const ReportTemplate = () => {
+import {ReportTemplateProp} from './ReportTemplate.types';
+
+export const ReportTemplate = ({
+  skills,
+  isLoading,
+  isError,
+  error,
+  setSelectedSkills,
+  isLoadingPeople,
+  isFetchingPeople,
+  people,
+  isPeopleError,
+  peopleError,
+}: ReportTemplateProp) => {
+  const handleSearch = (searchText: string) => {
+    setSelectedSkills(searchText);
+  };
+
   return (
-    <AppContainer>
-      <ScreenHeader title={ScreenTitle.Report} />
-      <NotAvailable />
+    <AppContainer horizontal>
+      <ScreenHeader title={ScreenTitle.PeopleBySkills} />
+      {isError || isPeopleError ? (
+        <ErrorMessage
+          status={error.status ?? peopleError.status}
+          message={error.message ?? peopleError.message}
+        />
+      ) : isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <MultiSearch
+            placeholder="Type to select a skill..."
+            onSearch={handleSearch}
+            dropdownValues={skills}
+            labelProp="peopleskills_desc"
+            idProp="peopleskills_id"
+          />
+          {isLoadingPeople || isFetchingPeople ? (
+            <Spinner />
+          ) : (
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              data={people}
+              renderItem={({item, index}) => (
+                <MemberSkillCard key={index} memberDetails={item} />
+              )}
+              ListEmptyComponent={<NoResult message="No Members Found" />}
+            />
+          )}
+        </>
+      )}
     </AppContainer>
   );
 };

@@ -24,4 +24,5 @@ export enum ScreenTitle {
   Report = 'Report',
   CEC = 'CEC',
   Skills = 'Skills',
+  PeopleBySkills = 'People By Skills',
 }
