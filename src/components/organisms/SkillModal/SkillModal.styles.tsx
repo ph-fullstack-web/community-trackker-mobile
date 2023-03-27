@@ -11,8 +11,7 @@ const styles = StyleSheet.create({
   modalView: {
     margin: 20,
     borderRadius: 10,
-    padding: 35,
-    alignItems: 'center',
+    padding: 25,
     shadowColor: COLORS.BLACK,
     shadowOffset: {
       width: 0,
@@ -21,18 +20,41 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+    width: 300,
+  },
+  modalTitle: {
+    fontSize: 20,
+    textAlign: 'left',
+    marginBottom: 15,
+  },
+  modalTitle_light: {
+    color: COLORS.MIDNIGHT_BLUE,
+  },
+  modalTitle_dark: {
+    color: COLORS.LIGHT_BLUE,
+  },
+  modelTextInput: {
+    height: 40,
+    padding: 10,
+    marginBottom: 15,
+    borderBottomWidth: 0.5,
+  },
+  switchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15,
   },
   modalText: {
-    marginBottom: 15,
-    textAlign: 'left',
+    marginLeft: 10,
   },
-  buttonContainer: {
-    paddingHorizontal: 9,
-    paddingVertical: 5,
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
   button: {
     borderRadius: 20,
     elevation: 2,
+    marginLeft: 10,
   },
   textStyle: {
     fontSize: 13,
@@ -55,6 +77,9 @@ const styles = StyleSheet.create({
   },
   button_dark: {
     backgroundColor: COLORS.MIDNIGHT_BLUE,
+  },
+  spinnerContainer: {
+    paddingTop: 50,
   },
 });
 

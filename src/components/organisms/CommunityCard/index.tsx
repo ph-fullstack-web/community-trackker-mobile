@@ -1,9 +1,10 @@
+import {useState} from 'react';
 import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {Button, Card, Text} from 'components/atoms';
 import {CommunityDetailsModal, MemberProgressChart} from 'components/molecules';
-import {GRADIENT} from 'constants/colors';
+import {COLORS, GRADIENT} from 'constants/colors';
 import {CommunityWithMembersPercentage} from 'models/business';
 import {useThemeProvider} from 'providers';
 
@@ -24,6 +25,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
     },
   } = props;
   const {mode} = useThemeProvider();
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <Card
@@ -35,7 +37,22 @@ export const CommunityCard = (props: CommunityCardProps) => {
       <View style={styles.card_details_container}>
         <View style={styles.card_title_container}>
           <Text type="title">{community_name}</Text>
-          <CommunityDetailsModal communityDescription={community_description} />
+          <Button
+            icon={{
+              name: 'information',
+              type: 'material-community',
+              size: 15,
+              color:
+                mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE,
+            }}
+            buttonStyle={styles.info_button}
+            onPress={() => setModalVisible(!modalVisible)}
+          />
+          <CommunityDetailsModal
+            communityDescription={community_description}
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+          />
         </View>
         <Text type="subtitle">Manager: {manager_full_name}</Text>
         <Button

@@ -18,17 +18,16 @@ export const ProfileScreen = () => {
       full_name={data?.full_name}
       csv_email={data?.csv_email}
       cognizantid_id={data?.cognizantid_id}
-      community_id={data?.community_id}
+      community={data?.community}
       skills={data?.skills}
-      isLoading={isLoading}
+      isLoading={
+        isLoading || isFetching || isCommunitiesLoading || isCommunitiesFetching
+      }
       isError={isError}
       error={error}
-      isFetching={isFetching}
       communities={communities}
-      isCommunitiesLoading={isCommunitiesLoading}
       isCommunitiesError={isCommunitiesError}
       communitiesError={communitiesError}
-      isCommunitiesFetching={isCommunitiesFetching}
     />
   );
 };

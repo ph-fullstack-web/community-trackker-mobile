@@ -12,25 +12,32 @@ export const ProfileTemplate = ({
   full_name = '',
   csv_email = '',
   cognizantid_id = 0,
-  community_id = 0,
+  community = {
+    community_id: 0,
+    community_name: '',
+    community_description: '',
+    community_manager: '',
+    is_active: false,
+    manager: {
+      id: 0,
+      cognizant_id: '',
+      name: '',
+      email: '',
+      active: false,
+    },
+  },
   skills = [],
   isLoading,
   isError,
   error,
-  isFetching,
-  isCommunitiesLoading,
   communities = [],
   isCommunitiesError,
   communitiesError,
-  isCommunitiesFetching,
 }: ProfileTemplateProp) => {
   const dashboardTitle = full_name && `Hi, ${full_name}`;
 
-  const showSpinner =
-    isLoading || isFetching || isCommunitiesLoading || isCommunitiesFetching;
-
   return (
-    <AppContainer horizontal={showSpinner}>
+    <AppContainer horizontal={isLoading}>
       <ScreenHeader title={dashboardTitle} />
 
       {isError || isCommunitiesError ? (
@@ -40,7 +47,7 @@ export const ProfileTemplate = ({
         />
       ) : (
         <>
-          {showSpinner ? (
+          {isLoading ? (
             <Spinner />
           ) : (
             <>
@@ -48,7 +55,7 @@ export const ProfileTemplate = ({
                 <MemberDetailForm
                   csv_email={csv_email}
                   cognizantid_id={cognizantid_id}
-                  community_id={community_id}
+                  community={community}
                   communities={communities}
                 />
               </AccordionContainer>

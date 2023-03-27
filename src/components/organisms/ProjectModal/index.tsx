@@ -3,23 +3,32 @@ import {Modal, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {Button, Icon, Switch, Text, TextInput} from 'components/atoms';
+import {Spinner} from 'components/molecules';
 import {COLORS, GRADIENT} from 'constants/colors';
-import {Peopleskills} from 'models/business';
-import {useThemeProvider} from 'providers';
+import {UpdateProjectRequest} from 'models/requests';
+import {useThemeProvider, useMutationProvider} from 'providers';
 
-import styles from './SkillModal.styles';
-import {SkillModalProps} from './SkillModal.types';
-import {Spinner} from '../Spinner';
-import {useMutationProvider} from 'providers/MutationProvider';
+import styles from './ProjectModal.styles';
+import {ProjectModalProps} from './ProjectModal.types';
 
-export const SkillModal = ({data, onEdit}: SkillModalProps) => {
+export const ProjectModal = ({data, onEdit}: ProjectModalProps) => {
   const {mode} = useThemeProvider();
   const {isLoading} = useMutationProvider();
   const [visible, setVisible] = useState<boolean>(false);
-  const [form, setForm] = useState<Peopleskills>(data);
+  const [form, setForm] = useState<UpdateProjectRequest>({
+    id: data.id,
+    project_name: data.project,
+    project_code: data.project_code,
+    is_active: data.is_active,
+  });
 
   useEffect(() => {
-    setForm(data);
+    setForm({
+      id: data.id,
+      project_name: data.project,
+      project_code: data.project_code,
+      is_active: data.is_active,
+    });
   }, [data]);
 
   return (
@@ -60,10 +69,19 @@ export const SkillModal = ({data, onEdit}: SkillModalProps) => {
               <>
                 <TextInput
                   style={styles.modelTextInput}
-                  value={form.peopleskills_desc}
+                  value={form.project_name}
                   onChangeText={value =>
                     setForm(prevState => {
-                      return {...prevState, peopleskills_desc: value};
+                      return {...prevState, project_name: value};
+                    })
+                  }
+                />
+                <TextInput
+                  style={styles.modelTextInput}
+                  value={form.project_code}
+                  onChangeText={value =>
+                    setForm(prevState => {
+                      return {...prevState, project_code: value};
                     })
                   }
                 />
@@ -85,9 +103,8 @@ export const SkillModal = ({data, onEdit}: SkillModalProps) => {
                       })
                     }
                   />
-                  <Text style={styles.modalText}>
-                    {form.is_active ? 'Active' : 'Inactive'}
-                  </Text>
+                  <Text style={styles.modalText}>Active</Text>
+                  <Text style={styles.modalText}>{}</Text>
                 </View>
                 <View style={styles.buttonsContainer}>
                   <Button

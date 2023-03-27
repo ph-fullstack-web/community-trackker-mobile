@@ -15,4 +15,6 @@ export enum Query {
   GetPeopleDetails = 'peopleDetails',
   GetPeopleDetailsDescription = 'peopleDetailsDescription',
   GetPeopleSkills = 'peopleSkills',
+  GetProject = 'project',
+  GetProjects = 'projects',
 }

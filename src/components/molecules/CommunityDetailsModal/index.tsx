@@ -1,75 +1,64 @@
-import {useState} from 'react';
 import {Modal, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {useThemeProvider} from 'providers';
 import {Button, Text} from 'components/atoms';
-import {COLORS, GRADIENT} from 'constants/colors';
+import {GRADIENT} from 'constants/colors';
 import styles from './CommunityDetailsModal.styles';
 
 interface CommunityDetailsModalProps {
   communityDescription: string;
+  modalVisible: boolean;
+  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const CommunityDetailsModal = (props: CommunityDetailsModalProps) => {
-  const [modalVisible, setModalVisible] = useState(false);
+export const CommunityDetailsModal = ({
+  communityDescription,
+  modalVisible,
+  setModalVisible,
+}: CommunityDetailsModalProps) => {
   const {mode} = useThemeProvider();
 
-  const iconColor = mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE;
-
   return (
-    <>
-      <Button
-        icon={{
-          name: 'information',
-          type: 'material-community',
-          size: 15,
-          color: iconColor,
+    <View style={styles.centeredView}>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
         }}
-        buttonStyle={styles.info_button}
-        onPress={() => setModalVisible(!modalVisible)}
-      />
-
-      <View style={styles.centeredView}>
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            setModalVisible(!modalVisible);
-          }}
-        >
-          <View style={styles.centeredView}>
-            <View
-              style={[
-                styles.modalView,
-                styles[`modalView_${mode}` as keyof typeof undefined],
+      >
+        <View style={styles.centeredView}>
+          <View
+            style={[
+              styles.modalView,
+              styles[`modalView_${mode}` as keyof typeof undefined],
+            ]}
+          >
+            <Text style={styles.modalText}>{communityDescription}</Text>
+            <Button
+              title="Close Modal"
+              titleStyle={[
+                styles.textStyle,
+                styles[`textStyle_${mode}` as keyof typeof styles],
               ]}
-            >
-              <Text style={styles.modalText}>{props.communityDescription}</Text>
-              <Button
-                title="Close Modal"
-                titleStyle={[
-                  styles.textStyle,
-                  styles[`textStyle_${mode}` as keyof typeof styles],
-                ]}
-                buttonStyle={[
-                  styles.button,
-                  styles[`button_${mode}` as keyof typeof undefined],
-                ]}
-                containerStyle={styles.buttonContainer}
-                ViewComponent={LinearGradient}
-                linearGradientProps={{
-                  colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
-                  start: {x: 0, y: 0.5},
-                  end: {x: 1, y: 0.5},
-                }}
-                onPress={() => setModalVisible(!modalVisible)}
-              />
-            </View>
+              buttonStyle={[
+                styles.button,
+                styles[`button_${mode}` as keyof typeof undefined],
+              ]}
+              containerStyle={styles.buttonContainer}
+              ViewComponent={LinearGradient}
+              linearGradientProps={{
+                colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
+                start: {x: 0, y: 0.5},
+                end: {x: 1, y: 0.5},
+              }}
+              onPress={() => setModalVisible(!modalVisible)}
+            />
           </View>
-        </Modal>
-      </View>
-    </>
+        </View>
+      </Modal>
+    </View>
   );
 };

@@ -53,6 +53,9 @@ const styles = StyleSheet.create({
   button_dark: {
     backgroundColor: COLORS.MIDNIGHT_BLUE,
   },
+  info_button: {
+    backgroundColor: COLORS.TRANSPARENT,
+  },
 });
 
 export default styles;

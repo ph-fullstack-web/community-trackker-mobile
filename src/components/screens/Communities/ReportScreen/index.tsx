@@ -32,11 +32,11 @@ export const ReportScreen = ({}: ReportScreenProps) => {
       isError={isError}
       error={error}
       setSelectedSkills={setSelectedSkills}
-      isLoadingPeople={isLoadingPeople}
-      isFetchingPeople={isFetchingPeople}
+      isLoadingPeople={isLoadingPeople || isFetchingPeople}
       people={people}
       isPeopleError={isPeopleError}
       peopleError={peopleError}
+      refetchPeople={refetchPeople}
     />
   );
 };

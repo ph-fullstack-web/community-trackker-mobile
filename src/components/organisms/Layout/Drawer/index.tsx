@@ -1,4 +1,4 @@
-import {ImageBackground, View} from 'react-native';
+import {ImageBackground, View, ScrollView} from 'react-native';
 import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
@@ -69,7 +69,10 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
             </>
           )}
         </ImageBackground>
-        <View style={styles.itemsContainer}>
+        <ScrollView
+          style={styles.itemsContainer}
+          showsVerticalScrollIndicator={false}
+        >
           {drawerItems.map(item =>
             item.items ? (
               <DrawerAccordion<T>
@@ -88,7 +91,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
               />
             )
           )}
-        </View>
+        </ScrollView>
         <Divider width={0.5} />
         <View style={styles.footerContainer}>
           <View style={styles.themeContainer}>

@@ -27,6 +27,7 @@ export const LabeledInput = (props: LabeledInputProps) => {
         </View>
         <View style={styles.textinput_width}>
           <TextInput
+            {...props}
             placeholder={props.placeholder}
             onChangeText={props.onValueChange}
             value={props.value}

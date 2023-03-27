@@ -2,9 +2,10 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '100%',
+    marginBottom: 10,
   },
 });
 

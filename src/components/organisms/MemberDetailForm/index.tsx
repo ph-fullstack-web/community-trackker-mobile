@@ -1,9 +1,9 @@
-import {SetStateAction, useState} from 'react';
+import {SetStateAction, useEffect, useState} from 'react';
 import {View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {Button} from 'components/atoms';
-import {LabeledInput} from 'components/molecules';
+import {CommunityDetailsModal, LabeledInput} from 'components/molecules';
 import {GRADIENT} from 'constants/colors';
 import {useThemeProvider} from 'providers';
 
@@ -13,32 +13,32 @@ import {MemberDetailFormProps} from './MemberDetailForm.types';
 export const MemberDetailForm = ({
   csv_email,
   cognizantid_id,
-  community_id,
-  communities,
+  community,
 }: MemberDetailFormProps) => {
   const {mode} = useThemeProvider();
 
   const [form, setForm] = useState({
     cognizantid_id,
-    community_id,
     csv_email,
-    manager_name: '',
-    community_name: '',
+    community_name: community.community_name,
+    manager_name: community.manager.name,
   });
+  const [modalVisible, setModalVisible] = useState(false);
 
   // TODO: remove textfields and implement dropdown for community and manager
 
+  useEffect(() => {
+    setForm({
+      cognizantid_id,
+      csv_email,
+      community_name: community.community_name,
+      manager_name: community.manager.name,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [community]);
+
   const handleUpdateForm = (key: string, value: SetStateAction<string>) => {
-    let fields = {[key]: value};
-    let community_name: string = form.community_name;
-    if (key === 'community_id') {
-      const community = communities.find(
-        item => item.community_id === community_id
-      );
-      community_name = community?.community_name ?? '';
-      fields = {...fields, community_name};
-    }
-    setForm({...form, ...fields});
+    setForm({...form, [key]: value});
   };
 
   return (
@@ -48,6 +48,7 @@ export const MemberDetailForm = ({
         placeholder={form.cognizantid_id?.toString() || '00000000'}
         value={form.cognizantid_id?.toString()}
         onValueChange={value => handleUpdateForm('cognizantid_id', value)}
+        editable={false}
       />
 
       <LabeledInput
@@ -55,6 +56,7 @@ export const MemberDetailForm = ({
         placeholder={form.csv_email || 'yourname@cognizant.com'}
         value={form.csv_email}
         onValueChange={value => handleUpdateForm('csv_email', value)}
+        editable={false}
       />
 
       <LabeledInput
@@ -62,6 +64,7 @@ export const MemberDetailForm = ({
         placeholder="Community name"
         value={form.community_name}
         onValueChange={value => handleUpdateForm('community_id', value)}
+        editable={false}
       />
 
       <View style={styles.community_button}>
@@ -79,7 +82,7 @@ export const MemberDetailForm = ({
             start: {x: 0, y: 0.5},
             end: {x: 1, y: 0.5},
           }}
-          onPress={() => console.log('HELLO')}
+          onPress={() => setModalVisible(!modalVisible)}
         />
       </View>
 
@@ -88,6 +91,12 @@ export const MemberDetailForm = ({
         placeholder="Juan Dela Cruz"
         value={form.manager_name}
         onValueChange={value => handleUpdateForm('manager_name', value)}
+        editable={false}
+      />
+      <CommunityDetailsModal
+        communityDescription={community.community_description}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
       />
     </View>
   );

@@ -6,14 +6,14 @@ import {
   UpdatePeopleSkill,
 } from 'api/services';
 import {Query} from 'constants/query';
-import {Peopleskills} from 'models/business';
+import {UpdateSkillRequest} from 'models/requests';
 
 export const useGetPeopleSkills = () => {
   return useQuery(Query.GetPeopleSkills, () => GetPeopleSkills());
 };
 
 export const useUpdatePeopleSkill = () => {
-  return useMutation((data: Peopleskills) => UpdatePeopleSkill(data));
+  return useMutation((data: UpdateSkillRequest) => UpdatePeopleSkill(data));
 };
 
 export const useDeletePeopleSkill = () => {

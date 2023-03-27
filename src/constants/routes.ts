@@ -34,6 +34,13 @@ interface CommunityTrackerRoutes {
     UpdatePeopleSkill: (skillId: number) => string;
     DeletePeopleSkill: (skillId: number) => string;
   };
+  projects: {
+    GetProjects: () => string;
+    GetProject: (projectId: number) => string;
+    AddProject: () => string;
+    UpdateProject: (projectId: number) => string;
+    DeleteProject: (projectId: number) => string;
+  };
 }
 
 export const communityTrackerRoutes: CommunityTrackerRoutes = {
@@ -73,5 +80,12 @@ export const communityTrackerRoutes: CommunityTrackerRoutes = {
     GetPeopleSkills: () => 'peopleskills',
     UpdatePeopleSkill: (skillId: number) => `peopleskills/${skillId}`,
     DeletePeopleSkill: (skillId: number) => `peopleskills/${skillId}`,
+  },
+  projects: {
+    GetProjects: () => 'projects',
+    GetProject: (projectId: number) => `projects/${projectId}`,
+    AddProject: () => 'projects',
+    UpdateProject: (projectId: number) => `projects/${projectId}`,
+    DeleteProject: (projectId: number) => `projects/${projectId}`,
   },
 };
