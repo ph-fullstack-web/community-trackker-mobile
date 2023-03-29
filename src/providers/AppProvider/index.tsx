@@ -6,7 +6,13 @@ import {ThemeProvider} from 'providers/ThemeProvider';
 type AppProvidersProps = ComponentWithChildren;
 
 export const AppProvider = ({children}: AppProvidersProps) => {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+      },
+    },
+  });
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>

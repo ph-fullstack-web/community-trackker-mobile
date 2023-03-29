@@ -63,7 +63,9 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
             <>
               <Avatar size={70} />
               <View style={styles.headerTextContainer}>
-                <Text style={styles.greetingText}>Hi, {data?.full_name}</Text>
+                <Text style={styles.greetingText}>
+                  {data?.full_name && `Hi, ${data?.full_name}`}
+                </Text>
                 <Text style={styles.emailText}>{data?.csv_email}</Text>
               </View>
             </>

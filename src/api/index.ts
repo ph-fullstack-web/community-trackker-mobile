@@ -1,21 +1,27 @@
-import axios, {AxiosError, AxiosResponse, HttpStatusCode} from 'axios';
+import axios, {AxiosError, AxiosResponse} from 'axios';
 import {API_URL_AND, API_URL_IOS} from '@env';
-import {AxiosErrorCode} from 'constants/errors';
 import {Platform} from 'react-native';
 
+import {errorStatusMap} from 'constants/errors';
+
 export const communityTrackerAPI = axios.create({
-  baseURL: Platform.select({ios: API_URL_IOS, android: API_URL_AND}),
+  baseURL: Platform.select({
+    ios: API_URL_IOS,
+    android: API_URL_AND,
+  }),
   timeout: 60000,
+  timeoutErrorMessage: 'Connection has timed out.\nPlease try again later.',
 });
 
 communityTrackerAPI.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error: AxiosError<unknown, any>) => {
     const errorJSON: any = error.toJSON();
-    if (errorJSON?.code === AxiosErrorCode.ERR_NETWORK) {
+
+    if (errorStatusMap.has(errorJSON?.code)) {
       return Promise.reject({
         ...errorJSON,
-        status: HttpStatusCode.InternalServerError,
+        status: errorStatusMap.get(errorJSON?.code),
       });
     }
 
