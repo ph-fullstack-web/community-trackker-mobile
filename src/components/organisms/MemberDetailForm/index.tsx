@@ -1,10 +1,8 @@
 import {SetStateAction, useEffect, useState} from 'react';
 import {View} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import {Button} from 'components/atoms';
 import {CommunityDetailsModal, LabeledInput} from 'components/molecules';
-import {GRADIENT} from 'constants/colors';
 import {useThemeProvider} from 'providers';
 
 import styles from './MemberDetailForm.styles';
@@ -76,12 +74,7 @@ export const MemberDetailForm = ({
           ]}
           containerStyle={styles.community_button_container}
           buttonStyle={styles.community_button_style}
-          ViewComponent={LinearGradient}
-          linearGradientProps={{
-            colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
-            start: {x: 0, y: 0.5},
-            end: {x: 1, y: 0.5},
-          }}
+          gradient
           onPress={() => setModalVisible(!modalVisible)}
         />
       </View>

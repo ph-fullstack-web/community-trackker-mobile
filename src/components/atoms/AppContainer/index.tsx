@@ -21,7 +21,10 @@ export const AppContainer = ({
         style,
         styles[`container_${mode}` as keyof typeof styles],
       ]}
-      contentContainerStyle={styles.scrollContentContainer}
+      contentContainerStyle={[
+        styles.scrollContentContainer,
+        otherProps.contentContainerStyle,
+      ]}
       keyboardShouldPersistTaps="handled"
     >
       <StatusBar

@@ -1,10 +1,7 @@
 import {View} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import {Avatar, Button, Card, defaultAvatar, Text} from 'components/atoms';
-import {GRADIENT} from 'constants/colors';
 import {PersonBySkills} from 'models/business';
-import {useThemeProvider} from 'providers';
 
 import styles from './MemberSkillCard.styles';
 
@@ -14,7 +11,6 @@ type MemberSkillCardProps = {
 
 export const MemberSkillCard = (prop: MemberSkillCardProps) => {
   const {full_name, skills} = prop.memberDetails;
-  const {mode} = useThemeProvider();
 
   return (
     <Card style={styles.cardContainer}>
@@ -33,12 +29,7 @@ export const MemberSkillCard = (prop: MemberSkillCardProps) => {
               titleStyle={styles.buttonTitleStyle}
               size="sm"
               buttonStyle={styles.buttonStyle}
-              ViewComponent={LinearGradient}
-              linearGradientProps={{
-                colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
-                start: {x: 0, y: 0.5},
-                end: {x: 1, y: 0.5},
-              }}
+              gradient
             />
           ))}
         </View>

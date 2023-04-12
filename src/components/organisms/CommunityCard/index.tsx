@@ -1,10 +1,9 @@
 import {useState} from 'react';
 import {View} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import {Button, Card, Text} from 'components/atoms';
 import {CommunityDetailsModal, MemberProgressChart} from 'components/molecules';
-import {COLORS, GRADIENT} from 'constants/colors';
+import {COLORS} from 'constants/colors';
 import {CommunityWithMembersPercentage} from 'models/business';
 import {useThemeProvider} from 'providers';
 
@@ -66,12 +65,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
             styles[`button_${mode}` as keyof typeof Button],
           ]}
           containerStyle={styles.buttonContainer}
-          ViewComponent={LinearGradient}
-          linearGradientProps={{
-            colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
-            start: {x: 0, y: 0.5},
-            end: {x: 1, y: 0.5},
-          }}
+          gradient
           onPress={props.onViewMembers}
         />
       </View>

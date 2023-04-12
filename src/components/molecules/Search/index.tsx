@@ -1,10 +1,9 @@
 import {useState} from 'react';
 import {View, StyleProp, ViewStyle} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import {useThemeProvider} from 'providers';
 import {Button, TextInput} from 'components/atoms';
-import {COLORS, GRADIENT} from 'constants/colors';
+import {COLORS} from 'constants/colors';
 import styles from './Search.styles';
 
 type SearchProps = {
@@ -30,12 +29,7 @@ export const Search = (props: SearchProps) => {
       <Button
         containerStyle={styles.searchButtonContainer}
         buttonStyle={styles.searchButton}
-        ViewComponent={LinearGradient}
-        linearGradientProps={{
-          colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
-          start: {x: 0, y: 0.5},
-          end: {x: 1, y: 0.5},
-        }}
+        gradient
         icon={{
           name: 'magnifier',
           type: 'simple-line-icon',

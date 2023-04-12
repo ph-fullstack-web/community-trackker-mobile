@@ -1,10 +1,9 @@
 import {useEffect, useState} from 'react';
 import {Modal, View} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import {Button, Icon, Switch, Text, TextInput} from 'components/atoms';
 import {Spinner} from 'components/molecules';
-import {COLORS, GRADIENT} from 'constants/colors';
+import {COLORS} from 'constants/colors';
 import {UpdateProjectRequest} from 'models/requests';
 import {useThemeProvider, useMutationProvider} from 'providers';
 
@@ -117,13 +116,7 @@ export const ProjectModal = ({data, onEdit}: ProjectModalProps) => {
                       styles.button,
                       styles[`button_${mode}` as keyof typeof undefined],
                     ]}
-                    ViewComponent={LinearGradient}
-                    linearGradientProps={{
-                      colors:
-                        GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
-                      start: {x: 0, y: 0.5},
-                      end: {x: 1, y: 0.5},
-                    }}
+                    gradient
                     onPress={() => setVisible(!visible)}
                   />
                   <Button
@@ -136,13 +129,7 @@ export const ProjectModal = ({data, onEdit}: ProjectModalProps) => {
                       styles.button,
                       styles[`button_${mode}` as keyof typeof undefined],
                     ]}
-                    ViewComponent={LinearGradient}
-                    linearGradientProps={{
-                      colors:
-                        GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
-                      start: {x: 0, y: 0.5},
-                      end: {x: 1, y: 0.5},
-                    }}
+                    gradient
                     onPress={() => onEdit(form)}
                   />
                 </View>

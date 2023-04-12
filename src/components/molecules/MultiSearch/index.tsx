@@ -1,9 +1,8 @@
 import {useEffect, useState} from 'react';
 import {View, ScrollView} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import {Button, Chip, Typeahead} from 'components/atoms';
-import {COLORS, GRADIENT} from 'constants/colors';
+import {COLORS} from 'constants/colors';
 import {useThemeProvider} from 'providers';
 
 import styles from './MultiSearch.styles';
@@ -61,12 +60,7 @@ export const MultiSearch = <T extends Record<string, any>>({
         <View style={styles.buttonsContainer}>
           <Button
             buttonStyle={styles.searchButton}
-            ViewComponent={LinearGradient}
-            linearGradientProps={{
-              colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
-              start: {x: 0, y: 0.5},
-              end: {x: 1, y: 0.5},
-            }}
+            gradient
             icon={{
               name: 'clear',
               type: 'materia;',
@@ -77,12 +71,7 @@ export const MultiSearch = <T extends Record<string, any>>({
           />
           <Button
             buttonStyle={styles.searchButton}
-            ViewComponent={LinearGradient}
-            linearGradientProps={{
-              colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
-              start: {x: 0, y: 0.5},
-              end: {x: 1, y: 0.5},
-            }}
+            gradient
             icon={{
               name: 'magnifier',
               type: 'simple-line-icon',

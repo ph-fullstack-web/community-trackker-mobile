@@ -22,6 +22,7 @@ import {COLORS} from 'constants/colors';
 import {useThemeProvider} from 'providers';
 
 import styles from './Drawer.styles';
+import {RootNativeStackScreens} from 'constants/navigation';
 
 export type DrawerItems<T> = (Partial<DrawerAccordionItem<T>> & {
   items?: DrawerAccordionItem<T>[];
@@ -122,7 +123,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
               color: iconColor,
             }}
             label="Log Out"
-            onPress={() => console.log('Logging out...')}
+            onPress={() => navigation.navigate(RootNativeStackScreens.Login)}
           />
         </View>
       </>

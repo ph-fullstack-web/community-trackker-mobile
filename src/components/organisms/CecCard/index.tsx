@@ -1,15 +1,15 @@
 import {View} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
-import {useThemeProvider} from 'providers';
 import {Button, ProgressChart, Text} from 'components/atoms';
+import {COLORS} from 'constants/colors';
+import {useThemeProvider} from 'providers';
+
 import {
   CecCardChartProps,
   CecCardProps,
   CecCardRequestDetails,
 } from './CecCard.types';
 import styles from './CecCard.styles';
-import {COLORS, GRADIENT} from 'constants/colors';
 
 export const CecCard = (props: CecCardProps) => {
   const {percentage, fillColor, layout, cecRequests} = props;
@@ -57,12 +57,8 @@ export const CecCard = (props: CecCardProps) => {
             styles[`button_${mode}` as keyof typeof Button],
           ]}
           containerStyle={styles.buttonContainer}
-          ViewComponent={LinearGradient}
-          linearGradientProps={{
-            colors: GRADIENT[`${mode}_theme` as keyof typeof GRADIENT],
-            start: {x: 0, y: 0.5},
-            end: {x: 1, y: 0.5},
-          }}
+          gradient
+          disabled
           onPress={() => console.log('LGTM')}
         />
       </View>
