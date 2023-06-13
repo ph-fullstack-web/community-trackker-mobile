@@ -46,7 +46,11 @@ export const ProjectsTemplate = ({
       ) : (
         <>
           {projects.length ? (
-            <Search onSearch={handleSearch} viewStyle={styles.search} />
+            <Search
+              id="search_project"
+              onSearch={handleSearch}
+              viewStyle={styles.search}
+            />
           ) : (
             <></>
           )}

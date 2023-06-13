@@ -8,6 +8,7 @@ import {GRADIENT} from 'constants/colors';
 import {useThemeProvider} from 'providers';
 
 export type ButtonProps = DefaultButtonProps & {
+  id: string;
   gradient?: boolean;
 };
 

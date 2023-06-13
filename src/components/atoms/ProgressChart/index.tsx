@@ -5,6 +5,7 @@ import styles from './ProgressChart.styles';
 import {ProgressChartProps} from './ProgressChart.types';
 
 export const ProgressChart = ({
+  id,
   data,
   children,
   strokeColor,
@@ -19,7 +20,7 @@ export const ProgressChart = ({
     layout === 'vertical' ? styles.verticalLabel : styles.horizontalLabel;
 
   return (
-    <>
+    <View id={id}>
       <RNProgressChart
         data={data}
         width={width}
@@ -36,7 +37,7 @@ export const ProgressChart = ({
         withCustomBarColorFromData
       />
       {children && <View style={{...labelStyles, height}}>{children}</View>}
-    </>
+    </View>
   );
 };
 

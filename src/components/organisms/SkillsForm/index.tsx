@@ -27,7 +27,7 @@ export const SkillsForm = ({skills}: SkillsFormProps) => {
   // };
 
   return (
-    <View style={styles.container}>
+    <View id="skillForm" style={styles.container}>
       {isLoading || isFetching ? (
         <Spinner />
       ) : (
@@ -44,6 +44,7 @@ export const SkillsForm = ({skills}: SkillsFormProps) => {
           <View style={styles.chipsContainer}>
             {skillsCopy?.map((skill, i) => (
               <Chip
+                id={`skill${i}`}
                 key={i}
                 //onPress={() => removeSkill(i)}
                 title={skill}

@@ -8,7 +8,10 @@ import styles from './Avatar.styles';
 
 export const defaultAvatar = 'https://via.placeholder.com/30.png';
 
-type AvatarProps = DefaultAvatarProps & {avatarAccesory?: AccessoryProps};
+type AvatarProps = DefaultAvatarProps & {
+  id: string;
+  avatarAccessory?: AccessoryProps;
+};
 
 export const Avatar = (props: AvatarProps) => {
   return (
@@ -16,8 +19,8 @@ export const Avatar = (props: AvatarProps) => {
       {...props}
       avatarStyle={{...styles.avatar, ...props.avatarStyle}}
     >
-      {props.avatarAccesory && (
-        <DefaultAvatar.Accessory {...props.avatarAccesory} />
+      {props.avatarAccessory && (
+        <DefaultAvatar.Accessory {...props.avatarAccessory} />
       )}
     </DefaultAvatar>
   );

@@ -16,6 +16,7 @@ export const AppMenu = (props: AppMenuProps) => {
           {parentItem.map((childItem: AppCardProps, childIndex: number) => {
             return (
               <AppCard
+                id={`appCard${childIndex}`}
                 key={childIndex}
                 title={childItem.title}
                 icon={childItem.icon}

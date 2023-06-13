@@ -14,7 +14,7 @@ export const NotAvailable = (props: NotAvailableProps) => {
   const {message, icon} = props;
   const {mode} = useThemeProvider();
   return (
-    <View style={styles.container}>
+    <View id="notAvailableMsg" style={styles.container}>
       <Icon
         name={icon.name}
         type={icon.type}

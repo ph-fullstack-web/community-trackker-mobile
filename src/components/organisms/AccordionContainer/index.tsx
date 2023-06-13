@@ -7,7 +7,9 @@ import styles from './AccordionContainer.styles';
 
 type AccordionContainerProps = ViewProps &
   AccordionProps &
-  ComponentWithChildren;
+  ComponentWithChildren & {
+    id: string;
+  };
 
 export const AccordionContainer = ({
   children,
@@ -24,6 +26,7 @@ export const AccordionContainer = ({
       {...props}
     >
       <Accordion
+        id={props.id}
         headerLabel={props.headerLabel}
         headerStyle={[
           styles.form_header,

@@ -19,7 +19,7 @@ export const Spinner = (props: SpinnerProps) => {
   const {mode} = useThemeProvider();
 
   return (
-    <View style={[styles.spinnerContainer, props.viewStyle]}>
+    <View id="spinner" style={[styles.spinnerContainer, props.viewStyle]}>
       <ActivityIndicator
         size={props.size ?? 75}
         color={mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_BLUE}

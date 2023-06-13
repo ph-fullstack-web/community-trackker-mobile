@@ -58,9 +58,10 @@ export const DrawerAccordion = <T,>({
       isExpanded={expanded}
       onPress={() => setExpanded(prevState => !prevState)}
     >
-      {items.map(item => (
+      {items.map((item, index) => (
         <View key={item.label} style={styles.item}>
           <DrawerItem
+            id={`drawerItem${index}`}
             icon={{
               name: item.icon.name,
               type: item.icon.type,

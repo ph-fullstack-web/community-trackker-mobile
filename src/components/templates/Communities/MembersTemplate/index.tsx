@@ -61,7 +61,11 @@ export const MembersTemplate = ({
       ) : (
         <>
           {membersList.length ? (
-            <Search onSearch={handleSearch} viewStyle={styles.search} />
+            <Search
+              id="search_members"
+              onSearch={handleSearch}
+              viewStyle={styles.search}
+            />
           ) : (
             <></>
           )}
@@ -69,6 +73,7 @@ export const MembersTemplate = ({
             <Spinner />
           ) : (
             <InfiniteScroll<PeopleUnderCommunitySearch>
+              id="peopleList"
               data={displayedMembers}
               keyExtractor={item => item.people_id.toString()}
               renderItem={renderItem}

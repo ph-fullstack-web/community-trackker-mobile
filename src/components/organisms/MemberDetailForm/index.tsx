@@ -42,6 +42,7 @@ export const MemberDetailForm = ({
   return (
     <View style={styles.formContainer}>
       <LabeledInput
+        id="label_cognizantId"
         label="Cognizant ID"
         placeholder={form.cognizantid_id?.toString() || '00000000'}
         value={form.cognizantid_id?.toString()}
@@ -50,6 +51,7 @@ export const MemberDetailForm = ({
       />
 
       <LabeledInput
+        id="label_email"
         label="Email"
         placeholder={form.csv_email || 'yourname@cognizant.com'}
         value={form.csv_email}
@@ -58,6 +60,7 @@ export const MemberDetailForm = ({
       />
 
       <LabeledInput
+        id="label_community"
         label="Community"
         placeholder="Community name"
         value={form.community_name}
@@ -67,6 +70,7 @@ export const MemberDetailForm = ({
 
       <View style={styles.community_button}>
         <Button
+          id="btn_viewCommunityInfo"
           title="View Community Info"
           titleStyle={[
             styles.button_text,
@@ -80,6 +84,7 @@ export const MemberDetailForm = ({
       </View>
 
       <LabeledInput
+        id="label_manager"
         label="Manager"
         placeholder="Juan Dela Cruz"
         value={form.manager_name}
@@ -87,6 +92,7 @@ export const MemberDetailForm = ({
         editable={false}
       />
       <CommunityDetailsModal
+        id="communityDetailsModal"
         communityDescription={community.community_description}
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}

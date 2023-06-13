@@ -3,6 +3,7 @@ import {useThemeProvider} from 'providers';
 import styles from './Card.styles';
 
 type CardProps = ComponentWithChildren & {
+  id: string;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -10,6 +11,7 @@ export const Card = (props: CardProps) => {
   const {mode} = useThemeProvider();
   return (
     <View
+      id={props.id}
       style={[
         styles.container,
         props.style,

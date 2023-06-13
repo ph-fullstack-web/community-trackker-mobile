@@ -7,6 +7,7 @@ import styles from './Chip.styles';
 import {COLORS, GRADIENT} from 'constants/colors';
 
 type ChipProps = {
+  id: string;
   onPress?: () => void;
   title: string;
   type?: 'solid' | 'outline';
@@ -14,6 +15,7 @@ type ChipProps = {
 };
 
 export const Chip = ({
+  id,
   onPress,
   title,
   type = 'outline',
@@ -25,6 +27,7 @@ export const Chip = ({
     <View style={styles.container}>
       {gradient ? (
         <DefaultChip
+          id={id}
           title={title}
           icon={
             onPress && {
@@ -52,6 +55,7 @@ export const Chip = ({
         />
       ) : (
         <DefaultChip
+          id={id}
           title={title}
           icon={
             onPress && {

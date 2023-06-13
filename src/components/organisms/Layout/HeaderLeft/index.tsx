@@ -66,6 +66,7 @@ export const HeaderLeft = ({navigation, route}: HeaderLeftProps) => {
   if (showBackButton) {
     return (
       <Button
+        id="headerBackBtn"
         onPress={handleGoBack}
         icon={{
           name: 'west',
@@ -79,6 +80,7 @@ export const HeaderLeft = ({navigation, route}: HeaderLeftProps) => {
 
   return (
     <Button
+      id="headerMenuBtn"
       onPress={handleToggleDrawer}
       icon={{
         name: 'menu',

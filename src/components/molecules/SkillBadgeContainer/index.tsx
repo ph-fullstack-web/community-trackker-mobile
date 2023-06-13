@@ -15,9 +15,16 @@ export const SkillBadgeContainer = ({
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} id="skillBadgeContainer">
       {skills?.map((item: SkillSet, index: number) => {
-        return <Chip key={index} title={item.description} gradient={true} />;
+        return (
+          <Chip
+            id={`skillChip${index}`}
+            key={index}
+            title={item.description}
+            gradient={true}
+          />
+        );
       })}
     </View>
   );

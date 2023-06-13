@@ -9,6 +9,7 @@ import styles from './MultiSearch.styles';
 import {MultiSearchProps} from './MultiSearch.types';
 
 export const MultiSearch = <T extends Record<string, any>>({
+  id,
   onSearch,
   viewStyle,
   dropdownValues = [],
@@ -39,10 +40,11 @@ export const MultiSearch = <T extends Record<string, any>>({
   };
 
   return (
-    <View style={[styles.container, viewStyle]}>
+    <View style={[styles.container, viewStyle]} id={id}>
       <View style={styles.searchContainer}>
         <View style={styles.searchInputContainer}>
           <Typeahead
+            id={`typeAhead_${id}`}
             minimumChar={1}
             data={dropdownValues}
             label={labelProp}
@@ -59,6 +61,7 @@ export const MultiSearch = <T extends Record<string, any>>({
         </View>
         <View style={styles.buttonsContainer}>
           <Button
+            id={`btn1_${id}`}
             buttonStyle={styles.searchButton}
             gradient
             icon={{
@@ -70,6 +73,7 @@ export const MultiSearch = <T extends Record<string, any>>({
             onPress={() => setSelectedValues([])}
           />
           <Button
+            id={`btn2_${id}`}
             buttonStyle={styles.searchButton}
             gradient
             icon={{
@@ -88,6 +92,7 @@ export const MultiSearch = <T extends Record<string, any>>({
         <View style={styles.chipsContainer}>
           {selectedValues?.map((value, i) => (
             <Chip
+              id={`chip_${id}`}
               key={i}
               onPress={() => deselect(i)}
               title={value[labelProp]}

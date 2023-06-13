@@ -10,7 +10,7 @@ type HeaderProps = DrawerHeaderProps;
 
 export const Header = (props: HeaderProps) => {
   return (
-    <View style={styles.container}>
+    <View id="header" style={styles.container}>
       <HeaderLeft {...props} />
       <View style={styles.logoContainer}>
         <Logo height="130%" />

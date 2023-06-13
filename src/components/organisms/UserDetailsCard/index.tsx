@@ -12,8 +12,8 @@ export const UserDetailsCard = (props: UserDetailsCardProps) => {
   const {full_name, csv_email} = props;
 
   return (
-    <View style={styles.container}>
-      <Avatar size={120} />
+    <View id="userDetailsCard" style={styles.container}>
+      <Avatar id="userAvatar" size={120} />
       <View style={styles.userDetails}>
         <Text type="title" style={styles.fullname}>
           {full_name}

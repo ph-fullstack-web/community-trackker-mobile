@@ -8,12 +8,14 @@ import {COLORS} from 'constants/colors';
 import styles from './MemberProgressChart.styles';
 
 type ProgressChartProps = {
+  id: string;
   percentage: number;
   color?: string;
   layout?: ProgressChartLayout;
 };
 
 export const MemberProgressChart = ({
+  id,
   percentage,
   color = COLORS.DARK_BLUE,
   layout = 'horizontal',
@@ -53,6 +55,7 @@ export const MemberProgressChart = ({
       ]}
     >
       <ProgressChart
+        id={id}
         layout={layout}
         data={data}
         strokeColor={strokeColor}

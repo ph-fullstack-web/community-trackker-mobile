@@ -13,6 +13,7 @@ export const HeaderRight = () => {
 
   return (
     <Button
+      id="headerLogoutBtn"
       buttonStyle={styles.button}
       onPress={() => navigate(RootNativeStackScreens.Login)}
       icon={{

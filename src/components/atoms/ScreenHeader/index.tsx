@@ -10,7 +10,7 @@ type ScreenHeaderProps = {
 
 export const ScreenHeader = (props: ScreenHeaderProps) => {
   return (
-    <View style={styles.container}>
+    <View id="screenHeader" style={styles.container}>
       <Text type="title" style={styles.title}>
         {props.title}
       </Text>

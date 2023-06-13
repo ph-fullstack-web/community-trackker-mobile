@@ -7,6 +7,7 @@ import {Spinner} from 'components/molecules';
 import styles from './InfiniteScroll.styles';
 
 type InfiniteScrollProps<T> = FlatListProps<T> & {
+  id: string;
   currentPage: number;
   lastPage: number;
   limit?: number;
@@ -14,6 +15,7 @@ type InfiniteScrollProps<T> = FlatListProps<T> & {
 };
 
 export const InfiniteScroll = <T,>({
+  id,
   data,
   keyExtractor,
   currentPage,
@@ -39,6 +41,7 @@ export const InfiniteScroll = <T,>({
 
   return (
     <FlatList<T>
+      id={id}
       showsVerticalScrollIndicator={false}
       data={data}
       keyExtractor={keyExtractor}

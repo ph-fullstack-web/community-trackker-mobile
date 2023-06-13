@@ -67,6 +67,7 @@ export const ProjectModal = ({data, onEdit}: ProjectModalProps) => {
             ) : (
               <>
                 <TextInput
+                  id={'input_projectName'}
                   style={styles.modelTextInput}
                   value={form.project_name}
                   onChangeText={value =>
@@ -76,6 +77,7 @@ export const ProjectModal = ({data, onEdit}: ProjectModalProps) => {
                   }
                 />
                 <TextInput
+                  id={'input_projectCode'}
                   style={styles.modelTextInput}
                   value={form.project_code}
                   onChangeText={value =>
@@ -86,6 +88,7 @@ export const ProjectModal = ({data, onEdit}: ProjectModalProps) => {
                 />
                 <View style={styles.switchContainer}>
                   <Switch
+                    id={'switch_memberActiveState'}
                     trackColor={{
                       false: COLORS.DARK_GRAY,
                       true: COLORS.LIGHT_GRAY,
@@ -107,6 +110,7 @@ export const ProjectModal = ({data, onEdit}: ProjectModalProps) => {
                 </View>
                 <View style={styles.buttonsContainer}>
                   <Button
+                    id="btn_close"
                     title="Close"
                     titleStyle={[
                       styles.textStyle,
@@ -120,6 +124,7 @@ export const ProjectModal = ({data, onEdit}: ProjectModalProps) => {
                     onPress={() => setVisible(!visible)}
                   />
                   <Button
+                    id="btn_update"
                     title="Update"
                     titleStyle={[
                       styles.textStyle,

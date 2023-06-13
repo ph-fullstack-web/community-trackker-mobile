@@ -40,6 +40,7 @@ export const ReportTemplate = ({
       ) : (
         <>
           <MultiSearch
+            id="multiSearch_skill"
             placeholder="Type to select a skill..."
             onSearch={handleSearch}
             dropdownValues={skills}

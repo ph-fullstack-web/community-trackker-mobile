@@ -40,7 +40,7 @@ export const ErrorMessage = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} id="errorMsg">
       <Icon
         type={icon!.type}
         name={icon!.name}
@@ -54,6 +54,7 @@ export const ErrorMessage = ({
       </Text>
       {showButton ? (
         <Button
+          id={'btn_'}
           title={buttonTitle}
           titleStyle={styles.buttonText}
           buttonStyle={[

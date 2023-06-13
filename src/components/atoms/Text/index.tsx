@@ -3,19 +3,11 @@ import {Text as DefaultText, TextProps as DefaultTextProps} from 'react-native';
 import {useThemeProvider} from 'providers';
 import styles from './Text.styles';
 
-type ThemeProps = {
-  lightColor?: string;
-  darkColor?: string;
-};
-
-type TextTypeProps = {
-  type: 'title' | 'subtitle' | 'default';
-};
-
-export type TextProps = ThemeProps &
-  DefaultTextProps &
-  ComponentWithChildren &
-  TextTypeProps;
+export type TextProps = DefaultTextProps &
+  ComponentWithChildren & {
+    id?: string;
+    type: 'title' | 'subtitle' | 'default';
+  };
 
 export const Text = (props: TextProps) => {
   const {mode} = useThemeProvider();

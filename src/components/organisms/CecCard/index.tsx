@@ -50,6 +50,7 @@ export const CecCard = (props: CecCardProps) => {
       >
         <CecCardDetails requests={cecRequests} />
         <Button
+          id="btn_ViewDetails"
           title="View Details"
           titleStyle={styles.buttonText}
           buttonStyle={[
@@ -80,6 +81,7 @@ export const CecCardChart = (props: CecCardChartProps) => {
       ]}
     >
       <ProgressChart
+        id="cecProgressChart"
         layout={layout}
         data={data}
         strokeColor={strokeColor}

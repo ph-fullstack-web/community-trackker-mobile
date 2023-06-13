@@ -38,6 +38,7 @@ export const SkillModal = ({data, onEdit}: SkillModalProps) => {
         onPress={() => setVisible(true)}
       />
       <Modal
+        id="skillModal"
         animationType="fade"
         transparent={true}
         visible={visible}
@@ -65,6 +66,7 @@ export const SkillModal = ({data, onEdit}: SkillModalProps) => {
             ) : (
               <>
                 <TextInput
+                  id="input_description"
                   style={styles.modelTextInput}
                   value={form.description}
                   onChangeText={value =>
@@ -75,6 +77,7 @@ export const SkillModal = ({data, onEdit}: SkillModalProps) => {
                 />
                 <View style={styles.switchContainer}>
                   <Switch
+                    id="switch_skillActiveState"
                     trackColor={{
                       false: COLORS.DARK_GRAY,
                       true: COLORS.LIGHT_GRAY,
@@ -95,6 +98,7 @@ export const SkillModal = ({data, onEdit}: SkillModalProps) => {
                 </View>
                 <View style={styles.buttonsContainer}>
                   <Button
+                    id="btn_close"
                     title="Close"
                     titleStyle={[
                       styles.textStyle,
@@ -108,6 +112,7 @@ export const SkillModal = ({data, onEdit}: SkillModalProps) => {
                     onPress={() => setVisible(!visible)}
                   />
                   <Button
+                    id="btn_update"
                     title="Update"
                     titleStyle={[
                       styles.textStyle,

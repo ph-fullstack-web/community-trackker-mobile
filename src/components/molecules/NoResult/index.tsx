@@ -9,7 +9,7 @@ type NoResultProps = {
 
 export const NoResult = (props: NoResultProps) => {
   return (
-    <View style={styles.container}>
+    <View id="noResultMsg" style={styles.container}>
       <Text style={styles.text}>{props.message}</Text>
     </View>
   );

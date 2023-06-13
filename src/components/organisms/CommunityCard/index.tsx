@@ -28,6 +28,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
 
   return (
     <Card
+      id="communityCard"
       style={[
         styles.card_container_template,
         styles[`card_container_template_${mode}` as keyof typeof Card],
@@ -37,6 +38,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
         <View style={styles.card_title_container}>
           <Text type="title">{community_name}</Text>
           <Button
+            id="btn_communityCard"
             icon={{
               name: 'information',
               type: 'material-community',
@@ -48,6 +50,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
             onPress={() => setModalVisible(!modalVisible)}
           />
           <CommunityDetailsModal
+            id="communityDetailsModal"
             communityDescription={community_description}
             modalVisible={modalVisible}
             setModalVisible={setModalVisible}
@@ -55,6 +58,7 @@ export const CommunityCard = (props: CommunityCardProps) => {
         </View>
         <Text type="subtitle">Manager: {manager_full_name}</Text>
         <Button
+          id="btn_viewMembers"
           title="View Members"
           titleStyle={[
             styles.buttonText,
@@ -70,7 +74,10 @@ export const CommunityCard = (props: CommunityCardProps) => {
         />
       </View>
       <View style={styles.card_chart_container}>
-        <MemberProgressChart percentage={percentage / 100} />
+        <MemberProgressChart
+          id="memberProgressChart"
+          percentage={percentage / 100}
+        />
       </View>
     </Card>
   );

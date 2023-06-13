@@ -7,6 +7,7 @@ export type AccordionProps = ComponentWithChildren & {
   expanded: boolean;
   headerLabel: string;
   headerStyle?: object;
+  id: string;
 };
 
 export const Accordion = (props: AccordionProps) => {
@@ -15,6 +16,7 @@ export const Accordion = (props: AccordionProps) => {
 
   return (
     <ListItem.Accordion
+      id={props.id}
       content={
         <>
           <ListItem.Content>

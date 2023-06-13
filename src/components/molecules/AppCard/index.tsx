@@ -11,8 +11,12 @@ export const AppCard = (props: AppCardProps) => {
   const {numColumns = 3, icon, title, onPress} = props;
 
   return (
-    <View style={[styles.appCardContainer, {width: `${100 / numColumns}%`}]}>
+    <View
+      id={props.id}
+      style={[styles.appCardContainer, {width: `${100 / numColumns}%`}]}
+    >
       <Button
+        id={`btn_${props.id}`}
         title=""
         buttonStyle={styles.appCardButton}
         containerStyle={styles.appCardButtonContainer}

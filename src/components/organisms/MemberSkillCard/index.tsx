@@ -13,9 +13,9 @@ export const MemberSkillCard = (prop: MemberSkillCardProps) => {
   const {full_name, skills} = prop.memberDetails;
 
   return (
-    <Card style={styles.cardContainer}>
+    <Card id="memberSkillCard" style={styles.cardContainer}>
       <View style={styles.avatarContainer}>
-        <Avatar size={70} source={{uri: defaultAvatar}} />
+        <Avatar id="memberAvatar" size={70} source={{uri: defaultAvatar}} />
       </View>
       <View style={styles.detailsContainer}>
         <Text type="title" style={styles.name}>
@@ -24,6 +24,7 @@ export const MemberSkillCard = (prop: MemberSkillCardProps) => {
         <View style={styles.chipsContainer}>
           {skills?.map((skill, index) => (
             <Button
+              id={`btn_memberSkill${index}`}
               key={index}
               title={skill}
               titleStyle={styles.buttonTitleStyle}

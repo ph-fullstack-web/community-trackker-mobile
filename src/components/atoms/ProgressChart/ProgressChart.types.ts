@@ -1,4 +1,5 @@
 import {ViewStyle} from 'react-native';
+import {ProgressChartProps as DefaultProgressChartProps} from 'react-native-chart-kit/dist/ProgressChart';
 
 export type ProgressChartLayout = 'vertical' | 'horizontal';
 
@@ -8,14 +9,10 @@ export type ProgressChartData = {
   data: Array<number>;
 };
 
-export type ProgressChartProps = ComponentWithChildren & {
-  data: ProgressChartData;
-  strokeColor: string;
-  backgroundColor?: string;
-  width: number;
-  height: number;
-  radius?: number;
-  strokeWidth?: number;
-  layout: ProgressChartLayout;
-  styles?: Partial<ViewStyle>;
-};
+export type ProgressChartProps = ComponentWithChildren &
+  DefaultProgressChartProps & {
+    id: string;
+    strokeColor: string;
+    layout: ProgressChartLayout;
+    styles?: Partial<ViewStyle>;
+  };

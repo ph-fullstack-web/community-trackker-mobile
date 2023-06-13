@@ -22,6 +22,7 @@ export const LoginTemplate = ({navigation}: LoginTemplateProp) => {
     <AppContainer contentContainerStyle={styles.container}>
       <Logo width={300} height={100} style={styles.logo} />
       <Button
+        id={'btn_goToDashboard'}
         gradient
         title="Go to Dashboard"
         onPress={handleOnPress}

@@ -16,9 +16,9 @@ export const MemberCard = (prop: MemberCardProps) => {
   const {mode} = useThemeProvider();
 
   return (
-    <Card style={styles.cardContainer}>
+    <Card id="memberCard" style={styles.cardContainer}>
       <View style={styles.avatarContainer}>
-        <Avatar size={70} source={{uri: defaultAvatar}} />
+        <Avatar id="memberAvatar" size={70} source={{uri: defaultAvatar}} />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>

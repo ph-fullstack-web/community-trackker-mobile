@@ -7,16 +7,18 @@ import {Text} from '../Text';
 import styles from './DrawerItem.styles';
 
 export type DrawerItemProps = {
+  id: string;
   icon: Icon;
   label: string;
   onPress: () => void;
 };
 
-export const DrawerItem = ({icon, label, onPress}: DrawerItemProps) => {
+export const DrawerItem = ({id, icon, label, onPress}: DrawerItemProps) => {
   const {mode} = useThemeProvider();
 
   return (
     <Pressable
+      id={id}
       android_ripple={styles[`ripple_${mode}` as keyof typeof undefined]}
       onPress={onPress}
     >

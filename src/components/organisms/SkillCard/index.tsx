@@ -11,7 +11,7 @@ export const SkillCard = ({data}: SkillCardProps) => {
   const {mode} = useThemeProvider();
 
   return (
-    <Card style={styles.cardContainer}>
+    <Card id="skillCard" style={styles.cardContainer}>
       <View style={styles.titleContainer}>
         <Text style={styles[`text_${mode}` as keyof typeof styles]}>
           {data.peopleskills_desc}

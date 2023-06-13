@@ -11,7 +11,7 @@ export const ProjectCard = ({data}: ProjectCardProps) => {
   const {mode} = useThemeProvider();
 
   return (
-    <Card style={styles.cardContainer}>
+    <Card id="projectCard" style={styles.cardContainer}>
       <View style={styles.titleContainer}>
         <Text style={styles[`text_${mode}` as keyof typeof styles]}>
           {data.project}

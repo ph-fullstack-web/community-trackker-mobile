@@ -6,12 +6,14 @@ import {Button, Text} from 'components/atoms';
 import styles from './CommunityDetailsModal.styles';
 
 interface CommunityDetailsModalProps {
+  id: string;
   communityDescription: string;
   modalVisible: boolean;
   setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const CommunityDetailsModal = ({
+  id,
   communityDescription,
   modalVisible,
   setModalVisible,
@@ -21,6 +23,7 @@ export const CommunityDetailsModal = ({
   return (
     <View style={styles.centeredView}>
       <Modal
+        id={id}
         animationType="fade"
         transparent={true}
         visible={modalVisible}
@@ -37,6 +40,7 @@ export const CommunityDetailsModal = ({
           >
             <Text style={styles.modalText}>{communityDescription}</Text>
             <Button
+              id={`btn_${id}`}
               title="Close Modal"
               titleStyle={[
                 styles.textStyle,

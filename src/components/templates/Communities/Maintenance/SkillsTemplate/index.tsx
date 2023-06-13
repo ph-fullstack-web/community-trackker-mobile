@@ -44,7 +44,11 @@ export const SkillsTemplate = ({
       ) : (
         <>
           {skills.length ? (
-            <Search onSearch={handleSearch} viewStyle={styles.search} />
+            <Search
+              id="search_skill"
+              onSearch={handleSearch}
+              viewStyle={styles.search}
+            />
           ) : (
             <></>
           )}

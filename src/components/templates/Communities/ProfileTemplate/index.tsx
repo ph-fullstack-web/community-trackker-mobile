@@ -51,7 +51,11 @@ export const ProfileTemplate = ({
             <Spinner />
           ) : (
             <>
-              <AccordionContainer headerLabel={'Information'} expanded={true}>
+              <AccordionContainer
+                id="information"
+                headerLabel={'Information'}
+                expanded={true}
+              >
                 <MemberDetailForm
                   csv_email={csv_email}
                   cognizantid_id={cognizantid_id}
@@ -59,7 +63,11 @@ export const ProfileTemplate = ({
                   communities={communities}
                 />
               </AccordionContainer>
-              <AccordionContainer headerLabel={'Skills'} expanded={false}>
+              <AccordionContainer
+                id="skills"
+                headerLabel={'Skills'}
+                expanded={false}
+              >
                 <SkillsForm skills={skills?.map(skill => skill.description)} />
               </AccordionContainer>
             </>

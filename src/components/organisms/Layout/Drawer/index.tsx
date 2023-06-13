@@ -62,7 +62,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
             <Spinner size={35} viewStyle={styles.spinnerContainer} />
           ) : (
             <>
-              <Avatar size={70} />
+              <Avatar id="drawerAvatar" size={70} />
               <View style={styles.headerTextContainer}>
                 <Text style={styles.greetingText}>
                   {data?.full_name && `Hi, ${data?.full_name}`}
@@ -76,7 +76,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
           style={styles.itemsContainer}
           showsVerticalScrollIndicator={false}
         >
-          {drawerItems.map(item =>
+          {drawerItems.map((item, index) =>
             item.items ? (
               <DrawerAccordion<T>
                 key={item.label!}
@@ -87,6 +87,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
               />
             ) : (
               <DrawerItem
+                id={`drawerItem${index}`}
                 key={item.label!}
                 icon={item.icon!}
                 label={item.label!}
@@ -95,7 +96,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
             )
           )}
         </ScrollView>
-        <Divider width={0.5} />
+        <Divider id="drawerDivider" width={0.5} />
         <View style={styles.footerContainer}>
           <View style={styles.themeContainer}>
             <Icon name={icon} type="material" color={iconColor} />
@@ -108,6 +109,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
               {mode?.charAt(0).toUpperCase() + mode?.slice(1)} Mode
             </Text>
             <Switch
+              id="themeSwitch"
               trackColor={{false: COLORS.DARK_GRAY, true: COLORS.LIGHT_GRAY}}
               thumbColor={
                 mode === 'light' ? COLORS.MIDNIGHT_BLUE : COLORS.LIGHT_GRAY
@@ -117,6 +119,7 @@ export const Drawer = <T,>(props: DrawerProps<T>) => {
             />
           </View>
           <DrawerItem
+            id="logoutDrawerItem"
             icon={{
               name: 'logout',
               type: 'material',

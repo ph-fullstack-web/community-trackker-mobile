@@ -15,6 +15,7 @@ import styles from './Typeahead.styles';
 import {COLORS} from 'constants/colors';
 
 type TypeaheadProps<T> = {
+  id: string;
   data: T[];
   label: keyof T;
   minimumChar?: number;
@@ -27,6 +28,7 @@ type TypeaheadProps<T> = {
 };
 
 export const Typeahead = <T extends Record<string, any>>({
+  id,
   data,
   label,
   minimumChar = 2,
@@ -95,7 +97,7 @@ export const Typeahead = <T extends Record<string, any>>({
   }, [data, label, minimumChar, query, selected]);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} id={id}>
       <TextInput
         placeholder={placeholder}
         onChangeText={onSearch}

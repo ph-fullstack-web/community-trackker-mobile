@@ -7,6 +7,7 @@ import {COLORS} from 'constants/colors';
 import styles from './Search.styles';
 
 type SearchProps = {
+  id: string;
   onSearch: (searchText: string) => void;
   viewStyle?: StyleProp<ViewStyle>;
 };
@@ -16,8 +17,9 @@ export const Search = (props: SearchProps) => {
   const {mode} = useThemeProvider();
 
   return (
-    <View style={[styles.searchContainer, props.viewStyle]}>
+    <View style={[styles.searchContainer, props.viewStyle]} id={props.id}>
       <TextInput
+        id={`textInput_${props.id}`}
         style={[
           styles.searchInput,
           styles[`searchInput_${mode}` as keyof typeof styles],
@@ -27,6 +29,7 @@ export const Search = (props: SearchProps) => {
         defaultValue=""
       />
       <Button
+        id={`btn_${props.id}`}
         containerStyle={styles.searchButtonContainer}
         buttonStyle={styles.searchButton}
         gradient

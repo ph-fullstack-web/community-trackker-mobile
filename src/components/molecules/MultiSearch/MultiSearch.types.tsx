@@ -1,6 +1,7 @@
 import {StyleProp, ViewStyle} from 'react-native';
 
 export type MultiSearchProps<T> = {
+  id: string;
   onSearch: (searchText: string) => void;
   viewStyle?: StyleProp<ViewStyle>;
   dropdownValues: T[];
